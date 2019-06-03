@@ -1,0 +1,68 @@
+{
+	"name": "boilerplate",
+	"version": "1.0.0",
+	"description": "Boilerplate for all react forms",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"test:coverage": "jest --coverage --collectCoverageFrom=src/components/**/*.{js} --collectCoverageFrom=src/actions/**/*.{js} --collectCoverageFrom=src/reducers/**/*.{js} --collectCoverageFrom=src/helpers/**/*.{js}",
+		"start": "webpack-dev-server --mode development --open",
+		"lint": "eslint src",
+		"build": "webpack --mode production",
+		"prepush": "echo 'Starting PrePush' && npm run test:coverage && npm run lint"
+	},
+	"author": "SMBC",
+	"license": "ISC",
+	"dependencies": {
+		"await-timeout": "^0.2.0",
+		"isomorphic-fetch": "^2.2.1",
+		"moment": "^2.22.2",
+		"react": "^16.8.6",
+		"react-async-script": "^1.0.1",
+		"react-dom": "^16.8.6",
+		"react-google-recaptcha": "^1.0.5",
+		"react-router": "^5.0.0",
+		"smbc-react-components": "^4.1.84"
+	},
+	"devDependencies": {
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^8.2.6",
+		"babel-jest": "^23.4.2",
+		"babel-loader": "^7.1.5",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-polyfill": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"clean-webpack-plugin": "^0.1.19",
+		"copy-webpack-plugin": "^4.6.0",
+		"enzyme": "^3.9.0",
+		"enzyme-adapter-react-16": "^1.13.1",
+		"eslint": "^5.16.0",
+		"eslint-plugin-jest": "^22.6.4",
+		"eslint-plugin-react": "^7.13.0",
+		"html-webpack-plugin": "^3.2.0",
+		"husky": "^0.14.3",
+		"jest": "^22.4.4",
+		"jest-fetch-mock": "^1.7.4",
+		"path": "^0.12.7",
+		"react-test-renderer": "^16.8.6",
+		"webpack": "^4.32.2",
+		"webpack-cli": "^3.3.2",
+		"webpack-dev-server": "^3.4.1"
+	},
+	"jest": {
+		"setupFiles": [
+			"./setupJest.js"
+		],
+		"testURL": "http://localhost",
+		"coverageThreshold": {
+			"global": {
+				"branches": 90,
+				"functions": 90,
+				"lines": 90,
+				"statements": 90
+			}
+		}
+	}
+}
