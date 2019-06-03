@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Context } from '../../context/'
 
 const Provider = ({ children }) => {
+	const [ isLoading, setIsLoading ] = useState(true)
+
 	const onChange = (event, isValid) => {
 		setState({
 			...state,
@@ -12,17 +14,23 @@ const Provider = ({ children }) => {
 			}})
 	}
 
+	const fetchCase = async () => {
+		const result = await fetch('http://localhost:57726/fostering/case')
+
+		const jsonBody = await result.json()
+
+		console.log(jsonBody)
+		setIsLoading(false)
+		setState(jsonBody)
+	}
+
+	useEffect(() => {
+		fetchCase()
+	}, [])
+
 	const displayRecaptcha = document.getElementById('displayRecaptcha') ? document.getElementById('displayRecaptcha').innerHTML === 'true' : false
 
 	const [ state, setState ] = useState({
-		example: {
-			value:'',
-			isValid: false
-		},
-		example2: {
-			value: '',
-			isValid: false
-		},
 		displayRecaptcha,
 		onChange: onChange
 	})
