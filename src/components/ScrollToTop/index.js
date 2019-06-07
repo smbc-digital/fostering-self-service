@@ -11,7 +11,7 @@ export const ScrollToTop = ({ location, children }) => {
 }
 
 ScrollToTop.propTypes = {
-	location: PropTypes.string,
+	location: PropTypes.object,
 	children: PropTypes.object,
 }
 
