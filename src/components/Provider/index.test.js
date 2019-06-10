@@ -4,7 +4,6 @@ import { Context } from '../../context/'
 import * as helpers from '../../helpers'
 
 const TestComponent = ({ context: { onChange, displayRecaptcha, firstName, lastName } }) => {
-
     const onClick = () => {
 		onChange(
 			{
@@ -32,7 +31,7 @@ const TestComponent = ({ context: { onChange, displayRecaptcha, firstName, lastN
 	)
 }
 
-const mountProviderWithCase = (children) => {
+const mountProviderWithCase = async (children) => {
     const mockCaseResponse = {
         statuses: {
             status: 0
@@ -46,13 +45,13 @@ const mountProviderWithCase = (children) => {
     helpers.fetchWithTimeout = jest.fn().mockReturnValue(fetchPromise)
     const wrapper = mount(<Provider>{children}</Provider>)
 
-    const mountPromise = fetchPromise.then(() => {
-        wrapper.setProps()
-    }).then(() => {
-        wrapper.setProps()
-    })
+    // Ensure the response is mapped to context and isLoading state is updated
+    await fetchPromise
+    wrapper.setProps()
+    await fetchPromise
+    wrapper.setProps()
 
-    return [wrapper, mountPromise]
+    return [wrapper, fetchPromise]
 }
 
 describe('Provider', () => {
@@ -69,51 +68,53 @@ describe('Provider', () => {
         expect(wrapper.find('p').text()).toEqual('Loading...')
     })
 
-    it('should render error state', () => {
+    it('should render error state', async () => {
         // Arrange
         const fetchPromise = Promise.reject(new Error())
         const wrapper = mount(<Provider/>)
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(fetchPromise)
 
         // Act & Assert
-        return fetchPromise.catch(() => {
+        try {
+            await fetchPromise
+        } catch (error) {
             wrapper.update()
-        }).then(() => {
+        }
+
+        try {
+            await fetchPromise
+        } catch (error) {
             expect(wrapper.find('p').text()).toEqual('Error')
-        })
+        }
     })
 
-    it('should render itself', () => {
-        // Act & Assert
-        const [wrapper, mountPromise] = mountProviderWithCase()
-        
-        return mountPromise.then(() => {
-            expect(wrapper.find('Provider').exists()).toBe(true)
-        })
-    })
-
-    it('should map case to context', () => {
+    it('should render itself', async () => {
         // Arrange
-        const [wrapper, mountPromise] = mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+        const [wrapper] = await mountProviderWithCase()
+        
+        // Assert
+        expect(wrapper.find('Provider').exists()).toBe(true)
+    })
 
-        return mountPromise.then(() => {
-            expect(wrapper.find('.name').text()).toEqual('test')
-            expect(wrapper.find('.last-name').text()).toEqual('')
-        })
+    it('should map case to context', async () => {
+        // Arrange
+        const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+
+        // Assert
+        expect(wrapper.find('.name').text()).toEqual('test')
+        expect(wrapper.find('.last-name').text()).toEqual('')
     })
 
     describe('reCaptcha', () => {
-        it('should set display reCaptcha correctly when no div exists', () => {
-            // Act
-            const [wrapper, mountPromise] = mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+        it('should set display reCaptcha correctly when no div exists', async () => {
+            // Arrange
+            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
 
             //Assert
-            return mountPromise.then(() => {
-                expect(wrapper.find('.no-recaptcha').exists()).toBe(true)
-            })
+            expect(wrapper.find('.no-recaptcha').exists()).toBe(true)
         })
 
-        it('should set display reCaptcha correctly when div exists and value is true', () => {
+        it('should set display reCaptcha correctly when div exists and value is true', async () => {
             // Arrange
             document.getElementById = jest.fn()
             document.getElementById.mockReturnValue(
@@ -121,17 +122,13 @@ describe('Provider', () => {
                     innerHTML: 'true'
                 }
             )
-            
-            // Act
-            const [wrapper, mountPromise] = mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
             
             // Assert
-            return mountPromise.then(() => {
-                expect(wrapper.find('.recaptcha').exists()).toBe(true)
-            })
+            expect(wrapper.find('.recaptcha').exists()).toBe(true)
         })
 
-        it('should set display reCaptcha correctly when div exists and value is false', () => {
+        it('should set display reCaptcha correctly when div exists and value is false', async () => {
             // Arrange
             document.getElementById = jest.fn()
             document.getElementById.mockReturnValue(
@@ -139,29 +136,25 @@ describe('Provider', () => {
                     innerHTML: 'false'
                 }
             )
-            
-            // Act
-            const [wrapper, mountPromise] = mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
             
             // Assert
-            return mountPromise.then(() => {
-                expect(wrapper.find('.no-recaptcha').exists()).toBe(true)
-            })
+            expect(wrapper.find('.no-recaptcha').exists()).toBe(true)
         })
     })
 
     describe('onChange', () => {
-        it('should update state', () => {
+        it('should update state', async () => {
             // Arrange
-            const [wrapper, mountPromise] = mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+            const [wrapper, fetchPromise] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
 
-            return mountPromise.then(() => {
-                expect(wrapper.find('.name').text()).toEqual('test')
-                wrapper.find('#test-button').simulate('click')
-                wrapper.update()
-            }).then(() => {
-                expect(wrapper.find('.name').text()).toEqual('new value')
-            })
+            // Assert
+            expect(wrapper.find('.name').text()).toEqual('test')
+            wrapper.find('#test-button').simulate('click')
+            wrapper.update()
+            
+            await fetchPromise
+            expect(wrapper.find('.name').text()).toEqual('new value')
         })
     })
 })
