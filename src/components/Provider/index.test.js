@@ -3,19 +3,30 @@ import Provider from '../Provider'
 import { Context } from '../../context/'
 import * as helpers from '../../helpers'
 
-const TestComponent = ({ context: { onChange, displayRecaptcha, firstName, lastName } }) => {
+const TestComponent = ({ context: { onChange, onChangeApplicant, displayRecaptcha, someOtherProperty, firstApplicant, secondApplicant } }) => {
     const onClick = () => {
 		onChange(
 			{
 				target: {
-					name: 'firstName',
-					value: 'new value'
+					name: 'someOtherProperty',
+					value: 'newValue'
 				}
 			},
 			true
 		)
-	}
+    }
 
+    const onClickApplicant = () => {
+        onChangeApplicant(
+            {
+                target: {
+                    name: 'firstName',
+                    value: 'newName'
+                }
+            }
+        )
+    }
+    
     return (
 		<div>
 			<button
@@ -24,20 +35,32 @@ const TestComponent = ({ context: { onChange, displayRecaptcha, firstName, lastN
 			>
 				Test button
 			</button>
+            <button
+                id="test-button-applicant"
+                onClick={onClickApplicant}
+            >
+                Test button applicant
+            </button>
 			{displayRecaptcha ? <p className="recaptcha" /> : <p className="no-recaptcha" />}
-			<p className="name">{firstName.value}</p>
-			<p className="last-name">{lastName.value}</p>
+			<p className="name">{firstApplicant.firstName.value}</p>
+			<p className="last-name">{firstApplicant.lastName.value}</p>
+            <p className="status">{someOtherProperty.value}</p>
+            {secondApplicant && <p className="second-applicant-name">{secondApplicant.firstName.value}</p>}
 		</div>
 	)
 }
 
-const mountProviderWithCase = async (children) => {
+const mountProviderWithCase = async (children, secondApplicant) => {
     const mockCaseResponse = {
         statuses: {
             status: 0
         },
-        firstName: 'test',
-        lastName: null
+        firstApplicant: {
+            firstName: 'firstName',
+            lastName: ''
+        },
+        secondApplicant: secondApplicant || null,
+        someOtherProperty: 'value'
     }
 
     const responseMock = { json: jest.fn().mockReturnValue(mockCaseResponse) }
@@ -101,8 +124,16 @@ describe('Provider', () => {
         const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
 
         // Assert
-        expect(wrapper.find('.name').text()).toEqual('test')
+        expect(wrapper.find('.name').text()).toEqual('firstName')
         expect(wrapper.find('.last-name').text()).toEqual('')
+    })
+
+    it('should map second applicant to context', async () => {
+        // Arrange
+        const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>, { firstName: 'testName' })
+
+        // Assert
+        expect(wrapper.find('.second-applicant-name').text()).toEqual('testName')
     })
 
     describe('reCaptcha', () => {
@@ -149,12 +180,27 @@ describe('Provider', () => {
             const [wrapper, fetchPromise] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
 
             // Assert
-            expect(wrapper.find('.name').text()).toEqual('test')
+            expect(wrapper.find('.status').text()).toEqual('value')
             wrapper.find('#test-button').simulate('click')
             wrapper.update()
             
             await fetchPromise
-            expect(wrapper.find('.name').text()).toEqual('new value')
+            expect(wrapper.find('.status').text()).toEqual('newValue')
+        })
+    })
+
+    describe('onChangeApplicant', () => {
+        it('should update state', async () => {
+            // Arrange
+            const [wrapper, fetchPromise] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+
+            // Assert
+            expect(wrapper.find('.name').text()).toEqual('firstName')
+            wrapper.find('#test-button-applicant').simulate('click')
+            wrapper.update()
+            
+            await fetchPromise
+            expect(wrapper.find('.name').text()).toEqual('newName')
         })
     })
 })

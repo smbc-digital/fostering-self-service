@@ -4,10 +4,33 @@ import { Context } from '../../context/'
 import { fetchWithTimeout } from '../../helpers'
 import { API_ROOT } from '../../config'
 
+export const Applicant = {
+	FirstApplicant: 'firstApplicant',
+	secondApplicant: 'secondApplicant'
+}
+
+const reduceProperties = object => Object.keys(object).reduce((acc, property) => {
+	return {
+		...acc,
+		[property]: {
+			value: object[property] || '',
+			isValid: object[property] !== null
+		}
+	}
+}, {})
+
 const Provider = ({ children }) => {
 	const displayRecaptcha = document.getElementById('displayRecaptcha') ? document.getElementById('displayRecaptcha').innerHTML === 'true' : false
 	const initialState = {
-		displayRecaptcha
+		displayRecaptcha,
+		currentApplicant: Applicant.FirstApplicant,
+		firstApplicant: {
+			firstName: {
+				value: '',
+				isValid: false
+			}
+		},
+		isSwitchingApplicant: false
 	}
 
 	const [isLoading, setIsLoading] = useState(true)
@@ -23,29 +46,58 @@ const Provider = ({ children }) => {
 			}})
 	}
 
-	const mapCaseToContext = caseResponse => {
-		const statuses = {...caseResponse.statuses}
-		delete caseResponse.statuses
-
-		const caseDetails = Object.keys(caseResponse).reduce((acc, property) => {
-			return {
-				...acc,
-				[property]: {
-					value: caseResponse[property] || '',
-					isValid: caseResponse[property] !== null
+	const onChangeApplicant = (event, isValid) => {
+		setState({
+			...state,
+			[state.currentApplicant]: {
+				...state[state.currentApplicant],
+				[event.target.name]: {
+					value: event.target.value, 
+					isValid
 				}
 			}
-		}, {})
+		})
+	}
 
-		setState({...state, ...statuses, ...caseDetails})
+	const setApplicant = applicant => {
+		setState({
+			...state,
+			currentApplicant: applicant,
+			isSwitchingApplicant: true
+		})
+	}
+
+	const mapCaseToContext = caseResponse => {
+		const statuses = {...caseResponse.statuses}
+		let secondApplicantDetails = undefined
+		delete caseResponse.statuses
+
+		const firstApplicantDetails = reduceProperties(caseResponse.firstApplicant)
+		delete caseResponse.firstApplicant
+
+		if (caseResponse.secondApplicant !== null) {
+			secondApplicantDetails = reduceProperties(caseResponse.secondApplicant)
+		}
+		delete caseResponse.secondApplicant
+
+		const caseDetails = reduceProperties(caseResponse)
+
+		setState({
+			...state, 
+			...statuses, 
+			firstApplicant: firstApplicantDetails, 
+			secondApplicant: secondApplicantDetails, 
+			...caseDetails
+		})
 	}
 
 	const fetchCase = async () => {
 		try {
-			const response = await fetchWithTimeout(`${API_ROOT}/fostering/case`)
+			const response = await fetchWithTimeout(`${API_ROOT}/fostering/case`, { credentials: 'include' })
 			const body = await response.json()
 			mapCaseToContext(body)
 		} catch (error) {
+			console.log(error)
 			setError(error)
 		}
 	}
@@ -61,15 +113,24 @@ const Provider = ({ children }) => {
 		}
 	}, [state])
 
+	useEffect(() => {
+		if (state.isSwitchingApplicant) {
+			setState({
+				...state,
+				isSwitchingApplicant: false
+			})	
+		}
+	}, [state])
+
 	if (error) {
 		return <p>Error</p>
 	}
 
-	if (isLoading) {
+	if (isLoading || state.isSwitchingApplicant) {
 		return <p>Loading...</p>
 	}
 
-	return <Context.Provider value={{...state, onChange}}>
+	return <Context.Provider value={{...state, onChange, onChangeApplicant, setApplicant}}>
 		{children}
 	</Context.Provider>
 }
