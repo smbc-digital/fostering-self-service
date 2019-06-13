@@ -24,13 +24,6 @@ const Provider = ({ children }) => {
 	const initialState = {
 		displayRecaptcha,
 		currentApplicant: Applicant.FirstApplicant,
-		firstApplicant: {
-			firstName: {
-				value: '',
-				isValid: false
-			}
-		},
-		isSwitchingApplicant: false
 	}
 
 	const [isLoading, setIsLoading] = useState(true)
@@ -62,8 +55,7 @@ const Provider = ({ children }) => {
 	const setApplicant = applicant => {
 		setState({
 			...state,
-			currentApplicant: applicant,
-			isSwitchingApplicant: true
+			currentApplicant: applicant
 		})
 	}
 
@@ -97,7 +89,6 @@ const Provider = ({ children }) => {
 			const body = await response.json()
 			mapCaseToContext(body)
 		} catch (error) {
-			console.log(error)
 			setError(error)
 		}
 	}
@@ -113,20 +104,11 @@ const Provider = ({ children }) => {
 		}
 	}, [state])
 
-	useEffect(() => {
-		if (state.isSwitchingApplicant) {
-			setState({
-				...state,
-				isSwitchingApplicant: false
-			})	
-		}
-	}, [state])
-
 	if (error) {
 		return <p>Error</p>
 	}
 
-	if (isLoading || state.isSwitchingApplicant) {
+	if (isLoading) {
 		return <p>Loading...</p>
 	}
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button } from 'smbc-react-components'
 import { Applicant } from '../../../Provider'
@@ -27,8 +27,11 @@ const KnownByAnotherName = ({ history }) => {
     const onSubmit = event => {
         event.preventDefault()
         setApplicant(Applicant.secondApplicant)
-        history.push('/fostering/known-by-another-name')
     }
+
+    useEffect(() => {
+        history.push('/fostering/known-by-another-name')
+    }, [currentApplicant])
 
     return (
         <form onSubmit={onSubmit}>
@@ -45,6 +48,10 @@ const KnownByAnotherName = ({ history }) => {
             <Button label="Next step" isValid />
         </form>
     )
+}
+
+KnownByAnotherName.propTypes = {
+    history: PropTypes.object
 }
 
 export default KnownByAnotherName
