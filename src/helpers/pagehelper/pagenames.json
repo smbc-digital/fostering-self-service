@@ -6,5 +6,9 @@
 	{
 		"number": 2,
 		"route": "/fostering/known-by-another-name"
+	},
+	{
+		"number": 3,
+		"route": "/fostering/more-about-you"
 	}
 ]

@@ -1,29 +1,42 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { TextInputContainer, Button } from 'smbc-react-components'
+import { TextInputContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from '../../../../context'
+import { getCurrentApplicant, getPageRoute } from '../../../../helpers'
+import { Applicant } from '../../../Provider'
 
-const MoreAboutYou = () => {
+const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
-    const { currentApplicant, onChangeApplicant } = context
-    const { firstName, lastName, SexualOrientation } = context[currentApplicant]
+    const currentApplicant = getCurrentApplicant(match)
+    const { onChangeApplicant } = context
+    const { firstName, lastName, sexualOrientation } = context[currentApplicant]
 
-    return (
-    <form>
+    const onSubmit = event => {
+        event.preventDefault()
+
+        if (currentApplicant === Applicant.FirstApplicant) {
+            history.push(`${getPageRoute(2)}/second-applicant`)
+            return
+        }
+
+        history.push(getPageRoute(1))
+    }
+
+    return <form onSubmit={onSubmit}>
         <h1>Tell us more about you</h1>
-        <p>{firstName} {lastName}</p>
+        <p>{firstName.value} {lastName.value}</p>
         <TextInputContainer 
             label='Sexual orientation'
-            id='sexualOrientartion'
+            id='sexualOrientation'
             type='text'
             maxLength='60'
             optional={true}
-            value={SexualOrientation.value}
-            onChange={onChangeApplicant}
+            value={sexualOrientation.value}
+            onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
         />
         <Button label="Next step" isValid />
+        <Anchor label='Back' history={history}/>
     </form>
-    )
 }
 
 export default MoreAboutYou
