@@ -28,14 +28,14 @@ exports[`KnownByAnotherName snapshot renders correctly 1`] = `
       <input
         defaultChecked={true}
         disabled={undefined}
-        id="have-you-been-know-yes"
+        id="have-you-been-known-yes"
         name="everBeenKnownByAnotherName"
         onChange={[Function]}
         type="radio"
         value="true"
       />
       <label
-        htmlFor="have-you-been-know-yes"
+        htmlFor="have-you-been-known-yes"
       >
         Yes
       </label>
@@ -47,14 +47,14 @@ exports[`KnownByAnotherName snapshot renders correctly 1`] = `
       <input
         defaultChecked={false}
         disabled={undefined}
-        id="have-you-been-know-no"
+        id="have-you-been-known-no"
         name="everBeenKnownByAnotherName"
         onChange={[Function]}
         type="radio"
         value="false"
       />
       <label
-        htmlFor="have-you-been-know-no"
+        htmlFor="have-you-been-known-no"
       >
         No
       </label>
@@ -69,5 +69,13 @@ exports[`KnownByAnotherName snapshot renders correctly 1`] = `
   >
     Next step
   </button>
+  <p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </p>
 </form>
 `;

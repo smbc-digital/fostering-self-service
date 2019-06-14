@@ -8,13 +8,13 @@ import { Applicant } from '../../../Provider'
 const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant } = context
+    const { onChangeApplicant, secondApplicant } = context
     const { firstName, lastName, sexualOrientation } = context[currentApplicant]
 
     const onSubmit = event => {
         event.preventDefault()
 
-        if (currentApplicant === Applicant.FirstApplicant) {
+        if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
             history.push(`${getPageRoute(2)}/second-applicant`)
             return
         }
@@ -37,6 +37,11 @@ const MoreAboutYou = ({ history, match }) => {
         <Button label="Next step" isValid />
         <Anchor label='Back' history={history}/>
     </form>
+}
+
+MoreAboutYou.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object
 }
 
 export default MoreAboutYou

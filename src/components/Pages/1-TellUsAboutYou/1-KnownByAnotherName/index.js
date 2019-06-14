@@ -14,13 +14,13 @@ const KnownByAnotherName = ({ history, match }) => {
     const options = [
 		{
             label: 'Yes',
-			id: 'have-you-been-know-yes',
+			id: 'have-you-been-known-yes',
             name: 'everBeenKnownByAnotherName',
             value: 'true'
 		},
 		{
             label: 'No',
-            id: 'have-you-been-know-no',
+            id: 'have-you-been-known-no',
             name: 'everBeenKnownByAnotherName',
             value: 'false'
 		}
@@ -56,7 +56,8 @@ const KnownByAnotherName = ({ history, match }) => {
 }
 
 KnownByAnotherName.propTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    match: PropTypes.object
 }
 
 export default KnownByAnotherName
