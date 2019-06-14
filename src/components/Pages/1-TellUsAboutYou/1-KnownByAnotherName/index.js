@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { RadioInputsContainer, Button } from 'smbc-react-components'
-import { Applicant } from '../../../Provider'
+import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from '../../../../context'
+import { getPageRoute, getCurrentApplicant } from '../../../../helpers'
+import { Applicant } from '../../../Provider'
 
-const KnownByAnotherName = ({ history }) => {
+const KnownByAnotherName = ({ history, match }) => {
     const context = useContext(Context)
-    const { currentApplicant, onChangeApplicant, setApplicant } = context
-    const { everBeenKnownByAnotherName, firstName } = context[currentApplicant]
+    const currentApplicant = getCurrentApplicant(match)
+    const { onChangeApplicant } = context
+    const { everBeenKnownByAnotherName, firstName, lastName } = context[currentApplicant]
 
     const options = [
 		{
@@ -26,26 +28,29 @@ const KnownByAnotherName = ({ history }) => {
     
     const onSubmit = event => {
         event.preventDefault()
-        setApplicant(Applicant.secondApplicant)
-    }
+        let nextPageRoute = getPageRoute(3)
+        
+        if (currentApplicant === Applicant.SecondApplicant) {
+            nextPageRoute += '/second-applicant'
+        }
 
-    useEffect(() => {
-        history.push('/fostering/known-by-another-name')
-    }, [currentApplicant])
+        history.push(nextPageRoute)
+    }
 
     return (
         <form onSubmit={onSubmit}>
             <h1>Your fostering journey</h1>
             <h2>Tell us more about you</h2>
-            <p>{firstName.value}</p>
+            <p>{firstName.value} {lastName.value}</p>
             <RadioInputsContainer 
                 displayHeading
                 header='Have you ever been known by another name?' 
                 options={options} 
-                onChange={onChangeApplicant} 
+                onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)} 
                 value={`${everBeenKnownByAnotherName.value}`}
             />
             <Button label="Next step" isValid />
+            <Anchor label='Back' history={history}/>
         </form>
     )
 }

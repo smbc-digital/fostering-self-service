@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KnownByAnotherName snapshot renders correctly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <h1>
+    Your fostering journey
+  </h1>
+  <h2>
+    Tell us more about you
+  </h2>
+  <p>
+    first name
+     
+    last name
+  </p>
+  <h3
+    className="no-margin-bottom"
+  >
+    Have you ever been known by another name?
+  </h3>
+  <fieldset>
+    <div
+      className="input-radio-container"
+      role="radiogroup"
+    >
+      <input
+        defaultChecked={true}
+        disabled={undefined}
+        id="have-you-been-know-yes"
+        name="everBeenKnownByAnotherName"
+        onChange={[Function]}
+        type="radio"
+        value="true"
+      />
+      <label
+        htmlFor="have-you-been-know-yes"
+      >
+        Yes
+      </label>
+    </div>
+    <div
+      className="input-radio-container"
+      role="radiogroup"
+    >
+      <input
+        defaultChecked={false}
+        disabled={undefined}
+        id="have-you-been-know-no"
+        name="everBeenKnownByAnotherName"
+        onChange={[Function]}
+        type="radio"
+        value="false"
+      />
+      <label
+        htmlFor="have-you-been-know-no"
+      >
+        No
+      </label>
+    </div>
+  </fieldset>
+  <button
+    className="button-primary"
+    disabled={false}
+    id={undefined}
+    onClick={undefined}
+    type="submit"
+  >
+    Next step
+  </button>
+</form>
+`;
