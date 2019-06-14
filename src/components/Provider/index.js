@@ -6,7 +6,7 @@ import { API_ROOT } from '../../config'
 
 export const Applicant = {
 	FirstApplicant: 'firstApplicant',
-	secondApplicant: 'secondApplicant'
+	SecondApplicant: 'secondApplicant'
 }
 
 const reduceProperties = object => Object.keys(object).reduce((acc, property) => {
@@ -22,8 +22,7 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 const Provider = ({ children }) => {
 	const displayRecaptcha = document.getElementById('displayRecaptcha') ? document.getElementById('displayRecaptcha').innerHTML === 'true' : false
 	const initialState = {
-		displayRecaptcha,
-		currentApplicant: Applicant.FirstApplicant,
+		displayRecaptcha
 	}
 
 	const [isLoading, setIsLoading] = useState(true)
@@ -39,23 +38,16 @@ const Provider = ({ children }) => {
 			}})
 	}
 
-	const onChangeApplicant = (event, isValid) => {
+	const onChangeApplicant = (event, isValid, currentApplicant) => {
 		setState({
 			...state,
-			[state.currentApplicant]: {
-				...state[state.currentApplicant],
+			[currentApplicant]: {
+				...state[currentApplicant],
 				[event.target.name]: {
 					value: event.target.value, 
 					isValid
 				}
 			}
-		})
-	}
-
-	const setApplicant = applicant => {
-		setState({
-			...state,
-			currentApplicant: applicant
 		})
 	}
 
@@ -112,7 +104,7 @@ const Provider = ({ children }) => {
 		return <p>Loading...</p>
 	}
 
-	return <Context.Provider value={{...state, onChange, onChangeApplicant, setApplicant}}>
+	return <Context.Provider value={{...state, onChange, onChangeApplicant}}>
 		{children}
 	</Context.Provider>
 }
