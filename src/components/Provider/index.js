@@ -51,7 +51,7 @@ const Provider = ({ children }) => {
 		})
 	}
 
-	const mapCaseToContext = caseResponse => {
+	const mapCaseToContext = ({ fosteringCase: caseResponse, country, ethnicity, nationality }) => {
 		const statuses = {...caseResponse.statuses}
 		let secondApplicantDetails = undefined
 		delete caseResponse.statuses
@@ -71,7 +71,10 @@ const Provider = ({ children }) => {
 			...statuses, 
 			firstApplicant: firstApplicantDetails, 
 			secondApplicant: secondApplicantDetails, 
-			...caseDetails
+			...caseDetails,
+			country: country.map(_ => ({name: _, value: _})),
+			ethnicity: ethnicity.map(_ => ({name: _, value: _})),
+			nationality: nationality.map(_ => ({name: _, value: _})),
 		})
 	}
 
