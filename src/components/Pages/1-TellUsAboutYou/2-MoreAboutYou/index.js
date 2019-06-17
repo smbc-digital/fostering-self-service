@@ -9,7 +9,7 @@ const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
     const { onChangeApplicant, secondApplicant } = context
-    const { firstName, lastName, sexualOrientation, nationality, ethnicity, countryOfBirth } = context[currentApplicant]
+    const { firstName, lastName, sexualOrientation, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
 
     const onSubmit = event => {
         event.preventDefault()
@@ -28,8 +28,8 @@ const MoreAboutYou = ({ history, match }) => {
         <SelectInputContainer
             label='Country of birth'
             id='countryOfBirth'
-            value={countryOfBirth.value}
-            options={context.nationality}
+            value={placeOfBirth.value}
+            options={context.country}
             onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
         />
         <SelectInputContainer
@@ -49,18 +49,18 @@ const MoreAboutYou = ({ history, match }) => {
         <SelectInputContainer
             label='Gender'
             id='gender'
-            value={nationality.value}
+            value={gender.value}
             options={[
                 {
-                    name: 'male',
+                    name: 'Male',
                     value: 'Male'
                 },
                 {
-                    name: 'female',
+                    name: 'Female',
                     value: 'Female'
                 },
                 {
-                    name: 'prefer not to say',
+                    name: 'Prefer not to say',
                     value: 'Prefer not to say'
                 }
             ]}
@@ -71,8 +71,17 @@ const MoreAboutYou = ({ history, match }) => {
             id='sexualOrientation'
             type='text'
             maxLength='60'
-            optional={true}
+            optional={false}
             value={sexualOrientation.value}
+            onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+        />
+        <TextInputContainer
+            label='Religion or faith group'
+            id='religion'
+            type='text'
+            maxLength='60'
+            optional={false}
+            value={religion.value}
             onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
         />
         <Button label="Next step" isValid />
