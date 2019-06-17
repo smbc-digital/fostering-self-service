@@ -19,6 +19,7 @@ let config = {
 
 module.exports = (env, argv) => {
     if (argv.mode === 'development') {
+        config.output.filename = '[name]-latest.js'
         config.devtool = 'source-map'
         config.devServer = {
             inline: true,

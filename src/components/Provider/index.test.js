@@ -1,19 +1,19 @@
 import { React, mount } from '../../helpers/SetupTest'
-import Provider from '../Provider'
+import Provider, { Applicant } from '../Provider'
 import { Context } from '../../context/'
 import * as helpers from '../../helpers'
 
 const TestComponent = ({ context: { onChange, onChangeApplicant, displayRecaptcha, someOtherProperty, firstApplicant, secondApplicant } }) => {
     const onClick = () => {
-		onChange(
-			{
-				target: {
-					name: 'someOtherProperty',
-					value: 'newValue'
-				}
-			},
-			true
-		)
+        onChange(
+            {
+                target: {
+                    name: 'someOtherProperty',
+                    value: 'newValue'
+                }
+            },
+            true
+        )
     }
 
     const onClickApplicant = () => {
@@ -23,17 +23,19 @@ const TestComponent = ({ context: { onChange, onChangeApplicant, displayRecaptch
                     name: 'firstName',
                     value: 'newName'
                 }
-            }
+            },
+            true,
+            Applicant.FirstApplicant
         )
     }
-    
+
     return (
-		<div>
-			<button
-				id="test-button"
-				onClick={onClick}
-			>
-				Test button
+        <div>
+            <button
+                id="test-button"
+                onClick={onClick}
+            >
+                Test button
 			</button>
             <button
                 id="test-button-applicant"
@@ -41,13 +43,13 @@ const TestComponent = ({ context: { onChange, onChangeApplicant, displayRecaptch
             >
                 Test button applicant
             </button>
-			{displayRecaptcha ? <p className="recaptcha" /> : <p className="no-recaptcha" />}
-			<p className="name">{firstApplicant.firstName.value}</p>
-			<p className="last-name">{firstApplicant.lastName.value}</p>
+            {displayRecaptcha ? <p className="recaptcha" /> : <p className="no-recaptcha" />}
+            <p className="name">{firstApplicant.firstName.value}</p>
+            <p className="last-name">{firstApplicant.lastName.value}</p>
             <p className="status">{someOtherProperty.value}</p>
             {secondApplicant && <p className="second-applicant-name">{secondApplicant.firstName.value}</p>}
-		</div>
-	)
+        </div>
+    )
 }
 
 const mountProviderWithCase = async (children, secondApplicant) => {
@@ -85,7 +87,7 @@ describe('Provider', () => {
 
     it('should render loading state', () => {
         // Arrange
-        const wrapper = mount(<Provider/>)
+        const wrapper = mount(<Provider />)
 
         // Assert
         expect(wrapper.find('p').text()).toEqual('Loading...')
@@ -94,7 +96,7 @@ describe('Provider', () => {
     it('should render error state', async () => {
         // Arrange
         const fetchPromise = Promise.reject(new Error())
-        const wrapper = mount(<Provider/>)
+        const wrapper = mount(<Provider />)
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(fetchPromise)
 
         // Act & Assert
@@ -114,14 +116,14 @@ describe('Provider', () => {
     it('should render itself', async () => {
         // Arrange
         const [wrapper] = await mountProviderWithCase()
-        
+
         // Assert
         expect(wrapper.find('Provider').exists()).toBe(true)
     })
 
     it('should map case to context', async () => {
         // Arrange
-        const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+        const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>)
 
         // Assert
         expect(wrapper.find('.name').text()).toEqual('firstName')
@@ -130,7 +132,7 @@ describe('Provider', () => {
 
     it('should map second applicant to context', async () => {
         // Arrange
-        const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>, { firstName: 'testName' })
+        const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>, { firstName: 'testName' })
 
         // Assert
         expect(wrapper.find('.second-applicant-name').text()).toEqual('testName')
@@ -139,7 +141,7 @@ describe('Provider', () => {
     describe('reCaptcha', () => {
         it('should set display reCaptcha correctly when no div exists', async () => {
             // Arrange
-            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>)
 
             //Assert
             expect(wrapper.find('.no-recaptcha').exists()).toBe(true)
@@ -153,8 +155,8 @@ describe('Provider', () => {
                     innerHTML: 'true'
                 }
             )
-            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
-            
+            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>)
+
             // Assert
             expect(wrapper.find('.recaptcha').exists()).toBe(true)
         })
@@ -167,8 +169,8 @@ describe('Provider', () => {
                     innerHTML: 'false'
                 }
             )
-            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
-            
+            const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>)
+
             // Assert
             expect(wrapper.find('.no-recaptcha').exists()).toBe(true)
         })
@@ -177,13 +179,13 @@ describe('Provider', () => {
     describe('onChange', () => {
         it('should update state', async () => {
             // Arrange
-            const [wrapper, fetchPromise] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+            const [wrapper, fetchPromise] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>)
 
             // Assert
             expect(wrapper.find('.status').text()).toEqual('value')
             wrapper.find('#test-button').simulate('click')
             wrapper.update()
-            
+
             await fetchPromise
             expect(wrapper.find('.status').text()).toEqual('newValue')
         })
@@ -192,13 +194,17 @@ describe('Provider', () => {
     describe('onChangeApplicant', () => {
         it('should update state', async () => {
             // Arrange
-            const [wrapper, fetchPromise] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context}/>}</Context.Consumer>)
+            const [wrapper, fetchPromise] = await mountProviderWithCase(
+                <Context.Consumer>
+                    {context => <TestComponent context={context} />}
+                </Context.Consumer>
+            )
 
             // Assert
             expect(wrapper.find('.name').text()).toEqual('firstName')
             wrapper.find('#test-button-applicant').simulate('click')
             wrapper.update()
-            
+
             await fetchPromise
             expect(wrapper.find('.name').text()).toEqual('newName')
         })

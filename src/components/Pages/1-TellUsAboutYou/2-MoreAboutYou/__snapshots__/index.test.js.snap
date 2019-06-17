@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`KnownByAnotherName snapshot renders correctly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <h1>
+    Tell us more about you
+  </h1>
+  <p>
+    first name
+     
+    last name
+  </p>
+  <h3
+    aria-hidden="true"
+    className="optional"
+  >
+    Sexual orientation
+  </h3>
+  <p
+    className="optional"
+  >
+    (optional)
+  </p>
+  <label
+    className="optional sr-only"
+    htmlFor="sexualOrientation"
+  >
+    Sexual orientation optional
+  </label>
+  <input
+    aria-label=""
+    aria-live=""
+    className=""
+    id="sexualOrientation"
+    inputMode={undefined}
+    maxLength="60"
+    min={undefined}
+    name="sexualOrientation"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    pattern={undefined}
+    type="text"
+    value="test"
+  />
+  <button
+    className="button-primary"
+    disabled={false}
+    id={undefined}
+    onClick={undefined}
+    type="submit"
+  >
+    Next step
+  </button>
+  <p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </p>
+</form>
+`;
