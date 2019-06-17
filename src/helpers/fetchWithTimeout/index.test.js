@@ -8,7 +8,7 @@ describe('fetchWithTimeout', () => {
 
     it('should throw error on timeout', async () => {
         // Arrange
-        const fetchPromise = new Promise((resolve, _) => {
+        const fetchPromise = new Promise(resolve => {
             setTimeout(() => {
                 resolve()
             }, 100)
@@ -23,7 +23,7 @@ describe('fetchWithTimeout', () => {
     it('should return result', async () => {
         // Arrange
         const mockResponse = { foo: 'bar '}
-        const fetchPromise = new Promise((resolve, _) => {
+        const fetchPromise = new Promise(resolve => {
             setTimeout(() => {
                 resolve(mockResponse)
             }, 100)

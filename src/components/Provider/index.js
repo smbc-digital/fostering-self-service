@@ -39,7 +39,6 @@ const Provider = ({ children }) => {
 	}
 
 	const onChangeApplicant = (event, isValid, currentApplicant) => {
-		console.log(currentApplicant)
 		setState({
 			...state,
 			[currentApplicant]: {

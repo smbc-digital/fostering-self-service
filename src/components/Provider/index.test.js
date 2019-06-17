@@ -1,9 +1,17 @@
+import PropTypes from 'prop-types'
 import { React, mount } from '../../helpers/SetupTest'
 import Provider, { Applicant } from '../Provider'
 import { Context } from '../../context/'
 import * as helpers from '../../helpers'
 
-const TestComponent = ({ context: { onChange, onChangeApplicant, displayRecaptcha, someOtherProperty, firstApplicant, secondApplicant } }) => {
+const TestComponent = ({ context: {
+    onChange,
+    onChangeApplicant,
+    displayRecaptcha,
+    someOtherProperty,
+    firstApplicant,
+    secondApplicant }
+}) => {
     const onClick = () => {
         onChange(
             {
@@ -50,6 +58,10 @@ const TestComponent = ({ context: { onChange, onChangeApplicant, displayRecaptch
             {secondApplicant && <p className="second-applicant-name">{secondApplicant.firstName.value}</p>}
         </div>
     )
+}
+
+TestComponent.propTypes = {
+    context: PropTypes.object
 }
 
 const mountProviderWithCase = async (children, secondApplicant) => {

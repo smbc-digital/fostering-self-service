@@ -2,19 +2,18 @@ import React, { Fragment, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { TaskItem, TaskStatus } from 'smbc-react-components'
-import { getPageRoute } from '../../../helpers/pagehelper'
 import { Context } from '../../../context'
 
 const TaskLink = ({ route, name, status }) => {
 
 	const renderStatus = () => {
 		switch (status) {
-		case TaskStatus.Completed:
-			return <span className='status-completed'>Completed</span>
-		case TaskStatus.NotCompleted:
-			return <span className='status-not-completed'>Not completed</span>
-		default:
-			return
+			case TaskStatus.Completed:
+				return <span className='status-completed'>Completed</span>
+			case TaskStatus.NotCompleted:
+				return <span className='status-not-completed'>Not completed</span>
+			default:
+				return
 		}
 	}
 
@@ -26,23 +25,23 @@ const TaskLink = ({ route, name, status }) => {
 
 const FormLinks = () => {
 	const {
-		childrenLivingAwayFromYourHomeStatus,
+		//childrenLivingAwayFromYourHomeStatus,
 		languageSpokenInYourHomeStatus,
-		tellUsAboutYourInterestInFosteringStatus,
+		//tellUsAboutYourInterestInFosteringStatus,
 		tellUsAboutYourselfStatus,
 		yourEmploymentDetailsStatus,
-		yourFosteringHistoryStatus,
-		yourHealthStatus,
-		yourHouseholdStatus,
+		//yourFosteringHistoryStatus,
+		//yourHealthStatus,
+		//yourHouseholdStatus,
 		yourPartnershipStatus
 	} = useContext(Context)
 	return <Fragment>
 		<p>To help prepare for your home visit, you can answer the questions in this section. This step is optional, however your fostering journey can be made simpler by telling us more about yourself. The questions will give you an idea of the conversation that you’ll have during your home visit and the social worker will be able to see your answers beforehand.</p>
-		<TaskLink route='/fostering/known-by-another-name' status={tellUsAboutYourselfStatus} name='Tell us more about you'/>
-		<TaskLink route='#' status={yourEmploymentDetailsStatus} name='Your employment details'/>
-		<TaskLink route='#' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home'/>
-		<TaskLink route='#' status={yourPartnershipStatus} name='Your partnership status'/>
-		<TaskLink route='#' status={yourEmploymentDetailsStatus} name='Your employment details'/>
+		<TaskLink route='/fostering/known-by-another-name' status={tellUsAboutYourselfStatus} name='Tell us more about you' />
+		<TaskLink route='#' status={yourEmploymentDetailsStatus} name='Your employment details' />
+		<TaskLink route='#' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home' />
+		<TaskLink route='#' status={yourPartnershipStatus} name='Your partnership status' />
+		<TaskLink route='#' status={yourEmploymentDetailsStatus} name='Your employment details' />
 	</Fragment>
 }
 
@@ -60,7 +59,7 @@ const Start = () => {
 		},
 		{
 			title: 'Answer questions before your home visit',
-			body: () => <FormLinks/>,
+			body: () => <FormLinks />,
 			status: 1
 		},
 		{
@@ -91,14 +90,16 @@ const Start = () => {
 		<Fragment>
 			<h1>Start your fostering journey</h1>
 			<ol className='task-item-list'>
-				{tasks.map((task, index) => <li className={task.disabled ? 'disabled' : undefined}>
-					<TaskItem 
-						key={index} 
-						title={task.title} 
-						body={task.body} 
-						status={task.status} 
+				{tasks.map((task, index) => <li
+					key={index}
+					className={task.disabled ? 'disabled' : undefined}>
+					<TaskItem
+						key={index}
+						title={task.title}
+						body={task.body}
+						status={task.status}
 					/>
-				</li>)}	
+				</li>)}
 			</ol>
 		</Fragment>
 	)
@@ -106,6 +107,12 @@ const Start = () => {
 
 Start.propTypes = {
 	history: PropTypes.object
+}
+
+TaskLink.propTypes = {
+	route: PropTypes.string,
+	name: PropTypes.string,
+	status: PropTypes.object
 }
 
 export default Start
