@@ -48,6 +48,45 @@ describe('KnownByAnotherName', () => {
         })
     })
 
+    it('should push to next page on submit, when first applicant', () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+
+        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+
+        // Act
+        wrapper.find('Button').simulate('submit')
+
+        // Assert
+        expect(history.push).toHaveBeenCalled()
+    })
+
+    it('should push to next page on submit, when second applicant', () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+
+        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+
+        // Act
+        wrapper.find('Button').simulate('submit')
+
+        // Assert
+        const pageRoute = getPageRoute(1)
+        expect(history.push).toHaveBeenCalledWith(pageRoute)
+    })
+
     describe('snapshot', () => {
         it('renders correctly', () => {
             const match = {
