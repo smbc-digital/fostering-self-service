@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from '../../../../context'
-import { getPageRoute, getCurrentApplicant } from '../../../../helpers'
+import { getPageRoute, getCurrentApplicant, updateFromStatus, FormName } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
 
 const KnownByAnotherName = ({ history, match }) => {
@@ -36,6 +36,13 @@ const KnownByAnotherName = ({ history, match }) => {
 
         history.push(nextPageRoute)
     }
+
+    useEffect(() => {
+        updateFromStatus(
+            FormName.TellUsAboutYourself, 
+            context.statuses.TellUsAboutYourselfStatus, 
+            newStatus => context.onChangeStatus('TellUsAboutYourselfStatus', newStatus))
+    }, [])
 
     return (
         <form onSubmit={onSubmit}>
