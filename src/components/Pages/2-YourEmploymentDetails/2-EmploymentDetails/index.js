@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, RadioInputsContainer, Button, Anchor} from 'smbc-react-components'
 import { Context } from '../../../../context'
-import { getCurrentApplicant, getPageRoute } from '../../../../helpers'
+import { getCurrentApplicant, getPageRoute, updateForm, FormName } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
 
 const EmploymentDetails = ({ history, match }) => {
@@ -19,6 +19,11 @@ const EmploymentDetails = ({ history, match }) => {
             history.push(`${getPageRoute(4)}/second-applicant`)
             return
         }
+
+        updateForm(FormName.YourEmploymentDetails, {
+            firstApplicant: context.firstApplicant,
+            secondApplicant: context.secondApplicant
+        })
 
         history.push(getPageRoute(1))
     }

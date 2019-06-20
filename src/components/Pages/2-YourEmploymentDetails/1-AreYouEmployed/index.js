@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor} from 'smbc-react-components'
 import { Context } from '../../../../context'
-import { getCurrentApplicant, getPageRoute } from '../../../../helpers'
+import { getCurrentApplicant, getPageRoute, updateFormStatus, FormName } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
 
 const AreYouEmployed = ({ history, match }) => {
@@ -10,6 +10,7 @@ const AreYouEmployed = ({ history, match }) => {
     const currentApplicant = getCurrentApplicant(match)
     const { onChangeApplicant, secondApplicant } = context
     const { firstName, lastName, areYouEmployed } = context[currentApplicant]
+    const { yourEmploymentDetailsStatus } = context.statuses
 
     const options = [
         {
@@ -30,20 +31,39 @@ const AreYouEmployed = ({ history, match }) => {
         event.preventDefault()
         let nextPageRoute = getPageRoute(5)
 
-        if(!areYouEmployed.value){
-            if(!secondApplicant){
-                history.push(getPageRoute(1))
-            } else {
-                nextPageRoute += '/second-applicant'
-                history.push(nextPageRoute)
-            }
-        } else {
-            if (currentApplicant === Applicant.SecondApplicant) {
-                nextPageRoute += '/second-applicant'
-            }
+        if(areYouEmployed.value === true && currentApplicant.value === Applicant.FirstApplicant ) {
             history.push(nextPageRoute)
         }
+        else if(!areYouEmployed.value && currentApplicant.value === Applicant.FirstApplicant && secondApplicant )
+        {
+            nextPageRoute = getPageRoute(4) + '/second-applicant'
+            history.push(nextPageRoute)          
+        }
+        else if(areYouEmployed.value === false && currentApplicant.value === Applicant.FirstApplicant && !secondApplicant )
+        {
+            history.push(getPageRoute(1))   
+        }
+        else if(areYouEmployed.value === true && currentApplicant.value === Applicant.SecondApplicant)
+        {
+            nextPageRoute == getPageRoute(4) + '/second-applicant'
+            history.push(nextPageRoute)
+        }
+        else if(areYouEmployed.value === false &&  currentApplicant.value === Applicant.SecondApplicant){            
+            history.push(getPageRoute(1))
+        }
+        else{
+            history.push(getPageRoute(1))
+        }
+
     }
+
+
+    useEffect(() => {
+        updateFormStatus(
+            FormName.YourEmploymentDetails, 
+            yourEmploymentDetailsStatus,
+            newStatus => context.onChangeStatus('yourEmploymentDetailsStatus', newStatus))
+    }, [])
 
     return (
         <form onSubmit={onSubmit}>
