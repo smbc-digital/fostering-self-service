@@ -38,20 +38,43 @@ export function updateFormStatus(form, currentStatus, setStatus) {
     }
 }
 
-const callFrontendApi = async (endpoint, formData) => await fetch(endpoint,
-    {
-        method: 'PATCH',
-        credentials: 'include',
-        body: JSON.stringify(formData),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    })
+const callFrontendApi = async (endpoint, formData) => {
+    return await fetch(endpoint,
+        {
+            method: 'PATCH',
+            credentials: 'include',
+            body: JSON.stringify(formData),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+}
+
+const reduceProperties = object => Object.keys(object).reduce((acc, property) => {
+	return {
+		...acc,
+		[property]: object[property].value
+	}
+}, {})
+
+const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) => {
+    let parsedObject = reduceProperties(formData)
+
+    if (firstApplicant) {
+        parsedObject.firstApplicant = reduceProperties(firstApplicant)
+    }
+
+    if (secondApplicant) {
+        parsedObject.secondApplicant = reduceProperties(secondApplicant)
+    }
+
+    return parsedObject
+}
 
 export async function updateForm(form, formData, callApi = callFrontendApi) {
     switch (form) {
         case FormName.TellUsAboutYourself:
-            return await callApi('/about-yourself', formData)
+            return await callApi('/fostering/about-yourself', parseFormData(formData))
     }
 }
