@@ -9,6 +9,9 @@ describe('KnownByAnotherName', () => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
             onChangeApplicant: jest.fn(),
+            country: [],
+            nationality: [],
+            ethnicity: [],
             firstApplicant: {
                 everBeenKnownByAnotherName: {
                     value: 'true',
@@ -24,6 +27,26 @@ describe('KnownByAnotherName', () => {
                 },
                 sexualOrientation: {
                     value: 'test',
+                    isValid: true
+                },
+                nationality: {
+                    value: 'a place',
+                    isValid: true
+                }, 
+                ethnicity: {
+                    value: 'a place',
+                    isValid: true
+                }, 
+                religion: {
+                    value: 'a place',
+                    isValid: true
+                }, 
+                placeOfBirth: {
+                    value: 'a place',
+                    isValid: true
+                }, 
+                gender: {
+                    value: 'a place',
                     isValid: true
                 }
             },
@@ -42,6 +65,26 @@ describe('KnownByAnotherName', () => {
                 },
                 sexualOrientation: {
                     value: 'test',
+                    isValid: true
+                },
+                nationality: {
+                    value: 'a place',
+                    isValid: true
+                }, 
+                ethnicity: {
+                    value: 'a place',
+                    isValid: true
+                }, 
+                religion: {
+                    value: 'a place',
+                    isValid: true
+                }, 
+                placeOfBirth: {
+                    value: 'a place',
+                    isValid: true
+                }, 
+                gender: {
+                    value: 'a place',
                     isValid: true
                 }
             }
