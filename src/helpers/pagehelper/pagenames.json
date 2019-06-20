@@ -10,5 +10,13 @@
 	{
 		"number": 3,
 		"route": "/fostering/more-about-you"
+	},
+	{
+		"number": 4,
+		"route": "/fostering/are-you-employed"
+	},
+	{
+		"number": 5,
+		"route": "/fostering/employmeny-details"
 	}
 ]
