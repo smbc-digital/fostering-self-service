@@ -23,7 +23,7 @@ const MoreAboutYou = ({ history, match }) => {
             firstApplicant: context.firstApplicant,
             secondApplicant: context.secondApplicant
         })
-
+        
         history.push(getPageRoute(1))
     }
 

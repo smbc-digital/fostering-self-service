@@ -20,14 +20,18 @@ export const FormName =
 
 export function updateFormStatus(form, currentStatus, setStatus) {
     if (currentStatus === TaskStatus.None) {
-        fetch('/update-form-status',
+        fetch('/fostering/update-form-status',
             {
                 method: 'PATCH',
                 credentials: 'include',
                 body: JSON.stringify({
                     status: TaskStatus.NotCompleted,
                     form
-                })
+                }),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
             })
 
         setStatus(TaskStatus.NotCompleted)
@@ -38,11 +42,15 @@ const callFrontendApi = async (endpoint, formData) => await fetch(endpoint,
     {
         method: 'PATCH',
         credentials: 'include',
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
     })
 
 export async function updateForm(form, formData, callApi = callFrontendApi) {
-    switch(form) {
+    switch (form) {
         case FormName.TellUsAboutYourself:
             return await callApi('/about-yourself', formData)
     }
