@@ -38,7 +38,7 @@ const FormLinks = () => {
 	return <Fragment>
 		<p>To help prepare for your home visit, you can answer the questions in this section. This step is optional, however your fostering journey can be made simpler by telling us more about yourself. The questions will give you an idea of the conversation that you’ll have during your home visit and the social worker will be able to see your answers beforehand.</p>
 		<TaskLink route='/fostering/known-by-another-name' status={tellUsAboutYourselfStatus} name='Tell us more about you' />
-		<TaskLink route='#' status={yourEmploymentDetailsStatus} name='Your employment details' />
+		<TaskLink route='/fostering/are-you-employed' status={yourEmploymentDetailsStatus} name='Your employment details' />
 		<TaskLink route='#' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home' />
 		<TaskLink route='#' status={yourPartnershipStatus} name='Your partnership status' />
 		<TaskLink route='#' status={yourEmploymentDetailsStatus} name='Your employment details' />
