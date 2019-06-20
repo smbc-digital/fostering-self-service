@@ -34,7 +34,7 @@ const Provider = ({ children }) => {
 	}
 
 	const onChangeStatus = (name, value) => {
-		setState({ ...state, [name]: value })
+		setState({ ...state, statuses: { ...state.statuses, [name]: value }})
 	}
 
 	const onChangeApplicant = (event, isValid, currentApplicant) => {
@@ -66,7 +66,7 @@ const Provider = ({ children }) => {
 
 		setState({
 			...state, 
-			...statuses, 
+			statuses, 
 			firstApplicant: firstApplicantDetails, 
 			secondApplicant: secondApplicantDetails, 
 			...caseDetails,

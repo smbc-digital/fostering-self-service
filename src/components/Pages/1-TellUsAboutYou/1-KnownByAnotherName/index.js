@@ -40,8 +40,8 @@ const KnownByAnotherName = ({ history, match }) => {
     useEffect(() => {
         updateFormStatus(
             FormName.TellUsAboutYourself, 
-            context.statuses.TellUsAboutYourselfStatus, 
-            newStatus => context.onChangeStatus('TellUsAboutYourselfStatus', newStatus))
+            context.statuses.tellUsAboutYourselfStatus, 
+            newStatus => context.onChangeStatus('tellUsAboutYourselfStatus', newStatus))
     }, [])
 
     return (
