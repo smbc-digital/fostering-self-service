@@ -20,13 +20,8 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 }, {})
 
 const Provider = ({ children }) => {
-	const displayRecaptcha = document.getElementById('displayRecaptcha') ? document.getElementById('displayRecaptcha').innerHTML === 'true' : false
-	const initialState = {
-		displayRecaptcha
-	}
-
 	const [isLoading, setIsLoading] = useState(true)
-	const [state, setState] = useState(initialState)
+	const [state, setState] = useState({})
 	const [error, setError] = useState(undefined)
 
 	const onChange = (event, isValid) => {
@@ -39,7 +34,7 @@ const Provider = ({ children }) => {
 	}
 
 	const onChangeStatus = (name, value) => {
-		setState({ ...state, name: value })
+		setState({ ...state, [name]: value })
 	}
 
 	const onChangeApplicant = (event, isValid, currentApplicant) => {
@@ -59,7 +54,6 @@ const Provider = ({ children }) => {
 		const statuses = {...caseResponse.statuses}
 		let secondApplicantDetails = undefined
 		delete caseResponse.statuses
-
 		const firstApplicantDetails = reduceProperties(caseResponse.firstApplicant)
 		delete caseResponse.firstApplicant
 
@@ -98,7 +92,7 @@ const Provider = ({ children }) => {
 
 	useEffect(() => {
 		// Set isLoading to false only after the case is in state 
-		if (isLoading && Object.keys(state).length > Object.keys(initialState).length) {
+		if (isLoading && Object.keys(state).length > 0) {
 			setIsLoading(false)
 		}
 	}, [state])

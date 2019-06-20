@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from '../../../../context'
-import { getPageRoute, getCurrentApplicant, updateFromStatus, FormName } from '../../../../helpers'
+import { getPageRoute, getCurrentApplicant, updateFormStatus, FormName } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
 
 const KnownByAnotherName = ({ history, match }) => {
@@ -38,7 +38,7 @@ const KnownByAnotherName = ({ history, match }) => {
     }
 
     useEffect(() => {
-        updateFromStatus(
+        updateFormStatus(
             FormName.TellUsAboutYourself, 
             context.statuses.TellUsAboutYourselfStatus, 
             newStatus => context.onChangeStatus('TellUsAboutYourselfStatus', newStatus))

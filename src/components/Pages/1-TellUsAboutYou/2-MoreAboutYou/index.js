@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, Button, Anchor, SelectInputContainer } from 'smbc-react-components'
 import { Context } from '../../../../context'
-import { getCurrentApplicant, getPageRoute } from '../../../../helpers'
+import { getCurrentApplicant, getPageRoute, updateForm, FormName } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
 
 const MoreAboutYou = ({ history, match }) => {
@@ -19,8 +19,15 @@ const MoreAboutYou = ({ history, match }) => {
             return
         }
 
+        updateForm(FormName.TellUsAboutYourself, {
+            firstApplicant: context.firstApplicant,
+            secondApplicant: context.secondApplicant
+        })
+
         history.push(getPageRoute(1))
     }
+
+    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
 
     return <form onSubmit={onSubmit}>
         <h1>Tell us more about you</h1>
@@ -30,21 +37,21 @@ const MoreAboutYou = ({ history, match }) => {
             id='countryOfBirth'
             value={placeOfBirth.value}
             options={context.country}
-            onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+            onChange={onChange}
         />
         <SelectInputContainer
             label='Nationality'
             id='nationality'
             value={nationality.value}
             options={context.nationality}
-            onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+            onChange={onChange}
         />
         <SelectInputContainer
             label='Ethnicity'
             id='ethnicity'
             value={ethnicity.value}
             options={context.ethnicity}
-            onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+            onChange={onChange}
         />
         <SelectInputContainer
             label='Gender'
@@ -64,7 +71,7 @@ const MoreAboutYou = ({ history, match }) => {
                     value: 'Prefer not to say'
                 }
             ]}
-            onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+            onChange={onChange}
         />
         <TextInputContainer
             label='Sexual orientation'
@@ -73,7 +80,7 @@ const MoreAboutYou = ({ history, match }) => {
             maxLength='60'
             optional={false}
             value={sexualOrientation.value}
-            onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+            onChange={onChange}
         />
         <TextInputContainer
             label='Religion or faith group'
@@ -82,7 +89,7 @@ const MoreAboutYou = ({ history, match }) => {
             maxLength='60'
             optional={false}
             value={religion.value}
-            onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+            onChange={onChange}
         />
         <Button label="Next step" isValid />
         <Anchor label='Back' history={history} />

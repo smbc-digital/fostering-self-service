@@ -9,6 +9,10 @@ describe('KnownByAnotherName', () => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
             onChangeApplicant: jest.fn(),
+            onChangeStatus: jest.fn(),
+            statuses: {
+                TellUsAboutYourselfStatus: 0
+            },
             firstApplicant: {
                 everBeenKnownByAnotherName: {
                     value: 'true',

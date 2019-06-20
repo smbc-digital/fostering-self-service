@@ -18,9 +18,9 @@ export const FormName =
     ChildrenLivingAwayFromYourHome: 7
 }
 
-export default function (form, currentStatus, setStatus) {
+export function updateFormStatus(form, currentStatus, setStatus) {
     if (currentStatus === TaskStatus.None) {
-        fetch('/front-end-endpoint-update-status',
+        fetch('/update-form-status',
             {
                 method: 'PATCH',
                 credentials: 'include',
@@ -31,5 +31,19 @@ export default function (form, currentStatus, setStatus) {
             })
 
         setStatus(TaskStatus.NotCompleted)
+    }
+}
+
+const callFrontendApi = async (endpoint, formData) => await fetch(endpoint,
+    {
+        method: 'PATCH',
+        credentials: 'include',
+        body: JSON.stringify(formData)
+    })
+
+export async function updateForm(form, formData, callApi = callFrontendApi) {
+    switch(form) {
+        case FormName.TellUsAboutYourself:
+            return await callApi('/about-yourself', formData)
     }
 }
