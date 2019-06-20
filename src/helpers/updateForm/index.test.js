@@ -32,13 +32,16 @@ describe('updateForm', () => {
         const mockCallApi = jest.fn()
 
         const mockData = {
-            test: 'test'
+            test: { 
+                value: 'test',
+                isValid: true
+            }
         }
 
         updateForm(FormName.TellUsAboutYourself, mockData, mockCallApi)
 
         expect(mockCallApi.mock.calls.length).toBe(1)
-        expect(mockCallApi.mock.calls[0][0]).toBe('/about-yourself')
-        expect(mockCallApi.mock.calls[0][1]).toBe(mockData)
+        expect(mockCallApi.mock.calls[0][0]).toBe('/fostering/about-yourself')
+        expect(mockCallApi.mock.calls[0][1].test).toBe('test')
     })
 })

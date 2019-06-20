@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { TextInputContainer, Button, Anchor, SelectInputContainer } from 'smbc-react-components'
+import { TextInputContainer, SelectInputContainer } from 'smbc-react-components'
 import { Context } from '../../../../context'
 import { getCurrentApplicant, getPageRoute, updateForm, FormName } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
+import SubmitButton from '../../../SubmitButton'
 
 const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
@@ -30,8 +31,9 @@ const MoreAboutYou = ({ history, match }) => {
     const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
 
     return <form onSubmit={onSubmit}>
-        <h1>Tell us more about you</h1>
-        <p>{firstName.value} {lastName.value}</p>
+        <h1>Your fostering journey</h1>
+        <h2>Tell us more about you</h2>
+        <h3>{firstName.value} {lastName.value}</h3>
         <SelectInputContainer
             label='Country of birth'
             id='countryOfBirth'
@@ -91,8 +93,7 @@ const MoreAboutYou = ({ history, match }) => {
             value={religion.value}
             onChange={onChange}
         />
-        <Button label="Next step" isValid />
-        <Anchor label='Back' history={history} />
+        <SubmitButton currentApplicant={currentApplicant} secondApplicant={secondApplicant}/>
     </form>
 }
 

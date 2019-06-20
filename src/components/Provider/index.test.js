@@ -11,7 +11,7 @@ const TestComponent = ({ context: {
     someOtherProperty,
     firstApplicant,
     secondApplicant,
-    status }
+    statuses: { status } }
 }) => {
     const onClick = () => {
         onChange(

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
+import { RadioInputsContainer, Button, Anchor, TextInputContainer } from 'smbc-react-components'
 import { Context } from '../../../../context'
 import { getPageRoute, getCurrentApplicant, updateFormStatus, FormName } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
@@ -9,27 +9,41 @@ const KnownByAnotherName = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
     const { onChangeApplicant } = context
-    const { everBeenKnownByAnotherName, firstName, lastName } = context[currentApplicant]
+    const { everBeenKnownByAnotherName, firstName, lastName, anotherName } = context[currentApplicant]
+
+
+    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
 
     const options = [
-		{
+        {
             label: 'Yes',
-			id: 'have-you-been-known-yes',
+            id: 'have-you-been-known-yes',
             name: 'everBeenKnownByAnotherName',
-            value: 'true'
-		},
-		{
+            value: 'true',
+            renderIfChecked: () => {
+                return <TextInputContainer
+                    label='Previous name'
+                    id='anotherName'
+                    type='text'
+                    maxLength='60'
+                    optional={false}
+                    value={anotherName.value}
+                    onChange={onChange}
+                />
+            }
+        },
+        {
             label: 'No',
             id: 'have-you-been-known-no',
             name: 'everBeenKnownByAnotherName',
             value: 'false'
-		}
+        }
     ]
-    
+
     const onSubmit = event => {
         event.preventDefault()
         let nextPageRoute = getPageRoute(3)
-        
+
         if (currentApplicant === Applicant.SecondApplicant) {
             nextPageRoute += '/second-applicant'
         }
@@ -39,8 +53,8 @@ const KnownByAnotherName = ({ history, match }) => {
 
     useEffect(() => {
         updateFormStatus(
-            FormName.TellUsAboutYourself, 
-            context.statuses.tellUsAboutYourselfStatus, 
+            FormName.TellUsAboutYourself,
+            context.statuses.tellUsAboutYourselfStatus,
             newStatus => context.onChangeStatus('tellUsAboutYourselfStatus', newStatus))
     }, [])
 
@@ -48,16 +62,16 @@ const KnownByAnotherName = ({ history, match }) => {
         <form onSubmit={onSubmit}>
             <h1>Your fostering journey</h1>
             <h2>Tell us more about you</h2>
-            <p>{firstName.value} {lastName.value}</p>
-            <RadioInputsContainer 
+            <h3>{firstName.value} {lastName.value}</h3>
+            <RadioInputsContainer
                 displayHeading
-                header='Have you ever been known by another name?' 
-                options={options} 
-                onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)} 
+                header='Have you ever been known by another name?'
+                options={options}
+                onChange={onchange}
                 value={`${everBeenKnownByAnotherName.value}`}
             />
             <Button label="Next step" isValid />
-            <Anchor label='Back' history={history}/>
+            <Anchor label='Back' history={history} />
         </form>
     )
 }
