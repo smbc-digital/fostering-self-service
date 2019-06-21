@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
-import { TextInputContainer, RadioInputsContainer, Button, Anchor} from 'smbc-react-components'
+import { TextInputContainer, RadioInputsContainer } from 'smbc-react-components'
 import { Context } from '../../../../context'
 import { getCurrentApplicant, getPageRoute, updateForm, FormName } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
+import SubmitButton from '../../../SubmitButton'
 
 const EmploymentDetails = ({ history, match }) => {
     const context = useContext(Context)
@@ -11,10 +12,7 @@ const EmploymentDetails = ({ history, match }) => {
     const { onChangeApplicant, secondApplicant } = context
     const { firstName, lastName, currentEmployer, jobTitle, currentHoursOfWork } = context[currentApplicant]
 
-
-    const onSubmit = event => {
-        event.preventDefault()
-
+    const onSubmit = backToStart => {
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
             history.push(`${getPageRoute(4)}/second-applicant`)
             return
@@ -25,14 +23,12 @@ const EmploymentDetails = ({ history, match }) => {
             secondApplicant: context.secondApplicant
         })
 
-        history.push(getPageRoute(1))
-    }
-
-    const buttonLabel = () => {
-        if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {            
-            return 'Next step'
+        if(backToStart){
+            history.push(getPageRoute(1))
+            return
         }
-        return  'Save and next step'
+
+        history.push(getPageRoute(1))
     }
 
     const options = [
@@ -40,17 +36,17 @@ const EmploymentDetails = ({ history, match }) => {
             label: 'Full time',
 			id: 'current-hours-of-work-full-time',
             name: 'currentHoursOfWork',
-            value: 1
+            value: '2'
 		},
 		{
             label: 'Part time',
             id: 'current-hours-of-work-part-time',
             name: 'currentHoursOfWork',
-            value: 0
+            value: '1'
 		}
     ]
     
-    return <form onSubmit={onSubmit}>
+    return <form onSubmit={event => event.preventDefault()}>
                 <h1>Your fostering journey</h1>
                 <h2>Your employment details</h2>
                 <p>{firstName.value} {lastName.value}</p>
@@ -59,7 +55,8 @@ const EmploymentDetails = ({ history, match }) => {
                     id='currentEmployer'
                     type='text'
                     maxLength='60'
-                    optional={false}
+                    optional={true}
+                    hideOptional
                     value={currentEmployer.value}
                     onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
                 />
@@ -68,7 +65,8 @@ const EmploymentDetails = ({ history, match }) => {
                     id='jobTitle'
                     type='text'
                     maxLength='60'
-                    optional={false}
+                    optional={true}
+                    hideOptional
                     value={jobTitle.value}
                     onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
                 />
@@ -77,10 +75,14 @@ const EmploymentDetails = ({ history, match }) => {
                     header='Current hours of work' 
                     options={options} 
                     onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)} 
-                    value={currentHoursOfWork.value}
+                    value={`${currentHoursOfWork.value}`}
                 />
-                <Button label={buttonLabel()} isValid />
-                <Anchor label='Back' history={history}/>
+                <SubmitButton 
+                    currentApplicant={currentApplicant} 
+                    secondApplicant={secondApplicant} 
+                    onSubmit={backToStart => onSubmit(backToStart)}
+                    history={history}
+                />
             </form>
 }
 

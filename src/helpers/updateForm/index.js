@@ -76,5 +76,7 @@ export async function updateForm(form, formData, callApi = callFrontendApi) {
     switch (form) {
         case FormName.TellUsAboutYourself:
             return await callApi('/fostering/about-yourself', parseFormData(formData))
+        case FormName.YourEmploymentDetails:
+            return await callApi('/fostering/your-employment-details', parseFormData(formData))
     }
 }
