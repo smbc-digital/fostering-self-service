@@ -11,7 +11,6 @@ const KnownByAnotherName = ({ history, match }) => {
     const { onChangeApplicant } = context
     const { everBeenKnownByAnotherName, firstName, lastName, anotherName } = context[currentApplicant]
 
-
     const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
 
     const options = [
@@ -58,6 +57,8 @@ const KnownByAnotherName = ({ history, match }) => {
             newStatus => context.onChangeStatus('tellUsAboutYourselfStatus', newStatus))
     }, [])
 
+    const radioValue = `${everBeenKnownByAnotherName.value}`
+
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
@@ -68,8 +69,8 @@ const KnownByAnotherName = ({ history, match }) => {
                     displayHeading
                     header='Have you ever been known by another name?'
                     options={options}
-                    onChange={onchange}
-                    value={`${everBeenKnownByAnotherName.value}`}
+                    onChange={onChange}
+                    value={radioValue}
                 />
                 <Button label="Next step" isValid />
                 <Anchor label='Back' history={history} />

@@ -73,8 +73,29 @@ const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) => {
 }
 
 export async function updateForm(form, formData, callApi = callFrontendApi) {
+    let response = null
     switch (form) {
         case FormName.TellUsAboutYourself:
-            return await callApi('/fostering/about-yourself', parseFormData(formData))
+            response = await callApi('/fostering/about-yourself', parseFormData(formData))
+            break
+    }
+
+    if(response.status !== 200) {
+        return {
+            isSuccessful: false
+        }
+    }
+
+    try{
+        response = await response.json()
+    } catch(ex) {
+        return {
+            isSuccessful: false
+        }
+    }
+
+    return {
+        isSuccessful: true,
+        status: response
     }
 }

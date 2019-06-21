@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, SelectInputContainer } from 'smbc-react-components'
 import { Context } from '../../../../context'
@@ -9,26 +9,31 @@ import SubmitButton from '../../../SubmitButton'
 const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant } = context
+    const { onChangeApplicant, secondApplicant, onChangeStatus } = context
     const { firstName, lastName, sexualOrientation, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
+    const [isLoading, setIsLoading] = useState(false)
 
-    const onSubmit = backToStart => {
+    const onSubmit = async backToStart => {
+        setIsLoading(true)
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
             history.push(`${getPageRoute(2)}/second-applicant`)
             return
         }
 
-        updateForm(FormName.TellUsAboutYourself, {
+        const { status } = await updateForm(FormName.TellUsAboutYourself, {
             firstApplicant: context.firstApplicant,
             secondApplicant: context.secondApplicant
         })
 
-        if(backToStart){
+        onChangeStatus('tellUsAboutYourselfStatus', status)
+
+        if (backToStart) {
+            console.log('4.5', getPageRoute(1))
             history.push(getPageRoute(1))
             return
         }
 
-        // go to next mini form
+        history.push(getPageRoute(4))
     }
 
     const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
@@ -41,7 +46,7 @@ const MoreAboutYou = ({ history, match }) => {
             <form onSubmit={event => event.preventDefault()}>
                 <SelectInputContainer
                     label='Country of birth'
-                    id='countryOfBirth'
+                    id='placeOfBirth'
                     value={placeOfBirth.value}
                     options={context.country}
                     onChange={onChange}
@@ -85,24 +90,28 @@ const MoreAboutYou = ({ history, match }) => {
                     id='sexualOrientation'
                     type='text'
                     maxLength='60'
-                    optional={false}
                     value={sexualOrientation.value}
                     onChange={onChange}
+                    optional={true}
+                    hideOptional={true}
                 />
                 <TextInputContainer
                     label='Religion or faith group'
                     id='religion'
                     type='text'
                     maxLength='60'
-                    optional={false}
                     value={religion.value}
                     onChange={onChange}
+                    optional={true}
+                    hideOptional={true}
                 />
-                <SubmitButton 
-                    currentApplicant={currentApplicant} 
-                    secondApplicant={secondApplicant} 
+                <SubmitButton
+                    currentApplicant={currentApplicant}
+                    secondApplicant={secondApplicant}
                     onSubmit={backToStart => onSubmit(backToStart)}
-                    history={history}/>
+                    history={history}
+                    isLoading={isLoading}
+                />
             </form>
         </Fragment>
     )

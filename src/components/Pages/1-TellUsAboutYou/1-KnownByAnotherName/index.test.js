@@ -25,6 +25,10 @@ describe('KnownByAnotherName', () => {
                 lastName: {
                     value: 'last name',
                     isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
                 }
             },
             secondApplicant: {
@@ -38,6 +42,10 @@ describe('KnownByAnotherName', () => {
                 },
                 lastName: {
                     value: 'second applicant last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
                     isValid: true
                 }
             }

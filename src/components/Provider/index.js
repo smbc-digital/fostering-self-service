@@ -13,7 +13,7 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 	return {
 		...acc,
 		[property]: {
-			value: object[property] || '',
+			value: object[property] === null || object[property] === undefined ? '' : object[property],
 			isValid: object[property] !== null
 		}
 	}
@@ -52,9 +52,11 @@ const Provider = ({ children }) => {
 
 	const mapCaseToContext = ({ fosteringCase: caseResponse, country, ethnicity, nationality }) => {
 		const statuses = {...caseResponse.statuses}
+		console.log(caseResponse.firstApplicant)
 		let secondApplicantDetails = undefined
 		delete caseResponse.statuses
 		const firstApplicantDetails = reduceProperties(caseResponse.firstApplicant)
+		console.log(firstApplicantDetails)
 		delete caseResponse.firstApplicant
 
 		if (caseResponse.secondApplicant !== null) {
