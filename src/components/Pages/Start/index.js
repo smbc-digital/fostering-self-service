@@ -24,7 +24,7 @@ const TaskLink = ({ route, name, status }) => {
 }
 
 const FormLinks = () => {
-	const {
+	const { statuses: {
 		//childrenLivingAwayFromYourHomeStatus,
 		languageSpokenInYourHomeStatus,
 		//tellUsAboutYourInterestInFosteringStatus,
@@ -34,7 +34,7 @@ const FormLinks = () => {
 		//yourHealthStatus,
 		//yourHouseholdStatus,
 		yourPartnershipStatus
-	} = useContext(Context)
+	} } = useContext(Context)
 	return <Fragment>
 		<p>To help prepare for your home visit, you can answer the questions in this section. This step is optional, however your fostering journey can be made simpler by telling us more about yourself. The questions will give you an idea of the conversation that you’ll have during your home visit and the social worker will be able to see your answers beforehand.</p>
 		<TaskLink route='/fostering/known-by-another-name' status={tellUsAboutYourselfStatus} name='Tell us more about you' />

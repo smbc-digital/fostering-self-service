@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor, TextInputContainer } from 'smbc-react-components'
 import { Context } from '../../../../context'
@@ -59,20 +59,22 @@ const KnownByAnotherName = ({ history, match }) => {
     }, [])
 
     return (
-        <form onSubmit={onSubmit}>
+        <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Tell us more about you</h2>
             <h3>{firstName.value} {lastName.value}</h3>
-            <RadioInputsContainer
-                displayHeading
-                header='Have you ever been known by another name?'
-                options={options}
-                onChange={onchange}
-                value={`${everBeenKnownByAnotherName.value}`}
-            />
-            <Button label="Next step" isValid />
-            <Anchor label='Back' history={history} />
-        </form>
+            <form onSubmit={onSubmit}>
+                <RadioInputsContainer
+                    displayHeading
+                    header='Have you ever been known by another name?'
+                    options={options}
+                    onChange={onchange}
+                    value={`${everBeenKnownByAnotherName.value}`}
+                />
+                <Button label="Next step" isValid />
+                <Anchor label='Back' history={history} />
+            </form>
+        </Fragment>
     )
 }
 
