@@ -3,20 +3,14 @@ import PropTypes from 'prop-types'
 import { Button, Anchor } from 'smbc-react-components'
 import { Applicant } from '../Provider'
 
-const SubmitButton = ({ currentApplicant, secondApplicant, onSubmit, history, isLoading = false }) => {
-    const onClick = (event, backToStart) => {
-        event.preventDefault()
-
-        onSubmit(backToStart)
-    }
-
+const SubmitButton = ({ currentApplicant, secondApplicant, onSaveAndGoBackClick, history, isLoading = false }) => {
     if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
         return <Fragment>
             <Button
                 label="Next step"
                 isValid
                 isLoading={isLoading}
-                onButtonClick={event => onClick(event, false)} />
+            />
             <Anchor
                 label='Back'
                 history={history} />
@@ -28,7 +22,7 @@ const SubmitButton = ({ currentApplicant, secondApplicant, onSubmit, history, is
             label="Save and next step"
             isValid
             isLoading={isLoading}
-            onButtonClick={event => onClick(event, false)} />
+        />
         <Anchor
             label='Back'
             history={history} />
@@ -37,16 +31,16 @@ const SubmitButton = ({ currentApplicant, secondApplicant, onSubmit, history, is
             isValid
             isLoading={isLoading}
             colour='inverted'
-            onButtonClick={event => onClick(event, true)}
+            onButtonClick={onSaveAndGoBackClick}
             useLeftChevron={true} />
     </Fragment>
 }
 
 SubmitButton.propTypes = {
-    currentApplicant: PropTypes.object,
+    currentApplicant: PropTypes.string,
     secondApplicant: PropTypes.object,
-    onSubmit: PropTypes.func,
     history: PropTypes.object,
+    onSaveAndGoBackClick: PropTypes.func,
     isLoading: PropTypes.bool
 }
 

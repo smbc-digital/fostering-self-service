@@ -13,37 +13,50 @@ const MoreAboutYou = ({ history, match }) => {
     const { firstName, lastName, sexualOrientation, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
 
-    const onSubmit = async backToStart => {
+    const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
+
+        try {
+            const status = await updateForm(FormName.TellUsAboutYourself, {
+                firstApplicant: context.firstApplicant,
+                secondApplicant: context.secondApplicant
+            })
+    
+            onChangeStatus('tellUsAboutYourselfStatus', status)
+            history.push(nextPageRoute)
+        } catch (error) {
+            history.push('/error')
+        }
+    }
+
+    const onSubmit = async event => {
+        event.preventDefault()
+
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
             history.push(`${getPageRoute(2)}/second-applicant`)
             return
         }
 
-        const { status } = await updateForm(FormName.TellUsAboutYourself, {
-            firstApplicant: context.firstApplicant,
-            secondApplicant: context.secondApplicant
-        })
-
-        onChangeStatus('tellUsAboutYourselfStatus', status)
-
-        if (backToStart) {
-            console.log('4.5', getPageRoute(1))
-            history.push(getPageRoute(1))
-            return
-        }
-
-        history.push(getPageRoute(4))
+        await handleFormUpdate(getPageRoute(4))
     }
 
-    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
+    const onSaveAndGoBackClick = async event => {
+        event.stopPropagation()
+        event.preventDefault()
+
+        await handleFormUpdate(getPageRoute(1))
+    } 
+
+    const onChange = (event, isValid) => {
+        return onChangeApplicant(event, isValid, currentApplicant) 
+    }
 
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Tell us more about you</h2>
             <h3>{firstName.value} {lastName.value}</h3>
-            <form onSubmit={event => event.preventDefault()}>
+            <form onSubmit={onSubmit}>
                 <SelectInputContainer
                     label='Country of birth'
                     id='placeOfBirth'
@@ -108,7 +121,7 @@ const MoreAboutYou = ({ history, match }) => {
                 <SubmitButton
                     currentApplicant={currentApplicant}
                     secondApplicant={secondApplicant}
-                    onSubmit={backToStart => onSubmit(backToStart)}
+                    onSaveAndGoBackClick={onSaveAndGoBackClick}
                     history={history}
                     isLoading={isLoading}
                 />

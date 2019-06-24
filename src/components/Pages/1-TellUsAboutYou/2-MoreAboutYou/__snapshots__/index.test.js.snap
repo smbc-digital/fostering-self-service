@@ -153,7 +153,7 @@ Array [
       className="button-primary"
       disabled={false}
       id={undefined}
-      onClick={[Function]}
+      onClick={undefined}
       type="submit"
     >
       Next step

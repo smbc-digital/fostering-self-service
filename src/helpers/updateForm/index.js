@@ -1,3 +1,5 @@
+import { fetchWithTimeout } from '../index'
+
 export const TaskStatus = {
     None: 0,
     Completed: 1,
@@ -18,9 +20,9 @@ export const FormName =
     ChildrenLivingAwayFromYourHome: 7
 }
 
-export function updateFormStatus(form, currentStatus, setStatus) {
+export const updateFormStatus = (form, currentStatus, setStatus) => {
     if (currentStatus === TaskStatus.None) {
-        fetch('/fostering/update-form-status',
+        fetchWithTimeout('/fostering/update-form-status',
             {
                 method: 'PATCH',
                 credentials: 'include',
@@ -32,23 +34,10 @@ export function updateFormStatus(form, currentStatus, setStatus) {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 }
-            })
+            }, 30000)
 
         setStatus(TaskStatus.NotCompleted)
     }
-}
-
-const callFrontendApi = async (endpoint, formData) => {
-    return await fetch(endpoint,
-        {
-            method: 'PATCH',
-            credentials: 'include',
-            body: JSON.stringify(formData),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
 }
 
 const reduceProperties = object => Object.keys(object).reduce((acc, property) => {
@@ -58,7 +47,7 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 	}
 }, {})
 
-const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) => {
+export const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) => {
     let parsedObject = reduceProperties(formData)
 
     if (firstApplicant) {
@@ -72,30 +61,32 @@ const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) => {
     return parsedObject
 }
 
-export async function updateForm(form, formData, callApi = callFrontendApi) {
-    let response = null
+const getFormUpdateEndpoint = form => {
     switch (form) {
         case FormName.TellUsAboutYourself:
-            response = await callApi('/fostering/about-yourself', parseFormData(formData))
-            break
+            return '/fostering/about-yourself'
+        default:
+            throw new Error('No matching endpoint for given form.')
     }
+}
 
-    if(response.status !== 200) {
-        return {
-            isSuccessful: false
+export const updateForm = async (form, formData) => {
+    const endpoint = getFormUpdateEndpoint(form)
+    const parsedFormData = parseFormData(formData)
+
+    const response = await fetchWithTimeout(endpoint, { 
+        method: 'PATCH',
+        credentials: 'include',
+        body: JSON.stringify(parsedFormData),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
         }
+    }, 30000)
+
+    if (!response.ok) {
+        throw Error(response.statusText)
     }
 
-    try{
-        response = await response.json()
-    } catch(ex) {
-        return {
-            isSuccessful: false
-        }
-    }
-
-    return {
-        isSuccessful: true,
-        status: response
-    }
+    return await response.json()
 }
