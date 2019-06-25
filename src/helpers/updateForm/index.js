@@ -64,9 +64,9 @@ export const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) 
 const getFormUpdateEndpoint = form => {
     switch (form) {
         case FormName.TellUsAboutYourself:
-            return await callApi('/fostering/about-yourself', parseFormData(formData))
+            return '/fostering/about-yourself'
         case FormName.YourEmploymentDetails:
-            return await callApi('/fostering/your-employment-details', parseFormData(formData))
+            return '/fostering/your-employment-details'
         default:
             throw new Error('No matching endpoint for given form.')
     }
@@ -76,7 +76,7 @@ export const updateForm = async (form, formData) => {
     const endpoint = getFormUpdateEndpoint(form)
     const parsedFormData = parseFormData(formData)
 
-    const response = await fetchWithTimeout(endpoint, { 
+    const response = await fetchWithTimeout(endpoint, {
         method: 'PATCH',
         credentials: 'include',
         body: JSON.stringify(parsedFormData),

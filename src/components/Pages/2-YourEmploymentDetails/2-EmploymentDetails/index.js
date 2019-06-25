@@ -22,7 +22,7 @@ const EmploymentDetails = ({ history, match }) => {
             firstApplicant: context.firstApplicant,
             secondApplicant: context.secondApplicant
         })
-
+       
         if(backToStart){
             history.push(getPageRoute(1))
             return
@@ -30,6 +30,11 @@ const EmploymentDetails = ({ history, match }) => {
 
         history.push(getPageRoute(1))
     }
+
+    const onSaveAndGoBackClick = async event => {
+        event.stopPropagation()
+        event.preventDefault()      
+    } 
 
     const options = [
         {
@@ -46,7 +51,7 @@ const EmploymentDetails = ({ history, match }) => {
 		}
     ]
     
-    return <form onSubmit={event => event.preventDefault()}>
+    return <form onSubmit={onSubmit}>
                 <h1>Your fostering journey</h1>
                 <h2>Your employment details</h2>
                 <p>{firstName.value} {lastName.value}</p>
@@ -70,18 +75,18 @@ const EmploymentDetails = ({ history, match }) => {
                     value={jobTitle.value}
                     onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
                 />
-                <RadioInputsContainer 
+                <RadioInputsContainer
                     displayHeading
-                    header='Current hours of work' 
-                    options={options} 
-                    onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)} 
+                    header='Current hours of work'
+                    options={options}
+                    onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
                     value={`${currentHoursOfWork.value}`}
                 />
-                <SubmitButton 
-                    currentApplicant={currentApplicant} 
-                    secondApplicant={secondApplicant} 
-                    onSubmit={backToStart => onSubmit(backToStart)}
+                <SubmitButton
+                    currentApplicant={currentApplicant}
+                    secondApplicant={secondApplicant}                    
                     history={history}
+                    onSaveAndGoBackClick={onSaveAndGoBackClick}
                 />
             </form>
 }

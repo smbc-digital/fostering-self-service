@@ -18,13 +18,13 @@ const AreYouEmployed = ({ history, match }) => {
             label: 'Yes',
 			id: 'are-you-employed-yes',
             name: 'areYouEmployed',
-            value: true
+            value: 'true'
 		},
 		{
             label: 'No',
             id: 'are-you-employed-no',
             name: 'areYouEmployed',
-            value: false
+            value: 'false'
 		}
     ]
 
@@ -59,12 +59,11 @@ const AreYouEmployed = ({ history, match }) => {
             <h1>Your fostering journey</h1>
             <h2>Your employment details</h2>
             <p>{firstName.value} {lastName.value}</p>
-            <p>{ areYouEmployed.value }</p>
-            <RadioInputsContainer 
+            <RadioInputsContainer
                 displayHeading
-                header='Are you employed?' 
-                options={options} 
-                onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)} 
+                header='Are you employed?'
+                options={options}
+                onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
                 value={areYouEmployed.value}
             />
             <Button label="Next step" isValid />
