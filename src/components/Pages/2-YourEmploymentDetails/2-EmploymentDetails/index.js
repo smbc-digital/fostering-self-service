@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, RadioInputsContainer } from 'smbc-react-components'
 import { Context } from '../../../../context'
@@ -6,35 +6,46 @@ import { getCurrentApplicant, getPageRoute, updateForm, FormName } from '../../.
 import { Applicant } from '../../../Provider'
 import SubmitButton from '../../../SubmitButton'
 
+
 const EmploymentDetails = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant } = context
+    const { onChangeApplicant, secondApplicant,  onChangeStatus } = context
     const { firstName, lastName, currentEmployer, jobTitle, currentHoursOfWork } = context[currentApplicant]
+    const [isLoading, setIsLoading] = useState(false)
 
-    const onSubmit = backToStart => {
+    const handleFormUpdate = async nextPageRoute => {
+        setIsLoading(true)
+
+        try {
+            const status = await updateForm(FormName.YourEmploymentDetails, {
+                firstApplicant: context.firstApplicant,
+                secondApplicant: context.secondApplicant
+            })
+            onChangeStatus('yourEmploymentDetailsStatus', status)
+            history.push(nextPageRoute)
+        } catch (error) {
+            history.push('/error')
+        }
+    }
+
+    const onSubmit = async event => {
+        event.preventDefault()
+
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
             history.push(`${getPageRoute(4)}/second-applicant`)
             return
         }
 
-        updateForm(FormName.YourEmploymentDetails, {
-            firstApplicant: context.firstApplicant,
-            secondApplicant: context.secondApplicant
-        })
-       
-        if(backToStart){
-            history.push(getPageRoute(1))
-            return
-        }
-
-        history.push(getPageRoute(1))
+        await handleFormUpdate(getPageRoute(4))
     }
 
     const onSaveAndGoBackClick = async event => {
         event.stopPropagation()
-        event.preventDefault()      
-    } 
+        event.preventDefault()
+
+        await handleFormUpdate(getPageRoute(1))
+    }
 
     const options = [
         {
@@ -50,7 +61,7 @@ const EmploymentDetails = ({ history, match }) => {
             value: '1'
 		}
     ]
-    
+
     return <form onSubmit={onSubmit}>
                 <h1>Your fostering journey</h1>
                 <h2>Your employment details</h2>
@@ -84,9 +95,10 @@ const EmploymentDetails = ({ history, match }) => {
                 />
                 <SubmitButton
                     currentApplicant={currentApplicant}
-                    secondApplicant={secondApplicant}                    
+                    secondApplicant={secondApplicant}
                     history={history}
                     onSaveAndGoBackClick={onSaveAndGoBackClick}
+                    isLoading={isLoading}
                 />
             </form>
 }

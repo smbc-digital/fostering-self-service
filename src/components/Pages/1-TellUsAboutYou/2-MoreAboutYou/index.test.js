@@ -36,15 +36,15 @@ describe('KnownByAnotherName', () => {
                 nationality: {
                     value: 'a place',
                     isValid: true
-                }, 
+                },
                 ethnicity: {
                     value: 'a place',
                     isValid: true
-                }, 
+                },
                 religion: {
                     value: 'a place',
                     isValid: true
-                }, 
+                },
                 placeOfBirth: {
                     value: 'a place',
                     isValid: true

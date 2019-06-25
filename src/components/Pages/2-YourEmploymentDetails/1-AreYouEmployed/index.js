@@ -12,7 +12,7 @@ const AreYouEmployed = ({ history, match }) => {
     const { firstName, lastName, areYouEmployed } = context[currentApplicant]
 
     const { yourEmploymentDetailsStatus } = context.statuses
-    
+
     const options = [
         {
             label: 'Yes',
@@ -30,7 +30,7 @@ const AreYouEmployed = ({ history, match }) => {
 
     const onSubmit = event => {
         event.preventDefault()
-        
+
         if(currentApplicant === Applicant.FirstApplicant  && (!areYouEmployed.value || areYouEmployed.value == 'false') ){
             if(!secondApplicant){
                 history.push(getPageRoute(1))
