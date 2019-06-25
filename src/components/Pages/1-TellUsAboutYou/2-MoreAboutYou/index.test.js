@@ -1,14 +1,18 @@
 import { React, mount, useContextMock, renderer } from '../../../../helpers/SetupTest'
 import MoreAboutYou from './index'
 import { Applicant } from '../../../Provider'
-import { getPageRoute } from '../../../../helpers'
+import * as helpers from '../../../../helpers'
 
 describe('KnownByAnotherName', () => {
+
+    const onChangeStatusMock = jest.fn()
+    const onChangeApplicantMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: jest.fn(),
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
             country: [],
             nationality: [],
             ethnicity: [],
@@ -91,7 +95,30 @@ describe('KnownByAnotherName', () => {
         })
     })
 
-    it('should push to next page on submit, when first applicant', () => {
+    it('should push to next page on submit, when first applicant', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+        await Promise.resolve()
+
+        // Assert
+        const pageRoute = helpers.getPageRoute(4)
+        expect(history.push).toHaveBeenCalledWith(pageRoute)
+    })
+
+    it('should push to next page on submit, when second applicant', () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -104,13 +131,118 @@ describe('KnownByAnotherName', () => {
         const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
 
         // Act
-        wrapper.find('Button').simulate('submit')
+        wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalled()
+        const pageRoute = helpers.getPageRoute(2)
+        expect(history.push).toHaveBeenCalledWith(`${pageRoute}/second-applicant`)
     })
 
-    it('should push to next page on submit, when second applicant', () => {
+    it('should call updateForm on form submit', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+
+        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+        await Promise.resolve()
+
+        // Assert
+        expect(helpers.updateForm).toHaveBeenCalled()
+    })
+
+    it('should call onChangeStatus on form submit', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+
+        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+        await Promise.resolve()
+
+        // Assert
+        expect(onChangeStatusMock).toHaveBeenCalledWith('tellUsAboutYourselfStatus', 0)
+    })
+
+    it('should call updateForm on save and go back click', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+        helpers.updateForm =  jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('button').at(1).simulate('click')
+        await Promise.resolve()
+
+        // Assert
+        expect(helpers.updateForm).toHaveBeenCalled()
+    })
+
+    it('should push to start page on save and go back click', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('button').at(1).simulate('click')
+        await Promise.resolve()
+
+        // Assert
+        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))        
+    })
+
+    it('should push to error page on updateForm error', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+
+        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+
+        // Act
+        wrapper.find('form').simulate('submit')
+
+        // Assert
+        expect(history.push).toHaveBeenCalledWith('/error')
+    })
+
+    it('should call onChangeApplicant', async () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -123,11 +255,13 @@ describe('KnownByAnotherName', () => {
         const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
 
         // Act
-        wrapper.find('Button').simulate('submit')
+        wrapper
+            .find('input')
+            .first()
+            .simulate('change')
 
         // Assert
-        const pageRoute = getPageRoute(1)
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(onChangeApplicantMock).toHaveBeenCalled()
     })
 
     describe('snapshot', () => {

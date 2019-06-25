@@ -13,7 +13,7 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 	return {
 		...acc,
 		[property]: {
-			value: object[property] || '',
+			value: object[property] === null || object[property] === undefined ? '' : object[property],
 			isValid: object[property] !== null
 		}
 	}

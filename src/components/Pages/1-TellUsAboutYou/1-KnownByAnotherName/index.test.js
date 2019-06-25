@@ -1,15 +1,18 @@
 import { React, mount, useContextMock, renderer } from '../../../../helpers/SetupTest'
 import KnownByAnotherName from './index'
 import { Applicant } from '../../../Provider'
-import { getPageRoute } from '../../../../helpers'
+import * as helpers from '../../../../helpers'
 
 describe('KnownByAnotherName', () => {
+
+    const onChangeApplicantMock = jest.fn()
+    const onChangeStatusMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: jest.fn(),
-            onChangeStatus: jest.fn(),
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
             statuses: {
                 TellUsAboutYourselfStatus: 0
             },
@@ -25,6 +28,10 @@ describe('KnownByAnotherName', () => {
                 lastName: {
                     value: 'last name',
                     isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
                 }
             },
             secondApplicant: {
@@ -38,6 +45,10 @@ describe('KnownByAnotherName', () => {
                 },
                 lastName: {
                     value: 'second applicant last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
                     isValid: true
                 }
             }
@@ -79,8 +90,52 @@ describe('KnownByAnotherName', () => {
         wrapper.find('Button').simulate('submit')
 
         // Assert
-        const pageRoute = getPageRoute(3)
+        const pageRoute = helpers.getPageRoute(3)
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+    })
+
+    it('should call onChangeApplicant', () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+
+        const wrapper = mount(<KnownByAnotherName history={history} match={match}/>)
+
+        // Act
+        wrapper.find('input').first().simulate('change')
+
+        // Assert
+        expect(onChangeApplicantMock).toHaveBeenCalled()
+    })
+
+    it('should update form status', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+        
+        const mockPromise = Promise.resolve()
+        helpers.updateFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
+            setStatus(status)
+        })
+        helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+
+        // Act
+        mount(<KnownByAnotherName history={history} match={match}/>)
+        await mockPromise
+
+        // Assert
+        expect(onChangeStatusMock).toHaveBeenCalled()
+
     })
 
     describe('snapshot', () => {

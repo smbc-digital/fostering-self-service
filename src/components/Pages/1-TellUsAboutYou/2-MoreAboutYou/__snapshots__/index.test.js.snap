@@ -1,166 +1,171 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KnownByAnotherName snapshot renders correctly 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
     Tell us more about you
-  </h1>
-  <p>
+  </h2>,
+  <h3>
     first name
      
     last name
-  </p>
-  <fieldset>
-    <label
-      className=""
-      htmlFor="countryOfBirth"
-    >
-      Country of birth
-    </label>
-    <select
-      id="countryOfBirth"
-      name="countryOfBirth"
-      onChange={[Function]}
-      value="a place"
-    >
-      <option
-        disabled={true}
-        value=""
-      />
-    </select>
-  </fieldset>
-  <fieldset>
-    <label
-      className=""
-      htmlFor="nationality"
-    >
-      Nationality
-    </label>
-    <select
-      id="nationality"
-      name="nationality"
-      onChange={[Function]}
-      value="a place"
-    >
-      <option
-        disabled={true}
-        value=""
-      />
-    </select>
-  </fieldset>
-  <fieldset>
-    <label
-      className=""
-      htmlFor="ethnicity"
-    >
-      Ethnicity
-    </label>
-    <select
-      id="ethnicity"
-      name="ethnicity"
-      onChange={[Function]}
-      value="a place"
-    >
-      <option
-        disabled={true}
-        value=""
-      />
-    </select>
-  </fieldset>
-  <fieldset>
-    <label
-      className=""
-      htmlFor="gender"
-    >
-      Gender
-    </label>
-    <select
-      id="gender"
-      name="gender"
-      onChange={[Function]}
-      value="a place"
-    >
-      <option
-        disabled={true}
-        value=""
-      />
-      <option
-        value="Male"
-      >
-        Male
-      </option>
-      <option
-        value="Female"
-      >
-        Female
-      </option>
-      <option
-        value="Prefer not to say"
-      >
-        Prefer not to say
-      </option>
-    </select>
-  </fieldset>
-  <label
-    className=""
-    htmlFor="sexualOrientation"
+  </h3>,
+  <form
+    onSubmit={[Function]}
   >
-    Sexual orientation
-  </label>
-  <input
-    aria-label="Sexual orientation"
-    aria-live="off"
-    className=""
-    id="sexualOrientation"
-    inputMode={undefined}
-    maxLength="60"
-    min={undefined}
-    name="sexualOrientation"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value="test"
-  />
-  <label
-    className=""
-    htmlFor="religion"
-  >
-    Religion or faith group
-  </label>
-  <input
-    aria-label="Religion or faith group"
-    aria-live="off"
-    className=""
-    id="religion"
-    inputMode={undefined}
-    maxLength="60"
-    min={undefined}
-    name="religion"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value="a place"
-  />
-  <button
-    className="button-primary"
-    disabled={false}
-    id={undefined}
-    onClick={undefined}
-    type="submit"
-  >
-    Next step
-  </button>
-  <p>
-    <a
-      href="#"
-      onClick={[Function]}
+    <fieldset>
+      <label
+        className=""
+        htmlFor="placeOfBirth"
+      >
+        Country of birth
+      </label>
+      <select
+        id="placeOfBirth"
+        name="placeOfBirth"
+        onChange={[Function]}
+        value="a place"
+      >
+        <option
+          disabled={true}
+          value=""
+        />
+      </select>
+    </fieldset>
+    <fieldset>
+      <label
+        className=""
+        htmlFor="nationality"
+      >
+        Nationality
+      </label>
+      <select
+        id="nationality"
+        name="nationality"
+        onChange={[Function]}
+        value="a place"
+      >
+        <option
+          disabled={true}
+          value=""
+        />
+      </select>
+    </fieldset>
+    <fieldset>
+      <label
+        className=""
+        htmlFor="ethnicity"
+      >
+        Ethnicity
+      </label>
+      <select
+        id="ethnicity"
+        name="ethnicity"
+        onChange={[Function]}
+        value="a place"
+      >
+        <option
+          disabled={true}
+          value=""
+        />
+      </select>
+    </fieldset>
+    <fieldset>
+      <label
+        className=""
+        htmlFor="gender"
+      >
+        Gender
+      </label>
+      <select
+        id="gender"
+        name="gender"
+        onChange={[Function]}
+        value="a place"
+      >
+        <option
+          disabled={true}
+          value=""
+        />
+        <option
+          value="Male"
+        >
+          Male
+        </option>
+        <option
+          value="Female"
+        >
+          Female
+        </option>
+        <option
+          value="Prefer not to say"
+        >
+          Prefer not to say
+        </option>
+      </select>
+    </fieldset>
+    <label
+      className="optional"
+      htmlFor="sexualOrientation"
     >
-      Back
-    </a>
-  </p>
-</form>
+      Sexual orientation
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="sexualOrientation"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="sexualOrientation"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="test"
+    />
+    <label
+      className="optional"
+      htmlFor="religion"
+    >
+      Religion or faith group
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="religion"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="religion"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="a place"
+    />
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+  </form>,
+]
 `;

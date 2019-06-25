@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, SelectInputContainer } from 'smbc-react-components'
 import { Context } from '../../../../context'
@@ -9,39 +9,57 @@ import SubmitButton from '../../../SubmitButton'
 const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant } = context
+    const { onChangeApplicant, secondApplicant, onChangeStatus } = context
     const { firstName, lastName, sexualOrientation, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
+    const [isLoading, setIsLoading] = useState(false)
 
-    const onSubmit = backToStart => {
+    const handleFormUpdate = async nextPageRoute => {
+        setIsLoading(true)
+
+        try {
+            const status = await updateForm(FormName.TellUsAboutYourself, {
+                firstApplicant: context.firstApplicant,
+                secondApplicant: context.secondApplicant
+            })
+    
+            onChangeStatus('tellUsAboutYourselfStatus', status)
+            history.push(nextPageRoute)
+        } catch (error) {
+            history.push('/error')
+        }
+    }
+
+    const onSubmit = async event => {
+        event.preventDefault()
+
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
             history.push(`${getPageRoute(2)}/second-applicant`)
             return
         }
 
-        updateForm(FormName.TellUsAboutYourself, {
-            firstApplicant: context.firstApplicant,
-            secondApplicant: context.secondApplicant
-        })
-
-        if(backToStart){
-            history.push(getPageRoute(1))
-            return
-        }
-
-        // go to next mini form
+        await handleFormUpdate(getPageRoute(4))
     }
 
-    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
+    const onSaveAndGoBackClick = async event => {
+        event.stopPropagation()
+        event.preventDefault()
+
+        await handleFormUpdate(getPageRoute(1))
+    } 
+
+    const onChange = (event, isValid) => {
+        return onChangeApplicant(event, isValid, currentApplicant) 
+    }
 
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Tell us more about you</h2>
             <h3>{firstName.value} {lastName.value}</h3>
-            <form onSubmit={event => event.preventDefault()}>
+            <form onSubmit={onSubmit}>
                 <SelectInputContainer
                     label='Country of birth'
-                    id='countryOfBirth'
+                    id='placeOfBirth'
                     value={placeOfBirth.value}
                     options={context.country}
                     onChange={onChange}
@@ -85,24 +103,28 @@ const MoreAboutYou = ({ history, match }) => {
                     id='sexualOrientation'
                     type='text'
                     maxLength='60'
-                    optional={false}
                     value={sexualOrientation.value}
                     onChange={onChange}
+                    optional={true}
+                    hideOptional={true}
                 />
                 <TextInputContainer
                     label='Religion or faith group'
                     id='religion'
                     type='text'
                     maxLength='60'
-                    optional={false}
                     value={religion.value}
                     onChange={onChange}
+                    optional={true}
+                    hideOptional={true}
                 />
-                <SubmitButton 
-                    currentApplicant={currentApplicant} 
-                    secondApplicant={secondApplicant} 
-                    onSubmit={backToStart => onSubmit(backToStart)}
-                    history={history}/>
+                <SubmitButton
+                    currentApplicant={currentApplicant}
+                    secondApplicant={secondApplicant}
+                    onSaveAndGoBackClick={onSaveAndGoBackClick}
+                    history={history}
+                    isLoading={isLoading}
+                />
             </form>
         </Fragment>
     )

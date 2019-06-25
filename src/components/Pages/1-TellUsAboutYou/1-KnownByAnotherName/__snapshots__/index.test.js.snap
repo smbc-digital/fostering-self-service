@@ -1,81 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KnownByAnotherName snapshot renders correctly 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <h1>
     Your fostering journey
-  </h1>
+  </h1>,
   <h2>
     Tell us more about you
-  </h2>
-  <p>
+  </h2>,
+  <h3>
     first name
      
     last name
-  </p>
-  <h3
-    className="no-margin-bottom"
+  </h3>,
+  <form
+    onSubmit={[Function]}
   >
-    Have you ever been known by another name?
-  </h3>
-  <fieldset>
-    <div
-      className="input-radio-container"
-      role="radiogroup"
+    <h3
+      className="no-margin-bottom"
     >
-      <input
-        defaultChecked={true}
-        disabled={undefined}
-        id="have-you-been-known-yes"
-        name="everBeenKnownByAnotherName"
-        onChange={[Function]}
-        type="radio"
-        value="true"
-      />
-      <label
-        htmlFor="have-you-been-known-yes"
+      Have you ever been known by another name?
+    </h3>
+    <fieldset>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
       >
-        Yes
-      </label>
-    </div>
-    <div
-      className="input-radio-container"
-      role="radiogroup"
-    >
-      <input
-        defaultChecked={false}
-        disabled={undefined}
-        id="have-you-been-known-no"
-        name="everBeenKnownByAnotherName"
-        onChange={[Function]}
-        type="radio"
-        value="false"
-      />
-      <label
-        htmlFor="have-you-been-known-no"
+        <input
+          defaultChecked={true}
+          disabled={undefined}
+          id="have-you-been-known-yes"
+          name="everBeenKnownByAnotherName"
+          onChange={[Function]}
+          type="radio"
+          value="true"
+        />
+        <label
+          htmlFor="have-you-been-known-yes"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        className="additional-list-component"
       >
-        No
-      </label>
-    </div>
-  </fieldset>
-  <button
-    className="button-primary"
-    disabled={false}
-    id={undefined}
-    onClick={undefined}
-    type="submit"
-  >
-    Next step
-  </button>
-  <p>
-    <a
-      href="#"
-      onClick={[Function]}
+        <label
+          className=""
+          htmlFor="anotherName"
+        >
+          Previous name
+        </label>
+        <input
+          aria-label="Previous name"
+          aria-live="off"
+          className=""
+          id="anotherName"
+          inputMode={undefined}
+          maxLength="60"
+          min={undefined}
+          name="anotherName"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          pattern={undefined}
+          type="text"
+          value="last name"
+        />
+      </div>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={false}
+          disabled={undefined}
+          id="have-you-been-known-no"
+          name="everBeenKnownByAnotherName"
+          onChange={[Function]}
+          type="radio"
+          value="false"
+        />
+        <label
+          htmlFor="have-you-been-known-no"
+        >
+          No
+        </label>
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
     >
-      Back
-    </a>
-  </p>
-</form>
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+  </form>,
+]
 `;

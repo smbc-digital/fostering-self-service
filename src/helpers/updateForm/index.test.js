@@ -1,4 +1,5 @@
-import { updateFormStatus, updateForm, FormName, TaskStatus } from '../updateForm'
+import { updateFormStatus, updateForm, FormName, TaskStatus, parseFormData } from '../updateForm'
+import * as helpers from '../index'
 
 describe('updateFormStatus', () => {
     beforeEach(() => {
@@ -28,20 +29,88 @@ describe('updateForm', () => {
         jest.resetAllMocks()
     })
 
-    it('should call function when FormName is TellUsAboutYourself', () => {
-        const mockCallApi = jest.fn()
+    it('should throw error when endpoint not found', async () => {
+        // Act & Assert
+        await expect(updateForm('', {}))
+            .rejects
+            .toThrowError('No matching endpoint for given form.')
+    })
 
-        const mockData = {
-            test: { 
-                value: 'test',
-                isValid: true
+    it('should call fetchWithTimeout', async () => {
+        // Arrange
+        const mockPromise = Promise.resolve({
+            ok: true, 
+            json: jest.fn()
+        })
+
+        helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+        
+        // Act
+        await updateForm(FormName.TellUsAboutYourself, {})
+
+        // Assert
+        expect(helpers.fetchWithTimeout).toBeCalled()
+    })
+
+    it('should throw error', async () => {
+        // Arrange
+        const expectedError = 'Test error'
+        const mockPromise = Promise.resolve({
+            ok: false,
+            statusText: expectedError
+        })
+
+        helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+
+        // Act & Assert
+        await expect(updateForm(FormName.TellUsAboutYourself, {}))
+            .rejects
+            .toThrowError(expectedError)
+    })
+
+    it('should call .json()', async () => {
+        // Arrange
+        const mockJson = jest.fn()
+
+        const mockPromise = Promise.resolve({
+            ok: true,
+            json: mockJson
+        })
+
+        helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+        
+        // Act
+        await updateForm(FormName.TellUsAboutYourself, {})
+        
+        // Assert
+        expect(mockJson).toHaveBeenCalled()
+    })
+})
+
+describe('parseFormData()', () => {
+
+    it('should parse both applicants data', () => {
+        // Arrange
+        const formData = {
+            firstApplicant: {
+                firstName: {
+                    value: 'first applicant first name',
+                    isValid: true
+                }
+            },
+            secondApplicant: {
+                firstName: {
+                    value: 'second applicant first name',
+                    isValid: true
+                }
             }
         }
 
-        updateForm(FormName.TellUsAboutYourself, mockData, mockCallApi)
+        // Act
+        const result = parseFormData(formData)
 
-        expect(mockCallApi.mock.calls.length).toBe(1)
-        expect(mockCallApi.mock.calls[0][0]).toBe('/fostering/about-yourself')
-        expect(mockCallApi.mock.calls[0][1].test).toBe('test')
+        // Assert
+        expect(result.firstApplicant.firstName).toBe('first applicant first name')
+        expect(result.secondApplicant.firstName).toBe('second applicant first name')
     })
 })
