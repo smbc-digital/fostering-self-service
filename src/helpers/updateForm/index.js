@@ -65,6 +65,8 @@ const getFormUpdateEndpoint = form => {
     switch (form) {
         case FormName.TellUsAboutYourself:
             return '/fostering/about-yourself'
+        case FormName.YourFosteringHistory:
+            return '/fostering/your-fostering-history'
         default:
             throw new Error('No matching endpoint for given form.')
     }

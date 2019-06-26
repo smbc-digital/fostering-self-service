@@ -30,7 +30,7 @@ const FormLinks = () => {
 		//tellUsAboutYourInterestInFosteringStatus,
 		tellUsAboutYourselfStatus,
 		yourEmploymentDetailsStatus,
-		//yourFosteringHistoryStatus,
+		yourFosteringHistoryStatus,
 		//yourHealthStatus,
 		//yourHouseholdStatus,
 		yourPartnershipStatus
@@ -41,6 +41,7 @@ const FormLinks = () => {
 		<TaskLink route='/fostering/are-you-employed' status={yourEmploymentDetailsStatus} name='Your employment details' />
 		<TaskLink route='#' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home' />
 		<TaskLink route='#' status={yourPartnershipStatus} name='Your partnership status' />
+		<TaskLink route='/fostering/your-fostering-history' status={yourFosteringHistoryStatus} name='Your fostering history' />
 	</Fragment>
 }
 
