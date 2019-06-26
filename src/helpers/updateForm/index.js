@@ -11,7 +11,7 @@ export const FormName =
 {
     TellUsAboutYourself: 0,
     YourEmploymentDetails: 1,
-    LanguageSpokenInYourHome: 2,
+    LanguagesSpokenInYourHome: 2,
     YourPartnership: 3,
     YourFosteringHistory: 4,
     YourHealth: 5,
@@ -65,6 +65,8 @@ const getFormUpdateEndpoint = form => {
     switch (form) {
         case FormName.TellUsAboutYourself:
             return '/fostering/about-yourself'
+        case FormName.LanguagesSpokenInYourHome:
+            return '/fostering/languages-spoken-in-your-home'
         default:
             throw new Error('No matching endpoint for given form.')
     }

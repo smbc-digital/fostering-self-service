@@ -18,5 +18,13 @@
 	{
 		"number": 5,
 		"route": "/fostering/employmeny-details"
+	},
+	{
+		"number": 6,
+		"route": "/fostering/languages-spoken-in-your-home"
+	},
+	{
+		"number": 7,
+		"route": "/fostering/your-partnership-status"
 	}
 ]
