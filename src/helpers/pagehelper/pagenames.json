@@ -22,5 +22,21 @@
 	{
 		"number": 6,
 		"route": "/fostering/your-fostering-history"
+	},
+	{
+		"number": 7,
+		"route": "/fostering/your-partnership-status"
+	},
+	{
+		"number": 8,
+		"route": "/fostering/date-of-marriage-or-partnership"
+	},
+	{
+		"number": 9,
+		"route": "/fostering/date-of-move-in"
+	},
+	{
+		"number": 10,
+		"route": "/fostering/fostering-history"
 	}
 ]
