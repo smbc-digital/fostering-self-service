@@ -43,7 +43,6 @@ const HaveYouPreviouslyApplied = ({ history, match }) => {
             history.push(nextPageRoute)
         }   
         catch (error){
-            console.log(error)
             history.push('/error')
         }
     }
