@@ -19,13 +19,13 @@ const HaveYouPreviouslyApplied = ({ history, match }) => {
         {
             label: 'Yes',
             id: 'have-you-previously-applied-yes',
-            name: 'haveYouPreviouslyApplied',
+            name: 'previouslyApplied',
             value: 'true'
         },
         {
             label: 'No',
             id: 'have-you-previously-applied-no',
-            name: 'haveYouPreviouslyApplied',
+            name: 'previouslyApplied',
             value: 'false'
         }
     ]
