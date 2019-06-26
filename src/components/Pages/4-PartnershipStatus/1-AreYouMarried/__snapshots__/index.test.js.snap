@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AreYouMarried snapshot should render correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Your partnership status
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <h3
+      className="no-margin-bottom"
+    >
+      Are you married or in a civil partnership?
+    </h3>
+    <fieldset>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={false}
+          disabled={undefined}
+          id="are-you-married-yes"
+          name="marriedOrInACivilPartnership"
+          onChange={[Function]}
+          type="radio"
+          value="true"
+        />
+        <label
+          htmlFor="are-you-married-yes"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={false}
+          disabled={undefined}
+          id="are-you-married-no"
+          name="marriedOrInACivilPartnership"
+          onChange={[Function]}
+          type="radio"
+          value="false"
+        />
+        <label
+          htmlFor="are-you-married-no"
+        >
+          No
+        </label>
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+  </form>,
+]
+`;
