@@ -54,7 +54,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
                     optional={true}
                     hideOptional={true}
                 />
-                {/* <TextAreaInputContainer
+                <TextAreaInputContainer
                     label='List any other languages'
                     id='OtherLanguages'
                     type='text'
@@ -64,7 +64,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
                     optional={true}
                     hideOptional={true}
                     maxLengthMessage='Your description can be up to 500 characters long'
-                /> */}
+                />
                 <SubmitButton
                     onSaveAndGoBackClick={onSaveAndGoBackClick}
                     history={history}
