@@ -47,6 +47,7 @@ SubmitButton.propTypes = {
     secondApplicant: PropTypes.object,
     history: PropTypes.object,
     onSaveAndGoBackClick: PropTypes.func,
+    isValid: PropTypes.bool,
     isLoading: PropTypes.bool
 }
 

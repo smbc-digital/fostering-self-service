@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import PropTypes from 'prop-types'
 import { Switch, Route, Redirect } from 'react-router'
 import { getPageRoute } from 'helpers/pagehelper'
 import { ErrorPage } from 'smbc-react-components'
@@ -39,5 +40,9 @@ const App = () => (
 		<Route exact path="/error" component={ErrorPage} />
 	</Switch>
 )
+
+JointApplicationOnlyRoute.propTypes = {
+    component: PropTypes.element
+}
 
 export default App

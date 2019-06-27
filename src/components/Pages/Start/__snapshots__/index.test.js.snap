@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Start snapshot renders correctly 1`] = `
+Array [
+  <h1>
+    Start your fostering journey
+  </h1>,
+  <ol
+    className="task-item-list"
+  >
+    <li
+      className={undefined}
+    >
+      <div
+        className="task-item"
+      >
+        <h2>
+          Contact the fostering team
+        </h2>
+        <p>
+          Contact the fostering team to tell us that you’re interested in becoming a foster carer.
+        </p>
+        <span
+          className="status-completed"
+        >
+          Completed
+        </span>
+        <hr />
+      </div>
+    </li>
+    <li
+      className={undefined}
+    >
+      <div
+        className="task-item"
+      >
+        <h2>
+          Find out more about fostering
+        </h2>
+        <p>
+          Speak to the fostering team about your interest in fostering and arrange a home visit.
+        </p>
+        <span
+          className="status-completed"
+        >
+          Completed
+        </span>
+        <hr />
+      </div>
+    </li>
+    <li
+      className={undefined}
+    >
+      <div
+        className="task-item"
+      >
+        <h2>
+          Answer questions before your home visit
+        </h2>
+        <p>
+          To help prepare for your home visit, you can answer the questions in this section. This step is optional, however your fostering journey can be made simpler by telling us more about yourself. The questions will give you an idea of the conversation that you’ll have during your home visit and the social worker will be able to see your answers beforehand.
+        </p>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/known-by-another-name"
+            onClick={[Function]}
+          >
+            Tell us more about you
+          </a>
+          <span
+            className="status-completed"
+          >
+            Completed
+          </span>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/are-you-employed"
+            onClick={[Function]}
+          >
+            Your employment details
+          </a>
+          <span
+            className="status-not-completed"
+          >
+            Not completed
+          </span>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/languages-spoken-in-your-home"
+            onClick={[Function]}
+          >
+            Tell us more about languages that are spoken in your home
+          </a>
+          <span
+            className="status-completed"
+          >
+            Completed
+          </span>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/date-of-marriage-or-partnership"
+            onClick={[Function]}
+          >
+            Your partnership status
+          </a>
+          <span
+            className="status-completed"
+          >
+            Completed
+          </span>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/your-fostering-history"
+            onClick={[Function]}
+          >
+            Your fostering history
+          </a>
+          <span
+            className="status-not-completed"
+          >
+            Not completed
+          </span>
+        </div>
+      </div>
+    </li>
+    <li
+      className="disabled"
+    >
+      <div
+        className="task-item"
+      >
+        <h2>
+          Home visit
+        </h2>
+        <p>
+          The social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in the previous section, you’ll talk more about them. The home visit stage can be completed in one session but it may require more sessions to make sure that the social worker has all of the information that they need.
+        </p>
+        <hr />
+      </div>
+    </li>
+    <li
+      className="disabled"
+    >
+      <div
+        className="task-item"
+      >
+        <h2>
+          Additional information
+        </h2>
+        <p>
+          If you’ve been successful at your home visit, you’ll need to give us some more information so that you can move onto the next stage of your fostering journey.
+        </p>
+        <span
+          className="status-not-completed"
+        >
+          Not completed
+        </span>
+        <hr />
+      </div>
+    </li>
+    <li
+      className="disabled"
+    >
+      <div
+        className="task-item"
+      >
+        <h2>
+          Assessment and training
+        </h2>
+        <p>
+          You’ll complete the assessment stage of your fostering journey and attend training sessions.
+        </p>
+        <span
+          className="status-not-completed"
+        >
+          Not completed
+        </span>
+        <hr />
+      </div>
+    </li>
+    <li
+      className="disabled"
+    >
+      <div
+        className="task-item"
+      >
+        <h2>
+          Approval
+        </h2>
+        <p>
+          You’ll go to panel and a decision will be made about whether you can become a foster carer.
+        </p>
+        <hr />
+      </div>
+    </li>
+  </ol>,
+]
+`;

@@ -1,4 +1,5 @@
 import React, { useContext, useState, Fragment } from 'react'
+import PropTypes from 'prop-types'
 import moment from 'moment'
 import { MemorableDateInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
@@ -66,6 +67,10 @@ const MovedInTogetherDate = ({ history }) => {
             </form>
         </Fragment>
     )
+}
+
+MovedInTogetherDate.propTypes = {
+    history: PropTypes.object
 }
 
 export default MovedInTogetherDate
