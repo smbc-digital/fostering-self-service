@@ -79,7 +79,7 @@ Array [
       </a>
     </p>
     <button
-      className="button-inverted"
+      className="button-inverted left-chevron"
       disabled={false}
       id={undefined}
       onClick={[Function]}

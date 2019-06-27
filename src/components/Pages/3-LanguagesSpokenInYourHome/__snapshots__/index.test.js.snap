@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LanguagesSpokenInYourHome snapshot renders correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Tell us about the languages that are spoken in your home
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className="optional"
+      htmlFor="primaryLanguage"
+    >
+      Primary language
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="primaryLanguage"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="primaryLanguage"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="English"
+    />
+    <label
+      className="optional"
+      htmlFor="otherLanguages"
+    >
+      List any other languages
+    </label>
+    <p
+      className="smallerText"
+    >
+      Your description can be up to 500 characters long
+    </p>
+    <textarea
+      aria-label={undefined}
+      aria-live="off"
+      className={
+        Array [
+          "char-limit",
+        ]
+      }
+      id="otherLanguages"
+      maxLength="500"
+      name="otherLanguages"
+      onChange={[Function]}
+      optional="true"
+      value="Welsh"
+    />
+    <p
+      className="smallerText"
+    >
+      You have 
+      495
+       characters remaining
+    </p>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={false}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
+`;
