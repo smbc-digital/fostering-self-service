@@ -7,8 +7,8 @@ import Start from '../Pages/Start'
 import { KnownByAnotherName, MoreAboutYou } from '../Pages/1-TellUsAboutYou'
 import { AreYouEmployed, EmploymentDetails } from '../Pages/2-YourEmploymentDetails'
 import LanguagesSpokenInYourHome from '../Pages/3-LanguagesSpokenInYourHome'
-import { HaveYouPreviouslyApplied } from '../Pages/5-YourFosteringHistory'
 import { AreYouMarried, MarriageDate, MovedInTogetherDate } from '../Pages/4-PartnershipStatus'
+import { HaveYouPreviouslyApplied } from '../Pages/5-YourFosteringHistory'
 
 const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
     const { secondApplicant } = useContext(Context)
@@ -35,7 +35,7 @@ const App = () => (
 		<JointApplicationOnlyRoute exact path={getPageRoute(7)} component={AreYouMarried} />
 		<JointApplicationOnlyRoute exact path={getPageRoute(8)} component={MarriageDate} />
 		<JointApplicationOnlyRoute exact path={getPageRoute(9)} component={MovedInTogetherDate} />
-        <Route exact path={`${getPageRoute(10)}/(|second-applicant)?`} component={HaveYouPreviouslyApplied} />
+		<Route exact path={`${getPageRoute(10)}/(|second-applicant)?`} component={HaveYouPreviouslyApplied} />
 		<Route exact path="/error" component={ErrorPage} />
 	</Switch>
 )
