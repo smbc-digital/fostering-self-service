@@ -68,7 +68,7 @@ Array [
       onClick={undefined}
       type="submit"
     >
-      Save and next step
+      Next step
     </button>
     <p>
       <a
@@ -78,15 +78,6 @@ Array [
         Back
       </a>
     </p>
-    <button
-      className="button-inverted left-chevron"
-      disabled={false}
-      id={undefined}
-      onClick={[Function]}
-      type="submit"
-    >
-      Save and go back to fostering area
-    </button>
   </form>,
 ]
 `;

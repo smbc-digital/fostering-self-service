@@ -7,7 +7,7 @@ import SubmitButton from '../../SubmitButton'
 
 const LanguagesSpokenInYourHome = ({ history }) => {
 	const context = useContext(Context)
-	const {onChange, onChangeStatus, primaryLanguage, otherLanguages } = context
+	const {onChange, onChangeStatus, primaryLanguage, otherLanguages, withPartner } = context
 	const [isLoading, setIsLoading] = useState(false)
 
 	const handleFormUpdate = async nextPageRoute => {
@@ -29,7 +29,12 @@ const LanguagesSpokenInYourHome = ({ history }) => {
 	const onSubmit = event => {
 		event.preventDefault()
 
-		handleFormUpdate(getPageRoute(7))
+        if(withPartner.value === 'Yes') {
+            handleFormUpdate(getPageRoute(7))
+        }
+        else {
+            handleFormUpdate(getPageRoute(10))
+        }
 	}
 
 	const onSaveAndGoBackClick = event => {
@@ -64,7 +69,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
                     onChange={onChange}
                     optional='true'
                     hideOptional={true}
-                    maxLengthMessage='Your description can be up to 500 characters long'
+                    maxLengthMessage='Your list can be up to 500 characters long'
                 />
                 <SubmitButton
                     onSaveAndGoBackClick={onSaveAndGoBackClick}

@@ -41,7 +41,7 @@ Array [
     <p
       className="smallerText"
     >
-      Your description can be up to 500 characters long
+      Your list can be up to 500 characters long
     </p>
     <textarea
       aria-label={undefined}
