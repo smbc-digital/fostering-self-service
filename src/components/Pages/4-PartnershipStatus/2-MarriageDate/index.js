@@ -1,9 +1,9 @@
 import React, { useContext, useState, Fragment } from 'react'
 import moment from 'moment'
 import { MemorableDateInputContainer } from 'smbc-react-components'
-import { Context } from '../../../../context'
-import SubmitButton from '../../../SubmitButton'
-import { getPageRoute, updateForm, FormName } from '../../../../helpers'
+import { Context } from 'context'
+import SubmitButton from 'components/SubmitButton'
+import { getPageRoute, updateForm, FormName } from 'helpers'
 
 const MarriageDate = ({ history }) => {
     const [isLoading, setIsLoading] = useState(false)

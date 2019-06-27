@@ -1,8 +1,8 @@
 import React, { useContext, Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
-import { Context } from '../../../../context'
-import { getPageRoute, FormName, updateFormStatus } from '../../../../helpers'
+import { Context } from 'context'
+import { getPageRoute, FormName, updateFormStatus } from 'helpers'
 
 const AreYouMarried = ({ history }) => {
     const { onChange, onChangeStatus, marriedOrInACivilPartnership, statuses: { yourPartnershipStatus } } = useContext(Context)

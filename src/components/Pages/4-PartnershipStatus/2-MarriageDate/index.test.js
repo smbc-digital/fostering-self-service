@@ -1,6 +1,6 @@
-import { React, mount, useContextMock, renderer } from '../../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import MarriageDate from './index'
-import * as helpers from '../../../../helpers'
+import * as helpers from 'helpers'
 
 describe('MarriageDate', () => {
 

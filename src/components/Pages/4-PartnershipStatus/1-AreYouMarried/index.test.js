@@ -1,6 +1,6 @@
-import { React, mount, useContextMock, renderer } from '../../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AreYouMarried from './index'
-import { getPageRoute } from '../../../../helpers'
+import { getPageRoute } from 'helpers'
 
 describe('AreYouMarried', () => {
 

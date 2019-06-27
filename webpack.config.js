@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 let config = {
     entry: ['babel-polyfill', './src/index.js'],
@@ -14,6 +15,9 @@ let config = {
                 use: ['babel-loader']
             }
         ]
+    },
+    resolve: {
+        modules: ['node_modules', path.resolve(__dirname, 'src')]
     }
 }
 

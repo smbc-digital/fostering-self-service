@@ -1,9 +1,9 @@
 import React, { useContext, useState, Fragment } from 'react'
 import moment from 'moment'
 import { MemorableDateInputContainer } from 'smbc-react-components'
-import { Context } from '../../../../context'
-import { getPageRoute, updateForm, FormName } from '../../../../helpers'
-import SubmitButton from '../../../SubmitButton'
+import { Context } from 'context'
+import { getPageRoute, updateForm, FormName } from 'helpers'
+import SubmitButton from 'components/SubmitButton'
 
 const MovedInTogetherDate = ({ history }) => {
     const { onChange, marriedOrInACivilPartnership, dateMovedInTogether, onChangeStatus } = useContext(Context)
