@@ -25,6 +25,7 @@ const Provider = ({ children }) => {
 	const [error, setError] = useState(undefined)
 
 	const onChange = (event, isValid) => {
+		console.log(event)
 		setState({
 			...state,
 			[event.target.name]: {

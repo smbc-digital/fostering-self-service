@@ -16,6 +16,11 @@ Array [
     >
       Date of your marriage or civil partnerhsip
     </h3>
+    <p
+      className="optional"
+    >
+      (optional)
+    </p>
     <fieldset
       className="input-memorable-date"
     >

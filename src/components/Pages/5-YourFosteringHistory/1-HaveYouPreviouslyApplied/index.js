@@ -51,11 +51,11 @@ const HaveYouPreviouslyApplied = ({ history, match }) => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(7)}/second-applicant`)
+            history.push(`${getPageRoute(9)}/second-applicant`)
             return
         }
 
-        await handleFormUpdate(getPageRoute(8)) 
+        await handleFormUpdate(getPageRoute(11)) 
     }
 
     const onSaveAndGoBackClick = async event => {

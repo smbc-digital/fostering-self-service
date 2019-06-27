@@ -7,7 +7,7 @@ import SubmitButton from '../../SubmitButton'
 
 const LanguagesSpokenInYourHome = ({ history }) => {
 	const context = useContext(Context)
-	const {onChange, onChangeStatus } = context
+	const {onChange, onChangeStatus, primaryLanguage, otherLanguages } = context
 	const [isLoading, setIsLoading] = useState(false)
 
 	const handleFormUpdate = async nextPageRoute => {
@@ -19,24 +19,24 @@ const LanguagesSpokenInYourHome = ({ history }) => {
                 otherLanguages: context.otherLanguages
             })
     
-            onChangeStatus('languagesSpokenInYourHomeStatus', status)
+            onChangeStatus('languageSpokenInYourHomeStatus', status)
             history.push(nextPageRoute)
         } catch (error) {
             history.push('/error')
         }
 	}
 	
-	const onSubmit = async event => {
+	const onSubmit = event => {
 		event.preventDefault()
 
-		await handleFormUpdate(getPageRoute(7))
+		handleFormUpdate(getPageRoute(7))
 	}
 
-	const onSaveAndGoBackClick = async event => {
+	const onSaveAndGoBackClick = event => {
         event.stopPropagation()
         event.preventDefault()
 
-        await handleFormUpdate(getPageRoute(1))
+        handleFormUpdate(getPageRoute(1))
     } 
 
 	return (
@@ -46,22 +46,23 @@ const LanguagesSpokenInYourHome = ({ history }) => {
             <form onSubmit={onSubmit}>
                 <TextInputContainer
                     label='Primary language'
-                    id='languagesSpoken'
+                    id='primaryLanguage'
                     type='text'
                     maxLength='60'
-                    value={context.primaryLanguage.value}
+                    value={primaryLanguage.value}
                     onChange={onChange}
                     optional={true}
                     hideOptional={true}
+                    name='primaryLanguage'
                 />
                 <TextAreaInputContainer
                     label='List any other languages'
-                    id='OtherLanguages'
+                    id='otherLanguages'
                     type='text'
                     maxLength='500'
-                    value={context.otherLanguages.value}
+                    value={otherLanguages.value}
                     onChange={onChange}
-                    optional={true}
+                    optional='true'
                     hideOptional={true}
                     maxLengthMessage='Your description can be up to 500 characters long'
                 />

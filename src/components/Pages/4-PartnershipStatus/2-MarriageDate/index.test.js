@@ -46,7 +46,7 @@ describe('MarriageDate', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(11))
+        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(10))
     })
 
     it('should push to start page', async () => {

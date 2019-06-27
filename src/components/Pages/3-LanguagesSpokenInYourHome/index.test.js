@@ -1,4 +1,4 @@
-import { React, mount, useContextMock } from '../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from '../../../helpers/SetupTest'
 import LanguagesSpokenInYourHome from './index'
 import * as helpers from '../../../helpers'
 
@@ -71,7 +71,7 @@ describe('LanguagesSpokenInYourHome', () => {
 		await Promise.resolve()
 
 		// Assert
-		expect(onChangeStatusMock).toHaveBeenCalledWith('languagesSpokenInYourHomeStatus', 0)
+		expect(onChangeStatusMock).toHaveBeenCalledWith('languageSpokenInYourHomeStatus', 0)
 	})
 
 	it('should call updateForm on save and go back click', async () => {
@@ -125,5 +125,15 @@ describe('LanguagesSpokenInYourHome', () => {
 
 		// Assert
 		expect(history.push).toHaveBeenCalledWith('/error')		
+	})
+
+	describe('snapshot', () => {
+		it('renders correctly', () => {
+			const tree = renderer
+			.create(<LanguagesSpokenInYourHome history={{}}/>)
+			.toJSON()
+
+			expect(tree).toMatchSnapshot()
+		})
 	})
 })

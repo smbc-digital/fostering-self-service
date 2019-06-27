@@ -25,22 +25,66 @@
 	},
 	{
 		"number": 7,
-		"route": "/fostering/your-fostering-history"
-	},
-	{
-		"number": 8,
 		"route": "/fostering/your-partnership-status"
 	},
 	{
-		"number": 9,
+		"number": 8,
 		"route": "/fostering/date-of-marriage-or-partnership"
 	},
 	{
-		"number": 10,
+		"number": 9,
 		"route": "/fostering/date-of-move-in"
 	},
 	{
+		"number": 10,
+		"route": "/fostering/your-fostering-history"
+	},
+	{
 		"number": 11,
-		"route": "/fostering/error"
+		"route": "/fostering/about-your-health"
+	},
+	{
+		"number": 12,
+		"route": "/fostering/your-interest-in-fostering"
+	},
+	{
+		"number": 13,
+		"route": "/fostering/types-of-fostering"
+	},
+	{
+		"number": 14,
+		"route": "/fostering/other-people-living-in-your-home"
+	},
+	{
+		"number": 15,
+		"route": "/fostering/who-lives-in-your-home"
+	},
+	{
+		"number": 16,
+		"route": "/fostering/do-you-have-pets"
+	},
+	{
+		"number": 17,
+		"route": "/fostering/children-under-sixteen-living-away"
+	},
+	{
+		"number": 18,
+		"route": "/fostering/about-children-under-sixteen-living-away"
+	},
+	{
+		"number": 19,
+		"route": "/fostering/children-over-sixteen-living-away"
+	},
+	{
+		"number": 20,
+		"route": "/fostering/about-children-over-sixteen-living-away"
+	},
+	{
+		"number": 21,
+		"route": "/fostering/declaration"
+	},
+	{
+		"number": 22,
+		"route": "/fostering/success"
 	}
 ]

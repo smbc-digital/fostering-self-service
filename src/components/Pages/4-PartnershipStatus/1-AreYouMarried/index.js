@@ -25,16 +25,16 @@ const AreYouMarried = ({ history }) => {
 
     const onSubmit = () => {
 		if (marriedOrInACivilPartnershipValue === 'true') {
-            history.push(getPageRoute(9))
+            history.push(getPageRoute(8))
             return
         }
         
         if (marriedOrInACivilPartnershipValue === 'false'){
-            history.push(getPageRoute(10))
+            history.push(getPageRoute(9))
             return
         }
 
-		history.push(getPageRoute(11))
+		history.push(getPageRoute(10))
 	}
 
     useEffect(() => {
