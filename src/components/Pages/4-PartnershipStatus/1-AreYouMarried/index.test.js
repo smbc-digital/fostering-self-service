@@ -40,7 +40,7 @@ describe('AreYouMarried', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(getPageRoute(9))
+        expect(history.push).toHaveBeenCalledWith(getPageRoute(8))
     })
 
     it('should push to next page, when not married', () => {
@@ -65,7 +65,7 @@ describe('AreYouMarried', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(getPageRoute(10))
+        expect(history.push).toHaveBeenCalledWith(getPageRoute(9))
     })
 
     it('should push to next page', () => {
@@ -79,7 +79,7 @@ describe('AreYouMarried', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(getPageRoute(11))
+        expect(history.push).toHaveBeenCalledWith(getPageRoute(10))
     })
 
     describe('snapshot', () => {

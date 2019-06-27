@@ -29,7 +29,7 @@ const MarriageDate = ({ history }) => {
     const onSubmit = event => {
         event.preventDefault()
 
-        handleFormUpdate(getPageRoute(11))
+        handleFormUpdate(getPageRoute(10))
     }
 
     const onSaveAndGoBackClick = event => {
