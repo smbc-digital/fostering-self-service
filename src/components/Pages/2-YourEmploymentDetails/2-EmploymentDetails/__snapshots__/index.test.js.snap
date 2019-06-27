@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YourEmploymnetDetails snapshot renders correctly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <h1>
+    Your fostering journey
+  </h1>
+  <h2>
+    Your employment details
+  </h2>
+  <p>
+    first name
+     
+    last name
+  </p>
+  <label
+    className="optional"
+    htmlFor="currentEmployer"
+  >
+    Current employer
+  </label>
+  <input
+    aria-label=""
+    aria-live=""
+    className=""
+    id="currentEmployer"
+    inputMode={undefined}
+    maxLength="60"
+    min={undefined}
+    name="currentEmployer"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    pattern={undefined}
+    type="text"
+    value="employer1"
+  />
+  <label
+    className="optional"
+    htmlFor="jobTitle"
+  >
+    Job title
+  </label>
+  <input
+    aria-label=""
+    aria-live=""
+    className=""
+    id="jobTitle"
+    inputMode={undefined}
+    maxLength="60"
+    min={undefined}
+    name="jobTitle"
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    pattern={undefined}
+    type="text"
+    value="ceo"
+  />
+  <h3
+    className="no-margin-bottom"
+  >
+    Current hours of work
+  </h3>
+  <fieldset>
+    <div
+      className="input-radio-container"
+      role="radiogroup"
+    >
+      <input
+        defaultChecked={false}
+        disabled={undefined}
+        id="current-hours-of-work-full-time"
+        name="currentHoursOfWork"
+        onChange={[Function]}
+        type="radio"
+        value="2"
+      />
+      <label
+        htmlFor="current-hours-of-work-full-time"
+      >
+        Full time
+      </label>
+    </div>
+    <div
+      className="input-radio-container"
+      role="radiogroup"
+    >
+      <input
+        defaultChecked={true}
+        disabled={undefined}
+        id="current-hours-of-work-part-time"
+        name="currentHoursOfWork"
+        onChange={[Function]}
+        type="radio"
+        value="1"
+      />
+      <label
+        htmlFor="current-hours-of-work-part-time"
+      >
+        Part time
+      </label>
+    </div>
+  </fieldset>
+  <button
+    className="button-primary"
+    disabled={false}
+    id={undefined}
+    onClick={undefined}
+    type="submit"
+  >
+    Next step
+  </button>
+  <p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </p>
+</form>
+`;

@@ -54,6 +54,7 @@ const AreYouEmployed = ({ history, match }) => {
             newStatus => context.onChangeStatus('yourEmploymentDetailsStatus', newStatus))
     }, [])
 
+    const radioValue = `${areYouEmployed.value}`
     return (
         <form onSubmit={onSubmit}>
             <h1>Your fostering journey</h1>
@@ -64,7 +65,7 @@ const AreYouEmployed = ({ history, match }) => {
                 header='Are you employed?'
                 options={options}
                 onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
-                value={areYouEmployed.value}
+                value={radioValue}
             />
             <Button label="Next step" isValid />
             <Anchor label='Back' history={history}/>
