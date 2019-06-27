@@ -69,7 +69,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
                     onChange={onChange}
                     optional='true'
                     hideOptional={true}
-                    maxLengthMessage='Your description can be up to 500 characters long'
+                    maxLengthMessage='Your list can be up to 500 characters long'
                 />
                 <SubmitButton
                     onSaveAndGoBackClick={onSaveAndGoBackClick}
