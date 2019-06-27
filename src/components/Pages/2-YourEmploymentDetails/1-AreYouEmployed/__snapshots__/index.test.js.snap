@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YourEmploymentDetails snapshot renders correctly 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <h1>
+    Your fostering journey
+  </h1>
+  <h2>
+    Your employment details
+  </h2>
+  <p>
+    first name
+     
+    last name
+  </p>
+  <h3
+    className="no-margin-bottom"
+  >
+    Are you employed?
+  </h3>
+  <fieldset>
+    <div
+      className="input-radio-container"
+      role="radiogroup"
+    >
+      <input
+        defaultChecked={true}
+        disabled={undefined}
+        id="are-you-employed-yes"
+        name="areYouEmployed"
+        onChange={[Function]}
+        type="radio"
+        value="true"
+      />
+      <label
+        htmlFor="are-you-employed-yes"
+      >
+        Yes
+      </label>
+    </div>
+    <div
+      className="input-radio-container"
+      role="radiogroup"
+    >
+      <input
+        defaultChecked={false}
+        disabled={undefined}
+        id="are-you-employed-no"
+        name="areYouEmployed"
+        onChange={[Function]}
+        type="radio"
+        value="false"
+      />
+      <label
+        htmlFor="are-you-employed-no"
+      >
+        No
+      </label>
+    </div>
+  </fieldset>
+  <button
+    className="button-primary"
+    disabled={false}
+    id={undefined}
+    onClick={undefined}
+    type="submit"
+  >
+    Next step
+  </button>
+  <p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </p>
+</form>
+`;

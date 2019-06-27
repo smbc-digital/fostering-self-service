@@ -1,9 +1,9 @@
 import { React, mount, useContextMock, renderer } from '../../../../helpers/SetupTest'
-import MoreAboutYou from './index'
+import EmploymentDetails from './index'
 import { Applicant } from '../../../Provider'
 import * as helpers from '../../../../helpers'
 
-describe('KnownByAnotherName', () => {
+describe('YourEmploymnetDetails', () => {
 
     const onChangeStatusMock = jest.fn()
     const onChangeApplicantMock = jest.fn()
@@ -48,9 +48,25 @@ describe('KnownByAnotherName', () => {
                 placeOfBirth: {
                     value: 'a place',
                     isValid: true
-                }, 
+                },
                 gender: {
                     value: 'a place',
+                    isValid: true
+                },
+                isEmployed:{
+                    value: 'true',
+                    isValid: true
+                },
+                currentEmployer: {
+                    value: 'employer1',
+                    isValid: true
+                },
+                currentHoursOfWork: {
+                    value: '1',
+                    isValid: true
+                },
+                jobTitle: {
+                    value: 'ceo',
                     isValid: true
                 }
             },
@@ -90,6 +106,22 @@ describe('KnownByAnotherName', () => {
                 gender: {
                     value: 'a place',
                     isValid: true
+                },
+                isEmployed:{
+                    value: 'true',
+                    isValid: true
+                },
+                currentEmployer: {
+                    value: 'employer2',
+                    isValid: true
+                },
+                currentHoursOfWork: {
+                    value: '2',
+                    isValid: true
+                },
+                jobTitle: {
+                    value: 'ceo2',
+                    isValid: true
                 }
             }
         })
@@ -107,7 +139,7 @@ describe('KnownByAnotherName', () => {
 
         helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
-        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+        const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act
         await wrapper.find('form').simulate('submit')
@@ -128,13 +160,13 @@ describe('KnownByAnotherName', () => {
             params: undefined
         }
 
-        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+        const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act
         wrapper.find('form').simulate('submit')
 
         // Assert
-        const pageRoute = helpers.getPageRoute(2)
+        const pageRoute = helpers.getPageRoute(4)
         expect(history.push).toHaveBeenCalledWith(`${pageRoute}/second-applicant`)
     })
 
@@ -149,7 +181,7 @@ describe('KnownByAnotherName', () => {
         }
         helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
-        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+        const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act
         await wrapper.find('form').simulate('submit')
@@ -170,14 +202,14 @@ describe('KnownByAnotherName', () => {
         }
         helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
-        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+        const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act
         await wrapper.find('form').simulate('submit')
         await Promise.resolve()
 
         // Assert
-        expect(onChangeStatusMock).toHaveBeenCalledWith('tellUsAboutYourselfStatus', 0)
+        expect(onChangeStatusMock).toHaveBeenCalledWith('yourEmploymentDetailsStatus', 0)
     })
 
     it('should call updateForm on save and go back click', async () => {
@@ -191,7 +223,7 @@ describe('KnownByAnotherName', () => {
         }
         helpers.updateForm =  jest.fn().mockReturnValue(Promise.resolve(0))
 
-        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+        const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act
         await wrapper.find('button').at(1).simulate('click')
@@ -212,14 +244,14 @@ describe('KnownByAnotherName', () => {
         }
         helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
-        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+        const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act
         await wrapper.find('button').at(1).simulate('click')
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))        
+        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
     })
 
     it('should push to error page on updateForm error', async () => {
@@ -233,7 +265,7 @@ describe('KnownByAnotherName', () => {
         }
 
         helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
-        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+        const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act
         wrapper.find('form').simulate('submit')
@@ -252,7 +284,7 @@ describe('KnownByAnotherName', () => {
             params: ['second-applicant']
         }
 
-        const wrapper = mount(<MoreAboutYou history={history} match={match}/>)
+        const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act
         wrapper
@@ -271,7 +303,7 @@ describe('KnownByAnotherName', () => {
             }
 
             const tree = renderer
-                .create(<MoreAboutYou history={{}} match={match}/>)
+                .create(<EmploymentDetails history={{}} match={match}/>)
                 .toJSON()
 
             expect(tree).toMatchSnapshot()

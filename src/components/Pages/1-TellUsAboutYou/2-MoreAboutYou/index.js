@@ -21,7 +21,7 @@ const MoreAboutYou = ({ history, match }) => {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })
-    
+
             onChangeStatus('tellUsAboutYourselfStatus', status)
             history.push(nextPageRoute)
         } catch (error) {

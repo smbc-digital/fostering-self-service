@@ -65,6 +65,8 @@ const getFormUpdateEndpoint = form => {
     switch (form) {
         case FormName.TellUsAboutYourself:
             return '/fostering/about-yourself'
+        case FormName.YourEmploymentDetails:
+            return '/fostering/your-employment-details'
         case FormName.LanguagesSpokenInYourHome:
             return '/fostering/languages-spoken-in-your-home'
         case FormName.YourFosteringHistory:
@@ -80,7 +82,7 @@ export const updateForm = async (form, formData) => {
     const endpoint = getFormUpdateEndpoint(form)
     const parsedFormData = parseFormData(formData)
 
-    const response = await fetchWithTimeout(endpoint, { 
+    const response = await fetchWithTimeout(endpoint, {
         method: 'PATCH',
         credentials: 'include',
         body: JSON.stringify(parsedFormData),

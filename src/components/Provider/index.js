@@ -38,6 +38,10 @@ const Provider = ({ children }) => {
 	}
 
 	const onChangeApplicant = (event, isValid, currentApplicant) => {
+		// let eventValue = event.target.value === 'true' ? true 
+		// 												: event.target.value === 'false' ? false 
+		// 												: event.target.value
+
 		setState({
 			...state,
 			[currentApplicant]: {
