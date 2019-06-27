@@ -62,7 +62,7 @@ describe('YourEmploymentDetails', () => {
             }
         })
     })
-    
+
     it('should push to next page on submit, when first applicant', () => {
         // Arrange
         const history = {
@@ -100,6 +100,222 @@ describe('YourEmploymentDetails', () => {
         // Assert
         const pageRoute = helpers.getPageRoute(5)
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+    })
+
+    it('should push to second user on same page, when user selects false', () => {
+
+        //Arrange
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            statuses: {
+                YourEmploymentDetails: 0
+            },
+            firstApplicant: {
+                everBeenKnownByAnotherName: {
+                    value: 'true',
+                    isValid: true
+                },
+                firstName: {
+                    value: 'first name',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                areYouEmployed:{
+                    value: 'false',
+                    isvalid: true
+                }
+            },
+            secondApplicant: {
+                everBeenKnownByAnotherName: {
+                    value: 'false',
+                    isValid: true
+                },
+                firstName: {
+                    value: 'second applicant first name',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'second applicant last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                areYouEmployed:{
+                    value: 'true',
+                    isvalid: true
+                }
+            }
+        })
+
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+
+        const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
+
+        wrapper.find('Button').simulate('submit')
+
+        const pageRoute = helpers.getPageRoute(4)
+
+        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+    })
+
+    it('should push to EmploymentDetails, when user selects true', () => {
+        //Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+
+        const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
+
+        wrapper.find('Button').simulate('submit')
+
+        const pageRoute = helpers.getPageRoute(5)
+
+        expect(history.push).toHaveBeenCalledWith(pageRoute)
+    })
+
+    it('should push to page 1 when user selects false and there are no second applicant', () => {
+
+        //Arrange
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            statuses: {
+                YourEmploymentDetails: 0
+            },
+            firstApplicant: {
+                everBeenKnownByAnotherName: {
+                    value: 'true',
+                    isValid: true
+                },
+                firstName: {
+                    value: 'first name',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                areYouEmployed:{
+                    value: 'false',
+                    isvalid: true
+                }
+            }
+        })
+
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+
+        const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
+
+        wrapper.find('Button').simulate('submit')
+
+        const pageRoute = helpers.getPageRoute(1)
+
+        expect(history.push).toHaveBeenCalledWith(pageRoute)
+    })
+
+    it('should push to page 1 when second applicant selects false', () => {
+
+        //Arrange
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            statuses: {
+                YourEmploymentDetails: 0
+            },
+            firstApplicant: {
+                everBeenKnownByAnotherName: {
+                    value: 'true',
+                    isValid: true
+                },
+                firstName: {
+                    value: 'first name',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                areYouEmployed:{
+                    value: 'false',
+                    isvalid: true
+                }
+            },
+            secondApplicant: {
+                everBeenKnownByAnotherName: {
+                    value: 'false',
+                    isValid: true
+                },
+                firstName: {
+                    value: 'second applicant first name',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'second applicant last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                areYouEmployed:{
+                    value: 'false',
+                    isvalid: true
+                }
+            }
+        })
+
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+
+        const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
+
+        wrapper.find('Button').simulate('submit')
+
+        const pageRoute = helpers.getPageRoute(1)
+
+        expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 
     it('should call onChangeApplicant', () => {

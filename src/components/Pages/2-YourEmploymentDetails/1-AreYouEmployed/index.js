@@ -31,7 +31,7 @@ const AreYouEmployed = ({ history, match }) => {
     const onSubmit = event => {
         event.preventDefault()
 
-        if(currentApplicant === Applicant.FirstApplicant  && (!areYouEmployed.value || areYouEmployed.value == 'false') ){
+        if(currentApplicant === Applicant.FirstApplicant  && (!areYouEmployed.value || areYouEmployed.value === 'false') ){
             if(!secondApplicant){
                 history.push(getPageRoute(1))
                 return
