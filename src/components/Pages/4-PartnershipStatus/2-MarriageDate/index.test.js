@@ -5,10 +5,11 @@ import * as helpers from 'helpers'
 describe('MarriageDate', () => {
 
     const onChangeStatusMock = jest.fn()
+    const onChangeMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
-            onChange: jest.fn(),
+            onChange: onChangeMock,
             onChangeStatus: onChangeStatusMock,
             dateOfMarriage: '26/06/2019'
         })
@@ -130,6 +131,28 @@ describe('MarriageDate', () => {
 
         // Assert
         expect(wrapper.find('Button').at(0).props().isLoading).toBe(true)
+    })
+
+    it('should set isValid', () => {
+        // Arrange
+        const wrapper = mount(<MarriageDate history={{}} />)
+
+        // Act
+        wrapper.find('input[name="day"]').simulate('change', { target: { value: '0', name: 'day' } })
+
+        // Assert
+        expect(wrapper.find('Button').at(1).props().isValid).toBe(false)
+    })
+
+    it('should call onChange', () => {
+        // Arrange
+        const wrapper = mount(<MarriageDate history={{}} />)
+
+        // Act
+        wrapper.find('input[name="day"]').simulate('change', { target: { value: '0', name: 'day' } })
+
+        // Assert
+        expect(onChangeMock).toHaveBeenCalled()
     })
 
     describe('snapshot', () => {

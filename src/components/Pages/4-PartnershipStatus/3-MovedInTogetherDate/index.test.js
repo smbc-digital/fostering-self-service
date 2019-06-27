@@ -12,10 +12,11 @@ describe('MovedInTogetherDate', () => {
         value: 'true',
         isValid: false
     }
+    const onChangeMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
-            onChange: jest.fn(),
+            onChange: onChangeMock,
             onChangeStatus,
             dateMovedInTogether,
             marriedOrInACivilPartnership
@@ -132,5 +133,45 @@ describe('MovedInTogetherDate', () => {
         // Assert
         expect(wrapper.find('Button').at(0).props().isLoading).toBe(true)
 
+    })
+
+    it('should push to error page', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+
+        const wrapper = mount(<MovedInTogetherDate history={history}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+
+        // Assert
+        expect(history.push).toHaveBeenCalledWith('/error')
+    })
+
+
+    it('should set isValid', () => {
+        // Arrange
+        const wrapper = mount(<MovedInTogetherDate history={{}} />)
+
+        // Act
+        wrapper.find('input[name="month"]').simulate('change', { target: { value: '0', name: 'month' } })
+
+        // Assert
+        expect(wrapper.find('Button').at(1).props().isValid).toBe(false)
+    })
+
+    it('should call onChange', () => {
+        // Arrange
+        const wrapper = mount(<MovedInTogetherDate history={{}} />)
+
+        // Act
+        wrapper.find('input[name="month"]').simulate('change', { target: { value: '0', name: 'month' } })
+
+        // Assert
+        expect(onChangeMock).toHaveBeenCalled()
     })
 })

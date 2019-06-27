@@ -8,6 +8,7 @@ import { getPageRoute, updateForm, FormName } from 'helpers'
 const MarriageDate = ({ history }) => {
     const [isLoading, setIsLoading] = useState(false)
     const { onChange, onChangeStatus, dateOfMarriage, marriedOrInACivilPartnership } = useContext(Context)
+    const [isValid, setIsValid] = useState(true)
 
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
@@ -44,21 +45,25 @@ const MarriageDate = ({ history }) => {
 			<h1>Your fostering journey</h1>
 			<h2>Your partnership status</h2>
 			<form onSubmit={onSubmit}>
-                <MemorableDateInputContainer
-                    heading='Date of your marriage or civil partnerhsip'
-                    description='For example, 31 3 1980'
-                    name='dateOfMarriage'
-                    optional
-                    value={moment(dateOfMarriage.value, ['DD/MM/YYYY','YYYY-M-D']).format('YYYY-M-D')}
-                    onChange={onChange}
-                    hideOptionalText={true}
-                />
-                <SubmitButton
-                    history={history}
-                    onSaveAndGoBackClick={onSaveAndGoBackClick}
-                    isLoading={isLoading}
-                />
-            </form>
+				<MemorableDateInputContainer
+					heading="Date of your marriage or civil partnerhsip"
+					description="For example, 31 3 1980"
+					name="dateOfMarriage"
+					optional
+					value={moment(dateOfMarriage.value, ['DD/MM/YYYY', 'YYYY-M-D']).format('YYYY-M-D')}
+					onChange={(event, isValid) => {
+						setIsValid(isValid)
+						onChange(event, isValid)
+					}}
+					hideOptionalText={true}
+				/>
+				<SubmitButton
+					history={history}
+					onSaveAndGoBackClick={onSaveAndGoBackClick}
+					isLoading={isLoading}
+					isValid={isValid}
+				/>
+			</form>
 		</Fragment>
 	)
 }

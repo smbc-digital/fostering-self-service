@@ -8,6 +8,7 @@ import SubmitButton from 'components/SubmitButton'
 const MovedInTogetherDate = ({ history }) => {
     const { onChange, marriedOrInACivilPartnership, dateMovedInTogether, onChangeStatus } = useContext(Context)
     const [isLoading, setIsLoading] = useState()
+    const [isValid, setIsValid] = useState(true)
 
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
@@ -49,12 +50,16 @@ const MovedInTogetherDate = ({ history }) => {
                     name='dateMovedInTogether'
                     optional
                     value={moment(dateMovedInTogether.value, ['DD/MM/YYYY','YYYY-M-D']).format('YYYY-M-D')}
-                    onChange={onChange}
+                    onChange={(event, isValid) => {
+                        setIsValid(isValid)
+                        onChange(event, isValid)
+                    }}
                     showDay={false}
                     hideOptionalText={true}
                 />
                 <SubmitButton
                     history={history}
+                    isValid={isValid}
                     onSaveAndGoBackClick={onSaveAndGoBackClick}
                     isLoading={isLoading}
                 />
