@@ -17,10 +17,10 @@ const App = () => <Switch>
     <Route exact path={`${getPageRoute(4)}/(|second-applicant)?`} component={AreYouEmployed} />
     <Route exact path={`${getPageRoute(5)}/(|second-applicant)?`} component={EmploymentDetails} />
     <Route exact path={getPageRoute(6)} component={LanguagesSpokenInYourHome} />
-    <Route exact path={`${getPageRoute(7)}/(|second-applicant)?`} component={HaveYouPreviouslyApplied} />
-    <Route exact path={getPageRoute(8)} component={AreYouMarried} />
-    <Route exact path={getPageRoute(9)} component={MarriageDate} />
-    <Route exact path={getPageRoute(10)} component={MovedInTogetherDate} />
+    <Route exact path={getPageRoute(7)} component={AreYouMarried} />
+    <Route exact path={getPageRoute(8)} component={MarriageDate} />
+    <Route exact path={getPageRoute(9)} component={MovedInTogetherDate} />
+    <Route exact path={`${getPageRoute(10)}/(|second-applicant)?`} component={HaveYouPreviouslyApplied} />
     <Route exact path="/error" component={ErrorPage} />
 </Switch>
 
