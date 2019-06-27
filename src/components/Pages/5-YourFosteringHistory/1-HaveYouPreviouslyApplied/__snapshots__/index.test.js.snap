@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HaveYouPreviouslyApplied snapshot renders correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Your fostering history
+  </h2>,
+  <h2>
+    first name
+     
+    last name
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <h3
+      className="no-margin-bottom"
+    >
+      Have you previously applied to foster, childmind or adopt?
+    </h3>
+    <fieldset>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={true}
+          disabled={undefined}
+          id="have-you-previously-applied-yes"
+          name="previouslyApplied"
+          onChange={[Function]}
+          type="radio"
+          value="true"
+        />
+        <label
+          htmlFor="have-you-previously-applied-yes"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={false}
+          disabled={undefined}
+          id="have-you-previously-applied-no"
+          name="previouslyApplied"
+          onChange={[Function]}
+          type="radio"
+          value="false"
+        />
+        <label
+          htmlFor="have-you-previously-applied-no"
+        >
+          No
+        </label>
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={false}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
+`;

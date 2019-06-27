@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarriageDate snapshot should render correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Your partnership status
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <h3
+      className="optional no-margin-bottom"
+    >
+      Date of your marriage or civil partnerhsip
+    </h3>
+    <p
+      className="optional"
+    >
+      (optional)
+    </p>
+    <fieldset
+      className="input-memorable-date"
+    >
+      <p>
+        For example, 31 3 1980
+      </p>
+      <div>
+        <label>
+          Day
+        </label>
+        <input
+          aria-label="day"
+          className=""
+          name="day"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+      <div>
+        <label>
+          Month
+        </label>
+        <input
+          aria-label="month"
+          className=""
+          name="month"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+      <div>
+        <label>
+          Year
+        </label>
+        <input
+          aria-label="year"
+          className=""
+          name="year"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={false}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
+`;

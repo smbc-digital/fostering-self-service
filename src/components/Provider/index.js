@@ -6,7 +6,7 @@ import { API_ROOT } from '../../config'
 
 export const Applicant = {
 	FirstApplicant: 'firstApplicant',
-	SecondApplicant: 'secondApplicant'
+	SecondApplicant: 'secondApplicant',
 }
 
 const reduceProperties = object => Object.keys(object).reduce((acc, property) => {
@@ -25,6 +25,7 @@ const Provider = ({ children }) => {
 	const [error, setError] = useState(undefined)
 
 	const onChange = (event, isValid) => {
+		console.log(event)
 		setState({
 			...state,
 			[event.target.name]: {
@@ -72,7 +73,7 @@ const Provider = ({ children }) => {
 			...state, 
 			statuses, 
 			firstApplicant: firstApplicantDetails, 
-			secondApplicant: secondApplicantDetails, 
+			secondApplicant: secondApplicantDetails,
 			...caseDetails,
 			country: country.map(_ => ({name: _, value: _})),
 			ethnicity: ethnicity.map(_ => ({name: _, value: _})),
