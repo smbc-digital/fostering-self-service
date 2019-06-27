@@ -15,11 +15,15 @@ describe('LanguagesSpokenInYourHome', () => {
 			otherLanguages: {
 				value: 'Welsh',
 				isValid: true
+			},
+			withPartner: {
+				value: 'Yes',
+				isValid: true
 			}
 		})
 	})
 
-	it('should push to next page on submit', async () => {
+	it('should push to next page on submit for multiple applicants', async () => {
 		// Arrange
 		const history = {
 			push: jest.fn()
@@ -35,6 +39,41 @@ describe('LanguagesSpokenInYourHome', () => {
 
 		// Assert
 		const pageRoute = helpers.getPageRoute(7)
+		expect(history.push).toHaveBeenCalledWith(pageRoute)
+	})
+
+	it('should push to next page on submit for single applicants', async () => {
+		// Arrange
+		const history = {
+			push: jest.fn()
+		}
+
+		useContextMock.mockReturnValue({
+			onChangeStatus: onChangeStatusMock,
+			primaryLanguage: {
+				value: 'English',
+				isValid: true
+			},
+			otherLanguages: {
+				value: 'Welsh',
+				isValid: true
+			},
+			withPartner: {
+				value: 'No',
+				isValid: true
+			}
+		})
+
+		helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+		const wrapper = mount(<LanguagesSpokenInYourHome history={history} />)
+		
+		// Act
+		await wrapper.find('form').simulate('submit')
+		await Promise.resolve()
+
+		// Assert
+		const pageRoute = helpers.getPageRoute(10)
 		expect(history.push).toHaveBeenCalledWith(pageRoute)
 	})
 
