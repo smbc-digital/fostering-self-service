@@ -1,9 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Anchor } from 'smbc-react-components'
 import { Applicant } from '../Provider'
 
 const SubmitButton = ({ currentApplicant, secondApplicant, onSaveAndGoBackClick, history, isLoading = false }) => {
+    const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)
+
     if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
         return <Fragment>
             <Button
@@ -20,18 +22,22 @@ const SubmitButton = ({ currentApplicant, secondApplicant, onSaveAndGoBackClick,
     return <Fragment>
         <Button
             label="Save and next step"
-            isValid
-            isLoading={isLoading}
+            isValid={!saveAndGoBackClicked}
+            isLoading={isLoading && !saveAndGoBackClicked}
         />
         <Anchor
             label='Back'
             history={history} />
         <Button
             label="Save and go back to fostering area"
-            isValid
-            isLoading={isLoading}
+            isValid={!isLoading && !saveAndGoBackClicked}
+            isLoading={isLoading && saveAndGoBackClicked}
             colour='inverted'
-            onButtonClick={onSaveAndGoBackClick}
+            onButtonClick={event => {
+                    setSaveAndGoBackClicked(true)
+                    onSaveAndGoBackClick(event)
+                }
+            }
             useLeftChevron={true} />
     </Fragment>
 }

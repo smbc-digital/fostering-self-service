@@ -49,7 +49,7 @@ const Start = () => {
 		{
 			title: 'Contact the fostering team',
 			body: () => <p>Contact the fostering team to tell us that you’re interested in becoming a foster carer.</p>,
-			status: 0
+			status: 1
 		},
 		{
 			title: 'Find out more about fostering',
@@ -59,7 +59,7 @@ const Start = () => {
 		{
 			title: 'Answer questions before your home visit',
 			body: () => <FormLinks />,
-			status: 1
+			displayHr: false
 		},
 		{
 			title: 'Home visit',
@@ -97,6 +97,7 @@ const Start = () => {
 						title={task.title}
 						body={task.body}
 						status={task.status}
+						displayHr={task.displayHr}
 					/>
 				</li>)}
 			</ol>
