@@ -1,7 +1,8 @@
-import React from 'react'
-import { Switch, Route } from 'react-router'
-import { getPageRoute } from '../../helpers/pagehelper'
+import React, { useContext } from 'react'
+import { Switch, Route, Redirect } from 'react-router'
+import { getPageRoute } from 'helpers/pagehelper'
 import { ErrorPage } from 'smbc-react-components'
+import { Context } from 'context'
 import Start from '../Pages/Start'
 import { KnownByAnotherName, MoreAboutYou } from '../Pages/1-TellUsAboutYou'
 import { AreYouEmployed, EmploymentDetails } from '../Pages/2-YourEmploymentDetails'
@@ -9,6 +10,19 @@ import LanguagesSpokenInYourHome from '../Pages/3-LanguagesSpokenInYourHome'
 import { HaveYouPreviouslyApplied } from '../Pages/5-YourFosteringHistory'
 import { AreYouMarried, MarriageDate, MovedInTogetherDate } from '../Pages/4-PartnershipStatus'
 
+const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
+    const { secondApplicant } = useContext(Context)
+    
+    return ( 
+        <Route 
+            {...props} 
+            render={props => 
+                secondApplicant 
+                ? <Component {...props} /> 
+                : <Redirect to={getPageRoute(1)} />} 
+        />
+    )
+}
 
 const App = () => <Switch>
     <Route exact path={getPageRoute(1)} component={Start} />
