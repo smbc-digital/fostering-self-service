@@ -8,7 +8,7 @@ import SubmitButton from '../../../SubmitButton'
 
 const HaveYouPreviouslyApplied = ({ history, match }) => {
     const context = useContext(Context)
-    const currentApplicant = getCurrentApplicant(match) 
+    const currentApplicant = getCurrentApplicant(match)
     const { previouslyApplied, firstName, lastName } = context[currentApplicant]
     const {  secondApplicant, onChangeApplicant, onChangeStatus } = context
 
@@ -51,11 +51,11 @@ const HaveYouPreviouslyApplied = ({ history, match }) => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(9)}/second-applicant`)
+            history.push(`${getPageRoute(10)}/second-applicant`)
             return
         }
 
-        await handleFormUpdate(getPageRoute(11)) 
+        await handleFormUpdate(getPageRoute(1)) 
     }
 
     const onSaveAndGoBackClick = async event => {
