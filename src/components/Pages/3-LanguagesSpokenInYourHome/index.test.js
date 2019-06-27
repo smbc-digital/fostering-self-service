@@ -11,6 +11,10 @@ describe('LanguagesSpokenInYourHome', () => {
 			primaryLanguage: {
 				value: 'English',
 				isValid: true
+			},
+			otherLanguages: {
+				value: 'Welsh',
+				isValid: true
 			}
 		})
 	})
