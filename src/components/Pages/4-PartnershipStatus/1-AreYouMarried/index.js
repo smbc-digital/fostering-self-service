@@ -23,7 +23,9 @@ const AreYouMarried = ({ history }) => {
         }
     ]
 
-    const onSubmit = () => {
+    const onSubmit = event => {
+        event.preventDefault()
+        
 		if (marriedOrInACivilPartnershipValue === 'true') {
             history.push(getPageRoute(8))
             return
