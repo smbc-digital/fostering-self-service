@@ -29,7 +29,7 @@ const FormLinks = () => {
 		statuses: {
 			//childrenLivingAwayFromYourHomeStatus,
 			languageSpokenInYourHomeStatus,
-			//tellUsAboutYourInterestInFosteringStatus,
+			tellUsAboutYourInterestInFosteringStatus,
 			tellUsAboutYourselfStatus,
 			yourEmploymentDetailsStatus,
 			yourFosteringHistoryStatus,
@@ -47,6 +47,7 @@ const FormLinks = () => {
 		<TaskLink route='/fostering/languages-spoken-in-your-home' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home' />
 		{secondApplicant && <TaskLink route={getPageRoute(7)} status={yourPartnershipStatus} name='Your partnership status' />}
 		<TaskLink route='/fostering/your-fostering-history' status={yourFosteringHistoryStatus} name='Your fostering history' />
+		<TaskLink route={getPageRoute(12)} status={tellUsAboutYourInterestInFosteringStatus} name='Tell us about your interest in fostering' />
 	</Fragment>
 }
 
