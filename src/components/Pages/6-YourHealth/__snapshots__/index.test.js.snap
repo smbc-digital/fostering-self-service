@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Your Health snapshot renders correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Your health
+  </h2>,
+  <h3>
+    first name
+     
+    last name
+  </h3>,
+  <form
+    onSubmit={[Function]}
+  >
+    <h3
+      className="no-margin-bottom"
+    >
+      Are you registered as disabled?
+    </h3>
+    <fieldset>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={true}
+          disabled={undefined}
+          id="register-disabled-yes"
+          name="registeredDisabled"
+          onChange={[Function]}
+          type="radio"
+          value="true"
+        />
+        <label
+          htmlFor="register-disabled-yes"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={false}
+          disabled={undefined}
+          id="register-disabled-no"
+          name="registeredDisabled"
+          onChange={[Function]}
+          type="radio"
+          value="false"
+        />
+        <label
+          htmlFor="register-disabled-no"
+        >
+          No
+        </label>
+      </div>
+    </fieldset>
+    <h3
+      className="no-margin-bottom"
+    >
+      Do you have any medical conditions?
+    </h3>
+    <fieldset>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={true}
+          disabled={undefined}
+          id="health-problems-yes"
+          name="practitioner"
+          onChange={[Function]}
+          type="radio"
+          value="true"
+        />
+        <label
+          htmlFor="health-problems-yes"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          defaultChecked={false}
+          disabled={undefined}
+          id="health-problems-no"
+          name="practitioner"
+          onChange={[Function]}
+          type="radio"
+          value="false"
+        />
+        <label
+          htmlFor="health-problems-no"
+        >
+          No
+        </label>
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+  </form>,
+]
+`;

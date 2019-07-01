@@ -9,7 +9,7 @@ import SubmitButton from '../../SubmitButton'
 const YourHealth = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant,  onChangeStatus } = context
+    const { onChangeApplicant, secondApplicant, onChangeStatus } = context
     const { firstName, lastName, registeredDisabled, practitioner } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
 
