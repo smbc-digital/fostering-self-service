@@ -111,7 +111,10 @@ Array [
           <a
 <<<<<<< refs/remotes/origin/master
             href="/fostering/your-partnership-status"
+<<<<<<< refs/remotes/origin/master
 =======
+=======
+>>>>>>> feature(YourHealth): added your health page and tests
             href="/fostering/about-your-health"
             onClick={[Function]}
           >
@@ -123,6 +126,9 @@ Array [
         >
           <a
             href="/fostering/date-of-marriage-or-partnership"
+<<<<<<< refs/remotes/origin/master
+>>>>>>> feature(YourHealth): added your health page and tests
+=======
 >>>>>>> feature(YourHealth): added your health page and tests
             onClick={[Function]}
           >

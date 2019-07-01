@@ -9,7 +9,11 @@ import SubmitButton from '../../SubmitButton'
 const YourHealth = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
+<<<<<<< refs/remotes/origin/master
     const { onChangeApplicant, secondApplicant, onChangeStatus } = context
+=======
+    const { onChangeApplicant, secondApplicant,  onChangeStatus } = context
+>>>>>>> feature(YourHealth): added your health page and tests
     const { firstName, lastName, registeredDisabled, practitioner } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
 
