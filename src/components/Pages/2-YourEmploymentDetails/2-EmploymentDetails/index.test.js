@@ -17,40 +17,12 @@ describe('YourEmploymnetDetails', () => {
             nationality: [],
             ethnicity: [],
             firstApplicant: {
-                everBeenKnownByAnotherName: {
-                    value: 'true',
-                    isValid: true
-                },
                 firstName: {
                     value: 'first name',
                     isValid: true
                 },
                 lastName: {
                     value: 'last name',
-                    isValid: true
-                },
-                sexualOrientation: {
-                    value: 'test',
-                    isValid: true
-                },
-                nationality: {
-                    value: 'a place',
-                    isValid: true
-                },
-                ethnicity: {
-                    value: 'a place',
-                    isValid: true
-                },
-                religion: {
-                    value: 'a place',
-                    isValid: true
-                },
-                placeOfBirth: {
-                    value: 'a place',
-                    isValid: true
-                },
-                gender: {
-                    value: 'a place',
                     isValid: true
                 },
                 isEmployed:{
@@ -83,30 +55,6 @@ describe('YourEmploymnetDetails', () => {
                     value: 'second applicant last name',
                     isValid: true
                 },
-                sexualOrientation: {
-                    value: 'test',
-                    isValid: true
-                },
-                nationality: {
-                    value: 'a place',
-                    isValid: true
-                }, 
-                ethnicity: {
-                    value: 'a place',
-                    isValid: true
-                }, 
-                religion: {
-                    value: 'a place',
-                    isValid: true
-                }, 
-                placeOfBirth: {
-                    value: 'a place',
-                    isValid: true
-                }, 
-                gender: {
-                    value: 'a place',
-                    isValid: true
-                },
                 isEmployed:{
                     value: 'true',
                     isValid: true
@@ -127,15 +75,50 @@ describe('YourEmploymnetDetails', () => {
         })
     })
 
-    it('should push to next page on submit, when first applicant', async () => {
+    it('should push to next page on submit, when single applicant', async () => {
         // Arrange
         const history = {
             push: jest.fn()
         }
 
         const match = {
-            params: ['second-applicant']
+            params: undefined
         }
+
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            country: [],
+            nationality: [],
+            ethnicity: [],
+            firstApplicant: {
+                firstName: {
+                    value: 'first name',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                isEmployed:{
+                    value: 'true',
+                    isValid: true
+                },
+                currentEmployer: {
+                    value: 'employer1',
+                    isValid: true
+                },
+                currentHoursOfWork: {
+                    value: '1',
+                    isValid: true
+                },
+                jobTitle: {
+                    value: 'ceo',
+                    isValid: true
+                }
+            }
+        })
 
         helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
@@ -146,7 +129,7 @@ describe('YourEmploymnetDetails', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(4)
+        const pageRoute = helpers.getPageRoute(6)
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 

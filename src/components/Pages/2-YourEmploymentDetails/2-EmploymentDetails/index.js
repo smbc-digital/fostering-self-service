@@ -37,7 +37,7 @@ const EmploymentDetails = ({ history, match }) => {
             return
         }
 
-        await handleFormUpdate(getPageRoute(4))
+        await handleFormUpdate(getPageRoute(6))
     }
 
     const onSaveAndGoBackClick = async event => {
