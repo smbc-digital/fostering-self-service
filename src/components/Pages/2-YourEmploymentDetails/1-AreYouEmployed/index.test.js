@@ -102,7 +102,7 @@ describe('YourEmploymentDetails', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
     })
 
-    it('should push to second user on same page, when user selects false', () => {
+    it('should push to second user on same page, when user selects false', async () => {
 
         //Arrange
         useContextMock.mockReturnValue({
@@ -166,9 +166,12 @@ describe('YourEmploymentDetails', () => {
             params: undefined
         }
 
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(4))
+
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        wrapper.find('Button').simulate('submit')
+        await wrapper.find('Button').simulate('submit')
+        await Promise.resolve()
 
         const pageRoute = helpers.getPageRoute(4)
 
@@ -194,7 +197,7 @@ describe('YourEmploymentDetails', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 
-    it('should push to page 1 when user selects false and there are no second applicant', () => {
+    it('should push to page 6 when user selects false and there are no second applicant', async () => {
 
         //Arrange
         useContextMock.mockReturnValue({
@@ -236,16 +239,19 @@ describe('YourEmploymentDetails', () => {
             params: undefined
         }
 
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        wrapper.find('Button').simulate('submit')
+        await wrapper.find('Button').simulate('submit')
+        await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(1)
+        const pageRoute = helpers.getPageRoute(6)
 
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 
-    it('should push to page 1 when second applicant selects false', () => {
+    it('should push to page 6 when second applicant selects false', async () => {
 
         //Arrange
         useContextMock.mockReturnValue({
@@ -309,11 +315,14 @@ describe('YourEmploymentDetails', () => {
             params: ['second-applicant']
         }
 
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        wrapper.find('Button').simulate('submit')
+        await wrapper.find('Button').simulate('submit')
+        await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(1)
+        const pageRoute = helpers.getPageRoute(6)
 
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
