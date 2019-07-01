@@ -1,17 +1,34 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { RadioInputsContainer, Button, Anchor} from 'smbc-react-components'
+import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from '../../../../context'
-import { getCurrentApplicant, getPageRoute, updateFormStatus, FormName } from '../../../../helpers'
+import { getCurrentApplicant, getPageRoute, updateFormStatus, FormName, updateForm } from '../../../../helpers'
 import { Applicant } from '../../../Provider'
 
 const AreYouEmployed = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant } = context
+    const { onChangeApplicant, secondApplicant,  onChangeStatus } = context
     const { firstName, lastName, areYouEmployed } = context[currentApplicant]
+    const [isLoading, setIsLoading] = useState(false)
 
     const { yourEmploymentDetailsStatus } = context.statuses
+
+    const handleFormUpdate = async nextPageRoute => {
+        setIsLoading(true)
+
+        try {
+            const status = await updateForm(FormName.YourEmploymentDetails, {
+                firstApplicant: context.firstApplicant,
+                secondApplicant: context.secondApplicant
+            })
+            onChangeStatus('yourEmploymentDetailsStatus', status)
+            setIsLoading(false)
+            history.push(nextPageRoute)
+        } catch (error) {
+            history.push('/error')
+        }
+    }
 
     const options = [
         {
@@ -31,12 +48,19 @@ const AreYouEmployed = ({ history, match }) => {
     const onSubmit = event => {
         event.preventDefault()
 
-        if(currentApplicant === Applicant.FirstApplicant  && (!areYouEmployed.value || areYouEmployed.value === 'false') ){
+        if(currentApplicant === Applicant.FirstApplicant  && (!areYouEmployed.value || areYouEmployed.value == 'false') ){
             if(!secondApplicant){
-                history.push(getPageRoute(1))
+                event.stopPropagation()
+                event.preventDefault()
+
+                handleFormUpdate(getPageRoute(6))
                 return
             }
-            history.push(`${getPageRoute(4)}/second-applicant`)
+            event.stopPropagation()
+            event.preventDefault()
+
+            handleFormUpdate(`${getPageRoute(4)}/second-applicant`)
+            return
         } else if(areYouEmployed.value == 'true' || areYouEmployed.value == true) {
             if(currentApplicant === Applicant.SecondApplicant){
                 history.push(`${getPageRoute(5)}/second-applicant`)
@@ -44,12 +68,15 @@ const AreYouEmployed = ({ history, match }) => {
             }
             history.push(getPageRoute(5))
         } else {
-            history.push(getPageRoute(1))
+            event.stopPropagation()
+            event.preventDefault()
+
+            handleFormUpdate(getPageRoute(6))
         }
     }
     useEffect(() => {
         updateFormStatus(
-            FormName.YourEmploymentDetails, 
+            FormName.YourEmploymentDetails,
             yourEmploymentDetailsStatus,
             newStatus => context.onChangeStatus('yourEmploymentDetailsStatus', newStatus))
     }, [])
@@ -67,7 +94,7 @@ const AreYouEmployed = ({ history, match }) => {
                 onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
                 value={radioValue}
             />
-            <Button label="Next step" isValid />
+            <Button label={radioValue === 'false' ? 'Save and next step' : 'Next step'} isValid isLoading={isLoading}/>
             <Anchor label='Back' history={history}/>
         </form>
     )
