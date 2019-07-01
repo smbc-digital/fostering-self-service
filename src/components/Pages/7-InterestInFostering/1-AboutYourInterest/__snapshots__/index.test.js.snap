@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutYourInterest snapshot should render correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Tell us about your interest in fostering
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className=""
+      htmlFor="reasonsForFostering"
+    >
+      Tell us why you're interested in fostering
+    </label>
+    <p
+      className="smallerText"
+    >
+      Your description can be up to 2000 characters long
+    </p>
+    <textarea
+      aria-label={undefined}
+      aria-live="off"
+      className={
+        Array [
+          "char-limit",
+        ]
+      }
+      id="reasonsForFostering"
+      maxLength={2000}
+      name="reasonsForFostering"
+      onChange={[Function]}
+      optional={undefined}
+      value=""
+    />
+    <p
+      className="smallerText"
+    >
+      You have 
+      2000
+       characters remaining
+    </p>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+  </form>,
+]
+`;
