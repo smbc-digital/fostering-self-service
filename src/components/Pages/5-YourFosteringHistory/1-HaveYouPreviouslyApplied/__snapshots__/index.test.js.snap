@@ -27,7 +27,7 @@ Array [
         role="radiogroup"
       >
         <input
-          defaultChecked={true}
+          checked={true}
           disabled={undefined}
           id="have-you-previously-applied-yes"
           name="previouslyApplied"
@@ -46,7 +46,7 @@ Array [
         role="radiogroup"
       >
         <input
-          defaultChecked={false}
+          checked={false}
           disabled={undefined}
           id="have-you-previously-applied-no"
           name="previouslyApplied"
