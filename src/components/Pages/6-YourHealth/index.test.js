@@ -116,8 +116,6 @@ describe('Your Health', () => {
         expect(history.push).toHaveBeenCalled()
     })
 
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
     it('should push to error page on updateForm error', async () => {
         // Arrange
         const match = {
@@ -125,15 +123,10 @@ describe('Your Health', () => {
                 'second-applicant'
             ]
         }
-=======
-    it('should push to next page on submit, when second applicant', () => {
-        // Arrange
->>>>>>> feature(YourHealth): added your health page and tests
         const history = {
             push: jest.fn()
         }
 
-<<<<<<< refs/remotes/origin/master
         helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
         const wrapper = mount(<YourHealth history={history} match={match} />)
 
@@ -142,34 +135,8 @@ describe('Your Health', () => {
 
         // Assert
         expect(history.push).toHaveBeenCalledWith('/error')
-=======
-        const match = {
-            params: ['second-applicant']
-        }
-=======
-    // TO DO: Make it go to the next mini form and test that it does so
-    // it('should push to next mini form page on submit, when second applicant', async () => {
-    //     // Arrange
-    //     const history = {
-    //         push: jest.fn()
-    //     }
-
-    //     const match = {
-    //         params: ['second-applicant']
-    //     }
->>>>>>> test(YourHealth): fixed test wip
-
-    //     helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
-
-    //     const wrapper = mount(<YourHealth history={history} match={match}/>)
-
-<<<<<<< refs/remotes/origin/master
-        // Assert
-        const pageRoute = helpers.getPageRoute(5)
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
->>>>>>> feature(YourHealth): added your health page and tests
     })
-=======
+
     //     // Act
     //     await wrapper.find('Button').at(0).simulate('submit')
     //     await Promise.resolve()
@@ -178,7 +145,6 @@ describe('Your Health', () => {
     //     const pageRoute = helpers.getPageRoute(6)
     //     expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
     // })
->>>>>>> test(YourHealth): fixed test wip
 
     it('should push to second user on same page, when user selects false', () => {
 
@@ -306,12 +272,9 @@ describe('Your Health', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
     })
 
-<<<<<<< refs/remotes/origin/master
-=======
    
     
     
->>>>>>> feature(YourHealth): added your health page and tests
     it('should call onChangeApplicant', () => {
         // Arrange
         const history = {
@@ -381,30 +344,6 @@ describe('Your Health', () => {
         expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
 >>>>>>> test(YourHealth): fixed test wip
     })
-    // it('should update form status', async () => {
-    //     // Arrange
-    //     const history = {
-    //         push: jest.fn()
-    //     }
-
-    //     const match = {
-    //         params: undefined
-    //     }
-
-    //     const mockPromise = Promise.resolve()
-    //     helpers.updateFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
-    //         setStatus(status)
-    //     })
-    //     helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
-
-    //     // Act
-    //     mount(<YourHealth history={history} match={match}/>)
-    //     await mockPromise
-
-    //     // Assert
-    //     expect(onChangeStatusMock).toHaveBeenCalled()
-
-    // })
 
     describe('snapshot', () => {
         it('renders correctly', () => {
