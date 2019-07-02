@@ -77,5 +77,14 @@ exports[`YourEmploymentDetails snapshot renders correctly 1`] = `
       Back
     </a>
   </p>
+  <button
+    className="button-inverted left-chevron"
+    disabled={true}
+    id={undefined}
+    onClick={[Function]}
+    type="submit"
+  >
+    Save and go back to fostering area
+  </button>
 </form>
 `;

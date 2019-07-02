@@ -76,7 +76,7 @@ describe('YourEmploymentDetails', () => {
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
         // Act
-        wrapper.find('Button').simulate('submit')
+        wrapper.find('Button').at(0).simulate('submit')
 
         // Assert
         expect(history.push).toHaveBeenCalled()
@@ -95,7 +95,7 @@ describe('YourEmploymentDetails', () => {
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
         // Act
-        wrapper.find('Button').simulate('submit')
+        wrapper.find('Button').at(0).simulate('submit')
 
         // Assert
         const pageRoute = helpers.getPageRoute(5)
@@ -170,7 +170,7 @@ describe('YourEmploymentDetails', () => {
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        await wrapper.find('Button').simulate('submit')
+        await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
         const pageRoute = helpers.getPageRoute(4)
@@ -190,7 +190,7 @@ describe('YourEmploymentDetails', () => {
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        wrapper.find('Button').simulate('submit')
+        wrapper.find('Button').at(0).simulate('submit')
 
         const pageRoute = helpers.getPageRoute(5)
 
@@ -243,7 +243,7 @@ describe('YourEmploymentDetails', () => {
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        await wrapper.find('Button').simulate('submit')
+        await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
         const pageRoute = helpers.getPageRoute(6)
@@ -319,10 +319,64 @@ describe('YourEmploymentDetails', () => {
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        await wrapper.find('Button').simulate('submit')
+        await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
         const pageRoute = helpers.getPageRoute(6)
+
+        expect(history.push).toHaveBeenCalledWith(pageRoute)
+    })
+
+    it('should push to page 1 when single applicant selects false', async () => {
+
+        //Arrange
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            statuses: {
+                YourEmploymentDetails: 0
+            },
+            firstApplicant: {
+                everBeenKnownByAnotherName: {
+                    value: 'true',
+                    isValid: true
+                },
+                firstName: {
+                    value: 'first name',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                areYouEmployed:{
+                    value: 'false',
+                    isvalid: true
+                }
+            }
+        })
+
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
+
+        await wrapper.find('Button').at(1).simulate('click')
+        await Promise.resolve()
+
+        const pageRoute = helpers.getPageRoute(1)
 
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
