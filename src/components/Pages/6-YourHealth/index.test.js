@@ -78,29 +78,26 @@ describe('Your Health', () => {
         expect(history.push).toHaveBeenCalled()
     })
 
-    // TO DO: Make it go to the next mini form and test that it does so
-    // it('should push to next mini form page on submit, when second applicant', async () => {
-    //     // Arrange
-    //     const history = {
-    //         push: jest.fn()
-    //     }
+    it('should push to error page on updateForm error', async () => {
+        // Arrange
+        const match = {
+            params: [
+                'second-applicant'
+            ]
+        }
+        const history = {
+            push: jest.fn()
+        }
 
-    //     const match = {
-    //         params: ['second-applicant']
-    //     }
+        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        const wrapper = mount(<YourHealth history={history} match={match} />)
 
-    //     helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        // Act
+        await wrapper.find('form').simulate('submit')
 
-    //     const wrapper = mount(<YourHealth history={history} match={match}/>)
-
-    //     // Act
-    //     await wrapper.find('Button').at(0).simulate('submit')
-    //     await Promise.resolve()
-
-    //     // Assert
-    //     const pageRoute = helpers.getPageRoute(6)
-    //     expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
-    // })
+        // Assert
+        expect(history.push).toHaveBeenCalledWith('/error')
+    })
 
     it('should push to second user on same page, when user selects false', () => {
 
@@ -171,9 +168,6 @@ describe('Your Health', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
     })
 
-   
-    
-    
     it('should call onChangeApplicant', () => {
         // Arrange
         const history = {
@@ -213,30 +207,6 @@ describe('Your Health', () => {
 
         expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
     })
-    // it('should update form status', async () => {
-    //     // Arrange
-    //     const history = {
-    //         push: jest.fn()
-    //     }
-
-    //     const match = {
-    //         params: undefined
-    //     }
-
-    //     const mockPromise = Promise.resolve()
-    //     helpers.updateFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
-    //         setStatus(status)
-    //     })
-    //     helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
-
-    //     // Act
-    //     mount(<YourHealth history={history} match={match}/>)
-    //     await mockPromise
-
-    //     // Assert
-    //     expect(onChangeStatusMock).toHaveBeenCalled()
-
-    // })
 
     describe('snapshot', () => {
         it('renders correctly', () => {
