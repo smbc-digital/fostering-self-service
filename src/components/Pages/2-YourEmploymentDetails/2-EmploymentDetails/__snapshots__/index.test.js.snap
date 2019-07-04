@@ -68,7 +68,7 @@ exports[`YourEmploymnetDetails snapshot renders correctly 1`] = `
       role="radiogroup"
     >
       <input
-        checked={false}
+        defaultChecked={false}
         disabled={undefined}
         id="current-hours-of-work-full-time"
         name="currentHoursOfWork"
@@ -87,7 +87,7 @@ exports[`YourEmploymnetDetails snapshot renders correctly 1`] = `
       role="radiogroup"
     >
       <input
-        checked={true}
+        defaultChecked={true}
         disabled={undefined}
         id="current-hours-of-work-part-time"
         name="currentHoursOfWork"
