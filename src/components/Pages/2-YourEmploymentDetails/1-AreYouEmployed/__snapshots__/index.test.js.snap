@@ -26,7 +26,7 @@ exports[`YourEmploymentDetails snapshot renders correctly 1`] = `
       role="radiogroup"
     >
       <input
-        checked={true}
+        defaultChecked={true}
         disabled={undefined}
         id="are-you-employed-yes"
         name="areYouEmployed"
@@ -45,7 +45,7 @@ exports[`YourEmploymentDetails snapshot renders correctly 1`] = `
       role="radiogroup"
     >
       <input
-        checked={false}
+        defaultChecked={false}
         disabled={undefined}
         id="are-you-employed-no"
         name="areYouEmployed"

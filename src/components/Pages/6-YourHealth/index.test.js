@@ -7,6 +7,7 @@ describe('Your Health', () => {
 
     const onChangeApplicantMock = jest.fn()
     const onChangeStatusMock = jest.fn()
+    const onChangeMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
@@ -16,15 +17,7 @@ describe('Your Health', () => {
             statuses: {
                 YourEmploymentDetails: 0
             },
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
             firstApplicant: {
-=======
-            firstApplicant: {              
->>>>>>> feature(YourHealth): added your health page and tests
-=======
-            firstApplicant: {
->>>>>>> test(YourHealth): fixed test wip
                 firstName: {
                     value: 'first name',
                     isValid: true
@@ -33,10 +26,6 @@ describe('Your Health', () => {
                     value: 'last name',
                     isValid: true
                 },
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
-=======
->>>>>>> test(YourHealth): fixed test wip
                 registeredDisabled: {
                     value: 'true',
                     isValid: true
@@ -45,11 +34,6 @@ describe('Your Health', () => {
                     value: 'true',
                     isValid: true
                 }
-<<<<<<< refs/remotes/origin/master
-=======
->>>>>>> feature(YourHealth): added your health page and tests
-=======
->>>>>>> test(YourHealth): fixed test wip
             },
             secondApplicant: {
                 everBeenKnownByAnotherName: {
@@ -64,8 +48,6 @@ describe('Your Health', () => {
                     value: 'second applicant last name',
                     isValid: true
                 },
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
                 registeredDisabled: {
                     value: 'true',
                     isValid: true
@@ -73,26 +55,11 @@ describe('Your Health', () => {
                 practitioner: {
                     value: 'true',
                     isValid: true
-                }
-=======
+                },
                 anotherName: {
                     value: 'last name',
-=======
-                registeredDisabled: {
-                    value: 'true',
->>>>>>> test(YourHealth): fixed test wip
-                    isValid: true
-                },
-                practitioner: {
-                    value: 'true',
-<<<<<<< refs/remotes/origin/master
-                    isvalid: true
-                },
->>>>>>> feature(YourHealth): added your health page and tests
-=======
                     isValid: true
                 }
->>>>>>> test(YourHealth): fixed test wip
             }
         })
     })
@@ -157,16 +124,10 @@ describe('Your Health', () => {
                 YourEmploymentDetails: 0
             },
             firstApplicant: {
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
-=======
                 everBeenKnownByAnotherName: {
                     value: 'true',
                     isValid: true
                 },
->>>>>>> feature(YourHealth): added your health page and tests
-=======
->>>>>>> test(YourHealth): fixed test wip
                 firstName: {
                     value: 'first name',
                     isValid: true
@@ -175,8 +136,6 @@ describe('Your Health', () => {
                     value: 'last name',
                     isValid: true
                 },
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
                 registeredDisabled: {
                     value: 'false',
                     isValid: true
@@ -184,23 +143,10 @@ describe('Your Health', () => {
                 practitioner: {
                     value: 'false',
                     isValid: true
-=======
+                },
                 anotherName: {
                     value: 'last name',
-=======
-                registeredDisabled: {
-                    value: 'false',
->>>>>>> test(YourHealth): fixed test wip
                     isValid: true
-                },
-                practitioner: {
-                    value: 'false',
-<<<<<<< refs/remotes/origin/master
-                    isvalid: true
->>>>>>> feature(YourHealth): added your health page and tests
-=======
-                    isValid: true
->>>>>>> test(YourHealth): fixed test wip
                 }
             },
             secondApplicant: {
@@ -216,8 +162,6 @@ describe('Your Health', () => {
                     value: 'second applicant last name',
                     isValid: true
                 },
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
                 registeredDisabled: {
                     value: 'false',
                     isValid: true
@@ -225,7 +169,7 @@ describe('Your Health', () => {
                 practitioner: {
                     value: 'false',
                     isValid: true
-=======
+                },
                 anotherName: {
                     value: 'last name',
                     isValid: true
@@ -233,16 +177,6 @@ describe('Your Health', () => {
                 areYouEmployed:{
                     value: 'true',
                     isvalid: true
->>>>>>> feature(YourHealth): added your health page and tests
-=======
-                registeredDisabled: {
-                    value: 'false',
-                    isValid: true
-                },
-                practitioner: {
-                    value: 'false',
-                    isValid: true
->>>>>>> test(YourHealth): fixed test wip
                 }
             }
         })
@@ -259,15 +193,7 @@ describe('Your Health', () => {
 
         wrapper.find('Button').simulate('submit')
 
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
         const pageRoute = helpers.getPageRoute(6)
-=======
-        const pageRoute = helpers.getPageRoute(4)
->>>>>>> feature(YourHealth): added your health page and tests
-=======
-        const pageRoute = helpers.getPageRoute(6)
->>>>>>> test(YourHealth): fixed test wip
 
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
     })
@@ -294,23 +220,13 @@ describe('Your Health', () => {
         expect(onChangeApplicantMock).toHaveBeenCalled()
     })
 
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
     it('should push to correct page on save and go back', async () => {
-=======
-    it('should update form status', async () => {
->>>>>>> feature(YourHealth): added your health page and tests
-=======
-    it('should push to correct page on save and go back', async () => {
->>>>>>> test(YourHealth): fixed test wip
         // Arrange
         const history = {
             push: jest.fn()
         }
 
         const match = {
-<<<<<<< refs/remotes/origin/master
-<<<<<<< refs/remotes/origin/master
             params: ['second-applicant']
         }
 
@@ -323,26 +239,27 @@ describe('Your Health', () => {
         await Promise.resolve()
 
         expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
-=======
+    })
+
+    it('should call onChangeApplicant', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
             params: undefined
-=======
-            params: ['second-applicant']
->>>>>>> test(YourHealth): fixed test wip
         }
-
+        
         helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
-
-        const wrapper = mount(<YourHealth history={history} match={match}/>)
-
+        const wrapper = mount(<YourHealth history={history} match={match} />)
+        
         // Act
-        await wrapper.find('Button').at(1).simulate('click')
+        await wrapper.find('form').simulate('submit')
         await Promise.resolve()
 
-<<<<<<< refs/remotes/origin/master
->>>>>>> feature(YourHealth): added your health page and tests
-=======
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
->>>>>>> test(YourHealth): fixed test wip
+        // Assert
+        expect(onChangeApplicantMock).toHaveBeenCalled()
     })
 
     describe('snapshot', () => {

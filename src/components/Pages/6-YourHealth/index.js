@@ -36,7 +36,7 @@ const YourHealth = ({ history, match }) => {
             return
         }
 
-        await handleFormUpdate(getPageRoute(6))
+        await handleFormUpdate(getPageRoute(12))
     }
 
     const onSaveAndGoBackClick = async event => {
@@ -44,6 +44,10 @@ const YourHealth = ({ history, match }) => {
         event.preventDefault()
 
         await handleFormUpdate(getPageRoute(1))
+    }
+
+    const onChange = (event, isValid) => {
+        return onChangeApplicant(event, isValid, currentApplicant) 
     }
 
     const optionsDisabled = [
@@ -85,14 +89,14 @@ const YourHealth = ({ history, match }) => {
                 displayHeading
                 header='Are you registered as disabled?'
                 options={optionsDisabled}
-                onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+                onChange={onChange}
                 value={`${registeredDisabled.value}`}
             />
                 <RadioInputsContainer
                 displayHeading
                 header='Do you have any medical conditions?'
                 options={optionsHealth}
-                onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+                onChange={onChange}
                 value={`${practitioner.value}`}
             />
             <SubmitButton

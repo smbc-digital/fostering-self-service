@@ -109,12 +109,21 @@ Array [
           className="anchor-with-status"
         >
           <a
-<<<<<<< refs/remotes/origin/master
             href="/fostering/your-partnership-status"
-<<<<<<< refs/remotes/origin/master
-=======
-=======
->>>>>>> feature(YourHealth): added your health page and tests
+            onClick={[Function]}
+          >
+            Your partnership status
+          </a>
+          <span
+            className="status-completed"
+          >
+            Completed
+          </span>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <a
             href="/fostering/about-your-health"
             onClick={[Function]}
           >
@@ -126,10 +135,6 @@ Array [
         >
           <a
             href="/fostering/date-of-marriage-or-partnership"
-<<<<<<< refs/remotes/origin/master
->>>>>>> feature(YourHealth): added your health page and tests
-=======
->>>>>>> feature(YourHealth): added your health page and tests
             onClick={[Function]}
           >
             Your partnership status

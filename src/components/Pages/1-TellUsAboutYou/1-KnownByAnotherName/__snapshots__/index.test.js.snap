@@ -27,7 +27,7 @@ Array [
         role="radiogroup"
       >
         <input
-          checked={true}
+          defaultChecked={true}
           disabled={undefined}
           id="have-you-been-known-yes"
           name="everBeenKnownByAnotherName"
@@ -71,7 +71,7 @@ Array [
         role="radiogroup"
       >
         <input
-          checked={false}
+          defaultChecked={false}
           disabled={undefined}
           id="have-you-been-known-no"
           name="everBeenKnownByAnotherName"
