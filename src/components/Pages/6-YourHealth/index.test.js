@@ -102,7 +102,7 @@ describe('Your Health', () => {
         // Assert
         expect(history.push).toHaveBeenCalledWith('/error')
     })
-    
+
     it('should push to second user on same page, when user selects false', () => {
 
         //Arrange
@@ -227,28 +227,7 @@ describe('Your Health', () => {
 
         expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
     })
-
-    it('should call onChangeApplicant', async () => {
-        // Arrange
-        const history = {
-            push: jest.fn()
-        }
-
-        const match = {
-            params: undefined
-        }
-        
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
-        const wrapper = mount(<YourHealth history={history} match={match} />)
-        
-        // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
-
-        // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
-    })
-
+    
     describe('snapshot', () => {
         it('renders correctly', () => {
             const match = {
