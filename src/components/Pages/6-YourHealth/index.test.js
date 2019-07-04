@@ -7,7 +7,6 @@ describe('Your Health', () => {
 
     const onChangeApplicantMock = jest.fn()
     const onChangeStatusMock = jest.fn()
-    const onChangeMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
@@ -103,16 +102,7 @@ describe('Your Health', () => {
         // Assert
         expect(history.push).toHaveBeenCalledWith('/error')
     })
-
-    //     // Act
-    //     await wrapper.find('Button').at(0).simulate('submit')
-    //     await Promise.resolve()
-
-    //     // Assert
-    //     const pageRoute = helpers.getPageRoute(6)
-    //     expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
-    // })
-
+    
     it('should push to second user on same page, when user selects false', () => {
 
         //Arrange
@@ -198,9 +188,6 @@ describe('Your Health', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
     })
 
-   
-    
-    
     it('should call onChangeApplicant', () => {
         // Arrange
         const history = {
