@@ -89,6 +89,10 @@ const AreYouEmployed = ({ history, match }) => {
             newStatus => context.onChangeStatus('yourEmploymentDetailsStatus', newStatus))
     }, [])
 
+    const onChange = (event, isValid) => {
+        return onChangeApplicant(event, isValid, currentApplicant)
+    }
+
     const radioValue = `${areYouEmployed.value}`
     return (
         <form onSubmit={onSubmit}>
@@ -99,7 +103,7 @@ const AreYouEmployed = ({ history, match }) => {
                 displayHeading
                 header='Are you employed?'
                 options={options}
-                onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+                onChange={onChange}
                 value={radioValue}
             />
 

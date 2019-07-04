@@ -62,6 +62,10 @@ const EmploymentDetails = ({ history, match }) => {
 		}
     ]
 
+    const onChange = (event, isValid) => {
+        return onChangeApplicant(event, isValid, currentApplicant)
+    }
+
     return <form onSubmit={onSubmit}>
                 <h1>Your fostering journey</h1>
                 <h2>Your employment details</h2>
@@ -74,7 +78,7 @@ const EmploymentDetails = ({ history, match }) => {
                     optional={true}
                     hideOptional
                     value={currentEmployer.value}
-                    onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+                    onChange={onChange}
                 />
                 <TextInputContainer
                     label='Job title'
@@ -84,13 +88,13 @@ const EmploymentDetails = ({ history, match }) => {
                     optional={true}
                     hideOptional
                     value={jobTitle.value}
-                    onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+                    onChange={onChange}
                 />
                 <RadioInputsContainer
                     displayHeading
                     header='Current hours of work'
                     options={options}
-                    onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+                    onChange={onChange}
                     value={`${currentHoursOfWork.value}`}
                 />
                 <SubmitButton

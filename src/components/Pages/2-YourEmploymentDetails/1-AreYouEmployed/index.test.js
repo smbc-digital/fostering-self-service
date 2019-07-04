@@ -425,6 +425,57 @@ describe('YourEmploymentDetails', () => {
 
     })
 
+    it('should push to error page on updateForm error', async () => {
+        // Arrange
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            statuses: {
+                YourEmploymentDetails: 0
+            },
+            firstApplicant: {
+                everBeenKnownByAnotherName: {
+                    value: 'true',
+                    isValid: true
+                },
+                firstName: {
+                    value: 'first name',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                anotherName: {
+                    value: 'last name',
+                    isValid: true
+                },
+                areYouEmployed:{
+                    value: 'false',
+                    isvalid: true
+                }
+            }
+        })
+
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+
+        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
+
+        // Act
+        wrapper.find('form').simulate('submit')
+
+        // Assert
+        expect(history.push).toHaveBeenCalledWith('/error')
+    })
+
     describe('snapshot', () => {
         it('renders correctly', () => {
             const match = {
