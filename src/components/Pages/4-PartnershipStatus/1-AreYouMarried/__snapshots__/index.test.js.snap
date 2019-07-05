@@ -22,7 +22,7 @@ Array [
         role="radiogroup"
       >
         <input
-          defaultChecked={false}
+          checked={false}
           disabled={undefined}
           id="are-you-married-yes"
           name="marriedOrInACivilPartnership"
@@ -41,7 +41,7 @@ Array [
         role="radiogroup"
       >
         <input
-          defaultChecked={false}
+          checked={false}
           disabled={undefined}
           id="are-you-married-no"
           name="marriedOrInACivilPartnership"

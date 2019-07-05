@@ -117,7 +117,7 @@ const AreYouEmployed = ({ history, match }) => {
             label="Save and go back to fostering area"
             isValid={!isLoading && !saveAndGoBackClicked && radioValue === 'false'}
             isLoading={isLoading && saveAndGoBackClicked}
-            colour='inverted'
+            colour={radioValue !== 'false' ? 'disabled' : 'inverted'}
             onButtonClick={event => {
                     setSaveAndGoBackClicked(true)
                     onSaveAndGoBackClick(event)
