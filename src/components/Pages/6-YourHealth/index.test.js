@@ -183,7 +183,7 @@ describe('Your Health', () => {
 
         wrapper.find('Button').simulate('submit')
 
-        const pageRoute = helpers.getPageRoute(6)
+        const pageRoute = helpers.getPageRoute(11)
 
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
     })
