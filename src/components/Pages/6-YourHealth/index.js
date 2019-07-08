@@ -32,7 +32,7 @@ const YourHealth = ({ history, match }) => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(6)}/second-applicant`)
+            history.push(`${getPageRoute(11)}/second-applicant`)
             return
         }
 
