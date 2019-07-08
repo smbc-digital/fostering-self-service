@@ -11,6 +11,7 @@ const AreYouEmployed = ({ history, match }) => {
     const { onChangeApplicant, secondApplicant,  onChangeStatus } = context
     const { firstName, lastName, areYouEmployed } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
+    const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)
 
     const { yourEmploymentDetailsStatus } = context.statuses
 
@@ -44,6 +45,13 @@ const AreYouEmployed = ({ history, match }) => {
             value: 'false'
 		}
     ]
+
+    const onSaveAndGoBackClick = async event => {
+        event.stopPropagation()
+        event.preventDefault()
+
+        await handleFormUpdate(getPageRoute(1))
+    }
 
     const onSubmit = event => {
         event.preventDefault()
@@ -81,6 +89,10 @@ const AreYouEmployed = ({ history, match }) => {
             newStatus => context.onChangeStatus('yourEmploymentDetailsStatus', newStatus))
     }, [])
 
+    const onChange = (event, isValid) => {
+        return onChangeApplicant(event, isValid, currentApplicant)
+    }
+
     const radioValue = `${areYouEmployed.value}`
     return (
         <form onSubmit={onSubmit}>
@@ -91,11 +103,27 @@ const AreYouEmployed = ({ history, match }) => {
                 displayHeading
                 header='Are you employed?'
                 options={options}
-                onChange={(event, isValid) => onChangeApplicant(event, isValid, currentApplicant)}
+                onChange={onChange}
                 value={radioValue}
             />
-            <Button label={radioValue === 'false' ? 'Save and next step' : 'Next step'} isValid isLoading={isLoading}/>
-            <Anchor label='Back' history={history}/>
+
+        <Button
+            label={radioValue === 'false' ? 'Save and next step' : 'Next step'}
+            isValid={!saveAndGoBackClicked}
+            isLoading={isLoading && !saveAndGoBackClicked}
+        />
+        <Anchor label='Back' history={history} />
+        <Button
+            label="Save and go back to fostering area"
+            isValid={!isLoading && !saveAndGoBackClicked && radioValue === 'false'}
+            isLoading={isLoading && saveAndGoBackClicked}
+            colour={radioValue !== 'false' ? 'disabled' : 'inverted'}
+            onButtonClick={event => {
+                    setSaveAndGoBackClicked(true)
+                    onSaveAndGoBackClick(event)
+                }
+            }
+            useLeftChevron={true} />
         </form>
     )
 }
