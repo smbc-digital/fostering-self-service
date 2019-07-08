@@ -69,7 +69,7 @@ const EmploymentDetails = ({ history, match }) => {
     return <form onSubmit={onSubmit}>
                 <h1>Your fostering journey</h1>
                 <h2>Your employment details</h2>
-                <p>{firstName.value} {lastName.value}</p>
+                <h3>{firstName.value} {lastName.value}</h3>
                 <TextInputContainer
                     label='Current employer'
                     id='currentEmployer'

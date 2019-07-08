@@ -10,11 +10,11 @@ exports[`YourEmploymentDetails snapshot renders correctly 1`] = `
   <h2>
     Your employment details
   </h2>
-  <p>
+  <h3>
     first name
      
     last name
-  </p>
+  </h3>
   <h3
     className="no-margin-bottom"
   >
@@ -26,7 +26,7 @@ exports[`YourEmploymentDetails snapshot renders correctly 1`] = `
       role="radiogroup"
     >
       <input
-        defaultChecked={true}
+        checked={true}
         disabled={undefined}
         id="are-you-employed-yes"
         name="areYouEmployed"
@@ -45,7 +45,7 @@ exports[`YourEmploymentDetails snapshot renders correctly 1`] = `
       role="radiogroup"
     >
       <input
-        defaultChecked={false}
+        checked={false}
         disabled={undefined}
         id="are-you-employed-no"
         name="areYouEmployed"
