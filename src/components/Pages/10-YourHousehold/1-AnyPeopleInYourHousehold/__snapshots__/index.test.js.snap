@@ -1,25 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HaveYouPreviouslyApplied snapshot renders correctly 1`] = `
+exports[`AnyPeopleInYourHousehold snapshot renders correctly 1`] = `
 Array [
   <h1>
     Your fostering journey
   </h1>,
   <h2>
-    Your fostering history
+    Your household
   </h2>,
-  <h3>
-    first name
-     
-    last name
-  </h3>,
   <form
     onSubmit={[Function]}
   >
     <h3
       className="no-margin-bottom"
     >
-      Have you previously applied to foster, childmind or adopt?
+      Are there other people living in your home?
     </h3>
     <fieldset>
       <div
@@ -27,16 +22,16 @@ Array [
         role="radiogroup"
       >
         <input
-          checked={true}
+          checked={false}
           disabled={undefined}
-          id="have-you-previously-applied-yes"
-          name="previouslyApplied"
+          id="any-other-people-yes"
+          name="anyOtherPeopleInYourHousehold"
           onChange={[Function]}
           type="radio"
           value="true"
         />
         <label
-          htmlFor="have-you-previously-applied-yes"
+          htmlFor="any-other-people-yes"
         >
           Yes
         </label>
@@ -48,14 +43,14 @@ Array [
         <input
           checked={false}
           disabled={undefined}
-          id="have-you-previously-applied-no"
-          name="previouslyApplied"
+          id="any-other-people-no"
+          name="anyOtherPeopleInYourHousehold"
           onChange={[Function]}
           type="radio"
           value="false"
         />
         <label
-          htmlFor="have-you-previously-applied-no"
+          htmlFor="any-other-people-no"
         >
           No
         </label>
@@ -70,14 +65,14 @@ Array [
     >
       Next step
     </button>
-    <p>
-      <a
-        href="#"
-        onClick={[Function]}
-      >
-        Back
-      </a>
-    </p>
   </form>,
+  <p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </p>,
 ]
 `;

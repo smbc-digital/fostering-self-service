@@ -27,7 +27,7 @@ Array [
         role="radiogroup"
       >
         <input
-          defaultChecked={true}
+          checked={true}
           disabled={undefined}
           id="register-disabled-yes"
           name="registeredDisabled"
@@ -46,7 +46,7 @@ Array [
         role="radiogroup"
       >
         <input
-          defaultChecked={false}
+          checked={false}
           disabled={undefined}
           id="register-disabled-no"
           name="registeredDisabled"
@@ -72,7 +72,7 @@ Array [
         role="radiogroup"
       >
         <input
-          defaultChecked={true}
+          checked={true}
           disabled={undefined}
           id="health-problems-yes"
           name="practitioner"
@@ -91,7 +91,7 @@ Array [
         role="radiogroup"
       >
         <input
-          defaultChecked={false}
+          checked={false}
           disabled={undefined}
           id="health-problems-no"
           name="practitioner"
