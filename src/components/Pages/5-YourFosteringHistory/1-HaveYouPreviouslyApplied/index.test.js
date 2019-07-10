@@ -83,7 +83,7 @@ describe('HaveYouPreviouslyApplied', () => {
         await wrapper.find('form').simulate('submit')
         await Promise.resolve()
 
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(11))
     })
 
     it('should push to correct page on error', async () => {
