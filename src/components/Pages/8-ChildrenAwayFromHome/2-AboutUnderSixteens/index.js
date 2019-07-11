@@ -23,6 +23,16 @@ const AboutAnyUnderSixteen = ({history, match}) => {
 
 	const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
 
+	
+    const onPersonChange = (values, isValid) => {
+        onChange({
+            target: {
+                name: 'otherPeopleInYourHousehold',
+                value: values
+            }
+        }, isValid)
+	}
+	
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
 
@@ -57,5 +67,6 @@ const AboutAnyUnderSixteen = ({history, match}) => {
 		handleFormUpdate(getPageRoute(19))
 		return
 	}
+
 
 }
