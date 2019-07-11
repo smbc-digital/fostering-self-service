@@ -12,6 +12,7 @@ import { AreYouMarried, MarriageDate, MovedInTogetherDate } from '../Pages/4-Par
 import { HaveYouPreviouslyApplied } from '../Pages/5-YourFosteringHistory'
 import YourHealth from '../Pages/6-YourHealth'
 import { AboutYourInterest, TypesOfFostering } from '../Pages/7-InterestInFostering'
+import { AnyPeopleInYourHousehold, PeopleInYourHousehold, DoYouHaveAnyPets } from '../Pages/10-YourHousehold'
 
 const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
     const { secondApplicant } = useContext(Context)
@@ -35,14 +36,16 @@ const App = () => (
 		<Route exact path={`${getPageRoute(4)}/(|second-applicant)?`} component={AreYouEmployed} />
 		<Route exact path={`${getPageRoute(5)}/(|second-applicant)?`} component={EmploymentDetails} />
 		<Route exact path={getPageRoute(6)} component={LanguagesSpokenInYourHome} />
-		<Route exact path={`${getPageRoute(7)}/(|second-applicant)?`} component={YourHealth} />
-		<JointApplicationOnlyRoute exact path={getPageRoute(8)} component={AreYouMarried} />
-		<JointApplicationOnlyRoute exact path={getPageRoute(9)} component={MarriageDate} />
-		<JointApplicationOnlyRoute exact path={getPageRoute(10)} component={MovedInTogetherDate} />
+		<JointApplicationOnlyRoute exact path={getPageRoute(7)} component={AreYouMarried} />
+		<JointApplicationOnlyRoute exact path={getPageRoute(8)} component={MarriageDate} />
+		<JointApplicationOnlyRoute exact path={getPageRoute(9)} component={MovedInTogetherDate} />
 		<Route exact path={`${getPageRoute(10)}/(|second-applicant)?`} component={HaveYouPreviouslyApplied} />
 		<Route exact path={`${getPageRoute(11)}/(|second-applicant)?`} component={YourHealth} />
 		<Route exact path={getPageRoute(12)} component={AboutYourInterest} />
 		<Route exact path={getPageRoute(13)} component={TypesOfFostering} />
+		<Route exact path={getPageRoute(23)} component={AnyPeopleInYourHousehold} />
+		<Route exact path={getPageRoute(24)} component={PeopleInYourHousehold} />
+		<Route exact path={getPageRoute(25)} component={DoYouHaveAnyPets} />
 		<Route exact path="/error" component={ErrorPage} />
 	</Switch>
 )

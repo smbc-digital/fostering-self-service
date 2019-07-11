@@ -170,6 +170,16 @@ Array [
             Tell us about your interest in fostering
           </a>
         </div>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/your-household"
+            onClick={[Function]}
+          >
+            Your household
+          </a>
+        </div>
       </div>
     </li>
     <li

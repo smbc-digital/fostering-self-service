@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DoYouHaveAnyPets snapshot renders correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Your household
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <h3
+      className="no-margin-bottom"
+    >
+      Do you have any pets?
+    </h3>
+    <fieldset>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          checked={false}
+          disabled={undefined}
+          id="do-you-have-any-pets-yes"
+          name="doYouHaveAnyPets"
+          onChange={[Function]}
+          type="radio"
+          value="true"
+        />
+        <label
+          htmlFor="do-you-have-any-pets-yes"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          checked={false}
+          disabled={undefined}
+          id="do-you-have-any-pets-no"
+          name="doYouHaveAnyPets"
+          onChange={[Function]}
+          type="radio"
+          value="false"
+        />
+        <label
+          htmlFor="do-you-have-any-pets-no"
+        >
+          No
+        </label>
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={false}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
+`;

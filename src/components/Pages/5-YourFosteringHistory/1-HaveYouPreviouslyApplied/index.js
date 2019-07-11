@@ -55,7 +55,7 @@ const HaveYouPreviouslyApplied = ({ history, match }) => {
             return
         }
 
-        await handleFormUpdate(getPageRoute(1)) 
+        await handleFormUpdate(getPageRoute(11)) 
     }
 
     const onSaveAndGoBackClick = async event => {

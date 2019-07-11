@@ -86,5 +86,21 @@
 	{
 		"number": 22,
 		"route": "/fostering/success"
+	},
+	{
+		"number": 23,
+		"route": "/fostering/your-household"
+	},
+	{
+		"number": 24,
+		"route": "/fostering/who-lives-in-your-home"
+	},
+	{
+		"number": 25,
+		"route": "/fostering/do-you-have-any-pets"
+	},
+	{
+		"number": 26,
+		"route": "/fostering/some-really-good-page-that-dont-know-yet"
 	}
 ]
