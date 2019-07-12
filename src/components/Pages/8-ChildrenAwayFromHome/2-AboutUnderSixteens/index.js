@@ -4,7 +4,8 @@ import {
     ComponentsList,
     TextInputContainer,
     SelectInputContainer,
-    MemorableDateInputContainer } from 'smbc-react-components'
+    MemorableDateInputContainer,
+    AddressPicker } from 'smbc-react-components'
 
 import PropTypes from 'prop-types'
 import { getPageRoute, getCurrentApplicant, updateForm, FormName } from '../../../../helpers'
@@ -125,6 +126,14 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                     onChange={onComponentChange}
                     hideOptionalText={true}
                 />
+                <AddressPicker
+                    onChange={onComponentChange}
+                    address={values.address}
+                    manualLabel='Please provide an address for us to send any final bills or letters to'
+                    enableH2={true}
+                    showOnlyManual={true}
+                    noPostcodeValidation={true}
+                    />
             </Fragment>
         )
     }
