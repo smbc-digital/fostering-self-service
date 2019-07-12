@@ -106,16 +106,16 @@ const AnyUnderSixteens = ({ history, match }) => {
 					value={radioValue}
 				/>
 				<Button
-					label={radioValue === 'false' ? 'Save and next step' : 'Next step'}
+					label={radioValue === 'true' ? 'Next step' : 'Save and next step'}
 					isValid={!saveAndGoBackClicked}
 					isLoading={isLoading && !saveAndGoBackClicked}
 				/>
 				<Anchor label='Back' history={history} />
 				<Button
 					label="Save and go back to fostering area"
-					isValid={!isLoading && !saveAndGoBackClicked && radioValue === 'false'}
+					isValid={!isLoading && !saveAndGoBackClicked && radioValue !== 'true'}
 					isLoading={isLoading && saveAndGoBackClicked}
-					colour={radioValue !== 'false' ? 'disabled' : 'inverted'}
+					colour={radioValue !== 'true' ? 'inverted' : 'disabled'}
 					onButtonClick={event => {
 							setSaveAndGoBackClicked(true)
 							onSaveAndGoBackClick(event)
