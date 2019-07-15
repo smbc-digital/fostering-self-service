@@ -39,15 +39,14 @@ const FormLinks = () => {
 		},
 		secondApplicant
 	} = useContext(Context)
-	
+
 	return <Fragment>
 		<p>To help prepare for your home visit, you can answer the questions in this section. This step is optional, however your fostering journey can be made simpler by telling us more about yourself. The questions will give you an idea of the conversation that you’ll have during your home visit and the social worker will be able to see your answers beforehand.</p>
 		<TaskLink route='/fostering/known-by-another-name' status={tellUsAboutYourselfStatus} name='Tell us more about you' />
 		<TaskLink route='/fostering/are-you-employed' status={yourEmploymentDetailsStatus} name='Your employment details' />
 		<TaskLink route='/fostering/languages-spoken-in-your-home' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home' />
-		{secondApplicant && <TaskLink route={getPageRoute(7)} status={yourPartnershipStatus} name='Your partnership status' />}
 		<TaskLink route='/fostering/about-your-health' status={yourHealthStatus} name='Your health' />
-		{secondApplicant && <TaskLink route={getPageRoute(8)} status={yourPartnershipStatus} name='Your partnership status' />}
+		{secondApplicant && <TaskLink route={getPageRoute(7)} status={yourPartnershipStatus} name='Your partnership status' />}
 		<TaskLink route='/fostering/your-fostering-history' status={yourFosteringHistoryStatus} name='Your fostering history' />
 		<TaskLink route={getPageRoute(12)} status={tellUsAboutYourInterestInFosteringStatus} name='Tell us about your interest in fostering' />
 		<TaskLink route={getPageRoute(23)} status={yourHouseholdStatus} name='Your household' />
@@ -79,13 +78,13 @@ const Start = () => {
 		{
 			title: 'Additional information',
 			body: () => <p>If you’ve been successful at your home visit, you’ll need to give us some more information so that you can move onto the next stage of your fostering journey.</p>,
-			status: 2,
+			status: 3,
 			disabled: true
 		},
 		{
 			title: 'Assessment and training',
 			body: () => <p>You’ll complete the assessment stage of your fostering journey and attend training sessions.</p>,
-			status: 2,
+			status: 3,
 			disabled: true
 		},
 		{
