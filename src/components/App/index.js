@@ -12,7 +12,7 @@ import { AreYouMarried, MarriageDate, MovedInTogetherDate } from '../Pages/4-Par
 import { HaveYouPreviouslyApplied } from '../Pages/5-YourFosteringHistory'
 import YourHealth from '../Pages/6-YourHealth'
 import { AboutYourInterest, TypesOfFostering } from '../Pages/7-InterestInFostering'
-import { AnyUnderSixteens, AnyOverSixteens, AboutOverSixteens } from '../Pages/8-ChildrenAwayFromHome'
+import { AnyUnderSixteens, AboutUnderSixteens, AnyOverSixteens, AboutOverSixteens } from '../Pages/8-ChildrenAwayFromHome'
 import { AnyPeopleInYourHousehold, PeopleInYourHousehold, DoYouHaveAnyPets } from '../Pages/10-YourHousehold'
 
 const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
@@ -45,6 +45,7 @@ const App = () => (
 		<Route exact path={getPageRoute(12)} component={AboutYourInterest} />
 		<Route exact path={getPageRoute(13)} component={TypesOfFostering} />
 		<Route exact path={`${getPageRoute(17)}/(|second-applicant)?`} component={AnyUnderSixteens} />
+		<Route exact path={`${getPageRoute(18)}/(|second-applicant)?`} component={AboutUnderSixteens} />
 		<Route exact path={`${getPageRoute(19)}/(|second-applicant)?`} component={AnyOverSixteens} />
 		<Route exact path={`${getPageRoute(20)}/(|second-applicant)?`} component={AboutOverSixteens} />
 		<Route exact path={getPageRoute(23)} component={AnyPeopleInYourHousehold} />

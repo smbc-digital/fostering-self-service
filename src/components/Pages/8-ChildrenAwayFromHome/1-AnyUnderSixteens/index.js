@@ -9,9 +9,11 @@ const AnyUnderSixteens = ({ history, match }) => {
 	const context = useContext(Context)
 	const currentApplicant = getCurrentApplicant(match)
 	const { anyChildrenUnderSixteen, firstName, lastName } = context[currentApplicant]
-	const { secondApplicant, onChangeApplicant, onChangeStatus, statuses: { childrenLivingAwayFromYourHomeStatus } } = context
+	const { secondApplicant, onChangeApplicant, onChangeStatus } = context
 	const [isLoading, setIsLoading] = useState(false)
 	const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)
+
+	const { childrenLivingAwayFromYourHomeStatus } = context.statuses
 
 	const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
 
@@ -69,7 +71,7 @@ const AnyUnderSixteens = ({ history, match }) => {
 
 			handleFormUpdate(`${getPageRoute(17)}/second-applicant`)
 			return
-		} else if(anyChildrenUnderSixteen.value == 'true' || anyChildrenUnderSixteen == true) {
+		} else if(anyChildrenUnderSixteen.value == 'true' || anyChildrenUnderSixteen.value == true) {
 			if(currentApplicant === Applicant.SecondApplicant) {
 				history.push(`${getPageRoute(18)}/second-applicant`)
 				return
