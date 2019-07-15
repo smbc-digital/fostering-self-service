@@ -11,7 +11,7 @@ import PropTypes from 'prop-types'
 import { getPageRoute, getCurrentApplicant, updateForm, FormName } from '../../../../helpers'
 import moment from 'moment'
 import SubmitButton from 'components/SubmitButton'
-import { Applicant } from '../../../../config'
+import { Applicant } from 'config'
 
 const AboutAnyUnderSixteen = ({history, match}) => {
     const context = useContext(Context)
@@ -128,11 +128,12 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                 />
                 <AddressPicker
                     onChange={onComponentChange}
+                    name="address"
                     address={values.address}
-                    manualLabel='Please provide an address for us to send any final bills or letters to'
                     enableH2={true}
                     showOnlyManual={true}
                     noPostcodeValidation={true}
+                    optional
                     />
             </Fragment>
         )
@@ -141,8 +142,9 @@ const AboutAnyUnderSixteen = ({history, match}) => {
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
-            <h2>Your household</h2>
-            <h3>{firstName.value} {lastName.value}</h3> 
+            <h2>Children living away from your home</h2>
+            <h3>{firstName.value} {lastName.value}</h3>
+            <h3>Tell us about your children under 16 who live away from your home</h3> 
             <form onSubmit={onSubmit}>
                 <ComponentsList
                     onChange={onPersonChange}
@@ -165,7 +167,8 @@ const AboutAnyUnderSixteen = ({history, match}) => {
 }
 
 AboutAnyUnderSixteen.propTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    match: PropTypes.object
 }
 
 export default AboutAnyUnderSixteen
