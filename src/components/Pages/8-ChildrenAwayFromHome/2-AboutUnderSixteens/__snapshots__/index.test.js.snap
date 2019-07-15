@@ -1,0 +1,304 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutUnderSixteens snapshot renders correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Your household
+  </h2>,
+  <h3>
+    ap first name
+     
+    ap last name
+  </h3>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className="optional"
+      htmlFor="firstName"
+    >
+      First name
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="firstName"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="firstName"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value={
+        Object {
+          "isValid": true,
+          "value": "first name",
+        }
+      }
+    />
+    <label
+      className="optional"
+      htmlFor="lastName"
+    >
+      Last name
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="lastName"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="lastName"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value={
+        Object {
+          "isValid": true,
+          "value": "last name",
+        }
+      }
+    />
+    <fieldset>
+      <label
+        className=""
+        htmlFor="gender"
+      >
+        Gender
+      </label>
+      <select
+        id="gender"
+        name="gender"
+        onChange={[Function]}
+        value={
+          Object {
+            "isValid": true,
+            "value": "gender",
+          }
+        }
+      >
+        <option
+          disabled={true}
+          value=""
+        />
+        <option
+          value="Male"
+        >
+          Male
+        </option>
+        <option
+          value="Female"
+        >
+          Female
+        </option>
+        <option
+          value="Prefer not to say"
+        >
+          Prefer not to say
+        </option>
+      </select>
+    </fieldset>
+    <h3
+      className="optional no-margin-bottom"
+    >
+      Date of birth
+    </h3>
+    <fieldset
+      className="input-memorable-date"
+    >
+      <p>
+        For example, 31 3 1980
+      </p>
+      <div>
+        <label>
+          Day
+        </label>
+        <input
+          aria-label="day"
+          className=""
+          name="day"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+      <div>
+        <label>
+          Month
+        </label>
+        <input
+          aria-label="month"
+          className=""
+          name="month"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+      <div>
+        <label>
+          Year
+        </label>
+        <input
+          aria-label="year"
+          className=""
+          name="year"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+    </fieldset>
+    <h2
+      aria-hidden="true"
+      className={undefined}
+    >
+      Please provide an address for us to send any final bills or letters to
+    </h2>
+    <label
+      className=""
+      htmlFor="addressLine1"
+    >
+      Address line 1
+    </label>
+    <input
+      aria-label="Address line 1"
+      aria-live="off"
+      className=""
+      id="addressLine1"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="addressLine1"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="Line 1"
+    />
+    <h3
+      aria-hidden="true"
+      className="optional"
+    >
+      Address line 2
+    </h3>
+    <p
+      className="optional"
+    >
+      (optional)
+    </p>
+    <label
+      className="optional sr-only"
+      htmlFor="addressLine2"
+    >
+      Address line 2 optional
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="addressLine2"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="addressLine2"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="Line 2"
+    />
+    <label
+      className=""
+      htmlFor="town"
+    >
+      Town
+    </label>
+    <input
+      aria-label="Town"
+      aria-live="off"
+      className=""
+      id="town"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="town"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="Stockport"
+    />
+    <label
+      className=""
+      htmlFor="postcode"
+    >
+      Postcode
+    </label>
+    <input
+      aria-label="Postcode"
+      aria-live="off"
+      className=""
+      id="postcode"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="postcode"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="SK1 3XE"
+    />
+    <a
+      className="anchor-with-icon"
+      href="#"
+      onClick={[Function]}
+    >
+       
+      <i
+        className="fa fa-plus-square fa-lg"
+      />
+      Add another person
+    </a>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={false}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
+`;

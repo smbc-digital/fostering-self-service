@@ -1,5 +1,10 @@
 import React, { useContext, useEffect, useState, Fragment } from 'react'
-import { Button, Anchor, RadioInputsContainer } from 'smbc-react-components'
+import {
+    Button, 
+    Anchor, 
+    RadioInputsContainer 
+} from 'smbc-react-components'
+
 import PropTypes from 'prop-types'
 import { getCurrentApplicant, getPageRoute, updateForm, FormName, updateFormStatus } from 'helpers'
 import { Context } from 'context';
@@ -8,7 +13,7 @@ import { Applicant } from '../../../Provider'
 const AnyOverSixteens = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { anyChildrenOverSixteen } = context[currentApplicant]
+    const { anyChildrenOverSixteen, firstName, lastName } = context[currentApplicant]
     const { secondApplicant, onChangeApplicant, onChangeStatus, statuses: { childrenLivingAwayFromYourHomeStatus } } = context
     const [isLoading, setIsLoading] = useState(false)
     const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)
@@ -59,7 +64,7 @@ const AnyOverSixteens = ({ history, match }) => {
                 event.stopPropagation()
                 event.preventDefault()
 
-                handleFormUpdate(getPageRoute(1))
+                handleFormUpdate(getPageRoute(21)) //this might need to be changed
                 return
             }
             event.stopPropagation()
@@ -67,7 +72,7 @@ const AnyOverSixteens = ({ history, match }) => {
 
             handleFormUpdate(`${getPageRoute(19)}/second-applicant`)
             return
-        } else if (anyChildrenOverSixteen.value == 'true' || anyChildrenOverSixteen == true) {
+        } else if (anyChildrenOverSixteen.value == 'true' || anyChildrenOverSixteen.value == true) {
             if (currentApplicant === Applicant.SecondApplicant) {
                 history.push(`${getPageRoute(20)}/second-applicant`) 
                 return
@@ -77,7 +82,7 @@ const AnyOverSixteens = ({ history, match }) => {
             event.stopPropagation()
             event.preventDefault()
 
-            handleFormUpdate(getPageRoute(1))
+            handleFormUpdate(getPageRoute(21))  //this might need to be changed
         }
     }
 
@@ -88,14 +93,14 @@ const AnyOverSixteens = ({ history, match }) => {
             newStatus => onChangeStatus('childrenLivingAwayFromYourHomeStatus', newStatus))
     }, [])
 
-    const onChange = (event, isValid) => {
-        return onChangeApplicant(event, isValid, currentApplicant)
-    }
+    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
+    
     const radioValue = `${anyChildrenOverSixteen.value}`
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Children living away from your home</h2>
+            <h3>{firstName.value} {lastName.value}</h3>
             <form onSubmit={onSubmit}>
                 <RadioInputsContainer
                     onChange={onChange}
@@ -103,13 +108,25 @@ const AnyOverSixteens = ({ history, match }) => {
                     displayHeading
                     header='Do you have any children aged 16 and over living away from your home?'
                     options={options}
+                    value={radioValue}
                 />
                <Button
 					label={radioValue === 'false' ? 'Save and next step' : 'Next step'}
 					isValid={!saveAndGoBackClicked}
 					isLoading={isLoading && !saveAndGoBackClicked}
 				/>
-				<Anchor label='Back' history={history} />
+				<Anchor label='Back' history = { history } />
+                <Button
+					label="Save and go back to fostering area"
+					isValid={!isLoading && !saveAndGoBackClicked && radioValue !== 'true'}
+					isLoading={isLoading && saveAndGoBackClicked}
+					colour={radioValue !== 'true' ? 'inverted' : 'disabled'}
+					onButtonClick={event => {
+							setSaveAndGoBackClicked(true)
+							onSaveAndGoBackClick(event)
+						}
+					}
+					useLeftChevron={true} />
             </form>
         </Fragment>
     )

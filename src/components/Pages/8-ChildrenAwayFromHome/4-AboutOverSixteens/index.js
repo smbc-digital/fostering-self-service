@@ -4,18 +4,20 @@ import {
     ComponentsList,
     TextInputContainer,
     SelectInputContainer,
-    MemorableDateInputContainer } from 'smbc-react-components'
+    MemorableDateInputContainer,
+    AddressPicker 
+} from 'smbc-react-components'
 
 import PropTypes from 'prop-types'
 import { getPageRoute, getCurrentApplicant, updateForm, FormName } from 'helpers'
 import moment from 'moment'
 import SubmitButton from 'components/SubmitButton'
-import { Applicant } from 'config'
+import { Applicant } from '../../../Provider'
 
 const AboutOverSixteens = ({history, match}) => {
     const context = useContext(Context)
-	const currentApplicant = getCurrentApplicant(match)
-	const { childrenOverSixteenLivingAwayFromHome, firstName, lastName } = context[currentApplicant]
+    const currentApplicant = getCurrentApplicant(match)
+    const { childrenOverSixteenLivingAwayFromHome, firstName, lastName } = context[currentApplicant]
 	const { secondApplicant, onChangeApplicant, onChangeStatus } = context
     const [isLoading, setIsLoading] = useState(false)
     
@@ -30,8 +32,8 @@ const AboutOverSixteens = ({history, match}) => {
                 value: values
             }
         }, isValid)
-	}
-	
+    }
+    
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
 
@@ -55,7 +57,7 @@ const AboutOverSixteens = ({history, match}) => {
         await handleFormUpdate(getPageRoute(1))
 	}
 	
-	const onSubmit = event => {
+	const onSubmit = async event => {
 		event.stopPropagation()
 		event.preventDefault()
 
@@ -63,7 +65,7 @@ const AboutOverSixteens = ({history, match}) => {
 			handleFormUpdate(`${getPageRoute(19)}/second-applicant`)
 			return
 		}
-		handleFormUpdate(getPageRoute(21))
+		await handleFormUpdate(getPageRoute(21))
 		return
 	}
 
@@ -125,6 +127,14 @@ const AboutOverSixteens = ({history, match}) => {
                     onChange={onComponentChange}
                     hideOptionalText={true}
                 />
+
+                <AddressPicker
+                    onChange={onComponentChange}
+                    address={values.address}
+                    showOnlyManual={true}
+                    name='address'
+                    noPostcodeValidation={true}
+                    />
             </Fragment>
         )
     }
