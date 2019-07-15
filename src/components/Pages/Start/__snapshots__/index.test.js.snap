@@ -109,16 +109,6 @@ Array [
           className="anchor-with-status"
         >
           <a
-            href="/fostering/about-your-health"
-            onClick={[Function]}
-          >
-            Your health
-          </a>
-        </div>
-        <div
-          className="anchor-with-status"
-        >
-          <a
             href="/fostering/your-partnership-status"
             onClick={[Function]}
           >
@@ -144,6 +134,16 @@ Array [
           >
             Not completed
           </span>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/about-your-health"
+            onClick={[Function]}
+          >
+            Your health
+          </a>
         </div>
         <div
           className="anchor-with-status"
