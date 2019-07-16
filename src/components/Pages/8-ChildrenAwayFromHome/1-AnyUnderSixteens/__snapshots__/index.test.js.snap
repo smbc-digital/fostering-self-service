@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AnyUnderSixteens snapshot renders correctly 1`] = `
+exports[`AnyChildrenUnderSixteen snapshot renders correctly 1`] = `
 Array [
   <h1>
     Your fostering journey

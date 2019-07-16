@@ -33,7 +33,7 @@ describe('updateForm', () => {
         // Act & Assert
         await expect(updateForm('', {}))
             .rejects
-            .toThrowError('No matching endpoint for given form.')
+            .toThrow('No matching endpoint for given form.')
     })
 
     it('should call fetchWithTimeout', async () => {
@@ -49,7 +49,7 @@ describe('updateForm', () => {
         await updateForm(FormName.TellUsAboutYourself, {})
 
         // Assert
-        expect(helpers.fetchWithTimeout).toBeCalled()
+        expect(helpers.fetchWithTimeout).toHaveBeenCalled()
     })
 
     it('should throw error', async () => {
@@ -65,7 +65,7 @@ describe('updateForm', () => {
         // Act & Assert
         await expect(updateForm(FormName.TellUsAboutYourself, {}))
             .rejects
-            .toThrowError(expectedError)
+            .toThrow(expectedError)
     })
 
     it('should call .json()', async () => {

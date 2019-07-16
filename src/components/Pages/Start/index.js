@@ -39,16 +39,15 @@ const FormLinks = () => {
 		},
 		secondApplicant
 	} = useContext(Context)
-	
+
 	return <Fragment>
-		<p>To help prepare for your home visit, you can answer the questions in this section. This step is optional, however your fostering journey can be made simpler by telling us more about yourself. The questions will give you an idea of the conversation that you’ll have during your home visit and the social worker will be able to see your answers beforehand.</p>
+		<p>You can answer the questions in this section to help you to prepare for your home visit. This step is optional however, your fostering journey can be made simpler by telling us more about yourself. You can make changes to your answers up to 30 minutes before your home visit and your social worker will be able to see your answers before your appointment.</p>
 		<TaskLink route='/fostering/known-by-another-name' status={tellUsAboutYourselfStatus} name='Tell us more about you' />
 		<TaskLink route='/fostering/are-you-employed' status={yourEmploymentDetailsStatus} name='Your employment details' />
 		<TaskLink route='/fostering/languages-spoken-in-your-home' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home' />
 		{secondApplicant && <TaskLink route={getPageRoute(7)} status={yourPartnershipStatus} name='Your partnership status' />}
-		<TaskLink route='/fostering/about-your-health' status={yourHealthStatus} name='Your health' />
-		{secondApplicant && <TaskLink route={getPageRoute(8)} status={yourPartnershipStatus} name='Your partnership status' />}
 		<TaskLink route='/fostering/your-fostering-history' status={yourFosteringHistoryStatus} name='Your fostering history' />
+		<TaskLink route='/fostering/about-your-health' status={yourHealthStatus} name='Your health' />
 		<TaskLink route={getPageRoute(12)} status={tellUsAboutYourInterestInFosteringStatus} name='Tell us about your interest in fostering' />
 		<TaskLink route={getPageRoute(23)} status={yourHouseholdStatus} name='Your household' />
 		<TaskLink route={getPageRoute(17)} status={childrenLivingAwayFromYourHomeStatus} name='Children living away from your home' />
@@ -74,24 +73,24 @@ const Start = () => {
 		},
 		{
 			title: 'Home visit',
-			body: () => <p>The social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in the previous section, you’ll talk more about them. The home visit stage can be completed in one session but it may require more sessions to make sure that the social worker has all of the information that they need.</p>,
+			body: () => <p>Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. </p>,
 			disabled: true
 		},
 		{
 			title: 'Additional information',
-			body: () => <p>If you’ve been successful at your home visit, you’ll need to give us some more information so that you can move onto the next stage of your fostering journey.</p>,
+			body: () => <p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>,
 			status: 2,
 			disabled: true
 		},
 		{
 			title: 'Assessment and training',
-			body: () => <p>You’ll complete the assessment stage of your fostering journey and attend training sessions.</p>,
+			body: () => <p>Complete the assessment stage of your fostering journey and attend training sessions.</p>,
 			status: 2,
 			disabled: true
 		},
 		{
 			title: 'Approval',
-			body: () => <p>You’ll go to panel and a decision will be made about whether you can become a foster carer.</p>,
+			body: () => <p>Go to panel and a decision will be made about whether you can become a foster carer.</p>,
 			disabled: true
 		}
 	]

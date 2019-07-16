@@ -327,7 +327,7 @@ describe('YourEmploymentDetails', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 
-    it('should push to page 1 when single applicant selects false', async () => {
+    it('should push to page 1 when applicant click save and go back', async () => {
 
         //Arrange
         useContextMock.mockReturnValue({
