@@ -78,24 +78,14 @@ const Start = () => {
 		},
 		{
 			title: 'Additional information',
-<<<<<<< HEAD
 			body: () => <p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>,
 			status: 2,
-=======
-			body: () => <p>If you’ve been successful at your home visit, you’ll need to give us some more information so that you can move onto the next stage of your fostering journey.</p>,
-			status: 3,
->>>>>>> 91ba7ecda45ac1d025accb0e3887fe88d8760edd
 			disabled: true
 		},
 		{
 			title: 'Assessment and training',
-<<<<<<< HEAD
 			body: () => <p>Complete the assessment stage of your fostering journey and attend training sessions.</p>,
 			status: 2,
-=======
-			body: () => <p>You’ll complete the assessment stage of your fostering journey and attend training sessions.</p>,
-			status: 3,
->>>>>>> 91ba7ecda45ac1d025accb0e3887fe88d8760edd
 			disabled: true
 		},
 		{
