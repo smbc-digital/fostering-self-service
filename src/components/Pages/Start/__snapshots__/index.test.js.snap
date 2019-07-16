@@ -205,9 +205,9 @@ Array [
           After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.
         </p>
         <span
-          className="status-not-completed"
+          className="status-cant-start"
         >
-          Not completed
+          Can't start yet
         </span>
         <hr />
       </div>
@@ -225,9 +225,9 @@ Array [
           Complete the assessment stage of your fostering journey and attend training sessions.
         </p>
         <span
-          className="status-not-completed"
+          className="status-cant-start"
         >
-          Not completed
+          Can't start yet
         </span>
         <hr />
       </div>
