@@ -14,7 +14,7 @@ describe('Your Health', () => {
             onChangeApplicant: onChangeApplicantMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
-                YourEmploymentDetails: 0
+                YourHealth: 0
             },
             firstApplicant: {
                 firstName: {
@@ -111,7 +111,7 @@ describe('Your Health', () => {
             onChangeApplicant: onChangeApplicantMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
-                YourEmploymentDetails: 0
+                YourHealth: 0
             },
             firstApplicant: {
                 everBeenKnownByAnotherName: {

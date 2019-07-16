@@ -61,6 +61,10 @@ describe('AboutOverSixteens', () => {
                     value: 'ap last name',
                     isValid: true
                 },
+                anyChildrenOverSixteen:{
+                    value: 'true',
+                    isvalid: true
+                },
                 childrenOverSixteenLivingAwayFromHome: {
                     value: [{
                         firstName: {
@@ -158,8 +162,53 @@ describe('AboutOverSixteens', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 
+    it('should push to next page on submit, when single applicant', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+        await Promise.resolve()
+
+        // Assert
+        const pageRoute = helpers.getPageRoute(21)
+        expect(history.push).toHaveBeenCalledWith(`${pageRoute}`)
+    })
   
-    it('should call updateForm on form submit', async () => {
+    it('should push to next page on submit, when joint applicant', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['first-applicant']
+        }
+
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+        await Promise.resolve()
+
+        // Assert
+        const pageRoute = helpers.getPageRoute(19)
+        expect(history.push).toHaveBeenCalledWith(`${pageRoute}/second-applicant`)
+    })
+
+    it('should call updateForm on form sum on form submit', async () => {
         // Arrange
         const history = {
             push: jest.fn()

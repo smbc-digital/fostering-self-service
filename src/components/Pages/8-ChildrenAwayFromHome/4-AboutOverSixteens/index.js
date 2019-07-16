@@ -134,6 +134,7 @@ const AboutOverSixteens = ({history, match}) => {
                     showOnlyManual={true}
                     name='address'
                     noPostcodeValidation={true}
+                    optional
                     />
             </Fragment>
         )
