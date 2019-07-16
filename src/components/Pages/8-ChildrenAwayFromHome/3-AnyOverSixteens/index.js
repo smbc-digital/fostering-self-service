@@ -7,7 +7,7 @@ import {
 
 import PropTypes from 'prop-types'
 import { getCurrentApplicant, getPageRoute, updateForm, FormName, updateFormStatus } from 'helpers'
-import { Context } from 'context';
+import { Context } from 'context'
 import { Applicant } from '../../../Provider'
 
 const AnyOverSixteens = ({ history, match }) => {
@@ -108,7 +108,6 @@ const AnyOverSixteens = ({ history, match }) => {
                     displayHeading
                     header='Do you have any children aged 16 and over living away from your home?'
                     options={options}
-                    value={radioValue}
                 />
                <Button
 					label={radioValue === 'false' ? 'Save and next step' : 'Next step'}

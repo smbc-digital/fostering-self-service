@@ -165,7 +165,8 @@ const AboutOverSixteens = ({history, match}) => {
 }
 
 AboutOverSixteens.propTypes = {
-    history: PropTypes.object
+    history: PropTypes.object,
+    match: PropTypes.object
 }
 
 export default AboutOverSixteens
