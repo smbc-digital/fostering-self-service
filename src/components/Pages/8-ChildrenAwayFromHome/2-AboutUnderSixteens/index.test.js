@@ -157,6 +157,220 @@ describe('AboutUnderSixteens', () => {
         const pageRoute = helpers.getPageRoute(19)
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
+
+    it('should push to page 17 on submit, when on single applicant but joint application', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: undefined
+        }
+
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            firstApplicant: {
+                firstName :{
+                    value: 'app first name',
+                    isValid: true
+                },
+                lastName:{
+                    value: 'app last name',
+                    isValid: true
+                },
+                childrenUnderSixteenLivingAwayFromHome: {
+                    value: [{
+                        firstName: {
+                            value: 'first name',
+                            isValid: true
+                        },
+                        lastName: {
+                            value: 'last name',
+                            isValid: true
+                        },
+                        gender: {
+                            value: 'gender',
+                            isValid: true
+                        },
+                        dateOfBirth: {
+                            value: '15/07/1799',
+                            isValid: true
+                        },
+                        address: {
+                            addressLine1: 'Line 1',
+                            addressLine2: 'Line 2',
+                            town: 'Stockport',
+                            postcode: 'SK1 3XE'
+                        }
+                    }],
+                    isValid: true
+                }
+            },
+            secondApplicant: {
+                firstName :{
+                    value: '2nd app first name',
+                    isValid: true
+                },
+                lastName:{
+                    value: '2nd app last name',
+                    isValid: true
+                },
+                anyChildrenUnderSixteen: {
+                    value: '',
+                    isValid: true
+                },
+                childrenUnderSixteenLivingAwayFromHome: {
+                    value: [{
+                        firstName: {
+                            value: '',
+                            isValid: true
+                        },
+                        lastName: {
+                            value: '',
+                            isValid: true
+                        },
+                        gender: {
+                            value: '',
+                            isValid: true
+                        },
+                        dateOfBirth: {
+                            value: '',
+                            isValid: true
+                        },
+                        address: {
+                            addressLine1: '',
+                            addressLine2: '',
+                            town: '',
+                            postcode: ''
+                        }
+                    }],
+                    isValid: true
+                }
+            }
+        })
+
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+        await Promise.resolve()
+
+        // Assert
+        const pageRoute = helpers.getPageRoute(17)
+        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+    })
+
+    it('should push to page 19 on submit, when on joint applicant', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['second-applicant']
+        }
+
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            firstApplicant: {
+                firstName :{
+                    value: 'app first name',
+                    isValid: true
+                },
+                lastName:{
+                    value: 'app last name',
+                    isValid: true
+                },
+                childrenUnderSixteenLivingAwayFromHome: {
+                    value: [{
+                        firstName: {
+                            value: 'first name',
+                            isValid: true
+                        },
+                        lastName: {
+                            value: 'last name',
+                            isValid: true
+                        },
+                        gender: {
+                            value: 'gender',
+                            isValid: true
+                        },
+                        dateOfBirth: {
+                            value: '15/07/1799',
+                            isValid: true
+                        },
+                        address: {
+                            addressLine1: 'Line 1',
+                            addressLine2: 'Line 2',
+                            town: 'Stockport',
+                            postcode: 'SK1 3XE'
+                        }
+                    }],
+                    isValid: true
+                }
+            },
+            secondApplicant: {
+                firstName :{
+                    value: '2nd app first name',
+                    isValid: true
+                },
+                lastName:{
+                    value: '2nd app last name',
+                    isValid: true
+                },
+                anyChildrenUnderSixteen: {
+                    value: '',
+                    isValid: true
+                },
+                childrenUnderSixteenLivingAwayFromHome: {
+                    value: [{
+                        firstName: {
+                            value: '',
+                            isValid: true
+                        },
+                        lastName: {
+                            value: '',
+                            isValid: true
+                        },
+                        gender: {
+                            value: '',
+                            isValid: true
+                        },
+                        dateOfBirth: {
+                            value: '',
+                            isValid: true
+                        },
+                        address: {
+                            addressLine1: '',
+                            addressLine2: '',
+                            town: '',
+                            postcode: ''
+                        }
+                    }],
+                    isValid: true
+                }
+            }
+        })
+
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+        await Promise.resolve()
+
+        // Assert
+        const pageRoute = helpers.getPageRoute(19)
+        expect(history.push).toHaveBeenCalledWith(pageRoute)
+    })
     
     it('should call updateForm on form submit', async () => {
         // Arrange
