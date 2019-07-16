@@ -14,7 +14,7 @@ describe('Your Health', () => {
             onChangeApplicant: onChangeApplicantMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
-                YourEmploymentDetails: 0
+                YourHealth: 0
             },
             firstApplicant: {
                 firstName: {
@@ -35,10 +35,6 @@ describe('Your Health', () => {
                 }
             },
             secondApplicant: {
-                everBeenKnownByAnotherName: {
-                    value: 'false',
-                    isValid: true
-                },
                 firstName: {
                     value: 'second applicant first name',
                     isValid: true
@@ -53,10 +49,6 @@ describe('Your Health', () => {
                 },
                 practitioner: {
                     value: 'true',
-                    isValid: true
-                },
-                anotherName: {
-                    value: 'last name',
                     isValid: true
                 }
             }
@@ -111,13 +103,9 @@ describe('Your Health', () => {
             onChangeApplicant: onChangeApplicantMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
-                YourEmploymentDetails: 0
+                YourHealth: 0
             },
             firstApplicant: {
-                everBeenKnownByAnotherName: {
-                    value: 'true',
-                    isValid: true
-                },
                 firstName: {
                     value: 'first name',
                     isValid: true
@@ -134,16 +122,8 @@ describe('Your Health', () => {
                     value: 'false',
                     isValid: true
                 },
-                anotherName: {
-                    value: 'last name',
-                    isValid: true
-                }
             },
             secondApplicant: {
-                everBeenKnownByAnotherName: {
-                    value: 'false',
-                    isValid: true
-                },
                 firstName: {
                     value: 'second applicant first name',
                     isValid: true
@@ -160,14 +140,6 @@ describe('Your Health', () => {
                     value: 'false',
                     isValid: true
                 },
-                anotherName: {
-                    value: 'last name',
-                    isValid: true
-                },
-                areYouEmployed:{
-                    value: 'true',
-                    isvalid: true
-                }
             }
         })
 
