@@ -79,13 +79,13 @@ const Start = () => {
 		{
 			title: 'Additional information',
 			body: () => <p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>,
-			status: 2,
+			status: 3,
 			disabled: true
 		},
 		{
 			title: 'Assessment and training',
 			body: () => <p>Complete the assessment stage of your fostering journey and attend training sessions.</p>,
-			status: 2,
+			status: 3,
 			disabled: true
 		},
 		{
