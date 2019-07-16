@@ -6,12 +6,15 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Your household
+    Children living away from your home
   </h2>,
   <h3>
     ap first name
      
     ap last name
+  </h3>,
+  <h3>
+    Tell us about your children under 16 who live away from your home
   </h3>,
   <form
     onSubmit={[Function]}
@@ -161,12 +164,6 @@ Array [
         />
       </div>
     </fieldset>
-    <h2
-      aria-hidden="true"
-      className={undefined}
-    >
-      Please provide an address for us to send any final bills or letters to
-    </h2>
     <label
       className=""
       htmlFor="addressLine1"

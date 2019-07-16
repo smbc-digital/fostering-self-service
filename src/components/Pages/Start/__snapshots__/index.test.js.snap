@@ -58,7 +58,7 @@ Array [
           Answer questions before your home visit
         </h2>
         <p>
-          To help prepare for your home visit, you can answer the questions in this section. This step is optional, however your fostering journey can be made simpler by telling us more about yourself. The questions will give you an idea of the conversation that you’ll have during your home visit and the social worker will be able to see your answers beforehand.
+          You can answer the questions in this section to help you to prepare for your home visit. This step is optional however, your fostering journey can be made simpler by telling us more about yourself. You can make changes to your answers up to 30 minutes before your home visit and your social worker will be able to see your answers before your appointment.
         </p>
         <div
           className="anchor-with-status"
@@ -159,20 +159,20 @@ Array [
           className="anchor-with-status"
         >
           <a
-            href="/fostering/children-under-sixteen-living-away"
+            href="/fostering/your-household"
             onClick={[Function]}
           >
-            Children living away from your home
+            Your household
           </a>
         </div>
         <div
           className="anchor-with-status"
         >
           <a
-            href="/fostering/your-household"
+            href="/fostering/children-under-sixteen-living-away"
             onClick={[Function]}
           >
-            Your household
+            Children living away from your home
           </a>
         </div>
       </div>
@@ -187,7 +187,7 @@ Array [
           Home visit
         </h2>
         <p>
-          The social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in the previous section, you’ll talk more about them. The home visit stage can be completed in one session but it may require more sessions to make sure that the social worker has all of the information that they need.
+          Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. 
         </p>
         <hr />
       </div>
@@ -202,12 +202,12 @@ Array [
           Additional information
         </h2>
         <p>
-          If you’ve been successful at your home visit, you’ll need to give us some more information so that you can move onto the next stage of your fostering journey.
+          After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.
         </p>
         <span
-          className="status-cant-start"
+          className="status-not-completed"
         >
-          Can't start yet
+          Not completed
         </span>
         <hr />
       </div>
@@ -222,12 +222,12 @@ Array [
           Assessment and training
         </h2>
         <p>
-          You’ll complete the assessment stage of your fostering journey and attend training sessions.
+          Complete the assessment stage of your fostering journey and attend training sessions.
         </p>
         <span
-          className="status-cant-start"
+          className="status-not-completed"
         >
-          Can't start yet
+          Not completed
         </span>
         <hr />
       </div>
@@ -242,7 +242,7 @@ Array [
           Approval
         </h2>
         <p>
-          You’ll go to panel and a decision will be made about whether you can become a foster carer.
+          Go to panel and a decision will be made about whether you can become a foster carer.
         </p>
         <hr />
       </div>
