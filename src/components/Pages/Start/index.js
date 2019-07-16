@@ -74,24 +74,24 @@ const Start = () => {
 		},
 		{
 			title: 'Home visit',
-			body: () => <p>The social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in the previous section, you’ll talk more about them. The home visit stage can be completed in one session but it may require more sessions to make sure that the social worker has all of the information that they need.</p>,
+			body: () => <p>Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. </p>,
 			disabled: true
 		},
 		{
 			title: 'Additional information',
-			body: () => <p>If you’ve been successful at your home visit, you’ll need to give us some more information so that you can move onto the next stage of your fostering journey.</p>,
+			body: () => <p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>,
 			status: 2,
 			disabled: true
 		},
 		{
 			title: 'Assessment and training',
-			body: () => <p>You’ll complete the assessment stage of your fostering journey and attend training sessions.</p>,
+			body: () => <p>Complete the assessment stage of your fostering journey and attend training sessions.</p>,
 			status: 2,
 			disabled: true
 		},
 		{
 			title: 'Approval',
-			body: () => <p>You’ll go to panel and a decision will be made about whether you can become a foster carer.</p>,
+			body: () => <p>Go to panel and a decision will be made about whether you can become a foster carer.</p>,
 			disabled: true
 		}
 	]
