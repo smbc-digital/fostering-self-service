@@ -126,6 +126,10 @@ const AboutOverSixteens = ({history, match}) => {
                     value={moment(values.dateOfBirth, ['DD/MM/YYYY', 'YYYY-M-D']).format('YYYY-M-D')}
                     onChange={onComponentChange}
                     hideOptionalText={true}
+                    customValidation={{
+                        invalidAfterDate: moment().subtract(16, 'years'),
+                        customValidationMessage: 'The child must be 16 and over'
+                    }}
                 />
 
                 <AddressPicker
