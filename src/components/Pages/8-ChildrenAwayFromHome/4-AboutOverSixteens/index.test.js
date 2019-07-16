@@ -61,6 +61,10 @@ describe('AboutOverSixteens', () => {
                     value: 'ap last name',
                     isValid: true
                 },
+                anyChildrenOverSixteen:{
+                    value: 'true',
+                    isvalid: true
+                },
                 childrenOverSixteenLivingAwayFromHome: {
                     value: [{
                         firstName: {
@@ -92,6 +96,72 @@ describe('AboutOverSixteens', () => {
         })
     })
 
+    // it('should push to next page on submit, when single applicant', async () => {
+    //     // Arrange
+    //     const history = {
+    //         push: jest.fn()
+    //     }
+
+    //     const match = {
+    //         params: undefined
+    //     }
+
+    //     useContextMock.mockReturnValue({
+    //         currentApplicant: Applicant.FirstApplicant,
+    //         onChangeApplicant: onChangeApplicantMock,
+    //         onChangeStatus: onChangeStatusMock,
+    //         firstApplicant: {
+    //             firstName :{
+    //                 value: 'app first name',
+    //                 isValid: true
+    //             },
+    //             lastName:{
+    //                 value: 'app last name',
+    //                 isValid: true
+    //             },
+    //             childrenOverSixteenLivingAwayFromHome: {
+    //                 value: [{
+    //                     firstName: {
+    //                         value: 'first name',
+    //                         isValid: true
+    //                     },
+    //                     lastName: {
+    //                         value: 'last name',
+    //                         isValid: true
+    //                     },
+    //                     gender: {
+    //                         value: 'gender',
+    //                         isValid: true
+    //                     },
+    //                     dateOfBirth: {
+    //                         value: '15/07/1999',
+    //                         isValid: true
+    //                     },
+    //                     address: {
+    //                         addressLine1: 'Line 1',
+    //                         addressLine2: 'Line 2',
+    //                         town: 'Stockport',
+    //                         postcode: 'SK1 3XE'
+    //                     }
+    //                 }],
+    //                 isValid: true
+    //             }
+    //         }
+    //     })
+
+    //     helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+    //     const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
+
+    //     // Act
+    //     await wrapper.find('form').simulate('submit')
+    //     await Promise.resolve()
+
+    //     // Assert
+    //     const pageRoute = helpers.getPageRoute(21)
+    //     expect(history.push).toHaveBeenCalledWith(pageRoute)
+    // })
+
     it('should push to next page on submit, when single applicant', async () => {
         // Arrange
         const history = {
@@ -99,51 +169,8 @@ describe('AboutOverSixteens', () => {
         }
 
         const match = {
-            params: undefined
+            params: ['second-applicant']
         }
-
-        useContextMock.mockReturnValue({
-            currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
-            onChangeStatus: onChangeStatusMock,
-            firstApplicant: {
-                firstName :{
-                    value: 'app first name',
-                    isValid: true
-                },
-                lastName:{
-                    value: 'app last name',
-                    isValid: true
-                },
-                childrenOverSixteenLivingAwayFromHome: {
-                    value: [{
-                        firstName: {
-                            value: 'first name',
-                            isValid: true
-                        },
-                        lastName: {
-                            value: 'last name',
-                            isValid: true
-                        },
-                        gender: {
-                            value: 'gender',
-                            isValid: true
-                        },
-                        dateOfBirth: {
-                            value: '15/07/1999',
-                            isValid: true
-                        },
-                        address: {
-                            addressLine1: 'Line 1',
-                            addressLine2: 'Line 2',
-                            town: 'Stockport',
-                            postcode: 'SK1 3XE'
-                        }
-                    }],
-                    isValid: true
-                }
-            }
-        })
 
         helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
@@ -155,11 +182,33 @@ describe('AboutOverSixteens', () => {
 
         // Assert
         const pageRoute = helpers.getPageRoute(21)
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(`${pageRoute}`)
+    })
+  
+    it('should push to next page on submit, when joint applicant', async () => {
+        // Arrange
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: ['first-applicant']
+        }
+
+        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+
+        const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
+
+        // Act
+        await wrapper.find('form').simulate('submit')
+        await Promise.resolve()
+
+        // Assert
+        const pageRoute = helpers.getPageRoute(19)
+        expect(history.push).toHaveBeenCalledWith(`${pageRoute}/second-applicant`)
     })
 
-  
-    it('should call updateForm on form submit', async () => {
+    it('should call updateForm on form sum on form submit', async () => {
         // Arrange
         const history = {
             push: jest.fn()
