@@ -39,16 +39,15 @@ const FormLinks = () => {
 		},
 		secondApplicant
 	} = useContext(Context)
-	
+
 	return <Fragment>
 		<p>You can answer the questions in this section to help you to prepare for your home visit. This step is optional however, your fostering journey can be made simpler by telling us more about yourself. You can make changes to your answers up to 30 minutes before your home visit and your social worker will be able to see your answers before your appointment.</p>
 		<TaskLink route='/fostering/known-by-another-name' status={tellUsAboutYourselfStatus} name='Tell us more about you' />
 		<TaskLink route='/fostering/are-you-employed' status={yourEmploymentDetailsStatus} name='Your employment details' />
 		<TaskLink route='/fostering/languages-spoken-in-your-home' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home' />
 		{secondApplicant && <TaskLink route={getPageRoute(7)} status={yourPartnershipStatus} name='Your partnership status' />}
-		<TaskLink route='/fostering/about-your-health' status={yourHealthStatus} name='Your health' />
-		{secondApplicant && <TaskLink route={getPageRoute(8)} status={yourPartnershipStatus} name='Your partnership status' />}
 		<TaskLink route='/fostering/your-fostering-history' status={yourFosteringHistoryStatus} name='Your fostering history' />
+		<TaskLink route='/fostering/about-your-health' status={yourHealthStatus} name='Your health' />
 		<TaskLink route={getPageRoute(12)} status={tellUsAboutYourInterestInFosteringStatus} name='Tell us about your interest in fostering' />
 		<TaskLink route={getPageRoute(23)} status={yourHouseholdStatus} name='Your household' />
 		<TaskLink route={getPageRoute(17)} status={childrenLivingAwayFromYourHomeStatus} name='Children living away from your home' />
@@ -79,14 +78,24 @@ const Start = () => {
 		},
 		{
 			title: 'Additional information',
+<<<<<<< HEAD
 			body: () => <p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>,
 			status: 2,
+=======
+			body: () => <p>If you’ve been successful at your home visit, you’ll need to give us some more information so that you can move onto the next stage of your fostering journey.</p>,
+			status: 3,
+>>>>>>> 91ba7ecda45ac1d025accb0e3887fe88d8760edd
 			disabled: true
 		},
 		{
 			title: 'Assessment and training',
+<<<<<<< HEAD
 			body: () => <p>Complete the assessment stage of your fostering journey and attend training sessions.</p>,
 			status: 2,
+=======
+			body: () => <p>You’ll complete the assessment stage of your fostering journey and attend training sessions.</p>,
+			status: 3,
+>>>>>>> 91ba7ecda45ac1d025accb0e3887fe88d8760edd
 			disabled: true
 		},
 		{

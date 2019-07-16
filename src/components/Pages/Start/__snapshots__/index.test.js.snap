@@ -124,31 +124,6 @@ Array [
           className="anchor-with-status"
         >
           <a
-            href="/fostering/about-your-health"
-            onClick={[Function]}
-          >
-            Your health
-          </a>
-        </div>
-        <div
-          className="anchor-with-status"
-        >
-          <a
-            href="/fostering/date-of-marriage-or-partnership"
-            onClick={[Function]}
-          >
-            Your partnership status
-          </a>
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
-        </div>
-        <div
-          className="anchor-with-status"
-        >
-          <a
             href="/fostering/your-fostering-history"
             onClick={[Function]}
           >
@@ -159,6 +134,16 @@ Array [
           >
             Not completed
           </span>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/about-your-health"
+            onClick={[Function]}
+          >
+            Your health
+          </a>
         </div>
         <div
           className="anchor-with-status"
@@ -220,9 +205,9 @@ Array [
           If you’ve been successful at your home visit, you’ll need to give us some more information so that you can move onto the next stage of your fostering journey.
         </p>
         <span
-          className="status-not-completed"
+          className="status-cant-start"
         >
-          Not completed
+          Can't start yet
         </span>
         <hr />
       </div>
@@ -240,9 +225,9 @@ Array [
           You’ll complete the assessment stage of your fostering journey and attend training sessions.
         </p>
         <span
-          className="status-not-completed"
+          className="status-cant-start"
         >
-          Not completed
+          Can't start yet
         </span>
         <hr />
       </div>
