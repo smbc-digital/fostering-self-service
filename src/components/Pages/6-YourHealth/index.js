@@ -83,7 +83,7 @@ const YourHealth = ({ history, match }) => {
     return <Fragment>
         <h1>Your fostering journey</h1>
         <h2>Your health</h2>
-        <h3>{firstName.value} {lastName.value}</h3> 
+        {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
         <form onSubmit={onSubmit}>
             <RadioInputsContainer
                 displayHeading

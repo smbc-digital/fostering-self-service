@@ -8,7 +8,7 @@ import { Applicant } from '../../../Provider'
 const KnownByAnotherName = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant } = context
+    const { onChangeApplicant, secondApplicant } = context
     const { everBeenKnownByAnotherName, firstName, lastName, anotherName } = context[currentApplicant]
 
     const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
@@ -63,7 +63,7 @@ const KnownByAnotherName = ({ history, match }) => {
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Tell us more about you</h2>
-            <h3>{firstName.value} {lastName.value}</h3>
+            {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
             <form onSubmit={onSubmit}>
                 <RadioInputsContainer
                     displayHeading
