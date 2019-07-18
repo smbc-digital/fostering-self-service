@@ -149,7 +149,7 @@ const AboutOverSixteens = ({history, match}) => {
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Your household</h2>
-            <h3>{firstName.value} {lastName.value}</h3> 
+            {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
             <form onSubmit={onSubmit}>
                 <ComponentsList
                     onChange={onPersonChange}
