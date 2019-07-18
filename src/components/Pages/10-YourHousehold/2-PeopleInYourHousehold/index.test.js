@@ -26,7 +26,7 @@ describe('PeopleInYourHousehold', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(25))
+        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(16))
     })
 
     it('Should call onChange with new values', () => {

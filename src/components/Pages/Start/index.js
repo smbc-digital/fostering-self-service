@@ -49,7 +49,7 @@ const FormLinks = () => {
 		<TaskLink route='/fostering/your-fostering-history' status={yourFosteringHistoryStatus} name='Your fostering history' />
 		<TaskLink route='/fostering/about-your-health' status={yourHealthStatus} name='Your health' />
 		<TaskLink route={getPageRoute(12)} status={tellUsAboutYourInterestInFosteringStatus} name='Tell us about your interest in fostering' />
-		<TaskLink route={getPageRoute(23)} status={yourHouseholdStatus} name='Your household' />
+		<TaskLink route={getPageRoute(14)} status={yourHouseholdStatus} name='Your household' />
 		<TaskLink route={getPageRoute(17)} status={childrenLivingAwayFromYourHomeStatus} name='Children living away from your home' />
 	</Fragment>
 }

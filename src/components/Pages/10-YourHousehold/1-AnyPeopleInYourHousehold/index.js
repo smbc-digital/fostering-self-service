@@ -11,11 +11,11 @@ const AnyPeopleInYourHousehold = ({ history }) => {
         event.preventDefault()
 
         if(anyOtherPeopleInYourHousehold.value === 'true' || anyOtherPeopleInYourHousehold.value === true){
-            history.push(getPageRoute(24))
+            history.push(getPageRoute(15))
             return
         }
 
-        history.push(getPageRoute(25))
+        history.push(getPageRoute(16))
     }
 
     useEffect(() => {

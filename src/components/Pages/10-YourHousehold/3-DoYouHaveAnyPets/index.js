@@ -44,7 +44,7 @@ const DoYouHaveAnyPets = ({ history }) => {
     const onSubmit = event => {
         event.preventDefault()
 
-        handleFormUpdate(getPageRoute(26))
+        handleFormUpdate(getPageRoute(17))
     }
 
     const options = [

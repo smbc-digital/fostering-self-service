@@ -43,7 +43,7 @@ describe('DoYouHaveAnyPets', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(26))
+        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(17))
         expect(mockOnChangeStatus).toHaveBeenCalledWith('yourHouseholdStatus', 0)
     })
 

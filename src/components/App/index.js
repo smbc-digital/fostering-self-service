@@ -44,13 +44,14 @@ const App = () => (
 		<Route exact path={`${getPageRoute(11)}/(|second-applicant)?`} component={YourHealth} />
 		<Route exact path={getPageRoute(12)} component={AboutYourInterest} />
 		<Route exact path={getPageRoute(13)} component={TypesOfFostering} />
+		<Route exact path={getPageRoute(14)} component={AnyPeopleInYourHousehold} />
+		<Route exact path={getPageRoute(15)} component={PeopleInYourHousehold} />
+		<Route exact path={getPageRoute(16)} component={DoYouHaveAnyPets} />
 		<Route exact path={`${getPageRoute(17)}/(|second-applicant)?`} component={AnyUnderSixteens} />
 		<Route exact path={`${getPageRoute(18)}/(|second-applicant)?`} component={AboutUnderSixteens} />
 		<Route exact path={`${getPageRoute(19)}/(|second-applicant)?`} component={AnyOverSixteens} />
 		<Route exact path={`${getPageRoute(20)}/(|second-applicant)?`} component={AboutOverSixteens} />
-		<Route exact path={getPageRoute(23)} component={AnyPeopleInYourHousehold} />
-		<Route exact path={getPageRoute(24)} component={PeopleInYourHousehold} />
-		<Route exact path={getPageRoute(25)} component={DoYouHaveAnyPets} />
+
 		<Route exact path="/error" component={ErrorPage} />
 	</Switch>
 )

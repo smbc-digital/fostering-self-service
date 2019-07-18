@@ -19,7 +19,7 @@ const PeopleInYourHousehold = ({ history }) => {
     const onSubmit = event => {
         event.preventDefault()
 
-        history.push(getPageRoute(25))
+        history.push(getPageRoute(16))
     }
 
     const onPersonChange = (values, isValid) => {
