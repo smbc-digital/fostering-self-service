@@ -14,7 +14,7 @@ Array [
     <h3
       className="optional no-margin-bottom"
     >
-      Date of your marriage or civil partnerhsip
+      Date of your marriage or civil partnership
     </h3>
     <fieldset
       className="input-memorable-date"
