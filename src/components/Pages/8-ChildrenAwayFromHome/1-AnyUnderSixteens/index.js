@@ -102,7 +102,7 @@ const AnyUnderSixteens = ({ history, match }) => {
             <form onSubmit={onSubmit}>
 				<RadioInputsContainer
 					displayHeading
-					header='Do you have any children under 16 who live away from your home?'
+					header='Do you have any children under 16 living away from your home?'
 					options={options}
 					onChange={onChange}
 					value={radioValue}

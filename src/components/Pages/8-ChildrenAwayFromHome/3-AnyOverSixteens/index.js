@@ -106,7 +106,7 @@ const AnyOverSixteens = ({ history, match }) => {
                     onChange={onChange}
                     value={radioValue}
                     displayHeading
-                    header='Do you have any children aged 16 and over living away from your home?'
+                    header='Do you have any children aged 16 or over living away from your home?'
                     options={options}
                 />
                <Button
