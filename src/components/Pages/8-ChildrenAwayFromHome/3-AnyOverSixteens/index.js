@@ -64,7 +64,7 @@ const AnyOverSixteens = ({ history, match }) => {
                 event.stopPropagation()
                 event.preventDefault()
 
-                handleFormUpdate(getPageRoute(21)) //this might need to be changed
+                handleFormUpdate(getPageRoute(1)) //this might need to be changed
                 return
             }
             event.stopPropagation()
@@ -82,7 +82,7 @@ const AnyOverSixteens = ({ history, match }) => {
             event.stopPropagation()
             event.preventDefault()
 
-            handleFormUpdate(getPageRoute(21))  //this might need to be changed
+            handleFormUpdate(getPageRoute(1))  //this might need to be changed
         }
     }
 
@@ -110,7 +110,7 @@ const AnyOverSixteens = ({ history, match }) => {
                     options={options}
                 />
                <Button
-					label={radioValue === 'false' ? 'Save and next step' : 'Next step'}
+					label={radioValue === 'true' ? 'Next step' : 'Save and next step'}
 					isValid={!saveAndGoBackClicked}
 					isLoading={isLoading && !saveAndGoBackClicked}
 				/>

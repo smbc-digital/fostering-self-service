@@ -78,17 +78,5 @@
 	{
 		"number": 20,
 		"route": "/fostering/about-children-over-sixteen-living-away"
-	},
-	{
-		"number": 21,
-		"route": "/fostering/declaration"
-	},
-	{
-		"number": 22,
-		"route": "/fostering/success"
-	},
-	{
-		"number": 26,
-		"route": "/fostering/some-really-good-page-that-dont-know-yet"
 	}
 ]

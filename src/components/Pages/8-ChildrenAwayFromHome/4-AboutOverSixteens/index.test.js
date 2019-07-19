@@ -115,7 +115,7 @@ describe('AboutOverSixteens', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(21)
+        const pageRoute = helpers.getPageRoute(1)
         expect(history.push).toHaveBeenCalledWith(`${pageRoute}`)
     })
   

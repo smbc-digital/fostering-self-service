@@ -208,7 +208,7 @@ describe('AnyOverSixteens', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(21)
+        const pageRoute = helpers.getPageRoute(1)
 
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
@@ -268,7 +268,7 @@ describe('AnyOverSixteens', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(21)
+        const pageRoute = helpers.getPageRoute(1)
 
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
