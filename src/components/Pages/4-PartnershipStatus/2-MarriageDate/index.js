@@ -47,7 +47,7 @@ const MarriageDate = ({ history }) => {
 			<h2>Your partnership status</h2>
 			<form onSubmit={onSubmit}>
 				<MemorableDateInputContainer
-					heading="Date of your marriage or civil partnerhsip"
+					heading="Date of your marriage or civil partnership"
 					description="For example, 31 3 1980"
 					name="dateOfMarriage"
 					optional
