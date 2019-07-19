@@ -6,12 +6,15 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Your household
+    Children living away from your home
   </h2>,
   <h3>
     ap first name
      
     ap last name
+  </h3>,
+  <h3>
+    Tell us about your children aged 16 or over living away from your home
   </h3>,
   <form
     onSubmit={[Function]}

@@ -14,7 +14,7 @@ Array [
     ap last name
   </h3>,
   <h3>
-    Tell us about your children under 16 who live away from your home
+    Tell us about your children under 16 living away from your home
   </h3>,
   <form
     onSubmit={[Function]}
