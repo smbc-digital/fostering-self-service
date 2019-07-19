@@ -65,7 +65,7 @@ const AboutOverSixteens = ({history, match}) => {
 			handleFormUpdate(`${getPageRoute(19)}/second-applicant`)
 			return
 		}
-		await handleFormUpdate(getPageRoute(21))
+		await handleFormUpdate(getPageRoute(1))
 		return
 	}
 
@@ -128,7 +128,7 @@ const AboutOverSixteens = ({history, match}) => {
                     hideOptionalText={true}
                     customValidation={{
                         invalidAfterDate: moment().subtract(16, 'years'),
-                        customValidationMessage: 'The child must be 16 and over'
+                        customValidationMessage: 'The child must be 16 or over'
                     }}
                 />
 
