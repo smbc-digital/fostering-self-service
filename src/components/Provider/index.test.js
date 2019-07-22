@@ -3,6 +3,7 @@ import { React, mount } from '../../helpers/SetupTest'
 import Provider, { Applicant } from '../Provider'
 import { Context } from '../../context/'
 import * as helpers from '../../helpers'
+import { FosteringErrorRoute } from 'config'
 
 const TestComponent = ({ context: {
     onChange,
@@ -124,24 +125,17 @@ describe('Provider', () => {
         expect(wrapper.find('p').text()).toEqual('Loading...')
     })
 
-    it('should render error state', async () => {
+    it('should redirect to error page', async () => {
         // Arrange
-        const fetchPromise = Promise.reject(new Error())
-        const wrapper = mount(<Provider />)
-        helpers.fetchWithTimeout = jest.fn().mockReturnValue(fetchPromise)
+        const replaceMock = jest.fn()
+        Object.defineProperty(global.window.location, 'replace', { value: replaceMock })
+        helpers.fetchWithTimeout = jest.fn().mockImplementation(() => { throw new Error() })
+        
+        // Act
+        mount(<Provider />)
 
-        // Act & Assert
-        try {
-            await fetchPromise
-        } catch (error) {
-            wrapper.update()
-        }
-
-        try {
-            await fetchPromise
-        } catch (error) {
-            expect(wrapper.find('p').text()).toEqual('Error')
-        }
+        // Assert
+        expect(window.location.replace).toHaveBeenCalledWith(FosteringErrorRoute)
     })
 
     it('should render itself', async () => {

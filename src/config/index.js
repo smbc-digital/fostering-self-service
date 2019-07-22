@@ -4,6 +4,8 @@ let Applicant = {
 	FirstApplicant: 'firstApplicant',
 	SecondApplicant: 'secondApplicant'
 }
+const FosteringErrorRoute = '/fostering/error'
+
 const hostname = window && window.location && window.location.hostname
 const port = window && window.location && window.location.port
 
@@ -14,5 +16,6 @@ if (hostname === 'localhost' && port === '8080') {
 export {
     API_ROOT,
     SecondApplicantRoute,
-    Applicant
+    Applicant,
+    FosteringErrorRoute
 }

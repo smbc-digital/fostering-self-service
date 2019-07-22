@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Context } from '../../context/'
 import { fetchWithTimeout } from '../../helpers'
-import { API_ROOT } from '../../config'
+import { API_ROOT, FosteringErrorRoute } from '../../config'
 
 export const Applicant = {
 	FirstApplicant: 'firstApplicant',
@@ -22,7 +22,6 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 const Provider = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [state, setState] = useState({})
-	const [error, setError] = useState(undefined)
 
 	const onChange = (event, isValid) => {
 		setState({
@@ -86,7 +85,7 @@ const Provider = ({ children }) => {
 			const body = await response.json()
 			mapCaseToContext(body)
 		} catch (error) {
-			setError(error)
+			window.location.replace(FosteringErrorRoute)
 		}
 	}
 
@@ -100,10 +99,6 @@ const Provider = ({ children }) => {
 			setIsLoading(false)
 		}
 	}, [state])
-
-	if (error) {
-		return <p>Error</p>
-	}
 
 	if (isLoading) {
 		return <p>Loading...</p>
