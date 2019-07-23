@@ -19,9 +19,15 @@ const AboutAnyUnderSixteen = ({history, match}) => {
 	const { childrenUnderSixteenLivingAwayFromHome, firstName, lastName } = context[currentApplicant]
 	const { secondApplicant, onChangeApplicant, onChangeStatus } = context
     const [isLoading, setIsLoading] = useState(false)
+    const [isValid, setIsValid] = useState(true)
+
     
     const onChange = (event, isValid) => {
-        return onChangeApplicant(event, isValid, currentApplicant) 
+        setIsValid(isValid) 
+        
+        console.log (childrenUnderSixteenLivingAwayFromHome.value)     
+        
+        return onChangeApplicant(event, isValid, currentApplicant)
     }
 	
     const onPersonChange = (values, isValid) => {
@@ -68,11 +74,10 @@ const AboutAnyUnderSixteen = ({history, match}) => {
 		return
 	}
 
-    const renderComponent = (onChange, firstInputRef, values, index) => {
-        const onComponentChange = ({ target: { name, value }}) => {
+    const renderComponent = (onChange, firstInputRef, values, index) => {       
+        const onComponentChange = ({ target: { name, value }}, isValid) => {
             const newValues = { ...values, [name]: value }
-
-            onChange(newValues, true, index)
+            onChange(newValues, isValid, index)
         }
 
         return (
@@ -119,12 +124,17 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                 />
                 <MemorableDateInputContainer
                     heading="Date of birth"
-                    description="For example, 31 3 1980"
+                    description='The child must be under 16'
+                    additionalDescription='For example, 31 3 1980'
                     name="dateOfBirth"
                     optional
                     value={moment(values.dateOfBirth, ['DD/MM/YYYY', 'YYYY-M-D']).format('YYYY-M-D')}
                     onChange={onComponentChange}
                     hideOptionalText={true}
+                    customValidation={{
+                        invalidBeforeDate: moment().subtract(16, 'years'),
+                        customValidationMessage: 'Check the date and try again'
+                    }}
                 />
                 <AddressPicker
                     onChange={onComponentChange}
@@ -158,7 +168,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                 />
                 <SubmitButton
                     history={history}
-                    isValid
+                    isValid={isValid}
                     onSaveAndGoBackClick={onSaveAndGoBackClick}
                     isLoading={isLoading}
                 />
