@@ -8,6 +8,9 @@ Array [
   <h2>
     Your household
   </h2>,
+  <h3>
+    Tell us who lives in your home
+  </h3>,
   <form
     onSubmit={[Function]}
   >

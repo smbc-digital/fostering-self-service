@@ -107,6 +107,7 @@ const PeopleInYourHousehold = ({ history }) => {
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Your household</h2>
+            <h3>Tell us who lives in your home</h3>
             <form onSubmit={onSubmit}>
                 <ComponentsList
                     onChange={onPersonChange}
