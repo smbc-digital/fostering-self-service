@@ -5,7 +5,6 @@ import {
     ComponentsList,
     Button,
     TextInputContainer,
-    SelectInputContainer,
     MemorableDateInputContainer
 } from 'smbc-react-components'
 
