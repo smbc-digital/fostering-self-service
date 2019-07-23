@@ -80,6 +80,16 @@ const PeopleInYourHousehold = ({ history }) => {
                     ]}
                     onChange={onComponentChange}
                 />
+                <TextInputContainer
+                    label='Relationship to you'
+                    id='relationshipToYou'
+                    type='text'
+                    maxLength='60'
+                    value={values.relationshipToYou}
+                    onChange={onComponentChange}
+                    optional={true}
+                    hideOptional={true}
+                />
                 <MemorableDateInputContainer
                     heading="Date of birth"
                     description="For example, 31 3 1980"

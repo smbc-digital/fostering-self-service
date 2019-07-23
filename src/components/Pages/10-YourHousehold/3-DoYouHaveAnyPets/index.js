@@ -85,7 +85,7 @@ const DoYouHaveAnyPets = ({ history }) => {
                         optional={true}
                         hideOptional={true}
                         maxLength={500}
-                        maxLengthMessage='You have 500 characters'
+                        maxLengthMessage='Your list can be up to 500 characters long'
                     />
                 }
                 <SubmitButton
