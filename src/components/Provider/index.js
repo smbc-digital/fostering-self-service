@@ -81,7 +81,7 @@ const Provider = ({ children }) => {
 
 	const fetchCase = async () => {
 		try {
-			const response = await fetchWithTimeout(`${API_ROOT}/fostering/case`, { credentials: 'include' })
+			const response = await fetchWithTimeout(`${API_ROOT}/fostering/case`, { credentials: 'include' }, 30000)
 			const body = await response.json()
 			mapCaseToContext(body)
 		} catch (error) {
