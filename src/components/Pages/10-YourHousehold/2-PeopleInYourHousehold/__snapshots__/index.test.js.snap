@@ -56,40 +56,27 @@ Array [
       type="text"
       value={undefined}
     />
-    <fieldset>
-      <label
-        className=""
-        htmlFor="gender"
-      >
-        Gender
-      </label>
-      <select
-        id="gender"
-        name="gender"
-        onChange={[Function]}
-        value=""
-      >
-        <option
-          disabled={true}
-          value=""
-        />
-        <option
-          value="Male"
-        >
-          Male
-        </option>
-        <option
-          value="Female"
-        >
-          Female
-        </option>
-        <option
-          value="Prefer not to say"
-        >
-          Prefer not to say
-        </option>
-      </select>
-    </fieldset>
+    <label
+      className=""
+      htmlFor="gender"
+    >
+      Gender
+    </label>
+    <input
+      aria-label="Gender"
+      aria-live="off"
+      className=""
+      id="gender"
+      inputMode={undefined}
+      maxLength="20"
+      min={undefined}
+      name="gender"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value={undefined}
+    />
     <label
       className="optional"
       htmlFor="relationshipToYou"

@@ -60,24 +60,12 @@ const PeopleInYourHousehold = ({ history }) => {
                     optional={true}
                     hideOptional={true}
                 />
-                <SelectInputContainer
+                <TextInputContainer
                     label='Gender'
                     id='gender'
+                    type='text'
+                    maxLength='20'
                     value={values.gender}
-                    options={[
-                        {
-                            name: 'Male',
-                            value: 'Male'
-                        },
-                        {
-                            name: 'Female',
-                            value: 'Female'
-                        },
-                        {
-                            name: 'Prefer not to say',
-                            value: 'Prefer not to say'
-                        }
-                    ]}
                     onChange={onComponentChange}
                 />
                 <TextInputContainer

@@ -185,11 +185,22 @@ Array [
       type="text"
       value="Line 1"
     />
-    <label
+    <h3
+      aria-hidden="true"
       className="optional"
-      htmlFor="addressLine2"
     >
       Address line 2
+    </h3>
+    <p
+      className="optional"
+    >
+      (optional)
+    </p>
+    <label
+      className="optional sr-only"
+      htmlFor="addressLine2"
+    >
+      Address line 2 optional
     </label>
     <input
       aria-label=""
