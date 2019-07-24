@@ -1,10 +1,11 @@
 import React, { Fragment, useContext } from 'react'
+import moment from 'moment'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { TaskItem, TaskStatus } from 'smbc-react-components'
 import { Context } from '../../../context'
 import { getPageRoute } from '../../../helpers'
-import moment from 'moment'
+import { AfterHomeVisitTimePeriod } from 'config'
 
 const TaskLink = ({ route, name, status, disabled }) => {
 
@@ -95,6 +96,7 @@ const FormLinks = ({ disabled }) => {
 const Start = () => {
 	const { homeVisitDateTime } = useContext(Context)
 	const disabled = moment().isSameOrAfter(moment(homeVisitDateTime.value).subtract(30, 'm'))
+	const isPastHomeVisitDateTime = moment().subtract(AfterHomeVisitTimePeriod.value, AfterHomeVisitTimePeriod.unit).isSameOrAfter(homeVisitDateTime.value)
 
 	const tasks = [
 		{
@@ -110,12 +112,14 @@ const Start = () => {
 		{
 			title: 'Answer questions before your home visit',
 			body: () => <FormLinks disabled={disabled} />,
-			displayHr: false
+			displayHr: false,
+			status: isPastHomeVisitDateTime ? 1 : undefined
 		},
 		{
 			title: 'Home visit',
 			body: () => <p>Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. </p>,
-			disabled: true
+			disabled: true,
+			status: isPastHomeVisitDateTime ? 1 : undefined
 		},
 		{
 			title: 'Additional information',

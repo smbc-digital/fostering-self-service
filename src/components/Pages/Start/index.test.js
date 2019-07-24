@@ -1,4 +1,5 @@
-import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
+import moment from 'moment'
+import { React, mount, useContextMock, renderer } from '../../../helpers/SetupTest'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Start from './index'
 import moment from 'moment'
@@ -57,6 +58,42 @@ describe('Start', () => {
         wrapper.find('FormLinks').children('TaskLink').forEach(node => {
             expect(node.props().disabled).toBe(false)
         })
+    it('should render correct Task status after home visit is completed', () => {
+        useContextMock.mockReturnValue({
+            homeVisitDateTime: {
+                value: moment().subtract(10, 'minutes')
+            },
+            statuses: {
+                tellUsAboutYourselfStatus: 1,
+                yourEmploymentDetailsStatus: 1,
+                languageSpokenInYourHomeStatus: 1,
+                yourPartnershipStatus: 1,
+                yourFosteringHistoryStatus: 1,
+            },
+        })
+
+        var wrapper = mount(<Router><Start/></Router>)
+        expect(wrapper.find('TaskItem').get(2).props.status).toEqual(1)
+    })
+
+    it('should render correct status for Home Visit section', () => {
+        // Arrange
+        useContextMock.mockReturnValue({
+            homeVisitDateTime: {
+                value: moment().subtract(10, 'minutes')
+            },
+            statuses: {
+                tellUsAboutYourselfStatus: 1,
+                yourEmploymentDetailsStatus: 1,
+                languageSpokenInYourHomeStatus: 1,
+                yourPartnershipStatus: 1,
+                yourFosteringHistoryStatus: 1,
+            },
+        })
+        var wrapper = mount(<Router><Start/></Router>)
+        
+        // Assert
+        expect(wrapper.find('TaskItem').get(3).props.status).toEqual(1)
     })
 
     describe('snapshot', () => {
