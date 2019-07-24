@@ -26,7 +26,7 @@ const TaskLink = ({ route, name, status, disabled }) => {
 	</div>
 }
 
-const FormLinks = ({ disabled }) => {
+const FormLinks = ({ disabled, displayStatus }) => {
 	const {
 		statuses: {
 			childrenLivingAwayFromYourHomeStatus,
@@ -46,57 +46,66 @@ const FormLinks = ({ disabled }) => {
 		<p>You can answer the questions in this section to help you to prepare for your home visit. This step is optional however, your fostering journey can be made simpler by telling us more about yourself. You can make changes to your answers up to 30 minutes before your home visit and your social worker will be able to see your answers before your appointment.</p>
 		<TaskLink
 			route='/fostering/known-by-another-name'
-			status={tellUsAboutYourselfStatus}
+			status={displayStatus ? tellUsAboutYourselfStatus : undefined}
 			name='Tell us more about you'
-			disabled={disabled} />
+			disabled={disabled}
+		/>
 		<TaskLink
 			route='/fostering/are-you-employed'
-			status={yourEmploymentDetailsStatus}
+			status={displayStatus ? yourEmploymentDetailsStatus : undefined}
 			name='Your employment details'
-			disabled={disabled} />
+			disabled={disabled}
+		/>
 		<TaskLink
 			route='/fostering/languages-spoken-in-your-home'
-			status={languageSpokenInYourHomeStatus}
-			name='Tell us about the languages that are spoken in your home'
-			disabled={disabled} />
+			status={displayStatus ? languageSpokenInYourHomeStatus : undefined}
+			name='Tell us more about languages that are spoken in your home'
+			disabled={disabled}
+		/>
 		{secondApplicant && <TaskLink
 			route={getPageRoute(7)}
-			status={yourPartnershipStatus}
+			status={displayStatus ? yourPartnershipStatus : undefined}
 			name='Your partnership status'
-			disabled={disabled} />
+			disabled={disabled} 
+			/>
 		}
 		<TaskLink
 			route='/fostering/your-fostering-history'
-			status={yourFosteringHistoryStatus}
+			status={displayStatus ? yourFosteringHistoryStatus : undefined}
 			name='Your fostering history'
-			disabled={disabled} />
+			disabled={disabled}
+		/>
 		<TaskLink
 			route='/fostering/about-your-health'
-			status={yourHealthStatus}
+			status={displayStatus ? yourHealthStatus : undefined}
 			name='Your health'
-			disabled={disabled} />
+			disabled={disabled}
+		/>
 		<TaskLink
 			route={getPageRoute(12)}
-			status={tellUsAboutYourInterestInFosteringStatus}
+			status={displayStatus ? tellUsAboutYourInterestInFosteringStatus : undefined}
 			name='Tell us about your interest in fostering'
-			disabled={disabled} />
+			disabled={disabled}
+		/>
 		<TaskLink
 			route={getPageRoute(14)}
-			status={yourHouseholdStatus}
+			status={displayStatus ? yourHouseholdStatus : undefined}
 			name='Your household'
-			disabled={disabled} />
+			disabled={disabled}
+		/>
 		<TaskLink
 			route={getPageRoute(17)}
-			status={childrenLivingAwayFromYourHomeStatus}
+			status={displayStatus ? childrenLivingAwayFromYourHomeStatus : undefined}
 			name='Children living away from your home'
-			disabled={disabled} />
+			disabled={disabled}
+		/>
 	</Fragment>
 }
 
 const Start = () => {
 	const { homeVisitDateTime } = useContext(Context)
+	const isPastHomeVisitDateTime = moment().subtract(AfterHomeVisitTimePeriod.value, AfterHomeVisitTimePeriod.unit).isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm'))
 	const disabled = moment().isSameOrAfter(moment(homeVisitDateTime.value).subtract(30, 'm'))
-	const isPastHomeVisitDateTime = moment().subtract(AfterHomeVisitTimePeriod.value, AfterHomeVisitTimePeriod.unit).isSameOrAfter(homeVisitDateTime.value)
 
 	const tasks = [
 		{
@@ -111,7 +120,7 @@ const Start = () => {
 		},
 		{
 			title: 'Answer questions before your home visit',
-			body: () => <FormLinks disabled={disabled} />,
+			body: () => <FormLinks disabled={disabled} displayStatus={!isPastHomeVisitDateTime}/>,
 			displayHr: false,
 			status: isPastHomeVisitDateTime ? 1 : undefined
 		},
