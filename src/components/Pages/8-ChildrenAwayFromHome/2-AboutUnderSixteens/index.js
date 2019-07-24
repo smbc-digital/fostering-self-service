@@ -121,7 +121,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                 <MemorableDateInputContainer
                     heading="Date of birth"
                     description='The child must be under 16'
-                    additionalDescription='For example, 31 3 1980'
+                    additionalDescription='For example, 31 3 2010'
                     name="dateOfBirth"
                     optional
                     value={moment(values.dateOfBirth, ['DD/MM/YYYY', 'YYYY-M-D']).format('YYYY-M-D')}
