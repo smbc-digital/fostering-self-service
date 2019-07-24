@@ -24,7 +24,7 @@ const TaskLink = ({ route, name, status, disabled }) => {
 	</div>
 }
 
-const FormLinks = ({ disabled, displayStatus }) => {
+const FormLinks = ({ disabled}) => {
 	const {
 		statuses: {
 			childrenLivingAwayFromYourHomeStatus,

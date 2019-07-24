@@ -39,7 +39,7 @@ describe('AboutUnderSixteens', () => {
                             isValid: true
                         },
                         dateOfBirth: {
-                            value: '15/07/1799',
+                            value: '15-07-1950',
                             isValid: true
                         },
                         address: {
@@ -475,6 +475,26 @@ describe('AboutUnderSixteens', () => {
         // Assert
         expect(history.push).toHaveBeenCalledWith('/error')
     })
+
+    it.skip('should setIsDobValid when Date of birth is set', () => {
+        const match = {
+            params: undefined
+        }
+
+        const wrapper = mount(<AboutUnderSixteens history={{}} match={match}/>)
+
+        // Act
+        wrapper.find('input[name="day"]').simulate('change', { target: { value: '20', name: 'day' } })
+        wrapper.find('input[name="month"]').simulate('change', { target: { value: '2', name: 'month' } })
+        wrapper.find('input[name="year"]').simulate('change', { target: { value: '1950', name: 'year' } })
+        
+        //console.log(wrapper.debug())
+        wrapper.update()
+
+        // Assert
+        expect(wrapper.find('Button').at(1).props().isValid).toBe(false)
+    })
+
 
     it('should call onChangeApplicant', async () => {
         // Arrange

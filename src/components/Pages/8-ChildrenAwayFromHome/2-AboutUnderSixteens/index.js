@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { Context } from '../../../../context'
 import { 
     ComponentsList,
@@ -21,12 +21,16 @@ const AboutAnyUnderSixteen = ({history, match}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [isValid, setIsValid] = useState(true)
 
-    
+    useEffect(() => {
+        let validDOB = childrenUnderSixteenLivingAwayFromHome.value.every((person) => {
+            return person.IsDobValid !== undefined ? person.IsDobValid : true
+        })
+        setIsValid(validDOB)
+
+    }, [childrenUnderSixteenLivingAwayFromHome])
+
+
     const onChange = (event, isValid) => {
-        setIsValid(isValid) 
-        
-        console.log (childrenUnderSixteenLivingAwayFromHome.value)     
-        
         return onChangeApplicant(event, isValid, currentApplicant)
     }
 	
@@ -38,7 +42,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
             }
         }, isValid)
 	}
-	
+
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
 
@@ -74,10 +78,14 @@ const AboutAnyUnderSixteen = ({history, match}) => {
 		return
 	}
 
-    const renderComponent = (onChange, firstInputRef, values, index) => {       
+    const renderComponent = (onChange, firstInputRef, values, index) => {
         const onComponentChange = ({ target: { name, value }}, isValid) => {
-            const newValues = { ...values, [name]: value }
-            onChange(newValues, isValid, index)
+            let newValues = { ...values, [name]: value }
+
+            if(name === 'dateOfBirth'){
+                newValues = { ...newValues, IsDobValid: isValid }
+            }
+            onChange(newValues, isValid, index) 
         }
 
         return (
