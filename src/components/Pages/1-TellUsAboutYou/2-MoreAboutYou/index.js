@@ -10,7 +10,7 @@ const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
     const { onChangeApplicant, secondApplicant, onChangeStatus } = context
-    const { firstName, lastName, sexualOrientation, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
+    const { firstName, lastName, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
 
     const handleFormUpdate = async nextPageRoute => {
@@ -78,35 +78,15 @@ const MoreAboutYou = ({ history, match }) => {
                     options={context.ethnicity}
                     onChange={onChange}
                 />
-                <SelectInputContainer
+                <TextInputContainer
                     label='Gender'
                     id='gender'
                     value={gender.value}
-                    options={[
-                        {
-                            name: 'Male',
-                            value: 'Male'
-                        },
-                        {
-                            name: 'Female',
-                            value: 'Female'
-                        },
-                        {
-                            name: 'Prefer not to say',
-                            value: 'Prefer not to say'
-                        }
-                    ]}
-                    onChange={onChange}
-                />
-                <TextInputContainer
-                    label='Sexual orientation'
-                    id='sexualOrientation'
                     type='text'
                     maxLength='60'
-                    value={sexualOrientation.value}
                     onChange={onChange}
-                    optional={true}
                     hideOptional={true}
+                    optional={true}
                 />
                 <TextInputContainer
                     label='Religion or faith group'
