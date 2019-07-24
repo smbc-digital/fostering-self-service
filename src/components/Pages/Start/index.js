@@ -5,7 +5,7 @@ import { TaskItem, TaskStatus } from 'smbc-react-components'
 import { Context } from '../../../context'
 import { getPageRoute } from '../../../helpers'
 
-const TaskLink = ({ route, name, status }) => {
+const TaskLink = ({ route, name, status, disabled }) => {
 
 	const renderStatus = () => {
 		switch (status) {
@@ -19,12 +19,12 @@ const TaskLink = ({ route, name, status }) => {
 	}
 
 	return <div className='anchor-with-status'>
-		<Link to={route}>{name}</Link>
+		{disabled ? <p>name</p> : <Link to={route}>{name}</Link>}
 		{renderStatus()}
 	</div>
 }
 
-const FormLinks = () => {
+const FormLinks = ({ disabled, displayStatus }) => {
 	const {
 		statuses: {
 			childrenLivingAwayFromYourHomeStatus,
@@ -42,15 +42,52 @@ const FormLinks = () => {
 
 	return <Fragment>
 		<p>You can answer the questions in this section to help you to prepare for your home visit. This step is optional however, your fostering journey can be made simpler by telling us more about yourself. You can make changes to your answers up to 30 minutes before your home visit and your social worker will be able to see your answers before your appointment.</p>
-		<TaskLink route='/fostering/known-by-another-name' status={tellUsAboutYourselfStatus} name='Tell us more about you' />
-		<TaskLink route='/fostering/are-you-employed' status={yourEmploymentDetailsStatus} name='Your employment details' />
-		<TaskLink route='/fostering/languages-spoken-in-your-home' status={languageSpokenInYourHomeStatus} name='Tell us more about languages that are spoken in your home' />
-		{secondApplicant && <TaskLink route={getPageRoute(7)} status={yourPartnershipStatus} name='Your partnership status' />}
-		<TaskLink route='/fostering/your-fostering-history' status={yourFosteringHistoryStatus} name='Your fostering history' />
-		<TaskLink route='/fostering/about-your-health' status={yourHealthStatus} name='Your health' />
-		<TaskLink route={getPageRoute(12)} status={tellUsAboutYourInterestInFosteringStatus} name='Tell us about your interest in fostering' />
-		<TaskLink route={getPageRoute(14)} status={yourHouseholdStatus} name='Your household' />
-		<TaskLink route={getPageRoute(17)} status={childrenLivingAwayFromYourHomeStatus} name='Children living away from your home' />
+		<TaskLink
+			route='/fostering/known-by-another-name'
+			status={tellUsAboutYourselfStatus}
+			name='Tell us more about you'
+			disabled={disabled} />
+		<TaskLink
+			route='/fostering/are-you-employed'
+			status={yourEmploymentDetailsStatus}
+			name='Your employment details'
+			disabled={disabled} />
+		<TaskLink
+			route='/fostering/languages-spoken-in-your-home'
+			status={languageSpokenInYourHomeStatus}
+			name='Tell us more about languages that are spoken in your home'
+			disabled={disabled} />
+		{secondApplicant && <TaskLink
+			route={getPageRoute(7)}
+			status={yourPartnershipStatus}
+			name='Your partnership status'
+			disabled={disabled} />
+		}
+		<TaskLink
+			route='/fostering/your-fostering-history'
+			status={yourFosteringHistoryStatus}
+			name='Your fostering history'
+			disabled={disabled} />
+		<TaskLink
+			route='/fostering/about-your-health'
+			status={yourHealthStatus}
+			name='Your health'
+			disabled={disabled} />
+		<TaskLink
+			route={getPageRoute(12)}
+			status={tellUsAboutYourInterestInFosteringStatus}
+			name='Tell us about your interest in fostering'
+			disabled={disabled} />
+		<TaskLink
+			route={getPageRoute(14)}
+			status={yourHouseholdStatus}
+			name='Your household'
+			disabled={disabled} />
+		<TaskLink
+			route={getPageRoute(17)}
+			status={childrenLivingAwayFromYourHomeStatus}
+			name='Children living away from your home'
+			disabled={disabled} />
 	</Fragment>
 }
 
@@ -124,7 +161,18 @@ Start.propTypes = {
 TaskLink.propTypes = {
 	route: PropTypes.string,
 	name: PropTypes.string,
-	status: PropTypes.object
+	status: PropTypes.object,
+	disabled: PropTypes.bool
+}
+
+FormLinks.propTypes = {
+	disabled: PropTypes.bool,
+	displayStatus: PropTypes.bool
+}
+
+FormLinks.defaultProps = {
+	disabled: false,
+	displayStatus: true
 }
 
 export default Start
