@@ -73,60 +73,26 @@ Array [
         />
       </select>
     </fieldset>
-    <fieldset>
-      <label
-        className=""
-        htmlFor="gender"
-      >
-        Gender
-      </label>
-      <select
-        id="gender"
-        name="gender"
-        onChange={[Function]}
-        value="a place"
-      >
-        <option
-          disabled={true}
-          value=""
-        />
-        <option
-          value="Male"
-        >
-          Male
-        </option>
-        <option
-          value="Female"
-        >
-          Female
-        </option>
-        <option
-          value="Prefer not to say"
-        >
-          Prefer not to say
-        </option>
-      </select>
-    </fieldset>
     <label
       className="optional"
-      htmlFor="sexualOrientation"
+      htmlFor="gender"
     >
-      Sexual orientation
+      Gender
     </label>
     <input
       aria-label=""
       aria-live=""
       className=""
-      id="sexualOrientation"
+      id="gender"
       inputMode={undefined}
       maxLength="60"
       min={undefined}
-      name="sexualOrientation"
+      name="gender"
       onChange={[Function]}
       onKeyDown={[Function]}
       pattern={undefined}
       type="text"
-      value="test"
+      value="a place"
     />
     <label
       className="optional"

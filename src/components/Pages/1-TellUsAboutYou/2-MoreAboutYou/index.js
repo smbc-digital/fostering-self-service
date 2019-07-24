@@ -78,35 +78,15 @@ const MoreAboutYou = ({ history, match }) => {
                     options={context.ethnicity}
                     onChange={onChange}
                 />
-                <SelectInputContainer
+                <TextInputContainer
                     label='Gender'
                     id='gender'
                     value={gender.value}
-                    options={[
-                        {
-                            name: 'Male',
-                            value: 'Male'
-                        },
-                        {
-                            name: 'Female',
-                            value: 'Female'
-                        },
-                        {
-                            name: 'Prefer not to say',
-                            value: 'Prefer not to say'
-                        }
-                    ]}
-                    onChange={onChange}
-                />
-                <TextInputContainer
-                    label='Sexual orientation'
-                    id='sexualOrientation'
                     type='text'
                     maxLength='60'
-                    value={sexualOrientation.value}
                     onChange={onChange}
-                    optional={true}
                     hideOptional={true}
+                    optional={true}
                 />
                 <TextInputContainer
                     label='Religion or faith group'
