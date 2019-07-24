@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { TaskItem, TaskStatus } from 'smbc-react-components'
 import { Context } from '../../../context'
 import { getPageRoute } from '../../../helpers'
+import moment from 'moment'
 
 const TaskLink = ({ route, name, status, disabled }) => {
 
@@ -24,7 +25,7 @@ const TaskLink = ({ route, name, status, disabled }) => {
 	</div>
 }
 
-const FormLinks = ({ disabled}) => {
+const FormLinks = ({ disabled }) => {
 	const {
 		statuses: {
 			childrenLivingAwayFromYourHomeStatus,
@@ -92,6 +93,9 @@ const FormLinks = ({ disabled}) => {
 }
 
 const Start = () => {
+	const { homeVisitDateTime } = useContext(Context)
+	const disabled = moment().isSameOrAfter(moment(homeVisitDateTime.value).subtract(30, 'm'))
+
 	const tasks = [
 		{
 			title: 'Contact the fostering team',
@@ -105,7 +109,7 @@ const Start = () => {
 		},
 		{
 			title: 'Answer questions before your home visit',
-			body: () => <FormLinks />,
+			body: () => <FormLinks disabled={disabled} />,
 			displayHr: false
 		},
 		{
