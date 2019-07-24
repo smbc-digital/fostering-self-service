@@ -10,7 +10,7 @@ const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
     const { onChangeApplicant, secondApplicant, onChangeStatus } = context
-    const { firstName, lastName, sexualOrientation, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
+    const { firstName, lastName, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
 
     const handleFormUpdate = async nextPageRoute => {
