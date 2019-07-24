@@ -71,45 +71,32 @@ Array [
         }
       }
     />
-    <fieldset>
-      <label
-        className=""
-        htmlFor="gender"
-      >
-        Gender
-      </label>
-      <select
-        id="gender"
-        name="gender"
-        onChange={[Function]}
-        value={
-          Object {
-            "isValid": true,
-            "value": "gender",
-          }
+    <label
+      className=""
+      htmlFor="gender"
+    >
+      Gender
+    </label>
+    <input
+      aria-label="Gender"
+      aria-live="off"
+      className=""
+      id="gender"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="gender"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value={
+        Object {
+          "isValid": true,
+          "value": "gender",
         }
-      >
-        <option
-          disabled={true}
-          value=""
-        />
-        <option
-          value="Male"
-        >
-          Male
-        </option>
-        <option
-          value="Female"
-        >
-          Female
-        </option>
-        <option
-          value="Prefer not to say"
-        >
-          Prefer not to say
-        </option>
-      </select>
-    </fieldset>
+      }
+    />
     <h3
       className="optional no-margin-bottom"
     >

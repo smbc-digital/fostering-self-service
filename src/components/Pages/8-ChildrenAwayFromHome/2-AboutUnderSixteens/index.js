@@ -3,7 +3,6 @@ import { Context } from '../../../../context'
 import { 
     ComponentsList,
     TextInputContainer,
-    SelectInputContainer,
     MemorableDateInputContainer,
     AddressPicker } from 'smbc-react-components'
 
@@ -110,25 +109,14 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                     optional={true}
                     hideOptional={true}
                 />
-                <SelectInputContainer
+                <TextInputContainer
                     label='Gender'
                     id='gender'
-                    value={values.gender}
-                    options={[
-                        {
-                            name: 'Male',
-                            value: 'Male'
-                        },
-                        {
-                            name: 'Female',
-                            value: 'Female'
-                        },
-                        {
-                            name: 'Prefer not to say',
-                            value: 'Prefer not to say'
-                        }
-                    ]}
+                    type='text'
+                    maxLength='60'
+                    value={values.gender}                   
                     onChange={onComponentChange}
+                    hideOptional={true}
                 />
                 <MemorableDateInputContainer
                     heading="Date of birth"
