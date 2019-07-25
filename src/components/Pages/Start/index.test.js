@@ -122,8 +122,71 @@ describe('Start', () => {
         })
     })
 
+    it('should render home visit date and time', () => {
+        //Arrange
+        const mockedDate = moment()
+        useContextMock.mockReturnValue({
+            homeVisitDateTime: {
+                value: mockedDate.format('DD/MM/YYYY HH:mm')
+            },
+            statuses: {
+                tellUsAboutYourselfStatus: 1,
+                yourEmploymentDetailsStatus: 1,
+                languageSpokenInYourHomeStatus: 1,
+                yourPartnershipStatus: 1,
+                yourFosteringHistoryStatus: 1,
+            }
+        })
+
+        //Act
+        const wrapper = mount(<Router><Start/></Router>)
+
+        //Assert
+        expect(wrapper.find('TaskItem').at(3).text()).toContain(mockedDate.format('DD/MM/YYYY'))
+        expect(wrapper.find('TaskItem').at(3).text()).toContain(mockedDate.format('HH:mm'))
+    })
+
     describe('snapshot', () => {
         it('renders correctly', () => {
+            useContextMock.mockReturnValue({
+                homeVisitDateTime: {
+                    value: null
+                },
+                statuses: {
+                    tellUsAboutYourselfStatus: 1,
+                    yourEmploymentDetailsStatus: 2,
+                    languageSpokenInYourHomeStatus: 1,
+                    yourPartnershipStatus: 1,
+                    yourFosteringHistoryStatus: 2,
+                },
+                secondApplicant: {
+                
+                }
+            })
+
+            const tree = renderer
+                .create(<Router><Start/></Router>)
+                .toJSON()
+
+            expect(tree).toMatchSnapshot()
+        })
+
+        it('renders correctly with home visit date', () => {
+            useContextMock.mockReturnValue({
+                homeVisitDateTime: {
+                    value: moment('25/07/2190 13:10', 'DD/MM/YYYY HH:mm')
+                },
+                statuses: {
+                    tellUsAboutYourselfStatus: 1,
+                    yourEmploymentDetailsStatus: 2,
+                    languageSpokenInYourHomeStatus: 1,
+                    yourPartnershipStatus: 1,
+                    yourFosteringHistoryStatus: 2,
+                },
+                secondApplicant: {
+                
+                }
+            })
 
             const tree = renderer
                 .create(<Router><Start/></Router>)

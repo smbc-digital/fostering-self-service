@@ -21,7 +21,7 @@ const TaskLink = ({ route, name, status, disabled }) => {
 	}
 
 	return <div className='anchor-with-status'>
-		{disabled ? <p>name</p> : <Link to={route}>{name}</Link>}
+		{disabled ? <p>{name}</p> : <Link to={route}>{name}</Link>}
 		{renderStatus()}
 	</div>
 }
@@ -126,7 +126,16 @@ const Start = () => {
 		},
 		{
 			title: 'Home visit',
-			body: () => <p>Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. </p>,
+			body: () => <Fragment>
+				{!isPastHomeVisitDateTime && homeVisitDateTime.value && 
+					<p>Your home visit appointment will be on  
+						<strong>
+							&thinsp;{moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').format('DD/MM/YYYY')}
+							&thinsp;at&thinsp;{moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').format('HH:mm')}
+						</strong>
+					</p>}
+				<p>Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. </p>
+			</Fragment>,
 			disabled: true,
 			status: isPastHomeVisitDateTime ? 1 : undefined
 		},
@@ -164,6 +173,7 @@ const Start = () => {
 						body={task.body}
 						status={task.status}
 						displayHr={task.displayHr}
+						renderStatus={task.renderStatus}
 					/>
 				</li>)}
 			</ol>
