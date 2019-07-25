@@ -14,7 +14,7 @@ import moment from 'moment'
 
 const PeopleInYourHousehold = ({ history }) => {
     const { onChange, otherPeopleInYourHousehold } = useContext(Context)
-    const [isValid, setIsValid] = useState(true)
+    const [isValid,setIsValid] = useState(true)
 
     useEffect(() => {
         let validDOB = otherPeopleInYourHousehold.value.every((person) => {
@@ -46,7 +46,7 @@ const PeopleInYourHousehold = ({ history }) => {
             if(name === 'dateOfBirth'){
                 newValues = { ...newValues, IsDobValid: isValid }
             }
-            onChange(newValues, isValid, index) 
+            onChange(newValues, isValid, index)
         }
 
         return (
@@ -119,9 +119,9 @@ const PeopleInYourHousehold = ({ history }) => {
                     removeItemMessage='Remove person'
                     showAddMoreButton={otherPeopleInYourHousehold.value.length < 8}
                     renderComponent={renderComponent}
-                    values={otherPeopleInYourHousehold.value}                    
+                    values={otherPeopleInYourHousehold.value}
                 />
-                <Button label="Next step" isValid={true} />
+                <Button label="Next step" isValid={isValid} />
             </form>
             <Anchor label='Back' history={history} />
         </Fragment>
