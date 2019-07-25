@@ -83,7 +83,7 @@ Array [
       className=""
       id="gender"
       inputMode={undefined}
-      maxLength="60"
+      maxLength="20"
       min={undefined}
       name="gender"
       onChange={[Function]}
