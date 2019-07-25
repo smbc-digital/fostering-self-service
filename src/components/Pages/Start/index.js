@@ -59,7 +59,7 @@ const FormLinks = ({ disabled, displayStatus }) => {
 		<TaskLink
 			route='/fostering/languages-spoken-in-your-home'
 			status={displayStatus ? languageSpokenInYourHomeStatus : undefined}
-			name='Tell us more about languages that are spoken in your home'
+			name='Tell us about the languages that are spoken in your home'
 			disabled={disabled}
 		/>
 		{secondApplicant && <TaskLink
