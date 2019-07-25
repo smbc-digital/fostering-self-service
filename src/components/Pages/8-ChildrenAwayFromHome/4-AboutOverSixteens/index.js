@@ -1,9 +1,8 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { Context } from 'context'
 import { 
     ComponentsList,
     TextInputContainer,
-    SelectInputContainer,
     MemorableDateInputContainer,
     AddressPicker 
 } from 'smbc-react-components'
@@ -20,6 +19,14 @@ const AboutOverSixteens = ({history, match}) => {
     const { childrenOverSixteenLivingAwayFromHome, firstName, lastName } = context[currentApplicant]
 	const { secondApplicant, onChangeApplicant, onChangeStatus } = context
     const [isLoading, setIsLoading] = useState(false)
+    const [isValid, setIsValid] = useState(true)
+
+    useEffect(() => {
+        let validDOB = childrenOverSixteenLivingAwayFromHome.value.every((person) => {
+            return person.IsDobValid !== undefined ? person.IsDobValid : true 
+        })
+        setIsValid(validDOB)
+    }, [childrenOverSixteenLivingAwayFromHome])
     
     const onChange = (event, isValid) => {
         return onChangeApplicant(event, isValid, currentApplicant) 
@@ -70,9 +77,12 @@ const AboutOverSixteens = ({history, match}) => {
 	}
 
     const renderComponent = (onChange, firstInputRef, values, index) => {
-        const onComponentChange = ({ target: { name, value }}) => {
-            const newValues = { ...values, [name]: value }
+        const onComponentChange = ({ target: { name, value }}, isValid) => {
+            let newValues = { ...values, [name]: value }
 
+            if(name === 'dateOfBirth'){
+               newValues = {...newValues, IsDobValid: isValid}
+            }
             onChange(newValues, true, index)
         }
 
@@ -98,29 +108,20 @@ const AboutOverSixteens = ({history, match}) => {
                     optional={true}
                     hideOptional={true}
                 />
-                <SelectInputContainer
+                <TextInputContainer
                     label='Gender'
                     id='gender'
+                    type='text'
+                    maxLength='20'
                     value={values.gender}
-                    options={[
-                        {
-                            name: 'Male',
-                            value: 'Male'
-                        },
-                        {
-                            name: 'Female',
-                            value: 'Female'
-                        },
-                        {
-                            name: 'Prefer not to say',
-                            value: 'Prefer not to say'
-                        }
-                    ]}
                     onChange={onComponentChange}
+                    optional={true}
+                    hideOptional={true}
                 />
                 <MemorableDateInputContainer
                     heading="Date of birth"
-                    description="For example, 31 3 1980"
+                    description="The person must be 16 or over"
+                    additionalDescription="For example, 31 3 1990"
                     name="dateOfBirth"
                     optional
                     value={moment(values.dateOfBirth, ['DD/MM/YYYY', 'YYYY-M-D']).format('YYYY-M-D')}
@@ -128,7 +129,7 @@ const AboutOverSixteens = ({history, match}) => {
                     hideOptionalText={true}
                     customValidation={{
                         invalidAfterDate: moment().subtract(16, 'years'),
-                        customValidationMessage: 'The child must be 16 or over'
+                        customValidationMessage: 'Check the date and try again'
                     }}
                 />
 
@@ -163,6 +164,7 @@ const AboutOverSixteens = ({history, match}) => {
                 />
                 <SubmitButton
                     onSaveAndGoBackClick={onSaveAndGoBackClick}
+                    isValid={isValid}
                     history={history}
                     isLoading={isLoading}
                 />
