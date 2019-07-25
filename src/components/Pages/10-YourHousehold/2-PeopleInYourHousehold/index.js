@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { Context } from '../../../../context'
 import {
     Anchor,
@@ -14,6 +14,15 @@ import moment from 'moment'
 
 const PeopleInYourHousehold = ({ history }) => {
     const { onChange, otherPeopleInYourHousehold } = useContext(Context)
+    const [isValid, setIsValid] = useState(true)
+
+    useEffect(() => {
+        let validDOB = otherPeopleInYourHousehold.value.every((person) => {
+            return person.IsDobValid !== undefined ? person.IsDobValid : true
+        })
+        setIsValid(validDOB)
+
+    }, [otherPeopleInYourHousehold])
 
     const onSubmit = event => {
         event.preventDefault()
@@ -31,10 +40,13 @@ const PeopleInYourHousehold = ({ history }) => {
     }
 
     const renderComponent = (onChange, firstInputRef, values, index) => {
-        const onComponentChange = ({ target: { name, value }}) => {
-            const newValues = { ...values, [name]: value }
+        const onComponentChange = ({ target: { name, value }}, isValid) => {
+            let newValues = { ...values, [name]: value }
 
-            onChange(newValues, true, index)
+            if(name === 'dateOfBirth'){
+                newValues = { ...newValues, IsDobValid: isValid }
+            }
+            onChange(newValues, isValid, index) 
         }
 
         return (
@@ -85,6 +97,10 @@ const PeopleInYourHousehold = ({ history }) => {
                     value={moment(values.dateOfBirth, ['DD/MM/YYYY', 'YYYY-M-D']).format('YYYY-M-D')}
                     onChange={onComponentChange}
                     hideOptionalText={true}
+                    customValidation={{
+                        invalidAfterDate: moment(),
+                        customValidationMessage: 'Check the date and try again'
+                    }}
                 />
             </Fragment>
         )
@@ -103,7 +119,7 @@ const PeopleInYourHousehold = ({ history }) => {
                     removeItemMessage='Remove person'
                     showAddMoreButton={otherPeopleInYourHousehold.value.length < 8}
                     renderComponent={renderComponent}
-                    values={otherPeopleInYourHousehold.value}
+                    values={otherPeopleInYourHousehold.value}                    
                 />
                 <Button label="Next step" isValid={true} />
             </form>
