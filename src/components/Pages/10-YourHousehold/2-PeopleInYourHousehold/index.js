@@ -99,7 +99,7 @@ const PeopleInYourHousehold = ({ history }) => {
                     hideOptionalText={true}
                     customValidation={{
                         invalidAfterDate: moment(),
-                        customValidationMessage: 'Check the year and try again'
+                        customValidationMessage: 'Check the date and try again'
                     }}
                 />
             </Fragment>
