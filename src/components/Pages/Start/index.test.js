@@ -36,7 +36,7 @@ describe('Start', () => {
             statuses: {},
             secondApplicant: {},
             homeVisitDateTime: { 
-                value: moment().add(30, 'm')
+                value: moment().add(30, 'minutes').format('DD/MM/YYYY HH:mm')
             }
         })
 
@@ -50,6 +50,14 @@ describe('Start', () => {
     })
 
     it('should render task list items', () => {
+        // Arrange
+        useContextMock.mockReturnValue({
+            homeVisitDateTime: {
+                value: moment().add(10, 'd').format('DD/MM/YYYY HH:mm')
+            },
+            statuses: {}
+        })
+
         // Act
         let wrapper = mount(<Router><Start /></Router>)
 
@@ -57,7 +65,6 @@ describe('Start', () => {
         wrapper.find('FormLinks').children('TaskLink').forEach(node => {
             expect(node.props().disabled).toBe(false)
         })
-
     })
     
     it('should render correct Task status after home visit is completed', () => {
