@@ -131,7 +131,10 @@ const Start = () => {
 					<p>Your home visit appointment will be on  
 						<strong>
 							&thinsp;{moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').format('DD/MM/YYYY')}
-							&thinsp;at&thinsp;{moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').format('HH:mm')}
+						</strong>
+						&thinsp;at&thinsp;
+						<strong>
+							{moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').format('HH:mm')}
 						</strong>
 					</p>}
 				<p>Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. </p>
