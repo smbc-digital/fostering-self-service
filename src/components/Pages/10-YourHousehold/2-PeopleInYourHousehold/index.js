@@ -14,7 +14,7 @@ import moment from 'moment'
 
 const PeopleInYourHousehold = ({ history }) => {
     const { onChange, otherPeopleInYourHousehold } = useContext(Context)
-    const [isValid,setIsValid] = useState(true)
+    const [isValid, setIsValid] = useState(true)
 
     useEffect(() => {
         let validDOB = otherPeopleInYourHousehold.value.every((person) => {
@@ -99,7 +99,7 @@ const PeopleInYourHousehold = ({ history }) => {
                     hideOptionalText={true}
                     customValidation={{
                         invalidAfterDate: moment(),
-                        customValidationMessage: 'Check the date and try again'
+                        customValidationMessage: 'Check the year and try again'
                     }}
                 />
             </Fragment>
