@@ -1,5 +1,5 @@
 import moment from 'moment'
-import { React, mount, useContextMock, renderer } from '../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Start from './index'
 
