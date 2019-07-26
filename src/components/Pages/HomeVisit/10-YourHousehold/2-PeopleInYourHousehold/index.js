@@ -10,7 +10,7 @@ import {
 
 import PropTypes from 'prop-types'
 import { getPageRoute } from '../../../../../helpers'
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 const PeopleInYourHousehold = ({ history }) => {
     const { onChange, otherPeopleInYourHousehold } = useContext(Context)

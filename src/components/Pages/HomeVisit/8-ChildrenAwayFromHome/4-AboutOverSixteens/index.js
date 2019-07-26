@@ -9,7 +9,7 @@ import {
 
 import PropTypes from 'prop-types'
 import { getPageRoute, getCurrentApplicant, updateForm, FormName } from 'helpers'
-import moment from 'moment'
+import moment from 'moment-timezone'
 import SubmitButton from 'components/SubmitButton'
 import { Applicant } from '../../../../Provider'
 

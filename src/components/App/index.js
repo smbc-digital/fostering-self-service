@@ -14,7 +14,7 @@ import YourHealth from '../Pages/HomeVisit/6-YourHealth'
 import { AboutYourInterest, TypesOfFostering } from '../Pages/HomeVisit/7-InterestInFostering'
 import { AnyUnderSixteens, AboutUnderSixteens, AnyOverSixteens, AboutOverSixteens } from '../Pages/HomeVisit/8-ChildrenAwayFromHome'
 import { AnyPeopleInYourHousehold, PeopleInYourHousehold, DoYouHaveAnyPets } from '../Pages/HomeVisit/10-YourHousehold'
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
 	const { secondApplicant } = useContext(Context)
