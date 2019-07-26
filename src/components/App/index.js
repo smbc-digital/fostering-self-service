@@ -32,13 +32,13 @@ const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
 
 const App = () => {
 	const { homeVisitDateTime } = useContext(Context)
-	const disabled = moment().isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').subtract(30, 'm'))
+	const disabledHomeVisitRoutes = moment().isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').subtract(30, 'm'))
 
 	return (
 		<Switch>
 			<Route exact path={getPageRoute(1)} component={Start} />
 			<Route exact path="/error" component={ErrorPage} />
-			{disabled || <Fragment>
+			{disabledHomeVisitRoutes || <Fragment>
 				<Route exact path={`${getPageRoute(2)}/(|second-applicant)?`} component={KnownByAnotherName} />
 				<Route exact path={`${getPageRoute(3)}/(|second-applicant)?`} component={MoreAboutYou} />
 				<Route exact path={`${getPageRoute(4)}/(|second-applicant)?`} component={AreYouEmployed} />
