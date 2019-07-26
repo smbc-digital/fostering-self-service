@@ -105,7 +105,7 @@ const FormLinks = ({ disabled, displayStatus }) => {
 const Start = () => {
 	const { homeVisitDateTime } = useContext(Context)
 	const isPastHomeVisitDateTime = moment().subtract(AfterHomeVisitTimePeriod.value, AfterHomeVisitTimePeriod.unit).isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm'))
-	const disabled = moment().isSameOrAfter(moment(homeVisitDateTime.value).subtract(30, 'm'))
+	const disabled = moment().isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').subtract(30, 'm'))
 
 	const tasks = [
 		{
