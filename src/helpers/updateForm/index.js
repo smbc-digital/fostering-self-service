@@ -17,7 +17,8 @@ export const FormName =
     YourHealth: 5,
     TellUsAboutYourInterestInFostering: 6,
     YourHousehold: 7,
-    ChildrenLivingAwayFromYourHome: 8
+    ChildrenLivingAwayFromYourHome: 8,
+    GpDetails: 10
 }
 
 export const updateFormStatus = (form, currentStatus, setStatus) => {
