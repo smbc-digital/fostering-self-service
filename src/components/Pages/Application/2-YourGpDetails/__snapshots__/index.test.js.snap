@@ -1,0 +1,224 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YourGpDetails snapshot should render correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Tell us about your GP 
+  </h2>,
+  <div>
+    <section
+      className="alert-information-form"
+    >
+      <span
+        className="fa fa-info-circle"
+      />
+      <p
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "We need to check that you’re fit and healthy enough to look after a child. We’ll pay for you to have a medical assessment from your GP and our medical advisor will then talk to your social worker about your fitness to foster.",
+          }
+        }
+      />
+    </section>
+  </div>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className=""
+      htmlFor="nameOfGp"
+    >
+      Name of GP
+    </label>
+    <input
+      aria-label="Name of GP"
+      aria-live="off"
+      className=""
+      id="nameOfGp"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="nameOfGp"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="test"
+    />
+    <label
+      className=""
+      htmlFor="nameOfGpPractice"
+    >
+      Name of GP practice
+    </label>
+    <input
+      aria-label="Name of GP practice"
+      aria-live="off"
+      className=""
+      id="nameOfGpPractice"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="nameOfGpPractice"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="test"
+    />
+    <label
+      className=""
+      htmlFor="gpPhoneNumber"
+    >
+      Phone number
+    </label>
+    <input
+      aria-label="Phone number"
+      aria-live="off"
+      className=""
+      id="gpPhoneNumber"
+      inputMode={undefined}
+      maxLength="11"
+      min={undefined}
+      name="gpPhoneNumber"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="01234567890"
+    />
+    <label
+      className=""
+      htmlFor="addressLine1"
+    >
+      Address line 1
+    </label>
+    <input
+      aria-label="Address line 1"
+      aria-live="off"
+      className=""
+      id="addressLine1"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="addressLine1"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="line 1"
+    />
+    <h3
+      aria-hidden="true"
+      className="optional"
+    >
+      Address line 2
+    </h3>
+    <p
+      className="optional"
+    >
+      (optional)
+    </p>
+    <label
+      className="optional sr-only"
+      htmlFor="addressLine2"
+    >
+      Address line 2 optional
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="addressLine2"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="addressLine2"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="line 2"
+    />
+    <label
+      className=""
+      htmlFor="town"
+    >
+      Town
+    </label>
+    <input
+      aria-label="Town"
+      aria-live="off"
+      className=""
+      id="town"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="town"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="town"
+    />
+    <label
+      className=""
+      htmlFor="postcode"
+    >
+      Postcode
+    </label>
+    <input
+      aria-label="Postcode"
+      aria-live="off"
+      className=""
+      id="postcode"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="postcode"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="sk13xe"
+    />
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+         Use address finder 
+      </a>
+    </p>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={false}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
+`;

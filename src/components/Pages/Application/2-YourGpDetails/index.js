@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useContext } from 'react'
+import React, { Fragment, useEffect, useContext, useState } from 'react'
 import { AlertForm, TextInputContainer, AddressPicker } from 'smbc-react-components'
-import { updateFormStatus, FormName, getCurrentApplicant, getPageRoute } from 'helpers'
+import { updateForm, updateFormStatus, FormName, getCurrentApplicant, getPageRoute } from 'helpers'
 import { Applicant } from 'components/Provider'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
@@ -8,18 +8,44 @@ import SubmitButton from 'components/SubmitButton'
 const YourGpDetails = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeStatus, onChangeApplicant, secondApplicant } = context
+    const { onChangeStatus, onChangeApplicant, firstApplicant, secondApplicant } = context
     const { nameOfGp, nameOfGpPractice, gpPhoneNumber, gpAddress } = context[currentApplicant] 
+    const [isLoading, setIsLoading] = useState(false)
 
     const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
+
+    const handleFormUpdate = async nextPageRoute => {
+        setIsLoading(true)
+
+        try {
+            const status = await updateForm(FormName.GpDetails, {
+                firstApplicant,
+                secondApplicant
+            })
+            onChangeStatus('gpDetailsStatus', status)
+            history.push(nextPageRoute)
+        } catch (error) {
+            console.log(error)
+            history.push('/error')
+        }
+    }
 
     const onSubmit = event => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(21)}/second-applicant`)
+            history.push(`${getPageRoute(22)}/second-applicant`)
             return
         }
+
+        handleFormUpdate(getPageRoute(1))
+    }
+
+    const onSaveAndGoBackClick = event => {
+        event.preventDefault()
+        event.stopPropagation()
+
+        handleFormUpdate(getPageRoute(1))
     }
 
     useEffect(() => {
@@ -70,13 +96,12 @@ const YourGpDetails = ({ history, match }) => {
                     useVerintLookup
                     automaticLabel='Enter the postcode'
                 />
-
                 <SubmitButton
                     currentApplicant={currentApplicant}
                     secondApplicant={secondApplicant}
                     history={history}
-                    // onSaveAndGoBackClick={onSaveAndGoBackClick}
-                    // isLoading={isLoading}
+                    onSaveAndGoBackClick={onSaveAndGoBackClick}
+                    isLoading={isLoading}
                 />
             </form>
         </Fragment>
