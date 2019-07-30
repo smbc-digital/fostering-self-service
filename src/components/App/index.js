@@ -1,5 +1,6 @@
 import React, { useContext, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment-timezone'
 import { Switch, Route, Redirect } from 'react-router'
 import { getPageRoute } from 'helpers/pagehelper'
 import { ErrorPage } from 'smbc-react-components'
@@ -14,7 +15,7 @@ import YourHealth from '../Pages/HomeVisit/6-YourHealth'
 import { AboutYourInterest, TypesOfFostering } from '../Pages/HomeVisit/7-InterestInFostering'
 import { AnyUnderSixteens, AboutUnderSixteens, AnyOverSixteens, AboutOverSixteens } from '../Pages/HomeVisit/8-ChildrenAwayFromHome'
 import { AnyPeopleInYourHousehold, PeopleInYourHousehold, DoYouHaveAnyPets } from '../Pages/HomeVisit/10-YourHousehold'
-import moment from 'moment-timezone'
+import { YourGpDetails } from '../Pages/Application'
 
 const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
 	const { secondApplicant } = useContext(Context)
@@ -58,6 +59,7 @@ const App = () => {
 				<Route exact path={`${getPageRoute(18)}/(|second-applicant)?`} component={AboutUnderSixteens} />
 				<Route exact path={`${getPageRoute(19)}/(|second-applicant)?`} component={AnyOverSixteens} />
 				<Route exact path={`${getPageRoute(20)}/(|second-applicant)?`} component={AboutOverSixteens} />
+				<Route exact path={`${getPageRoute(22)}/(|second-applicant)?`} component={YourGpDetails} />
 			</Fragment>
 			}
 			<Redirect to={getPageRoute(1)} />

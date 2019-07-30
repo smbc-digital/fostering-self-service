@@ -17,7 +17,8 @@ export const FormName =
     YourHealth: 5,
     TellUsAboutYourInterestInFostering: 6,
     YourHousehold: 7,
-    ChildrenLivingAwayFromYourHome: 8
+    ChildrenLivingAwayFromYourHome: 8,
+    GpDetails: 10
 }
 
 export const updateFormStatus = (form, currentStatus, setStatus) => {
@@ -81,6 +82,8 @@ const getFormUpdateEndpoint = form => {
             return '/fostering/household'
         case FormName.ChildrenLivingAwayFromYourHome:
             return '/fostering/children-living-away-from-home'
+        case FormName.GpDetails:
+            return '/fostering/gp-details'
         default:
             throw new Error('No matching endpoint for given form.')
     }
