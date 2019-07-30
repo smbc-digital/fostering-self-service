@@ -82,5 +82,13 @@
 	{
 		"number": 22,
 		"route": "/fostering/about-your-gp"
+	},
+	{
+		"number": 23,
+		"route": "/fostering/family-reference"
+	},
+	{
+		"number": 24,
+		"route": "/fostering/personal-reference"
 	}
 ]

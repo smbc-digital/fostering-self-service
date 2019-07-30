@@ -32,6 +32,10 @@ const Provider = ({ children }) => {
 			}})
 	}
 
+	const onChangeReferencePage = (value) => {
+		setState({referencesPage: value})
+	}
+
 	const onChangeStatus = (name, value) => {
 		setState({ ...state, statuses: { ...state.statuses, [name]: value }})
 	}
@@ -76,6 +80,7 @@ const Provider = ({ children }) => {
 			country: country.map(_ => ({name: _, value: _})),
 			ethnicity: ethnicity.map(_ => ({name: _, value: _})),
 			nationality: nationality.map(_ => ({name: _, value: _})),
+			referencesPage: '1'
 		})
 	}
 
