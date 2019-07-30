@@ -1,4 +1,4 @@
-import moment from 'moment'
+import moment from 'moment-timezone'
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Start from './index'

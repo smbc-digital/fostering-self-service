@@ -1,6 +1,6 @@
 import React, { useContext, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
+import moment from 'moment-timezone'
 import { MemorableDateInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
 import { getPageRoute, updateForm, FormName } from 'helpers'
@@ -57,6 +57,10 @@ const MovedInTogetherDate = ({ history }) => {
                     }}
                     showDay={false}
                     hideOptionalText={true}
+                    customValidation={{
+                        invalidAfterDate: moment(),
+                        customValidationMessage: 'Check the date and try again'
+                    }}
                 />
                 <SubmitButton
                     history={history}

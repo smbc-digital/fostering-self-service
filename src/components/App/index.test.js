@@ -2,7 +2,7 @@ import { React, mount, useContextMock } from 'helpers/SetupTest'
 import { Router } from 'react-router'
 import App from './index.js'
 import { createBrowserHistory as createHistory } from 'history'
-import moment from 'moment'
+import moment from 'moment-timezone'
 import { getPageRoute } from 'helpers/pagehelper'
 
 describe('App', () => {

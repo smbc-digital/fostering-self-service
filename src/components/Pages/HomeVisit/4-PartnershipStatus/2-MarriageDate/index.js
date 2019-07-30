@@ -1,6 +1,6 @@
 import React, { useContext, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import moment from 'moment'
+import moment from 'moment-timezone'
 import { MemorableDateInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
@@ -13,7 +13,7 @@ const MarriageDate = ({ history }) => {
 
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
-        
+
 		try {
 			const status = await updateForm(FormName.YourPartnership, {
 				dateOfMarriage,
@@ -57,6 +57,10 @@ const MarriageDate = ({ history }) => {
 						onChange(event, isValid)
 					}}
 					hideOptionalText={true}
+					customValidation={{
+                        invalidAfterDate: moment(),
+                        customValidationMessage: 'Check the date and try again'
+                    }}
 				/>
 				<SubmitButton
 					history={history}

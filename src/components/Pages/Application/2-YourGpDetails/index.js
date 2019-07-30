@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useContext, useState } from 'react'
+import PropTypes from 'prop-types'
 import { AlertForm, TextInputContainer, AddressPicker } from 'smbc-react-components'
 import { updateForm, updateFormStatus, FormName, getCurrentApplicant, getPageRoute } from 'helpers'
 import { Applicant } from 'components/Provider'
@@ -25,7 +26,6 @@ const YourGpDetails = ({ history, match }) => {
             onChangeStatus('gpDetailsStatus', status)
             history.push(nextPageRoute)
         } catch (error) {
-            console.log(error)
             history.push('/error')
         }
     }
@@ -106,6 +106,11 @@ const YourGpDetails = ({ history, match }) => {
             </form>
         </Fragment>
     )
+}
+
+YourGpDetails.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object
 }
 
 export default YourGpDetails
