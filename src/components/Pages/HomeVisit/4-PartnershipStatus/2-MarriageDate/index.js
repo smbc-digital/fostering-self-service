@@ -13,7 +13,7 @@ const MarriageDate = ({ history }) => {
 
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
-        
+
 		try {
 			const status = await updateForm(FormName.YourPartnership, {
 				dateOfMarriage,
@@ -57,6 +57,10 @@ const MarriageDate = ({ history }) => {
 						onChange(event, isValid)
 					}}
 					hideOptionalText={true}
+					customValidation={{
+                        invalidAfterDate: moment(),
+                        customValidationMessage: 'Check the date and try again'
+                    }}
 				/>
 				<SubmitButton
 					history={history}
