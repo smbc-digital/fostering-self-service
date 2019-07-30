@@ -129,6 +129,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                     hideOptionalText={true}
                     customValidation={{
                         invalidBeforeDate: moment().subtract(16, 'years'),
+                        invalidAfterDate: moment(),
                         customValidationMessage: 'Check the date and try again'
                     }}
                 />

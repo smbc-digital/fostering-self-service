@@ -57,6 +57,10 @@ const MovedInTogetherDate = ({ history }) => {
                     }}
                     showDay={false}
                     hideOptionalText={true}
+                    customValidation={{
+                        invalidAfterDate: moment(),
+                        customValidationMessage: 'Check the date and try again'
+                    }}
                 />
                 <SubmitButton
                     history={history}
