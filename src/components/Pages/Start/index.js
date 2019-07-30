@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import moment from 'moment-timezone'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -66,8 +66,8 @@ const FormLinks = ({ disabled, displayStatus }) => {
 			route={getPageRoute(7)}
 			status={displayStatus ? yourPartnershipStatus : undefined}
 			name='Your partnership status'
-			disabled={disabled} 
-			/>
+			disabled={disabled}
+		/>
 		}
 		<TaskLink
 			route='/fostering/your-fostering-history'
@@ -103,32 +103,42 @@ const FormLinks = ({ disabled, displayStatus }) => {
 }
 
 const Start = () => {
-	const { homeVisitDateTime } = useContext(Context)
+	const { homeVisitDateTime, enableAdditionalInformationSection } = useContext(Context)
 	const isPastHomeVisitDateTime = moment().subtract(AfterHomeVisitTimePeriod.value, AfterHomeVisitTimePeriod.unit).isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm'))
 	const disabled = moment().isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').subtract(30, 'm'))
+	const resultsRef = React.createRef()
+
+	useEffect(() => {
+		if (resultsRef.current)
+			window.scrollTo({
+				top: resultsRef.current.offsetTop,
+				left: 0,
+				behavior: 'smooth'
+			})
+	}, [])
 
 	const tasks = [
 		{
 			title: 'Contact the fostering team',
 			body: () => <p>Contact the fostering team to tell us that you’re interested in becoming a foster carer.</p>,
-			status: 1
+			status: TaskStatus.Completed
 		},
 		{
 			title: 'Find out more about fostering',
 			body: () => <p>Speak to the fostering team about your interest in fostering and arrange a home visit.</p>,
-			status: 1
+			status: TaskStatus.Completed
 		},
 		{
 			title: 'Answer questions before your home visit',
-			body: () => <FormLinks disabled={disabled} displayStatus={!isPastHomeVisitDateTime}/>,
+			body: () => <FormLinks disabled={disabled} displayStatus={!isPastHomeVisitDateTime} />,
 			displayHr: false,
-			status: isPastHomeVisitDateTime ? 1 : undefined
+			status: isPastHomeVisitDateTime ? TaskStatus.Completed : TaskStatus.None
 		},
 		{
 			title: 'Home visit',
 			body: () => <Fragment>
-				{!isPastHomeVisitDateTime && homeVisitDateTime.value && 
-					<p>Your home visit appointment will be on  
+				{!isPastHomeVisitDateTime && homeVisitDateTime.value &&
+					<p>Your home visit appointment will be on
 						<strong>
 							&thinsp;{moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').format('DD/MM/YYYY')}
 						</strong>
@@ -140,18 +150,18 @@ const Start = () => {
 				<p>Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. </p>
 			</Fragment>,
 			disabled: true,
-			status: isPastHomeVisitDateTime ? 1 : undefined
+			status: isPastHomeVisitDateTime ? TaskStatus.Completed : TaskStatus.None
 		},
 		{
 			title: 'Additional information',
 			body: () => <p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>,
-			status: 3,
-			disabled: true
+			status: enableAdditionalInformationSection.value ? TaskStatus.None : TaskStatus.CantStart,
+			disabled: !enableAdditionalInformationSection.value
 		},
 		{
 			title: 'Assessment and training',
 			body: () => <p>Complete the assessment stage of your fostering journey and attend training sessions.</p>,
-			status: 3,
+			status: TaskStatus.CantStart,
 			disabled: true
 		},
 		{
@@ -169,7 +179,8 @@ const Start = () => {
 			<ol className='task-item-list'>
 				{tasks.map((task, index) => <li
 					key={index}
-					className={task.disabled ? 'disabled' : undefined}>
+					className={task.disabled ? 'disabled' : undefined}
+					ref={index == 4 && enableAdditionalInformationSection.value ? resultsRef : null}>
 					<TaskItem
 						key={index}
 						title={task.title}
