@@ -1,25 +1,41 @@
 import React, { Fragment, useEffect, useContext, useState } from 'react'
 import PropTypes from 'prop-types'
-import { AlertForm, TextInputContainer, AddressPicker } from 'smbc-react-components'
+import { AlertForm, TextInputContainer, AddressPicker, Button, Anchor } from 'smbc-react-components'
 import {updateForm, updateFormStatus, FormName, getPageRoute } from 'helpers'
 import { Context } from 'context'
-import SubmitButton from 'components/SubmitButton'
+import SubmitButton from 'components/SubmitButton' 
 
 const YourReference = ({ history }) => {
 	const context = useContext(Context)
-	const { onChange, onChangeStatus, onChangeReferencePage } = context
 	const page = context.referencesPage
-	const { firstName, lastName, relationshipToYou, numberOfYearsKnown, emailAddress, phoneNumber, address } = context.familyReference
+	const { onChangeStatus, onChangeApplicant, onChangeReferencePage, familyReference, firstPersonalReference, secondPersonalReference } = context
+	const { firstName, lastName, relationshipToYou, numberOfYearsKnown, emailAddress, phoneNumber, address } = context[page]
 	const [isLoading, setIsLoading] = useState(false)
+	const [isValid, setIsValid] = useState(false)
+
+	const onChange = (event, isValid) => onChangeApplicant(event, isValid, page)
+
+	useEffect(() => {
+		let validReference = page == 'familyReference' ? firstName.isValid && lastName.isValid && relationshipToYou.isValid && emailAddress.isValid && phoneNumber.isValid : firstName.isValid && lastName.isValid && relationshipToYou.isValid && numberOfYearsKnown.isValid && emailAddress.isValid && phoneNumber.isValid
+		setIsValid(validReference)
+		updateFormStatus(
+            FormName.References,
+            context.statuses.referencesStatus,
+            newStatus => onChangeStatus('referencesStatus', newStatus)
+        )
+	}, [context[page], []])
 
 	const handleFormUpdate = async nextPageRoute => {
 		setIsLoading(true)
 
 		try {
 			const status = await updateForm(FormName.References, {
-				familyReference: context.familyReference
+				familyReference,
+				firstPersonalReference,
+				secondPersonalReference
 			})
 			onChangeStatus('referencesStatus', status)
+			onChangeReferencePage('familyReference')
 			history.push(nextPageRoute)
 		} catch (error) {
 			history.push('/error')
@@ -29,35 +45,26 @@ const YourReference = ({ history }) => {
 	const onSubmit = event => {
 		event.preventDefault()
 
-		if(page == '1') {
-			onChangeReferencePage('2')
+		if(page == 'familyReference') {
+			onChangeReferencePage('firstPersonalReference')
 			history.push(getPageRoute(24))
 			return
 		}
-		else if(page == '2') {
-			onChangeReferencePage('3')
+		else if(page == 'firstPersonalReference') {
+			onChangeReferencePage('secondPersonalReference')
 			history.push(`${getPageRoute(24)}/second-reference`)
 			return
 		}
-		onChangeReferencePage('1')
+		onChangeReferencePage('familyReference')
 		handleFormUpdate(getPageRoute(1))
 	}
 
 	const onSaveAndGoBackClick = event => {
         event.preventDefault()
 		event.stopPropagation()
-		onChangeReferencePage('1')
 
-        handleFormUpdate(getPageRoute(1))
+		handleFormUpdate(getPageRoute(1))
 	}
-	
-	useEffect(() => {
-        updateFormStatus(
-            FormName.References,
-            context.statuses.referencesStatus,
-            newStatus => onChangeStatus('referencesStatus', newStatus)
-        )
-	}, [])
 	
 	return (
 		<Fragment>
@@ -65,10 +72,16 @@ const YourReference = ({ history }) => {
 			<h2>Personal Reference</h2>
 			{context.secondApplicant &&
 			<h3>Tell us the details of the relative who can give you a personal reference for you and your partner</h3> || <h3>Tell us the details of the relative who can give you a personal reference for you</h3>}
-			<AlertForm
-                level='information'
-                content='We need to check that you’re fit and healthy enough to look after a child. We’ll pay for you to have a medical assessment from your GP and our medical advisor will then talk to your social worker about your fitness to foster.'
-            />
+			{context.secondApplicant &&
+				<AlertForm
+					level='information'
+					content='Your referee must be related to you or your partner and be able to comment on your home life and contact with children.'
+				/> || 
+				<AlertForm
+					level='information'
+					content='Your referee must be related to you and be able to comment on your home life and contact with children.'
+				/>
+			}
 			<form onSubmit={onSubmit}>
                 <TextInputContainer
                     label='First name'
@@ -94,17 +107,19 @@ const YourReference = ({ history }) => {
                     value={relationshipToYou.value}
                     onChange={onChange}
                 />
-				<TextInputContainer
-                    label='Relationship to you'
-                    id='relationshipToYou'
-                    type='text'
-                    maxLength='60'
-                    value={numberOfYearsKnown.value}
-                    onChange={onChange}
-                />
+				{page != 'familyReference' && 
+					<TextInputContainer
+						label='How long have you known this person?'
+						id='numberOfYearsKnown'
+						type='text'
+						maxLength='60'
+						value={numberOfYearsKnown.value}
+						onChange={onChange}
+					/>
+				}
 				<TextInputContainer
                     label='Email address'
-                    id='referenceEmailAddress'
+                    id='emailAddress'
                     type='text'
                     maxLength='11'
                     value={emailAddress.value}
@@ -112,25 +127,40 @@ const YourReference = ({ history }) => {
                 />
 				<TextInputContainer
                     label='Phone number'
-                    id='referencePhoneNumber'
+                    id='phoneNumber'
                     type='text'
                     maxLength='11'
                     value={phoneNumber.value}
                     onChange={onChange}
                 />
                 <AddressPicker
-                    address={address}
-                    name='referenceAddress'
+                    address={address.value}
+                    name='address'
                     onChange={onChange}
                     useVerintLookup
                     automaticLabel='Enter the postcode'
                 />
-				<SubmitButton
-                    history={history}
-                    onSaveAndGoBackClick={onSaveAndGoBackClick}
-                    isLoading={isLoading}
-                />
-				</form>
+				{page != 'secondPersonalReference' && 
+					<Fragment>
+						<Button
+							label={'Next setp'}
+							isValid={isValid}
+						/> 
+						<Anchor
+						label='Back'
+						history={history} 
+						/> 
+					</Fragment>
+				}
+				{page == 'secondPersonalReference' && 
+					<SubmitButton
+						history={history}
+						isValid={isValid}
+						onSaveAndGoBackClick={onSaveAndGoBackClick}
+						isLoading={isLoading}
+					/> 
+				}
+			</form>
 		</Fragment>
 	)
 }

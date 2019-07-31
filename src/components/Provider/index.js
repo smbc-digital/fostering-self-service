@@ -19,6 +19,33 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 	}
 }, {})
 
+const reduceMandatoryProperties = object => Object.keys(object).reduce((acc, property) => {
+	return {
+		...acc,
+		[property]: {
+			value: object[property] === null || object[property] === undefined ? '' : object[property],
+			isValid: object[property] != ''
+		}
+	}
+}, {})
+
+const reduceMandatoryAddressProperties = object =>  {
+	// let address = {
+	// 	addressLine1: object.addressLine1 === null || object.addressLine1 === undefined ? '' : object.addressLine1,
+	// 	addressLine2: object.addressLine2 === null || object.addressLine2 === undefined ? '' : object.addressLine2,
+	// 	town: object.town === null || object.town === undefined ? '' : object.town,
+	// 	postcode: object.postcode === null || object.postcode === undefined ? '' : object.postcode,
+	// 	selectedAddress: object.selectedAddress === null || object.selectedAddress === undefined ? '' : object.selectedAddress,
+	// 	placeRef: object.placeRef === null || object.placeRef === undefined ? '' : object.placeRef
+	// }
+
+	return {
+		value: object,
+		isValid: object.placeRef != '' || (object.addressLine1 != '' && object.town != '' && object.postcode != '') ? true : false
+		// isValid: false
+	}
+}
+
 const Provider = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [state, setState] = useState({})
@@ -33,7 +60,10 @@ const Provider = ({ children }) => {
 	}
 
 	const onChangeReferencePage = (value) => {
-		setState({referencesPage: value})
+		setState({
+			...state,
+			referencesPage: value
+		})
 	}
 
 	const onChangeStatus = (name, value) => {
@@ -41,10 +71,6 @@ const Provider = ({ children }) => {
 	}
 
 	const onChangeApplicant = (event, isValid, currentApplicant) => {
-		// let eventValue = event.target.value === 'true' ? true 
-		// 												: event.target.value === 'false' ? false 
-		// 												: event.target.value
-
 		setState({
 			...state,
 			[currentApplicant]: {
@@ -59,6 +85,7 @@ const Provider = ({ children }) => {
 
 	const mapCaseToContext = ({ fosteringCase: caseResponse, country, ethnicity, nationality }) => {
 		const statuses = {...caseResponse.statuses}
+
 		let secondApplicantDetails = undefined
 		delete caseResponse.statuses
 		const firstApplicantDetails = reduceProperties(caseResponse.firstApplicant)
@@ -69,6 +96,21 @@ const Provider = ({ children }) => {
 		}
 		delete caseResponse.secondApplicant
 
+		const familyReferenceDetails = reduceMandatoryProperties(caseResponse.familyReference)
+		delete caseResponse.familyReference
+		const familyReferenceAddressDetails = reduceMandatoryAddressProperties(familyReferenceDetails.address.value)
+		familyReferenceDetails.address = familyReferenceAddressDetails
+
+		const firstPersonalReferenceDetails = reduceMandatoryProperties(caseResponse.firstPersonalReference)
+		delete caseResponse.firstPersonalReference
+		const firstPersonalReferenceAddressDetails = reduceMandatoryAddressProperties(firstPersonalReferenceDetails.address.value)
+		firstPersonalReferenceDetails.address = firstPersonalReferenceAddressDetails
+
+		const secondPersonalReferenceDetails = reduceMandatoryProperties(caseResponse.secondPersonalReference)
+		delete caseResponse.secondPersonalReference
+		const secondPersonalReferenceAddressDetails = reduceMandatoryAddressProperties(secondPersonalReferenceDetails.address.value)
+		secondPersonalReferenceDetails.address = secondPersonalReferenceAddressDetails
+
 		const caseDetails = reduceProperties(caseResponse)
 
 		setState({
@@ -76,11 +118,14 @@ const Provider = ({ children }) => {
 			statuses, 
 			firstApplicant: firstApplicantDetails, 
 			secondApplicant: secondApplicantDetails,
+			familyReference: familyReferenceDetails,
+			firstPersonalReference: firstPersonalReferenceDetails,
+			secondPersonalReference: secondPersonalReferenceDetails,
 			...caseDetails,
 			country: country.map(_ => ({name: _, value: _})),
 			ethnicity: ethnicity.map(_ => ({name: _, value: _})),
 			nationality: nationality.map(_ => ({name: _, value: _})),
-			referencesPage: '1'
+			referencesPage: 'familyReference'
 		})
 	}
 
@@ -109,7 +154,7 @@ const Provider = ({ children }) => {
 		return <p>Loading...</p>
 	}
 
-	return <Context.Provider value={{...state, onChange, onChangeApplicant, onChangeStatus}}>
+	return <Context.Provider value={{...state, onChange, onChangeApplicant, onChangeStatus, onChangeReferencePage}}>
 		{children}
 	</Context.Provider>
 }

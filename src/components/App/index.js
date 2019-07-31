@@ -15,8 +15,7 @@ import YourHealth from '../Pages/HomeVisit/6-YourHealth'
 import { AboutYourInterest, TypesOfFostering } from '../Pages/HomeVisit/7-InterestInFostering'
 import { AnyUnderSixteens, AboutUnderSixteens, AnyOverSixteens, AboutOverSixteens } from '../Pages/HomeVisit/8-ChildrenAwayFromHome'
 import { AnyPeopleInYourHousehold, PeopleInYourHousehold, DoYouHaveAnyPets } from '../Pages/HomeVisit/10-YourHousehold'
-import { YourGpDetails } from '../Pages/Application'
-import { YourReference } from '../Pages/Application'
+import { YourGpDetails, YourReference } from '../Pages/Application'
 
 const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
 	const { secondApplicant } = useContext(Context)
@@ -60,12 +59,12 @@ const App = () => {
 				<Route exact path={`${getPageRoute(18)}/(|second-applicant)?`} component={AboutUnderSixteens} />
 				<Route exact path={`${getPageRoute(19)}/(|second-applicant)?`} component={AnyOverSixteens} />
 				<Route exact path={`${getPageRoute(20)}/(|second-applicant)?`} component={AboutOverSixteens} />
-				<Route exact path={`${getPageRoute(22)}/(|second-applicant)?`} component={YourGpDetails} />
-				<Route exact path={getPageRoute(23)} component={YourReference} />
-				<Route exact path={`${getPageRoute(24)}/(|second-reference)?`} component={YourReference} />
+
 			</Fragment>
 			}
-
+			<Route exact path={`${getPageRoute(22)}/(|second-applicant)?`} component={YourGpDetails} />
+			<Route exact path={getPageRoute(23)} component={YourReference} />
+			<Route exact path={`${getPageRoute(24)}/(|second-reference)?`} component={YourReference} />
 			<Redirect to={getPageRoute(1)} />
 		</Switch>
 	)
