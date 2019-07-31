@@ -10,6 +10,7 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().add(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
+            enableAdditionalInformationSection: true,
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 2,
@@ -37,7 +38,8 @@ describe('Start', () => {
             secondApplicant: {},
             homeVisitDateTime: { 
                 value: moment().add(30, 'minutes').format('DD/MM/YYYY HH:mm')
-            }
+            },
+            enableAdditionalInformationSection: true,
         })
 
         // Act
@@ -55,6 +57,7 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().add(10, 'd').format('DD/MM/YYYY HH:mm')
             },
+            enableAdditionalInformationSection: true,
             statuses: {}
         })
 
@@ -72,12 +75,13 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().subtract(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
+            enableAdditionalInformationSection: true,
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
                 languageSpokenInYourHomeStatus: 1,
                 yourPartnershipStatus: 1,
-                yourFosteringHistoryStatus: 1,
+                yourFosteringHistoryStatus: 1,              
             },
         })
 
@@ -91,6 +95,7 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().subtract(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
+            enableAdditionalInformationSection: true,
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -112,6 +117,7 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().subtract(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
+            enableAdditionalInformationSection: true,
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -136,6 +142,7 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: mockedDate.format('DD/MM/YYYY HH:mm')
             },
+            enableAdditionalInformationSection: true,
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -159,6 +166,7 @@ describe('Start', () => {
                 homeVisitDateTime: {
                     value: null
                 },
+                enableAdditionalInformationSection: true,
                 statuses: {
                     tellUsAboutYourselfStatus: 1,
                     yourEmploymentDetailsStatus: 2,
@@ -183,6 +191,7 @@ describe('Start', () => {
                 homeVisitDateTime: {
                     value: moment('25/07/2190 13:10', 'DD/MM/YYYY HH:mm')
                 },
+                enableAdditionalInformationSection: true,
                 statuses: {
                     tellUsAboutYourselfStatus: 1,
                     yourEmploymentDetailsStatus: 2,

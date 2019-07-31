@@ -25,6 +25,7 @@ describe('App', () => {
 			homeVisitDateTime: {
 				value: moment().format('DD/MM/YYYY HH:mm')
 			},
+			enableAdditionalInformationSection: true,
 			statuses: {}
 		})
 
@@ -72,11 +73,18 @@ describe('App', () => {
 	})
 
 	it('should render a Switch', () => {
-		// Arrange
+		// Arrange	
+		useContextMock.mockReturnValue({			
+			enableAdditionalInformationSection: true,
+			homeVisitDateTime: {
+				value: moment().add(1, 'd').format('DD/MM/YYYY HH:mm')
+			},
+			statuses: {},
+		})
+
 		let history = createHistory()
 
 		history.push(getPageRoute(1))
-
 		// Act
 		const enzymeWrapper = mount(
 			<Router history={history}>
