@@ -38,6 +38,7 @@ const App = () => {
 	return (
 		<Switch>
 			<Route exact path={getPageRoute(1)} component={Start} />
+			<Route exact path={`${getPageRoute(22)}/(|second-applicant)?`} component={YourGpDetails} />
 			<Route exact path="/error" component={ErrorPage} />
 			{disabledHomeVisitRoutes || <Fragment>
 				<Route exact path={`${getPageRoute(2)}/(|second-applicant)?`} component={KnownByAnotherName} />
@@ -59,7 +60,6 @@ const App = () => {
 				<Route exact path={`${getPageRoute(18)}/(|second-applicant)?`} component={AboutUnderSixteens} />
 				<Route exact path={`${getPageRoute(19)}/(|second-applicant)?`} component={AnyOverSixteens} />
 				<Route exact path={`${getPageRoute(20)}/(|second-applicant)?`} component={AboutOverSixteens} />
-				<Route exact path={`${getPageRoute(22)}/(|second-applicant)?`} component={YourGpDetails} />
 			</Fragment>
 			}
 			<Redirect to={getPageRoute(1)} />

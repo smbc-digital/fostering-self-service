@@ -208,6 +208,16 @@ Array [
         <p>
           After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.
         </p>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/about-your-gp"
+            onClick={[Function]}
+          >
+            GP details
+          </a>
+        </div>
         <span
           className="status-cant-start"
         >
@@ -474,6 +484,16 @@ Array [
         <p>
           After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.
         </p>
+        <div
+          className="anchor-with-status"
+        >
+          <a
+            href="/fostering/about-your-gp"
+            onClick={[Function]}
+          >
+            GP details
+          </a>
+        </div>
         <span
           className="status-cant-start"
         >

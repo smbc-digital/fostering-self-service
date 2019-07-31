@@ -37,6 +37,14 @@ describe('YourGpDetails', () => {
                         postcode: 'sk13xe'
                     },
                     isValid: true
+                },
+                firstName: {
+                    value: 'test',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'test',
+                    isValid: true
                 }
             },
             secondApplicant: null
@@ -71,6 +79,14 @@ describe('YourGpDetails', () => {
                         town: 'town',
                         postcode: 'sk13xe'
                     },
+                    isValid: true
+                },
+                firstName: {
+                    value: 'test',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'test',
                     isValid: true
                 }
             },
@@ -120,6 +136,14 @@ describe('YourGpDetails', () => {
                         postcode: 'sk13xe'
                     },
                     isValid: true
+                },
+                firstName: {
+                    value: 'test',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'test',
+                    isValid: true
                 }
             },
             secondApplicant: {
@@ -142,6 +166,14 @@ describe('YourGpDetails', () => {
                         town: 'town',
                         postcode: 'sk13xe'
                     },
+                    isValid: true
+                },
+                firstName: {
+                    value: 'test',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'test',
                     isValid: true
                 }
             }

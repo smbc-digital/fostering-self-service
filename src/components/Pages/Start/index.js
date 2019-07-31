@@ -102,6 +102,24 @@ const FormLinks = ({ disabled, displayStatus }) => {
 	</Fragment>
 }
 
+const AdditionalInformationFormLinks = () => {
+	const { statuses: { 
+			gpDetailsStatus
+		}
+	} = useContext(Context)
+	
+	return (
+		<Fragment>
+		<p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>
+		<TaskLink
+			route={getPageRoute(22)}
+			status={gpDetailsStatus}
+			name='GP details'
+		/>
+		</Fragment>
+	)
+}
+
 const Start = () => {
 	const { homeVisitDateTime, enableAdditionalInformationSection } = useContext(Context)
 	const isPastHomeVisitDateTime = moment().subtract(AfterHomeVisitTimePeriod.value, AfterHomeVisitTimePeriod.unit).isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm'))
@@ -154,9 +172,10 @@ const Start = () => {
 		},
 		{
 			title: 'Additional information',
-			body: () => <p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>,
+			body: () => <AdditionalInformationFormLinks />,
 			status: enableAdditionalInformationSection.value ? TaskStatus.None : TaskStatus.CantStart,
-			disabled: !enableAdditionalInformationSection.value
+			disabled: !enableAdditionalInformationSection.value,
+			displayHr: !enableAdditionalInformationSection.value
 		},
 		{
 			title: 'Assessment and training',
