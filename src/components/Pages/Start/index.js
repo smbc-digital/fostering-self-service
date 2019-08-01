@@ -231,6 +231,10 @@ FormLinks.propTypes = {
 	displayStatus: PropTypes.bool
 }
 
+AdditionalInformationFormLinks.propTypes = {
+	disabled: PropTypes.bool
+}
+
 FormLinks.defaultProps = {
 	disabled: false,
 	displayStatus: true
