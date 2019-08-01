@@ -114,7 +114,7 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 		<TaskLink
 			route={getPageRoute(22)}
 			status={gpDetailsStatus}
-			name='GP details'
+			name='Your GP details'
 			disabled={disabled}
 		/>
 		</Fragment>
