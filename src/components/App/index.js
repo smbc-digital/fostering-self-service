@@ -64,7 +64,6 @@ const App = () => {
 				<Route exact path={`${getPageRoute(18)}/(|second-applicant)?`} component={AboutUnderSixteens} />
 				<Route exact path={`${getPageRoute(19)}/(|second-applicant)?`} component={AnyOverSixteens} />
 				<Route exact path={`${getPageRoute(20)}/(|second-applicant)?`} component={AboutOverSixteens} />
-
 			</Fragment>
 			}
 			<Redirect to={getPageRoute(1)} />

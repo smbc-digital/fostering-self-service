@@ -102,6 +102,25 @@ const FormLinks = ({ disabled, displayStatus }) => {
 	</Fragment>
 }
 
+const AdditionalInformationFormLinks = ({ disabled }) => {
+	const { statuses: { 
+			gpDetailsStatus
+		}
+	} = useContext(Context)
+	
+	return (
+		<Fragment>
+		<p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>
+		<TaskLink
+			route={getPageRoute(22)}
+			status={gpDetailsStatus}
+			name='GP details'
+			disabled={disabled}
+		/>
+		</Fragment>
+	)
+}
+
 const Start = () => {
 	const { homeVisitDateTime, enableAdditionalInformationSection } = useContext(Context)
 	const isPastHomeVisitDateTime = moment().subtract(AfterHomeVisitTimePeriod.value, AfterHomeVisitTimePeriod.unit).isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm'))
@@ -154,9 +173,10 @@ const Start = () => {
 		},
 		{
 			title: 'Additional information',
-			body: () => <p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>,
+			body: () => <AdditionalInformationFormLinks disabled={!enableAdditionalInformationSection.value}/>,
 			status: enableAdditionalInformationSection.value ? TaskStatus.None : TaskStatus.CantStart,
-			disabled: !enableAdditionalInformationSection.value
+			disabled: !enableAdditionalInformationSection.value,
+			displayHr: false
 		},
 		{
 			title: 'Assessment and training',
@@ -209,6 +229,10 @@ TaskLink.propTypes = {
 FormLinks.propTypes = {
 	disabled: PropTypes.bool,
 	displayStatus: PropTypes.bool
+}
+
+AdditionalInformationFormLinks.propTypes = {
+	disabled: PropTypes.bool
 }
 
 FormLinks.defaultProps = {

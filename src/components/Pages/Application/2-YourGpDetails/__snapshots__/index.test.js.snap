@@ -87,7 +87,7 @@ Array [
       onChange={[Function]}
       onKeyDown={[Function]}
       pattern={undefined}
-      type="text"
+      type="tel"
       value="01234567890"
     />
     <label
