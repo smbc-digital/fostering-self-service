@@ -59,7 +59,8 @@
 		],
 		"coverageReporters": [
 			"text",
-			"json-summary"
+			"json-summary",
+			"html"
 		],
 		"testURL": "http://localhost",
 		"coverageThreshold": {

@@ -49,7 +49,7 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 	}
 }, {})
 
-export const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) => {
+export const parseFormData = ({ firstApplicant, secondApplicant, familyReference, firstPersonalReference, secondPersonalReference, ...formData }) => {
     let parsedObject = reduceProperties(formData)
 
     if (firstApplicant) {
@@ -58,6 +58,21 @@ export const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) 
 
     if (secondApplicant) {
         parsedObject.secondApplicant = reduceProperties(secondApplicant)
+    }
+
+    if (familyReference) {
+        parsedObject.familyReference = reduceProperties(familyReference)
+        parsedObject.familyReference.address = familyReference.address.value
+    }
+
+    if (firstPersonalReference) {
+        parsedObject.firstPersonalReference = reduceProperties(firstPersonalReference)
+        parsedObject.firstPersonalReference.address = firstPersonalReference.address.value
+    }
+
+    if (secondPersonalReference) {
+        parsedObject.secondPersonalReference = reduceProperties(secondPersonalReference)
+        parsedObject.secondPersonalReference.address = secondPersonalReference.address.value
     }
 
     return parsedObject

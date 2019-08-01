@@ -121,7 +121,7 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 		<TaskLink
 			route={getPageRoute(23)}
 			status={referencesStatus}
-			name='References'
+			name='Personal references'
 			disabled={disabled}
 		/>
 		</Fragment>

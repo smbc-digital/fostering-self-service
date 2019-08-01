@@ -19,16 +19,6 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 	}
 }, {})
 
-const reduceMandatoryProperties = object => Object.keys(object).reduce((acc, property) => {
-	return {
-		...acc,
-		[property]: {
-			value: object[property] === null || object[property] === undefined ? '' : object[property],
-			isValid: object[property] != ''
-		}
-	}
-}, {})
-
 const reduceMandatoryAddressProperties = object =>  {
 	return {
 		value: object,
@@ -79,17 +69,17 @@ const Provider = ({ children }) => {
 		}
 		delete caseResponse.secondApplicant
 
-		const familyReferenceDetails = reduceMandatoryProperties(caseResponse.familyReference)
+		const familyReferenceDetails = reduceProperties(caseResponse.familyReference)
 		delete caseResponse.familyReference
 		const familyReferenceAddressDetails = reduceMandatoryAddressProperties(familyReferenceDetails.address.value)
 		familyReferenceDetails.address = familyReferenceAddressDetails
 
-		const firstPersonalReferenceDetails = reduceMandatoryProperties(caseResponse.firstPersonalReference)
+		const firstPersonalReferenceDetails = reduceProperties(caseResponse.firstPersonalReference)
 		delete caseResponse.firstPersonalReference
 		const firstPersonalReferenceAddressDetails = reduceMandatoryAddressProperties(firstPersonalReferenceDetails.address.value)
 		firstPersonalReferenceDetails.address = firstPersonalReferenceAddressDetails
 
-		const secondPersonalReferenceDetails = reduceMandatoryProperties(caseResponse.secondPersonalReference)
+		const secondPersonalReferenceDetails = reduceProperties(caseResponse.secondPersonalReference)
 		delete caseResponse.secondPersonalReference
 		const secondPersonalReferenceAddressDetails = reduceMandatoryAddressProperties(secondPersonalReferenceDetails.address.value)
 		secondPersonalReferenceDetails.address = secondPersonalReferenceAddressDetails

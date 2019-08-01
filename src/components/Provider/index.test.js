@@ -12,6 +12,7 @@ const TestComponent = ({ context: {
     someOtherProperty,
     firstApplicant,
     secondApplicant,
+    familyReference,
     statuses: { status } }
 }) => {
     const onClick = () => {
@@ -68,6 +69,7 @@ const TestComponent = ({ context: {
             </button>
             <p className="name">{firstApplicant.firstName.value}</p>
             <p className="last-name">{firstApplicant.lastName.value}</p>
+            <p className="address">{familyReference.address.value.postcode}</p>
             <p className="status">{status}</p>
             <p className="someOtherProperty">{someOtherProperty.value}</p>
             {secondApplicant && <p className="second-applicant-name">{secondApplicant.firstName.value}</p>}
@@ -93,7 +95,9 @@ const mountProviderWithCase = async (children, secondApplicant) => {
             familyReference: {
                 firstName: 'family',
                 lastName: '',
-                address: ''
+                address: {
+                    postcode: ''
+                }
             },
             firstPersonalReference: {
                 firstName: 'firstPersonal',
@@ -168,6 +172,7 @@ describe('Provider', () => {
         // Assert
         expect(wrapper.find('.name').text()).toEqual('firstName')
         expect(wrapper.find('.last-name').text()).toEqual('')
+        expect(wrapper.find('.address').text()).toEqual('')
     })
 
     it('should map second applicant to context', async () => {
