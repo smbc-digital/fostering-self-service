@@ -104,7 +104,8 @@ const FormLinks = ({ disabled, displayStatus }) => {
 
 const AdditionalInformationFormLinks = ({ disabled }) => {
 	const { statuses: { 
-			gpDetailsStatus
+			gpDetailsStatus,
+			referencesStatus
 		}
 	} = useContext(Context)
 	
@@ -115,6 +116,12 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 			route={getPageRoute(22)}
 			status={gpDetailsStatus}
 			name='GP details'
+			disabled={disabled}
+		/>
+		<TaskLink
+			route={getPageRoute(23)}
+			status={referencesStatus}
+			name='References'
 			disabled={disabled}
 		/>
 		</Fragment>

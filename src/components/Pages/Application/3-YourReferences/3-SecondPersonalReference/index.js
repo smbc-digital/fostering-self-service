@@ -108,7 +108,7 @@ const SecondPersonalReference = ({ history }) => {
                     label='Email address'
                     id='emailAddress'
                     type='email'
-                    maxLength='11'
+                    maxLength='60'
                     value={emailAddress.value}
                     onChange={onChange}
                 />

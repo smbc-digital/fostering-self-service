@@ -215,6 +215,13 @@ Array [
             GP details
           </p>
         </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            References
+          </p>
+        </div>
         <span
           className="status-cant-start"
         >
@@ -485,6 +492,13 @@ Array [
         >
           <p>
             GP details
+          </p>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            References
           </p>
         </div>
         <span
