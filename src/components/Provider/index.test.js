@@ -9,7 +9,6 @@ const TestComponent = ({ context: {
     onChange,
     onChangeApplicant,
     onChangeStatus,
-    onChangeReferencePage,
     someOtherProperty,
     firstApplicant,
     secondApplicant,
@@ -24,14 +23,6 @@ const TestComponent = ({ context: {
                 }
             },
             true
-        )
-    }
-
-    const onClickPage = () => {
-        onChangeReferencePage(
-            {
-                value: 'test'
-            }
         )
     }
 
@@ -70,12 +61,6 @@ const TestComponent = ({ context: {
                 Test button applicant
             </button>
             <button
-                id="test-button-page"
-                onClick={onClickPage}
-            >
-                Test button page
-            </button>
-            <button
                 id="test-button-status"
                 onClick={onClickStatus}
             >
@@ -107,15 +92,18 @@ const mountProviderWithCase = async (children, secondApplicant) => {
             secondApplicant: secondApplicant || null,
             familyReference: {
                 firstName: 'family',
-                lastName: ''
+                lastName: '',
+                address: ''
             },
             firstPersonalReference: {
                 firstName: 'firstPersonal',
-                lastName: ''
+                lastName: '',
+                address: ''
             },
             secondPersonalReference: {
                 firstName: 'secondPersonal',
-                lastName: ''
+                lastName: '',
+                address: ''
             },
             someOtherProperty: 'value'
         },

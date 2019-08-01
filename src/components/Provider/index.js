@@ -30,19 +30,9 @@ const reduceMandatoryProperties = object => Object.keys(object).reduce((acc, pro
 }, {})
 
 const reduceMandatoryAddressProperties = object =>  {
-	// let address = {
-	// 	addressLine1: object.addressLine1 === null || object.addressLine1 === undefined ? '' : object.addressLine1,
-	// 	addressLine2: object.addressLine2 === null || object.addressLine2 === undefined ? '' : object.addressLine2,
-	// 	town: object.town === null || object.town === undefined ? '' : object.town,
-	// 	postcode: object.postcode === null || object.postcode === undefined ? '' : object.postcode,
-	// 	selectedAddress: object.selectedAddress === null || object.selectedAddress === undefined ? '' : object.selectedAddress,
-	// 	placeRef: object.placeRef === null || object.placeRef === undefined ? '' : object.placeRef
-	// }
-
 	return {
 		value: object,
 		isValid: object.placeRef != '' || (object.addressLine1 != '' && object.town != '' && object.postcode != '') ? true : false
-		// isValid: false
 	}
 }
 
@@ -57,13 +47,6 @@ const Provider = ({ children }) => {
 				value: event.target.value, 
 				isValid
 			}})
-	}
-
-	const onChangeReferencePage = (value) => {
-		setState({
-			...state,
-			referencesPage: value
-		})
 	}
 
 	const onChangeStatus = (name, value) => {
@@ -124,8 +107,7 @@ const Provider = ({ children }) => {
 			...caseDetails,
 			country: country.map(_ => ({name: _, value: _})),
 			ethnicity: ethnicity.map(_ => ({name: _, value: _})),
-			nationality: nationality.map(_ => ({name: _, value: _})),
-			referencesPage: 'familyReference'
+			nationality: nationality.map(_ => ({name: _, value: _}))
 		})
 	}
 
@@ -154,7 +136,7 @@ const Provider = ({ children }) => {
 		return <p>Loading...</p>
 	}
 
-	return <Context.Provider value={{...state, onChange, onChangeApplicant, onChangeStatus, onChangeReferencePage}}>
+	return <Context.Provider value={{...state, onChange, onChangeApplicant, onChangeStatus}}>
 		{children}
 	</Context.Provider>
 }

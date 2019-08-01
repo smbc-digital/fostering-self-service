@@ -89,6 +89,10 @@
 	},
 	{
 		"number": 24,
-		"route": "/fostering/personal-reference"
+		"route": "/fostering/first-personal-reference"
+	},
+	{
+		"number": 25,
+		"route": "/fostering/second-personal-reference"
 	}
 ]
