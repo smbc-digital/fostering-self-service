@@ -211,19 +211,15 @@ Array [
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/about-your-gp"
-            onClick={[Function]}
-          >
+          <p>
             GP details
-          </a>
+          </p>
         </div>
         <span
           className="status-cant-start"
         >
           Can't start yet
         </span>
-        <hr />
       </div>
     </li>
     <li
@@ -487,19 +483,15 @@ Array [
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/about-your-gp"
-            onClick={[Function]}
-          >
+          <p>
             GP details
-          </a>
+          </p>
         </div>
         <span
           className="status-cant-start"
         >
           Can't start yet
         </span>
-        <hr />
       </div>
     </li>
     <li

@@ -102,7 +102,7 @@ const FormLinks = ({ disabled, displayStatus }) => {
 	</Fragment>
 }
 
-const AdditionalInformationFormLinks = () => {
+const AdditionalInformationFormLinks = ({ disabled }) => {
 	const { statuses: { 
 			gpDetailsStatus
 		}
@@ -115,6 +115,7 @@ const AdditionalInformationFormLinks = () => {
 			route={getPageRoute(22)}
 			status={gpDetailsStatus}
 			name='GP details'
+			disabled={disabled}
 		/>
 		</Fragment>
 	)
@@ -172,10 +173,10 @@ const Start = () => {
 		},
 		{
 			title: 'Additional information',
-			body: () => <AdditionalInformationFormLinks />,
+			body: () => <AdditionalInformationFormLinks disabled={!enableAdditionalInformationSection.value}/>,
 			status: enableAdditionalInformationSection.value ? TaskStatus.None : TaskStatus.CantStart,
 			disabled: !enableAdditionalInformationSection.value,
-			displayHr: !enableAdditionalInformationSection.value
+			displayHr: false
 		},
 		{
 			title: 'Assessment and training',
