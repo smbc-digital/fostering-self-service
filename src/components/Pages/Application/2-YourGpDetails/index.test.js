@@ -51,61 +51,6 @@ describe('YourGpDetails', () => {
         })
     })
 
-    it('should update form status', () => {
-        // Arrange
-        useContextMock.mockReturnValue({
-            statuses: {
-                gpDetailsStatus: TaskStatus.None
-            },
-            onChangeStatus: onChangeStatusMock,
-            onChangeApplicant: jest.fn(),
-            firstApplicant: {
-                nameOfGp: {
-                    value: 'test',
-                    isValid: true
-                },
-                nameOfGpPractice: {
-                    value: 'test',
-                    isValid: true
-                },
-                gpPhoneNumber: {
-                    value: '01234567890',
-                    isValid: true
-                },
-                gpAddress: {
-                    value: {
-                        addressLine1: 'line 1',
-                        addressLine2: 'line 2',
-                        town: 'town',
-                        postcode: 'sk13xe'
-                    },
-                    isValid: true
-                },
-                firstName: {
-                    value: 'test',
-                    isValid: true
-                },
-                lastName: {
-                    value: 'test',
-                    isValid: true
-                }
-            },
-            secondApplicant: null
-        })
-        const match = {
-            params: []
-        }
-
-        helpers.updateFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
-            setStatus(status)
-        })
-
-        // Act
-        mount(<YourGpDetails match={match}/>)
-
-        // Assert
-        expect(onChangeStatusMock).toHaveBeenCalledWith('gpDetailsStatus', TaskStatus.None)
-    })
 
     it('should push to next page on submit, when second applicant', () => {
         // Arrange

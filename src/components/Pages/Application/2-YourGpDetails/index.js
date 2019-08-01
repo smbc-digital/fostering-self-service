@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useContext, useState } from 'react'
+import React, { Fragment, useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { AlertForm, TextInputContainer, AddressPicker } from 'smbc-react-components'
-import { updateForm, updateFormStatus, FormName, getCurrentApplicant, getPageRoute } from 'helpers'
+import { updateForm, FormName, getCurrentApplicant, getPageRoute } from 'helpers'
 import { Applicant } from 'components/Provider'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
@@ -47,14 +47,6 @@ const YourGpDetails = ({ history, match }) => {
 
         handleFormUpdate(getPageRoute(1))
     }
-
-    useEffect(() => {
-        updateFormStatus(
-            FormName.GpDetails,
-            context.statuses.gpDetailsStatus,
-            newStatus => onChangeStatus('gpDetailsStatus', newStatus)
-        )
-    }, [])
 
     return (
         <Fragment>
