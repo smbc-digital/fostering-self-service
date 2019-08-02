@@ -89,7 +89,7 @@ describe('updateForm', () => {
 
 describe('parseFormData()', () => {
 
-    it('should parse both applicants data', () => {
+    it('should parse both applicants data and reference details', () => {
         // Arrange
         const formData = {
             firstApplicant: {
@@ -103,6 +103,39 @@ describe('parseFormData()', () => {
                     value: 'second applicant first name',
                     isValid: true
                 }
+            },
+            familyReference: {
+                firstName: {
+                    value: 'family reference first name',
+                    isValid: true
+                },
+                address: {
+                    value: {
+                        postcode: 'family reference postcode'
+                    }
+                }
+            },
+            firstPersonalReference: {
+                firstName: {
+                    value: 'first personal reference first name',
+                    isValid: true
+                },
+                address: {
+                    value: {
+                        postcode: 'first personal reference postcode'
+                    }
+                }
+            },
+            secondPersonalReference: {
+                firstName: {
+                    value: 'second personal reference first name',
+                    isValid: true
+                },
+                address: {
+                    value: {
+                        postcode: 'second personal reference postcode'
+                    }
+                }
             }
         }
 
@@ -112,5 +145,11 @@ describe('parseFormData()', () => {
         // Assert
         expect(result.firstApplicant.firstName).toBe('first applicant first name')
         expect(result.secondApplicant.firstName).toBe('second applicant first name')
+        expect(result.familyReference.firstName).toBe('family reference first name')
+        expect(result.familyReference.address.postcode).toBe('family reference postcode')
+        expect(result.firstPersonalReference.firstName).toBe('first personal reference first name')
+        expect(result.firstPersonalReference.address.postcode).toBe('first personal reference postcode')
+        expect(result.secondPersonalReference.firstName).toBe('second personal reference first name')
+        expect(result.secondPersonalReference.address.postcode).toBe('second personal reference postcode')
     })
 })
