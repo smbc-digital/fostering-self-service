@@ -268,6 +268,49 @@ describe('AboutOverSixteens', () => {
         expect(onChangeApplicantMock).toHaveBeenCalled()
     })
 
+    it('should setIsDobValid when Date of birth is set', () => {
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            statuses: {
+                childrenLivingAwayFromYourHomeStatus: 0
+            },
+            firstApplicant: {
+                firstName :{
+                    value: 'ap first name',
+                    isValid: true
+                },
+                lastName:{
+                    value: 'ap last name',
+                    isValid: true
+                },
+                childrenOverSixteenLivingAwayFromHome: {
+                    value: [{
+                        dateOfBirth: {
+                            value: '15-07-2016',
+                            isValid: false
+                        }
+                    }],
+                    isValid: true
+                }
+            }
+        })
+
+        const match = {
+            params: undefined
+        }
+
+        const wrapper = mount(<AboutOverSixteens history={{}} match={match}/>)
+
+        // Act
+        onChangeApplicantMock.mockReset()
+        wrapper.find('input[name="year"]').simulate('change', { target: { value: '2017', name: 'year' } })
+        
+        // Assert
+        expect(onChangeApplicantMock).toHaveBeenCalledWith({'target': {'name': 'childrenOverSixteenLivingAwayFromHome', 'value': [{'IsDobValid': false, 'dateOfBirth': null}]}}, true, 'firstApplicant')
+    })
+
     describe('snapshot', () => {
         it('renders correctly', () => {
             const match = {

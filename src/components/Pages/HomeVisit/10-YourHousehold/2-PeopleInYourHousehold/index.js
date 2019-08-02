@@ -43,7 +43,6 @@ const PeopleInYourHousehold = ({ history }) => {
         const onComponentChange = ({ target: { name, value }}, isValid) => {
             let newValues = { ...values, [name]: value }
 
-            console.log(name)
             if(name === 'dateOfBirth'){
                 newValues = { ...newValues, IsDobValid: isValid }
             }

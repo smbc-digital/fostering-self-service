@@ -6,7 +6,6 @@ import * as helpers from '../../../../../helpers'
 describe('AboutUnderSixteens', () => {
     const onChangeStatusMock = jest.fn()
     const onChangeApplicantMock = jest.fn()
-    const mockOnChange = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
