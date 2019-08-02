@@ -112,7 +112,7 @@ const AboutOverSixteens = ({history, match}) => {
                     label='Gender'
                     id='gender'
                     type='text'
-                    maxLength='20'
+                    maxLength='60'
                     value={values.gender}
                     onChange={onComponentChange}
                     optional={true}
