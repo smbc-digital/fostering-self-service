@@ -94,7 +94,7 @@ const FirstPersonalReference = ({ history }) => {
 					automaticLabel='Enter the postcode'
                 />
 				<Button
-					label={'Next setp'}
+					label={'Next step'}
 					isValid={isValid}
 				/> 
 				<Anchor

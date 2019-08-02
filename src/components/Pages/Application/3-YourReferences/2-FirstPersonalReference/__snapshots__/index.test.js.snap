@@ -200,7 +200,7 @@ Array [
       onClick={undefined}
       type="submit"
     >
-      Next setp
+      Next step
     </button>
     <p>
       <a
@@ -414,7 +414,7 @@ Array [
       onClick={undefined}
       type="submit"
     >
-      Next setp
+      Next step
     </button>
     <p>
       <a
