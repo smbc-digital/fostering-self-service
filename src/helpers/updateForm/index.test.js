@@ -153,3 +153,43 @@ describe('parseFormData()', () => {
         expect(result.secondPersonalReference.address.postcode).toBe('second personal reference postcode')
     })
 })
+
+describe('getFormUpdateEndpoint' , () => {
+ 
+    const getFormUpdateEndpoint = (formName, expectedEnpoint) => {
+        it('should return correct endpoin for form', async () => {
+            const mockPromise = Promise.resolve({
+                ok: true, 
+                json: jest.fn()
+            })
+    
+            helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+            
+            // Act
+            await updateForm(formName, {})
+    
+            // Assert
+            expect(helpers.fetchWithTimeout).toHaveBeenCalledWith(expectedEnpoint, {
+                method: 'PATCH',
+                credentials: 'include',
+                body: '{}',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }, 30000)
+        })
+    }
+
+    getFormUpdateEndpoint(FormName.YourEmploymentDetails, '/fostering/your-employment-details')
+    getFormUpdateEndpoint(FormName.LanguagesSpokenInYourHome, '/fostering/languages-spoken-in-your-home')
+    getFormUpdateEndpoint(FormName.YourFosteringHistory, '/fostering/your-fostering-history')
+    getFormUpdateEndpoint(FormName.YourPartnership, '/fostering/partnership-status')
+    getFormUpdateEndpoint(FormName.TellUsAboutYourInterestInFostering, '/fostering/interest-in-fostering')
+    getFormUpdateEndpoint(FormName.YourHealth, '/fostering/about-your-health')
+    getFormUpdateEndpoint(FormName.YourHousehold, '/fostering/household')
+    getFormUpdateEndpoint(FormName.ChildrenLivingAwayFromYourHome, '/fostering/children-living-away-from-home')
+    getFormUpdateEndpoint(FormName.GpDetails, '/fostering/gp-details')
+    getFormUpdateEndpoint(FormName.References, '/fostering/update-references')
+
+})
