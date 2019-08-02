@@ -120,7 +120,7 @@ Array [
           onChange={[Function]}
           onKeyDown={[Function]}
           type="number"
-          value=""
+          value="20"
         />
       </div>
       <div>
@@ -134,7 +134,7 @@ Array [
           onChange={[Function]}
           onKeyDown={[Function]}
           type="number"
-          value=""
+          value="2"
         />
       </div>
       <div>
@@ -148,7 +148,7 @@ Array [
           onChange={[Function]}
           onKeyDown={[Function]}
           type="number"
-          value=""
+          value="2016"
         />
       </div>
     </fieldset>

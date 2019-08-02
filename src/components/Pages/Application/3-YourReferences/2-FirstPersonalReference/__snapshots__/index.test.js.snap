@@ -1,0 +1,429 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FirstPersonalReference snapshot should render correctly for joint applicant 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Personal References
+  </h2>,
+  <h3>
+    Tell us the details of the first person who can give you a personal reference for you and your partner
+  </h3>,
+  <div>
+    <section
+      className="alert-information-form"
+    >
+      <span
+        className="fa fa-info-circle"
+      />
+      <p
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Your referee must have known you for at least 2 years and be able to comment on your home life and contact with children. They must not be related to you or your partner.",
+          }
+        }
+      />
+    </section>
+  </div>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className=""
+      htmlFor="firstName"
+    >
+      First name
+    </label>
+    <input
+      aria-label="First name"
+      aria-live="off"
+      className=""
+      id="firstName"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="firstName"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="refname"
+    />
+    <label
+      className=""
+      htmlFor="lastName"
+    >
+      Last name
+    </label>
+    <input
+      aria-label="Last name"
+      aria-live="off"
+      className=""
+      id="lastName"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="lastName"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="reflastname"
+    />
+    <label
+      className=""
+      htmlFor="relationshipToYou"
+    >
+      Relationship to you
+    </label>
+    <input
+      aria-label="Relationship to you"
+      aria-live="off"
+      className=""
+      id="relationshipToYou"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="relationshipToYou"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="relationship"
+    />
+    <label
+      className=""
+      htmlFor="numberOfYearsKnown"
+    >
+      How long have you known this person?
+    </label>
+    <input
+      aria-label="How long have you known this person?"
+      aria-live="off"
+      className=""
+      id="numberOfYearsKnown"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="numberOfYearsKnown"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="ten"
+    />
+    <label
+      className=""
+      htmlFor="emailAddress"
+    >
+      Email address
+    </label>
+    <input
+      aria-label="Email address"
+      aria-live="off"
+      className=""
+      id="emailAddress"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="emailAddress"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="email"
+      value="email"
+    />
+    <label
+      className=""
+      htmlFor="phoneNumber"
+    >
+      Phone number
+    </label>
+    <input
+      aria-label="Phone number"
+      aria-live="off"
+      className=""
+      id="phoneNumber"
+      inputMode={undefined}
+      maxLength="11"
+      min={undefined}
+      name="phoneNumber"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="tel"
+      value="phone"
+    />
+    <label
+      className=""
+      htmlFor="postcode"
+    >
+      Enter the postcode
+    </label>
+    <input
+      aria-label="Enter the postcode"
+      aria-live="off"
+      className=" address-picker-input"
+      id="postcode"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="postcode"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value=""
+    />
+    <button
+      className="button-secondary"
+      disabled={true}
+      onClick={[Function]}
+    >
+      Find the address
+    </button>
+    <p>
+      <a
+        className="anchor-as-block"
+        href="#"
+        onClick={[Function]}
+      >
+        Enter the address manually
+      </a>
+    </p>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+  </form>,
+]
+`;
+
+exports[`FirstPersonalReference snapshot should render correctly for single applicant 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Personal References
+  </h2>,
+  <h3>
+    Tell us the details of the first person who can give you a personal reference for you
+  </h3>,
+  <div>
+    <section
+      className="alert-information-form"
+    >
+      <span
+        className="fa fa-info-circle"
+      />
+      <p
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "Your referee must have known you for at least 2 years and be able to comment on your home life and contact with children. They must not be related to you.",
+          }
+        }
+      />
+    </section>
+  </div>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className=""
+      htmlFor="firstName"
+    >
+      First name
+    </label>
+    <input
+      aria-label="First name"
+      aria-live="off"
+      className=""
+      id="firstName"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="firstName"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="refname"
+    />
+    <label
+      className=""
+      htmlFor="lastName"
+    >
+      Last name
+    </label>
+    <input
+      aria-label="Last name"
+      aria-live="off"
+      className=""
+      id="lastName"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="lastName"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="reflastname"
+    />
+    <label
+      className=""
+      htmlFor="relationshipToYou"
+    >
+      Relationship to you
+    </label>
+    <input
+      aria-label="Relationship to you"
+      aria-live="off"
+      className=""
+      id="relationshipToYou"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="relationshipToYou"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="relationship"
+    />
+    <label
+      className=""
+      htmlFor="numberOfYearsKnown"
+    >
+      How long have you known this person?
+    </label>
+    <input
+      aria-label="How long have you known this person?"
+      aria-live="off"
+      className=""
+      id="numberOfYearsKnown"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="numberOfYearsKnown"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="ten"
+    />
+    <label
+      className=""
+      htmlFor="emailAddress"
+    >
+      Email address
+    </label>
+    <input
+      aria-label="Email address"
+      aria-live="off"
+      className=""
+      id="emailAddress"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="emailAddress"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="email"
+      value="email"
+    />
+    <label
+      className=""
+      htmlFor="phoneNumber"
+    >
+      Phone number
+    </label>
+    <input
+      aria-label="Phone number"
+      aria-live="off"
+      className=""
+      id="phoneNumber"
+      inputMode={undefined}
+      maxLength="11"
+      min={undefined}
+      name="phoneNumber"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="tel"
+      value="phone"
+    />
+    <label
+      className=""
+      htmlFor="postcode"
+    >
+      Enter the postcode
+    </label>
+    <input
+      aria-label="Enter the postcode"
+      aria-live="off"
+      className=" address-picker-input"
+      id="postcode"
+      inputMode={undefined}
+      maxLength={undefined}
+      min={undefined}
+      name="postcode"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value=""
+    />
+    <button
+      className="button-secondary"
+      disabled={true}
+      onClick={[Function]}
+    >
+      Find the address
+    </button>
+    <p>
+      <a
+        className="anchor-as-block"
+        href="#"
+        onClick={[Function]}
+      >
+        Enter the address manually
+      </a>
+    </p>
+    <button
+      className="button-primary"
+      disabled={true}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
+  </form>,
+]
+`;

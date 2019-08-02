@@ -19,6 +19,13 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 	}
 }, {})
 
+const reduceMandatoryAddressProperties = object =>  {
+	return {
+		value: object,
+		isValid: object.placeRef != '' || (object.addressLine1 != '' && object.town != '' && object.postcode != '') ? true : false
+	}
+}
+
 const Provider = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [state, setState] = useState({})
@@ -37,10 +44,6 @@ const Provider = ({ children }) => {
 	}
 
 	const onChangeApplicant = (event, isValid, currentApplicant) => {
-		// let eventValue = event.target.value === 'true' ? true 
-		// 												: event.target.value === 'false' ? false 
-		// 												: event.target.value
-
 		setState({
 			...state,
 			[currentApplicant]: {
@@ -55,6 +58,7 @@ const Provider = ({ children }) => {
 
 	const mapCaseToContext = ({ fosteringCase: caseResponse, country, ethnicity, nationality }) => {
 		const statuses = {...caseResponse.statuses}
+
 		let secondApplicantDetails = undefined
 		delete caseResponse.statuses
 		const firstApplicantDetails = reduceProperties(caseResponse.firstApplicant)
@@ -65,6 +69,21 @@ const Provider = ({ children }) => {
 		}
 		delete caseResponse.secondApplicant
 
+		const familyReferenceDetails = reduceProperties(caseResponse.familyReference)
+		delete caseResponse.familyReference
+		const familyReferenceAddressDetails = reduceMandatoryAddressProperties(familyReferenceDetails.address.value)
+		familyReferenceDetails.address = familyReferenceAddressDetails
+
+		const firstPersonalReferenceDetails = reduceProperties(caseResponse.firstPersonalReference)
+		delete caseResponse.firstPersonalReference
+		const firstPersonalReferenceAddressDetails = reduceMandatoryAddressProperties(firstPersonalReferenceDetails.address.value)
+		firstPersonalReferenceDetails.address = firstPersonalReferenceAddressDetails
+
+		const secondPersonalReferenceDetails = reduceProperties(caseResponse.secondPersonalReference)
+		delete caseResponse.secondPersonalReference
+		const secondPersonalReferenceAddressDetails = reduceMandatoryAddressProperties(secondPersonalReferenceDetails.address.value)
+		secondPersonalReferenceDetails.address = secondPersonalReferenceAddressDetails
+
 		const caseDetails = reduceProperties(caseResponse)
 
 		setState({
@@ -72,10 +91,13 @@ const Provider = ({ children }) => {
 			statuses, 
 			firstApplicant: firstApplicantDetails, 
 			secondApplicant: secondApplicantDetails,
+			familyReference: familyReferenceDetails,
+			firstPersonalReference: firstPersonalReferenceDetails,
+			secondPersonalReference: secondPersonalReferenceDetails,
 			...caseDetails,
 			country: country.map(_ => ({name: _, value: _})),
 			ethnicity: ethnicity.map(_ => ({name: _, value: _})),
-			nationality: nationality.map(_ => ({name: _, value: _})),
+			nationality: nationality.map(_ => ({name: _, value: _}))
 		})
 	}
 

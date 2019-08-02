@@ -82,5 +82,25 @@
 	{
 		"number": 22,
 		"route": "/fostering/about-your-gp"
+	},
+	{
+		"number": 23,
+		"route": "/fostering/family-reference"
+	},
+	{
+		"number": 24,
+		"route": "/fostering/first-personal-reference"
+	},
+	{
+		"number": 25,
+		"route": "/fostering/second-personal-reference"
+	},
+	{
+		"number": 26,
+		"route": "/fostering/relationship-to-council-employees"
+	},
+	{
+		"number": 27,
+		"route": "/fostering/about-relationship-to-council-employees"
 	}
 ]

@@ -208,12 +208,25 @@ Array [
         <p>
           After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.
         </p>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Your GP details
+          </p>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Personal references
+          </p>
+        </div>
         <span
           className="status-cant-start"
         >
           Can't start yet
         </span>
-        <hr />
       </div>
     </li>
     <li
@@ -474,12 +487,25 @@ Array [
         <p>
           After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.
         </p>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Your GP details
+          </p>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Personal references
+          </p>
+        </div>
         <span
           className="status-cant-start"
         >
           Can't start yet
         </span>
-        <hr />
       </div>
     </li>
     <li

@@ -16,6 +16,7 @@ import { AboutYourInterest, TypesOfFostering } from '../Pages/HomeVisit/7-Intere
 import { AnyUnderSixteens, AboutUnderSixteens, AnyOverSixteens, AboutOverSixteens } from '../Pages/HomeVisit/8-ChildrenAwayFromHome'
 import { AnyPeopleInYourHousehold, PeopleInYourHousehold, DoYouHaveAnyPets } from '../Pages/HomeVisit/10-YourHousehold'
 import { YourGpDetails } from '../Pages/Application'
+import { FamilyReference, FirstPersonalReference, SecondPersonalReference } from '../Pages/Application/3-YourReferences'
 
 const JointApplicationOnlyRoute = ({ component: Component, ...props }) => {
 	const { secondApplicant } = useContext(Context)
@@ -38,6 +39,10 @@ const App = () => {
 	return (
 		<Switch>
 			<Route exact path={getPageRoute(1)} component={Start} />
+			<Route exact path={`${getPageRoute(22)}/(|second-applicant)?`} component={YourGpDetails} />
+			<Route exact path={getPageRoute(23)} component={FamilyReference} />
+			<Route exact path={getPageRoute(24)} component={FirstPersonalReference} />
+			<Route exact path={getPageRoute(25)} component={SecondPersonalReference} />
 			<Route exact path="/error" component={ErrorPage} />
 			{disabledHomeVisitRoutes || <Fragment>
 				<Route exact path={`${getPageRoute(2)}/(|second-applicant)?`} component={KnownByAnotherName} />
@@ -59,7 +64,6 @@ const App = () => {
 				<Route exact path={`${getPageRoute(18)}/(|second-applicant)?`} component={AboutUnderSixteens} />
 				<Route exact path={`${getPageRoute(19)}/(|second-applicant)?`} component={AnyOverSixteens} />
 				<Route exact path={`${getPageRoute(20)}/(|second-applicant)?`} component={AboutOverSixteens} />
-				<Route exact path={`${getPageRoute(22)}/(|second-applicant)?`} component={YourGpDetails} />
 			</Fragment>
 			}
 			<Redirect to={getPageRoute(1)} />

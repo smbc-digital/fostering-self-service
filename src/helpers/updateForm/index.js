@@ -18,7 +18,8 @@ export const FormName =
     TellUsAboutYourInterestInFostering: 6,
     YourHousehold: 7,
     ChildrenLivingAwayFromYourHome: 8,
-    GpDetails: 10
+    GpDetails: 10,
+    References: 11
 }
 
 export const updateFormStatus = (form, currentStatus, setStatus) => {
@@ -48,7 +49,7 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 	}
 }, {})
 
-export const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) => {
+export const parseFormData = ({ firstApplicant, secondApplicant, familyReference, firstPersonalReference, secondPersonalReference, ...formData }) => {
     let parsedObject = reduceProperties(formData)
 
     if (firstApplicant) {
@@ -57,6 +58,21 @@ export const parseFormData = ({ firstApplicant, secondApplicant, ...formData }) 
 
     if (secondApplicant) {
         parsedObject.secondApplicant = reduceProperties(secondApplicant)
+    }
+
+    if (familyReference) {
+        parsedObject.familyReference = reduceProperties(familyReference)
+        parsedObject.familyReference.address = familyReference.address.value
+    }
+
+    if (firstPersonalReference) {
+        parsedObject.firstPersonalReference = reduceProperties(firstPersonalReference)
+        parsedObject.firstPersonalReference.address = firstPersonalReference.address.value
+    }
+
+    if (secondPersonalReference) {
+        parsedObject.secondPersonalReference = reduceProperties(secondPersonalReference)
+        parsedObject.secondPersonalReference.address = secondPersonalReference.address.value
     }
 
     return parsedObject
@@ -84,6 +100,8 @@ const getFormUpdateEndpoint = form => {
             return '/fostering/children-living-away-from-home'
         case FormName.GpDetails:
             return '/fostering/gp-details'
+        case FormName.References:
+            return '/fostering/update-references'
         default:
             throw new Error('No matching endpoint for given form.')
     }

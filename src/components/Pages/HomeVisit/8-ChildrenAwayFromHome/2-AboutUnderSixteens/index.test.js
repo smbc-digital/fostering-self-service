@@ -476,7 +476,35 @@ describe('AboutUnderSixteens', () => {
         expect(history.push).toHaveBeenCalledWith('/error')
     })
 
-    it.skip('should setIsDobValid when Date of birth is set', () => {
+    it('should setIsDobValid when Date of birth is set', () => {
+        useContextMock.mockReturnValue({
+            currentApplicant: Applicant.FirstApplicant,
+            onChangeApplicant: onChangeApplicantMock,
+            onChangeStatus: onChangeStatusMock,
+            statuses: {
+                childrenLivingAwayFromYourHomeStatus: 0
+            },
+            firstApplicant: {
+                firstName :{
+                    value: 'ap first name',
+                    isValid: true
+                },
+                lastName:{
+                    value: 'ap last name',
+                    isValid: true
+                },
+                childrenUnderSixteenLivingAwayFromHome: {
+                    value: [{
+                        dateOfBirth: {
+                            value: '15-07-1950',
+                            isValid: true
+                        }
+                    }],
+                    isValid: true
+                }
+            }
+        })
+
         const match = {
             params: undefined
         }
@@ -484,16 +512,13 @@ describe('AboutUnderSixteens', () => {
         const wrapper = mount(<AboutUnderSixteens history={{}} match={match}/>)
 
         // Act
-        wrapper.find('input[name="day"]').simulate('change', { target: { value: '20', name: 'day' } })
-        wrapper.find('input[name="month"]').simulate('change', { target: { value: '2', name: 'month' } })
+        onChangeApplicantMock.mockReset()
         wrapper.find('input[name="year"]').simulate('change', { target: { value: '1950', name: 'year' } })
         
-        //console.log(wrapper.debug())
-        wrapper.update()
-
         // Assert
-        expect(wrapper.find('Button').at(1).props().isValid).toBe(false)
+        expect(onChangeApplicantMock).toHaveBeenCalledWith({'target': {'name': 'childrenUnderSixteenLivingAwayFromHome', 'value': [{'IsDobValid': false, 'dateOfBirth': null}]}}, false, 'firstApplicant')
     })
+
 
 
     it('should call onChangeApplicant', async () => {
