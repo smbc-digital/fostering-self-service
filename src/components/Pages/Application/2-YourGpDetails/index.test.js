@@ -194,7 +194,7 @@ describe('YourGpDetails', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(23))
     })
 
     it('should push to error page on submit', async () => {

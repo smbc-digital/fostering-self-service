@@ -94,5 +94,13 @@
 	{
 		"number": 25,
 		"route": "/fostering/second-personal-reference"
+	},
+	{
+		"number": 26,
+		"route": "/fostering/relationship-to-council-employees"
+	},
+	{
+		"number": 27,
+		"route": "/fostering/about-relationship-to-council-employees"
 	}
 ]

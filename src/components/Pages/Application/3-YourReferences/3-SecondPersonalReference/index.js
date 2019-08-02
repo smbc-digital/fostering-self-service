@@ -43,7 +43,7 @@ const SecondPersonalReference = ({ history }) => {
 	
 	const onSubmit = event => {
 		event.preventDefault()
-		handleFormUpdate(getPageRoute(1))
+		handleFormUpdate(getPageRoute(26))
 	}
 
 	const onSaveAndGoBackClick = event => {

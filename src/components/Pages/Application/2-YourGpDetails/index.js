@@ -38,7 +38,7 @@ const YourGpDetails = ({ history, match }) => {
             return
         }
 
-        handleFormUpdate(getPageRoute(1))
+        handleFormUpdate(getPageRoute(23))
     }
 
     const onSaveAndGoBackClick = event => {
