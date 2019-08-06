@@ -1,14 +1,18 @@
 import { fetchWithTimeout } from '../index'
 
-export const TaskStatus = {
+const TaskStatus = {
     None: 0,
     Completed: 1,
     NotCompleted: 2,
     CantStart: 3
 }
 
-export const FormName =
-{
+const StageName = {
+    HomeVisit: 0,
+    Application: 1
+}
+
+const HomeVisitFormName = {
     TellUsAboutYourself: 0,
     YourEmploymentDetails: 1,
     LanguagesSpokenInYourHome: 2,
@@ -17,14 +21,91 @@ export const FormName =
     YourHealth: 5,
     TellUsAboutYourInterestInFostering: 6,
     YourHousehold: 7,
-    ChildrenLivingAwayFromYourHome: 8,
-    GpDetails: 10,
-    References: 11
+    ChildrenLivingAwayFromYourHome: 8
 }
 
-export const updateFormStatus = (form, currentStatus, setStatus) => {
+const ApplicationFormName = {
+    References: 0,
+    GpDetails: 1
+}
+
+const getHomeVisitUpdateEndpoint = form => {
+    switch (form) {
+        case HomeVisitFormName.TellUsAboutYourself:
+            return '/fostering/home-visit/about-yourself'
+        case HomeVisitFormName.YourEmploymentDetails:
+            return '/fostering/home-visit/your-employment-details'
+        case HomeVisitFormName.LanguagesSpokenInYourHome:
+            return '/fostering/home-visit/languages-spoken-in-your-home'
+        case HomeVisitFormName.YourFosteringHistory:
+            return '/fostering/home-visit/your-fostering-history'
+        case HomeVisitFormName.YourPartnership:
+            return '/fostering/home-visit/partnership-status'
+        case HomeVisitFormName.TellUsAboutYourInterestInFostering:
+            return '/fostering/home-visit/interest-in-fostering'
+        case HomeVisitFormName.YourHealth:
+            return '/fostering/home-visit/about-your-health'
+        case HomeVisitFormName.YourHousehold:
+            return '/fostering/home-visit/household'
+        case HomeVisitFormName.ChildrenLivingAwayFromYourHome:
+            return '/fostering/home-visit/children-living-away-from-home'
+        default:
+            throw new Error('No matching endpoint for given form.')
+    }
+}
+
+const getApplicationUpdateEndpoint = form => {
+    switch (form) {
+        case ApplicationFormName.References:
+            return '/fostering/application/references'
+        case ApplicationFormName.GpDetails:
+            return '/fostering/application/gp-details'
+        default:
+            throw new Error('No matching endpoint for given form.')
+    }
+}
+
+const getFormStageEndpoint = stage => {
+    switch (stage) {
+        case StageName.HomeVisit: 
+            return '/fostering/home-visit'
+        case StageName.Application:
+            return '/fostering/application'
+        default:
+            throw new Error('No matching endpoint for given stage.')
+    }
+}
+
+const reduceProperties = object => Object.keys(object).reduce((acc, property) => {
+    return {
+        ...acc,
+        [property]: object[property].value
+    }
+}, {})
+
+const updateForm = async (endpoint, formData) => {
+    const parsedFormData = parseFormData(formData)
+
+    const response = await fetchWithTimeout(endpoint, {
+        method: 'PATCH',
+        credentials: 'include',
+        body: JSON.stringify(parsedFormData),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }, 30000)
+
+    if (!response.ok) {
+        throw Error(response.statusText)
+    }
+
+    return await response.json()
+}
+
+const updateFormStatus = ({ form, stage, currentStatus, setStatus }) => {
     if (currentStatus === TaskStatus.None) {
-        fetchWithTimeout('/fostering/update-form-status',
+        fetchWithTimeout(`${getFormStageEndpoint(stage)}/status`,
             {
                 method: 'PATCH',
                 credentials: 'include',
@@ -42,14 +123,7 @@ export const updateFormStatus = (form, currentStatus, setStatus) => {
     }
 }
 
-const reduceProperties = object => Object.keys(object).reduce((acc, property) => {
-	return {
-		...acc,
-		[property]: object[property].value
-	}
-}, {})
-
-export const parseFormData = ({ firstApplicant, secondApplicant, familyReference, firstPersonalReference, secondPersonalReference, ...formData }) => {
+const parseFormData = ({ firstApplicant, secondApplicant, familyReference, firstPersonalReference, secondPersonalReference, ...formData }) => {
     let parsedObject = reduceProperties(formData)
 
     if (firstApplicant) {
@@ -78,52 +152,25 @@ export const parseFormData = ({ firstApplicant, secondApplicant, familyReference
     return parsedObject
 }
 
-const getFormUpdateEndpoint = form => {
-    switch (form) {
-        case FormName.TellUsAboutYourself:
-            return '/fostering/about-yourself'
-        case FormName.YourEmploymentDetails:
-            return '/fostering/your-employment-details'
-        case FormName.LanguagesSpokenInYourHome:
-            return '/fostering/languages-spoken-in-your-home'
-        case FormName.YourFosteringHistory:
-            return '/fostering/your-fostering-history'
-        case FormName.YourPartnership:
-            return '/fostering/partnership-status'
-        case FormName.TellUsAboutYourInterestInFostering:
-            return '/fostering/interest-in-fostering'
-        case FormName.YourHealth:
-            return '/fostering/about-your-health'
-        case FormName.YourHousehold:
-            return '/fostering/household'
-        case FormName.ChildrenLivingAwayFromYourHome:
-            return '/fostering/children-living-away-from-home'
-        case FormName.GpDetails:
-            return '/fostering/gp-details'
-        case FormName.References:
-            return '/fostering/update-references'
-        default:
-            throw new Error('No matching endpoint for given form.')
-    }
+const updateApplicationForm = async (form, formData) => {
+    const endpoint = getApplicationUpdateEndpoint(form)
+
+    return await updateForm(endpoint, formData)
 }
 
-export const updateForm = async (form, formData) => {
-    const endpoint = getFormUpdateEndpoint(form)
-    const parsedFormData = parseFormData(formData)
+const updateHomeVisitForm = async (form, formData) => {
+    const endpoint = getHomeVisitUpdateEndpoint(form)
 
-    const response = await fetchWithTimeout(endpoint, {
-        method: 'PATCH',
-        credentials: 'include',
-        body: JSON.stringify(parsedFormData),
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }, 30000)
+    return await updateForm(endpoint, formData)
+}
 
-    if (!response.ok) {
-        throw Error(response.statusText)
-    }
-
-    return await response.json()
+export {
+    TaskStatus,
+    StageName,
+    HomeVisitFormName,
+    ApplicationFormName,
+    updateFormStatus,
+    parseFormData,
+    updateApplicationForm,
+    updateHomeVisitForm
 }

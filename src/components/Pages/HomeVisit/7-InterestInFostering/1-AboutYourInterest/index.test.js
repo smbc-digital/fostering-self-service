@@ -21,8 +21,8 @@ describe('AboutYourInterest', () => {
     it('should update form status', async () => {
         // Arrange
         const mockPromise = Promise.resolve()
-        helpers.updateFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
-            setStatus(status)
+        helpers.updateFormStatus = jest.fn().mockImplementation(({ currentStatus, setStatus }) => {
+            setStatus(currentStatus)
         })
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
         

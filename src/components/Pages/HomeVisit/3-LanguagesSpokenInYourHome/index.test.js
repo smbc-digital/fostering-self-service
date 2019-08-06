@@ -1,6 +1,6 @@
-import { React, mount, useContextMock, renderer } from '../../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import LanguagesSpokenInYourHome from './index'
-import * as helpers from '../../../../helpers'
+import * as helpers from 'helpers'
 
 describe('LanguagesSpokenInYourHome', () => {
 	const onChangeStatusMock = jest.fn()
@@ -29,7 +29,7 @@ describe('LanguagesSpokenInYourHome', () => {
 			push: jest.fn()
 		}
 
-		helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+		helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
 		const wrapper = mount(<LanguagesSpokenInYourHome history={history} />)
 		
@@ -64,7 +64,7 @@ describe('LanguagesSpokenInYourHome', () => {
 			}
 		})
 
-		helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+		helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
 		const wrapper = mount(<LanguagesSpokenInYourHome history={history} />)
 		
@@ -77,13 +77,13 @@ describe('LanguagesSpokenInYourHome', () => {
 		expect(history.push).toHaveBeenCalledWith(pageRoute)
 	})
 
-	it('should call updateForm on form submit', async () => {
+	it('should call updateHomeVisitForm on form submit', async () => {
 		// Arrange
 		const history = {
 			push: jest.fn()
 		}
 
-		helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+		helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
 		const wrapper = mount(<LanguagesSpokenInYourHome history={history} />)
 		
@@ -92,7 +92,7 @@ describe('LanguagesSpokenInYourHome', () => {
 		await Promise.resolve()
 
 		// Assert
-		expect(helpers.updateForm).toHaveBeenCalled()
+		expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
 	})
 
 	it('should call onChangeStatus on form submit', async () => {
@@ -101,7 +101,7 @@ describe('LanguagesSpokenInYourHome', () => {
 			push: jest.fn()
 		}
 
-		helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+		helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
 		const wrapper = mount(<LanguagesSpokenInYourHome history={history} />)
 		
@@ -113,13 +113,13 @@ describe('LanguagesSpokenInYourHome', () => {
 		expect(onChangeStatusMock).toHaveBeenCalledWith('languageSpokenInYourHomeStatus', 0)
 	})
 
-	it('should call updateForm on save and go back click', async () => {
+	it('should call updateHomeVisitForm on save and go back click', async () => {
 		// Arrange
 		const history = {
 			push: jest.fn()
 		}
 
-		helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+		helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
 		const wrapper = mount(<LanguagesSpokenInYourHome history={history} />)
 		
@@ -128,7 +128,7 @@ describe('LanguagesSpokenInYourHome', () => {
 		await Promise.resolve()
 
 		// Assert
-		expect(helpers.updateForm).toHaveBeenCalled()		
+		expect(helpers.updateHomeVisitForm).toHaveBeenCalled()		
 	})
 
 	it('should push to tasklist page on save and go back click', async () => {
@@ -137,7 +137,7 @@ describe('LanguagesSpokenInYourHome', () => {
 			push: jest.fn()
 		}
 
-		helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+		helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
 		const wrapper = mount(<LanguagesSpokenInYourHome history={history} />)
 		
@@ -149,13 +149,13 @@ describe('LanguagesSpokenInYourHome', () => {
 		expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))		
 	})
 
-	it('should push to error page on updateForm error', async () => {
+	it('should push to error page on updateHomeVisitForm error', async () => {
 		// Arrange
 		const history = {
 			push: jest.fn()
 		}
 
-		helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+		helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error() })
 
 		const wrapper = mount(<LanguagesSpokenInYourHome history={history} />)
 		

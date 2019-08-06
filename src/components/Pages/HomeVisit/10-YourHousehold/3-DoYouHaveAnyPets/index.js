@@ -1,9 +1,9 @@
 import React, { useContext, Fragment, useState } from 'react'
-import { Context } from '../../../../../context'
+import { Context } from 'context'
 import { RadioInputsContainer, TextAreaInputContainer } from 'smbc-react-components'
-import { getPageRoute, updateForm, FormName } from '../../../../../helpers'
+import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import PropTypes from 'prop-types'
-import SubmitButton from '../../../../SubmitButton'
+import SubmitButton from 'components/SubmitButton'
 
 const DoYouHaveAnyPets = ({ history }) => {
     const {
@@ -19,7 +19,7 @@ const DoYouHaveAnyPets = ({ history }) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.YourHousehold, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.YourHousehold, {
                 doYouHaveAnyPets,
                 petsInformation,
                 otherPeopleInYourHousehold,

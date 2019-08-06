@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
-import { Context } from '../../../../../context'
+import { Context } from 'context'
 import {
     Anchor,
     ComponentsList,
@@ -7,9 +7,8 @@ import {
     TextInputContainer,
     MemorableDateInputContainer
 } from 'smbc-react-components'
-
 import PropTypes from 'prop-types'
-import { getPageRoute } from '../../../../../helpers'
+import { getPageRoute } from 'helpers'
 import moment from 'moment-timezone'
 
 const PeopleInYourHousehold = ({ history }) => {

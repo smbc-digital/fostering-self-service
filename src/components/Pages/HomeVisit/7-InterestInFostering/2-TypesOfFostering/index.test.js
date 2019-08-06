@@ -26,7 +26,7 @@ describe('TypesOfFostering', () => {
         const history = {
             push: jest.fn()
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve())
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve())
         const wrapper = mount(<TypesOfFostering history={history} />)
 
         // Act
@@ -37,12 +37,12 @@ describe('TypesOfFostering', () => {
         expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(14))
     })
 
-    it('should call updateForm', async () => {
+    it('should call updateHomeVisitForm', async () => {
         // Arrange
         const history = {
             push: jest.fn()
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve())
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve())
         const wrapper = mount(<TypesOfFostering history={history} />)
 
         // Act
@@ -50,7 +50,7 @@ describe('TypesOfFostering', () => {
         await Promise.resolve()
 
         // Assert
-        expect(helpers.updateForm).toHaveBeenCalledWith(helpers.FormName.TellUsAboutYourInterestInFostering, {
+        expect(helpers.updateHomeVisitForm).toHaveBeenCalledWith(helpers.HomeVisitFormName.TellUsAboutYourInterestInFostering, {
             reasonsForFostering,
             typesOfFostering
         })
@@ -61,7 +61,7 @@ describe('TypesOfFostering', () => {
         const history = {
             push: jest.fn()
         }
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error('Error') })
+        helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error('Error') })
         const wrapper = mount(<TypesOfFostering history={history} />)
 
         // Act
@@ -76,7 +76,7 @@ describe('TypesOfFostering', () => {
         const history = {
             push: jest.fn()
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
         const wrapper = mount(<TypesOfFostering history={history} />)
 
         // Act
@@ -92,7 +92,7 @@ describe('TypesOfFostering', () => {
         const history = {
             push: jest.fn()
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
         const wrapper = mount(<TypesOfFostering history={history} />)
 
         // Act
@@ -109,7 +109,7 @@ describe('TypesOfFostering', () => {
             push: jest.fn()
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
         const wrapper = mount(<TypesOfFostering history={history} />)
 
         // Act

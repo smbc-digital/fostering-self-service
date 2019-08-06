@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`KnownByAnotherName snapshot renders correctly 1`] = `
+exports[`MoreAboutYou snapshot renders correctly 1`] = `
 Array [
   <h1>
     Your fostering journey

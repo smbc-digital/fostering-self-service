@@ -4,11 +4,17 @@ import {
     Anchor, 
     RadioInputsContainer 
 } from 'smbc-react-components'
-
 import PropTypes from 'prop-types'
-import { getCurrentApplicant, getPageRoute, updateForm, FormName, updateFormStatus } from 'helpers'
+import { 
+    getCurrentApplicant,
+    getPageRoute, 
+    updateHomeVisitForm, 
+    HomeVisitFormName, 
+    updateFormStatus,
+    StageName 
+} from 'helpers'
 import { Context } from 'context'
-import { Applicant } from '../../../../Provider'
+import { Applicant } from 'components/Provider'
 
 const AnyOverSixteens = ({ history, match }) => {
     const context = useContext(Context)
@@ -22,7 +28,7 @@ const AnyOverSixteens = ({ history, match }) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.ChildrenLivingAwayFromYourHome, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.ChildrenLivingAwayFromYourHome, {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })
@@ -87,10 +93,12 @@ const AnyOverSixteens = ({ history, match }) => {
     }
 
     useEffect(() => {
-        updateFormStatus(
-            FormName.ChildrenLivingAwayFromYourHome,
-            childrenLivingAwayFromYourHomeStatus,
-            newStatus => onChangeStatus('childrenLivingAwayFromYourHomeStatus', newStatus))
+        updateFormStatus({
+            form: HomeVisitFormName.ChildrenLivingAwayFromYourHome,
+            stage: StageName.HomeVisit,
+            currentStatus: childrenLivingAwayFromYourHomeStatus,
+            setStatus: newStatus => onChangeStatus('childrenLivingAwayFromYourHomeStatus', newStatus)
+        })
     }, [])
 
     const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)

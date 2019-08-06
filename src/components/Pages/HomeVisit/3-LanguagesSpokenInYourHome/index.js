@@ -1,9 +1,9 @@
 import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, TextAreaInputContainer } from 'smbc-react-components'
-import { Context } from '../../../../context'
-import { getPageRoute, updateForm, FormName } from '../../../../helpers'
-import SubmitButton from '../../../SubmitButton'
+import { Context } from 'context'
+import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import SubmitButton from 'components/SubmitButton'
 
 const LanguagesSpokenInYourHome = ({ history }) => {
 	const context = useContext(Context)
@@ -14,7 +14,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.LanguagesSpokenInYourHome, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.LanguagesSpokenInYourHome, {
                 primaryLanguage: context.primaryLanguage,
                 otherLanguages: context.otherLanguages
             })

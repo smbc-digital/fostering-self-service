@@ -1,7 +1,7 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import FamilyReference from './index'
 import { TaskStatus } from 'helpers'
-import { getPageRoute } from '../../../../../helpers'
+import { getPageRoute } from 'helpers'
 
 describe('FamilyReference', () => {
 

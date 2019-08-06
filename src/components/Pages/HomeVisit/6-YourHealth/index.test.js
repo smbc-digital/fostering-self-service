@@ -1,9 +1,9 @@
-import { React, mount, useContextMock, renderer } from '../../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import YourHealth from './index'
-import { Applicant } from '../../../Provider'
-import * as helpers from '../../../../helpers'
+import { Applicant } from 'components/Provider'
+import * as helpers from '/helpers'
 
-describe('Your Health', () => {
+describe('YourHealth', () => {
 
     const onChangeApplicantMock = jest.fn()
     const onChangeStatusMock = jest.fn()
@@ -74,7 +74,7 @@ describe('Your Health', () => {
         expect(history.push).toHaveBeenCalled()
     })
 
-    it('should push to error page on updateForm error', async () => {
+    it('should push to error page on updateHomeVisitForm error', async () => {
         // Arrange
         const match = {
             params: [
@@ -85,7 +85,7 @@ describe('Your Health', () => {
             push: jest.fn()
         }
 
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error() })
         const wrapper = mount(<YourHealth history={history} match={match} />)
 
         // Act
@@ -189,7 +189,7 @@ describe('Your Health', () => {
             params: ['second-applicant']
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<YourHealth history={history} match={match}/>)
 

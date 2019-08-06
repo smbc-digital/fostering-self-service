@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, Fragment } from 'react'
-import { Context } from '../../../../../context'
+import { Context } from 'context'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
-import { getPageRoute, updateFormStatus, FormName } from '../../../../../helpers'
+import { getPageRoute, updateFormStatus, HomeVisitFormName, StageName } from 'helpers'
 import PropTypes from 'prop-types'
 
 const AnyPeopleInYourHousehold = ({ history }) => {
@@ -19,10 +19,12 @@ const AnyPeopleInYourHousehold = ({ history }) => {
     }
 
     useEffect(() => {
-        updateFormStatus(
-            FormName.YourHousehold,
-            yourHouseholdStatus,
-            newStatus => onChangeStatus('yourHouseholdStatus', newStatus))
+        updateFormStatus({
+            form: HomeVisitFormName.YourHousehold,
+            stage: StageName.HomeVisit,
+            currentStatus: yourHouseholdStatus,
+            setStatus: newStatus => onChangeStatus('yourHouseholdStatus', newStatus)
+        })
     }, [])
 
     const options = [

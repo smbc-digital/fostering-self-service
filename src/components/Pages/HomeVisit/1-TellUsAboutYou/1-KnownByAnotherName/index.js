@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor, TextInputContainer } from 'smbc-react-components'
-import { Context } from '../../../../../context'
-import { getPageRoute, getCurrentApplicant, updateFormStatus, FormName } from '../../../../../helpers'
-import { Applicant } from '../../../../Provider'
+import { Context } from 'context'
+import { getPageRoute, getCurrentApplicant, updateFormStatus, HomeVisitFormName, StageName } from 'helpers'
+import { Applicant } from 'components/Provider'
 
 const KnownByAnotherName = ({ history, match }) => {
     const context = useContext(Context)
@@ -51,10 +51,12 @@ const KnownByAnotherName = ({ history, match }) => {
     }
 
     useEffect(() => {
-        updateFormStatus(
-            FormName.TellUsAboutYourself,
-            context.statuses.tellUsAboutYourselfStatus,
-            newStatus => context.onChangeStatus('tellUsAboutYourselfStatus', newStatus))
+        updateFormStatus({
+            form: HomeVisitFormName.TellUsAboutYourself,
+            stage: StageName.HomeVisit,
+            currentStatus:context.statuses.tellUsAboutYourselfStatus,
+            setStatus: newStatus => context.onChangeStatus('tellUsAboutYourselfStatus', newStatus)
+        })
     }, [])
 
     const radioValue = `${everBeenKnownByAnotherName.value}`

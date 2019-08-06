@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import moment from 'moment-timezone'
 import { MemorableDateInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { getPageRoute, updateForm, FormName } from 'helpers'
+import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import SubmitButton from 'components/SubmitButton'
 
 const MovedInTogetherDate = ({ history }) => {
@@ -15,7 +15,7 @@ const MovedInTogetherDate = ({ history }) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.YourPartnership, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.YourPartnership, {
                 marriedOrInACivilPartnership,
                 dateMovedInTogether
             })

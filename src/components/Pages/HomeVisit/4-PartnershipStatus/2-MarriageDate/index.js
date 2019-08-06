@@ -4,7 +4,7 @@ import moment from 'moment-timezone'
 import { MemorableDateInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
-import { getPageRoute, updateForm, FormName } from 'helpers'
+import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 
 const MarriageDate = ({ history }) => {
     const [isLoading, setIsLoading] = useState(false)
@@ -13,9 +13,9 @@ const MarriageDate = ({ history }) => {
 
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
-
+		HomeVisitFormName
 		try {
-			const status = await updateForm(FormName.YourPartnership, {
+			const status = await updateHomeVisitForm(HomeVisitFormName.YourPartnership, {
 				dateOfMarriage,
 				marriedOrInACivilPartnership
 			})

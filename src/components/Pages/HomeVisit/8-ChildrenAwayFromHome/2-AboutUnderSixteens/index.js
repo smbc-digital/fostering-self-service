@@ -1,13 +1,13 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
-import { Context } from '../../../../../context'
+import { Context } from 'context'
 import { 
     ComponentsList,
     TextInputContainer,
     MemorableDateInputContainer,
-    AddressPicker } from 'smbc-react-components'
-
+    AddressPicker 
+} from 'smbc-react-components'
 import PropTypes from 'prop-types'
-import { getPageRoute, getCurrentApplicant, updateForm, FormName } from '../../../../../helpers'
+import { getPageRoute, getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import moment from 'moment-timezone'
 import SubmitButton from 'components/SubmitButton'
 import { Applicant } from 'config'
@@ -46,7 +46,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.ChildrenLivingAwayFromYourHome, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.ChildrenLivingAwayFromYourHome, {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })

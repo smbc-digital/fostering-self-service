@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { CheckboxInputsContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { getPageRoute, updateForm, FormName } from 'helpers'
+import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import SubmitButton from 'components/SubmitButton' 
 
 const TypesOfFostering = ({ history }) => {
@@ -57,7 +57,7 @@ const TypesOfFostering = ({ history }) => {
     const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
         try {
-			const status = await updateForm(FormName.TellUsAboutYourInterestInFostering, {
+			const status = await updateHomeVisitForm(HomeVisitFormName.TellUsAboutYourInterestInFostering, {
 				reasonsForFostering,
 				typesOfFostering
             })

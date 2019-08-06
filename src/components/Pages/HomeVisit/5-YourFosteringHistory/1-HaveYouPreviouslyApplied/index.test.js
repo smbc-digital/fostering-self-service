@@ -1,7 +1,7 @@
-import { React, mount, useContextMock, renderer } from '../../../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import HaveYouPreviouslyApplied from './index'
-import { Applicant } from '../../../../Provider'
-import * as helpers from '../../../../../helpers'
+import { Applicant } from 'components/Provider'
+import * as helpers from 'helpers'
 
 describe('HaveYouPreviouslyApplied', () => {
 
@@ -54,7 +54,7 @@ describe('HaveYouPreviouslyApplied', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<HaveYouPreviouslyApplied history={history} match={match}/>)
 
@@ -75,7 +75,7 @@ describe('HaveYouPreviouslyApplied', () => {
             params: ['second-applicant']
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<HaveYouPreviouslyApplied history={history} match={match}/>)
 
@@ -96,7 +96,7 @@ describe('HaveYouPreviouslyApplied', () => {
             params: ['second-applicant']
         }
 
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error() })
 
         const wrapper = mount(<HaveYouPreviouslyApplied history={history} match={match}/>)
 
@@ -117,7 +117,7 @@ describe('HaveYouPreviouslyApplied', () => {
             params: ['second-applicant']
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<HaveYouPreviouslyApplied history={history} match={match}/>)
 

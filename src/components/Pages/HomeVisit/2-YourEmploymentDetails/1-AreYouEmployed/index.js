@@ -1,9 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
-import { Context } from '../../../../../context'
-import { getCurrentApplicant, getPageRoute, updateFormStatus, FormName, updateForm } from '../../../../../helpers'
-import { Applicant } from '../../../../Provider'
+import { Context } from 'context'
+import { 
+    getCurrentApplicant, 
+    getPageRoute, 
+    updateFormStatus, 
+    HomeVisitFormName, 
+    StageName, 
+    updateHomeVisitForm 
+} from 'helpers'
+import { Applicant } from 'components/Provider'
 
 const AreYouEmployed = ({ history, match }) => {
     const context = useContext(Context)
@@ -19,7 +26,7 @@ const AreYouEmployed = ({ history, match }) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.YourEmploymentDetails, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.YourEmploymentDetails, {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })
@@ -83,10 +90,12 @@ const AreYouEmployed = ({ history, match }) => {
         }
     }
     useEffect(() => {
-        updateFormStatus(
-            FormName.YourEmploymentDetails,
-            yourEmploymentDetailsStatus,
-            newStatus => context.onChangeStatus('yourEmploymentDetailsStatus', newStatus))
+        updateFormStatus({
+            form: HomeVisitFormName.YourEmploymentDetails,
+            stage: StageName.HomeVisit,
+            currentStatus: yourEmploymentDetailsStatus,
+            setStatus: newStatus => context.onChangeStatus('yourEmploymentDetailsStatus', newStatus)
+        })
     }, [])
 
     const onChange = (event, isValid) => {

@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, RadioInputsContainer } from 'smbc-react-components'
-import { Context } from '../../../../../context'
-import { getCurrentApplicant, getPageRoute, updateForm, FormName } from '../../../../../helpers'
-import { Applicant } from '../../../../Provider'
-import SubmitButton from '../../../../SubmitButton'
+import { Context } from 'context'
+import { getCurrentApplicant, getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { Applicant } from 'components/Provider'
+import SubmitButton from 'components/SubmitButton'
 
 
 const EmploymentDetails = ({ history, match }) => {
@@ -18,7 +18,7 @@ const EmploymentDetails = ({ history, match }) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.YourEmploymentDetails, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.YourEmploymentDetails, {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })

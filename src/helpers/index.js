@@ -1,14 +1,25 @@
 import fetchWithTimeout from './fetchWithTimeout'
 import { getPageRoute } from './pagehelper'
 import getCurrentApplicant from './getCurrentApplicant'
-import { updateFormStatus, updateForm, FormName, TaskStatus } from './updateForm'
+import {
+    updateFormStatus,
+    updateHomeVisitForm,
+    updateApplicationForm,
+	HomeVisitFormName,
+	ApplicationFormName,
+	TaskStatus,
+	StageName
+} from './updateForm'
 
 export {
     fetchWithTimeout,
     getPageRoute,
     getCurrentApplicant,
+    updateHomeVisitForm,
+    updateApplicationForm,
     updateFormStatus,
-    updateForm,
-    FormName,
+    HomeVisitFormName,
+    ApplicationFormName,
+    StageName,
     TaskStatus
 }

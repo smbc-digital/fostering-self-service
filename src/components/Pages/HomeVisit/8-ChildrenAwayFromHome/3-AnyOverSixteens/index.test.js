@@ -1,7 +1,7 @@
-import { React, mount, useContextMock, renderer } from '../../../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AnyOverSixteens from './index'
-import { Applicant } from '../../../../Provider'
-import * as helpers from '../../../../../helpers'
+import { Applicant } from 'components/Provider'
+import * as helpers from 'helpers'
 
 describe('AnyOverSixteens', () => {
 
@@ -134,7 +134,7 @@ describe('AnyOverSixteens', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(19))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(19))
 
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
@@ -201,7 +201,7 @@ describe('AnyOverSixteens', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
@@ -261,7 +261,7 @@ describe('AnyOverSixteens', () => {
             params: ['second-applicant']
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
@@ -307,7 +307,7 @@ describe('AnyOverSixteens', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
@@ -349,7 +349,7 @@ describe('AnyOverSixteens', () => {
         }
 
         const mockPromise = Promise.resolve()
-        helpers.updateFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
+        helpers.updateHomeVisitFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
             setStatus(status)
         })
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
@@ -362,7 +362,7 @@ describe('AnyOverSixteens', () => {
         expect(onChangeStatusMock).toHaveBeenCalled()
     })
 
-    it('should push to error page on updateForm error', async () => {
+    it('should push to error page on updateHomeVisitForm error', async () => {
         // Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
@@ -395,7 +395,7 @@ describe('AnyOverSixteens', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error() })
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
         // Act

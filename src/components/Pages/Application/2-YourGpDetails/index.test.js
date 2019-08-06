@@ -130,7 +130,7 @@ describe('YourGpDetails', () => {
             params: []
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         // Act
         const wrapper = mount(<YourGpDetails history={history} match={match} />)
@@ -140,7 +140,7 @@ describe('YourGpDetails', () => {
         expect(history.push).toHaveBeenCalledWith(`${helpers.getPageRoute(22)}/second-applicant`)
     })
 
-    it('should call updateForm on submit', async () => {
+    it('should call updateApplicationForm on submit', async () => {
         //Arrange
         const history = {
             push: jest.fn()
@@ -148,7 +148,7 @@ describe('YourGpDetails', () => {
         const match = {
             params: []
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         //Act
         const wrapper = mount(<YourGpDetails history={history} match={match} />)
@@ -156,7 +156,7 @@ describe('YourGpDetails', () => {
         await Promise.resolve()
 
         //Assert
-        expect(helpers.updateForm).toHaveBeenCalled()
+        expect(helpers.updateApplicationForm).toHaveBeenCalled()
     })
 
     it('should call onChangeStatus on submit', async () => {
@@ -167,7 +167,7 @@ describe('YourGpDetails', () => {
         const match = {
             params: []
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         // Act
         const wrapper = mount(<YourGpDetails history={history} match={match} />)
@@ -186,7 +186,7 @@ describe('YourGpDetails', () => {
         const match = {
             params: []
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         // Act
         const wrapper = mount(<YourGpDetails history={history} match={match} />)
@@ -205,7 +205,7 @@ describe('YourGpDetails', () => {
         const match = {
             params: []
         }
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() }) 
+        helpers.updateApplicationForm = jest.fn().mockImplementation(() => { throw new Error() }) 
         
         // Act
         const wrapper = mount(<YourGpDetails history={history} match={match} />)
@@ -215,7 +215,7 @@ describe('YourGpDetails', () => {
         expect(history.push).toHaveBeenCalledWith('/error')
     })
 
-    it('should call updateForm on save and go back click', () => {
+    it('should call updateApplicationForm on save and go back click', () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -223,14 +223,14 @@ describe('YourGpDetails', () => {
         const match = {
             params: []
         }
-        helpers.updateForm = jest.fn()
+        helpers.updateApplicationForm = jest.fn()
 
         // Act
         const wrapper = mount(<YourGpDetails history={history} match={match} />)
         wrapper.find('button').at(1).simulate('click')
 
         // Assert
-        expect(helpers.updateForm).toHaveBeenCalled()
+        expect(helpers.updateApplicationForm).toHaveBeenCalled()
     })
 
     it('should push to the start page on save and go back click', async () => {
@@ -241,7 +241,7 @@ describe('YourGpDetails', () => {
         const match = {
             params: []
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         // Act
         const wrapper = mount(<YourGpDetails history={history} match={match} />)
@@ -260,7 +260,7 @@ describe('YourGpDetails', () => {
         const match = {
             params: []
         }
-        helpers.updateForm = jest.fn()
+        helpers.updateApplicationForm = jest.fn()
 
         // Act
         const wrapper = mount(<YourGpDetails history={history} match={match} />)
@@ -285,6 +285,62 @@ describe('YourGpDetails', () => {
 
         // Assert
         expect(onChangeApplicantMock).toHaveBeenCalled()
+    })
+
+    it('should update form status', () => {
+        // Arrange
+        useContextMock.mockReturnValue({
+            statuses: {
+                gpDetailsStatus: TaskStatus.None
+            },
+            onChangeStatus: onChangeStatusMock,
+            onChangeApplicant: jest.fn(),
+            firstApplicant: {
+                nameOfGp: {
+                    value: 'test',
+                    isValid: true
+                },
+                nameOfGpPractice: {
+                    value: 'test',
+                    isValid: true
+                },
+                gpPhoneNumber: {
+                    value: '01234567890',
+                    isValid: true
+                },
+                gpAddress: {
+                    value: {
+                        addressLine1: 'line 1',
+                        addressLine2: 'line 2',
+                        town: 'town',
+                        postcode: 'sk13xe'
+                    },
+                    isValid: true
+                },
+                firstName: {
+                    value: 'test',
+                    isValid: true
+                },
+                lastName: {
+                    value: 'test',
+                    isValid: true
+                }
+            },
+            secondApplicant: null
+        })
+        const match = {
+            params: []
+        }
+
+        helpers.updateFormStatus = jest.fn().mockImplementation(({ currentStatus, setStatus }) => {
+            setStatus(currentStatus)
+        })
+
+        // Act
+        mount(<YourGpDetails match={match}/>)
+
+        // Assert
+        expect(onChangeStatusMock).toHaveBeenCalledWith('gpDetailsStatus', TaskStatus.None)
     })
 
     describe('snapshot', () => {

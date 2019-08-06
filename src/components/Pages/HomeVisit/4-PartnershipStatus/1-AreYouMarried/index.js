@@ -2,7 +2,7 @@ import React, { useContext, Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from 'context'
-import { getPageRoute, FormName, updateFormStatus } from 'helpers'
+import { getPageRoute, HomeVisitFormName, updateFormStatus, StageName } from 'helpers'
 
 const AreYouMarried = ({ history }) => {
     const { onChange, onChangeStatus, marriedOrInACivilPartnership, statuses: { yourPartnershipStatus } } = useContext(Context)
@@ -40,10 +40,12 @@ const AreYouMarried = ({ history }) => {
 	}
 
     useEffect(() => {
-        updateFormStatus(
-            FormName.YourPartnership,
-            yourPartnershipStatus,
-            newStatus => onChangeStatus('yourPartnershipStatus', newStatus))
+        updateFormStatus({
+            form: HomeVisitFormName.YourPartnership,
+            stage: StageName.HomeVisit,
+            currentStatus: yourPartnershipStatus,
+            setStatus: newStatus => onChangeStatus('yourPartnershipStatus', newStatus)
+        })
     }, [])
 
     return (

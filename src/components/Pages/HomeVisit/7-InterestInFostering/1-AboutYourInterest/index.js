@@ -2,16 +2,18 @@ import React, { Fragment, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { TextAreaInputContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from 'context'
-import { updateFormStatus, FormName, getPageRoute } from 'helpers'
+import { updateFormStatus, HomeVisitFormName, getPageRoute, StageName } from 'helpers'
 
 const AboutYourInterest = ({ history }) => {
     const { onChange, onChangeStatus, reasonsForFostering, statuses: { tellUsAboutYourInterestInFosteringStatus } } = useContext(Context)
 
     useEffect(() => {
-        updateFormStatus(
-            FormName.TellUsAboutYourInterestInFostering,
-            tellUsAboutYourInterestInFosteringStatus,
-            newStatus => onChangeStatus('tellUsAboutYourInterestInFosteringStatus', newStatus))
+        updateFormStatus({
+            form: HomeVisitFormName.TellUsAboutYourInterestInFostering,
+            stage: StageName.HomeVisit,
+            currentStatus: tellUsAboutYourInterestInFosteringStatus,
+            setStatus: newStatus => onChangeStatus('tellUsAboutYourInterestInFosteringStatus', newStatus)
+        })
     }, [])
 
     const onSubmit = event => {

@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { AlertForm, TextInputContainer, AddressPicker } from 'smbc-react-components'
-import { updateFormStatus, FormName, updateForm, getPageRoute } from 'helpers'
+import { ApplicationFormName, updateApplicationForm, getPageRoute, updateFormStatus, StageName } from 'helpers'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
 
@@ -18,18 +18,19 @@ const SecondPersonalReference = ({ history }) => {
 	}, [secondPersonalReference], [])
 
 	useEffect(() => {
-        updateFormStatus(
-            FormName.References,
-            context.statuses.referencesStatus,
-            newStatus => onChangeStatus('referencesStatus', newStatus)
-        )
+        updateFormStatus({
+            form: ApplicationFormName.References,
+            stage: StageName.Application,
+            currentStatus: context.statuses.referencesStatus,
+            setStatus: newStatus => onChangeStatus('referencesStatus', newStatus)
+        })
 	}, [])
 	
 	const handleFormUpdate = async nextPageRoute => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.References, {
+            const status = await updateApplicationForm(ApplicationFormName.References, {
                 familyReference,
 				firstPersonalReference,
 				secondPersonalReference

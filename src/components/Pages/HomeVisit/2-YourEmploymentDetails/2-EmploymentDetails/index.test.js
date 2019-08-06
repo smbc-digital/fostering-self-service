@@ -1,9 +1,9 @@
-import { React, mount, useContextMock, renderer } from '../../../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import EmploymentDetails from './index'
-import { Applicant } from '../../../../Provider'
-import * as helpers from '../../../../../helpers'
+import { Applicant } from 'components/Provider'
+import * as helpers from 'helpers'
 
-describe('YourEmploymnetDetails', () => {
+describe('EmploymentDetails', () => {
 
     const onChangeStatusMock = jest.fn()
     const onChangeApplicantMock = jest.fn()
@@ -120,7 +120,7 @@ describe('YourEmploymnetDetails', () => {
             }
         })
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
@@ -162,7 +162,7 @@ describe('YourEmploymnetDetails', () => {
         const match = {
             params: ['second-applicant']
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
@@ -171,7 +171,7 @@ describe('YourEmploymnetDetails', () => {
         await Promise.resolve()
 
         // Assert
-        expect(helpers.updateForm).toHaveBeenCalled()
+        expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
     })
 
     it('should call onChangeStatus on form submit', async () => {
@@ -183,7 +183,7 @@ describe('YourEmploymnetDetails', () => {
         const match = {
             params: ['second-applicant']
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
@@ -204,7 +204,7 @@ describe('YourEmploymnetDetails', () => {
         const match = {
             params: ['second-applicant']
         }
-        helpers.updateForm =  jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm =  jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
@@ -213,7 +213,7 @@ describe('YourEmploymnetDetails', () => {
         await Promise.resolve()
 
         // Assert
-        expect(helpers.updateForm).toHaveBeenCalled()
+        expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
     })
 
     it('should push to start page on save and go back click', async () => {
@@ -225,7 +225,7 @@ describe('YourEmploymnetDetails', () => {
         const match = {
             params: ['second-applicant']
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
@@ -247,7 +247,7 @@ describe('YourEmploymnetDetails', () => {
             params: ['second-applicant']
         }
 
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error() })
         const wrapper = mount(<EmploymentDetails history={history} match={match}/>)
 
         // Act

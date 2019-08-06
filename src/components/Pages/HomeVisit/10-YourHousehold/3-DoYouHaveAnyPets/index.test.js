@@ -35,7 +35,7 @@ describe('DoYouHaveAnyPets', () => {
         const history = {
             push: jest.fn()
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         // Act
         const wrapper = mount(<DoYouHaveAnyPets history={history} />)
@@ -52,7 +52,7 @@ describe('DoYouHaveAnyPets', () => {
         const history = {
             push: jest.fn()
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         // Act
         const wrapper = mount(<DoYouHaveAnyPets history={history} />)
@@ -69,7 +69,7 @@ describe('DoYouHaveAnyPets', () => {
         const history = {
             push: jest.fn()
         }
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error()})
+        helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error()})
 
         // Act
         const wrapper = mount(<DoYouHaveAnyPets history={history} />)

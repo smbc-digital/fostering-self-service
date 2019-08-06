@@ -1,10 +1,10 @@
 import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer } from 'smbc-react-components'
-import { Context } from '../../../../context'
-import { getCurrentApplicant, getPageRoute, updateForm, FormName } from '../../../../helpers'
-import { Applicant } from '../../../Provider'
-import SubmitButton from '../../../SubmitButton'
+import { Context } from 'context'
+import { getCurrentApplicant, getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { Applicant } from 'components/Provider'
+import SubmitButton from 'components/SubmitButton'
 
 const YourHealth = ({ history, match }) => {
     const context = useContext(Context)
@@ -17,7 +17,7 @@ const YourHealth = ({ history, match }) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.YourHealth, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.YourHealth, {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })

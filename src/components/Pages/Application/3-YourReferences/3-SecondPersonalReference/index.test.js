@@ -128,7 +128,7 @@ describe('FirstPersonalReference', () => {
             push: jest.fn()
 		}
 		
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         // Act
         const wrapper = mount(<SecondPersonalReference history={history} />)
@@ -145,7 +145,7 @@ describe('FirstPersonalReference', () => {
             push: jest.fn()
 		}
 		
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() }) 
+        helpers.updateApplicationForm = jest.fn().mockImplementation(() => { throw new Error() }) 
         
         // Act
         const wrapper = mount(<SecondPersonalReference history={history} />)
@@ -155,13 +155,13 @@ describe('FirstPersonalReference', () => {
         expect(history.push).toHaveBeenCalledWith('/error')
     })
 
-	it('should call updateForm on submit', async () => {
+	it('should call updateApplicationForm on submit', async () => {
         //Arrange
         const history = {
             push: jest.fn()
 		}
 		
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         //Act
         const wrapper = mount(<SecondPersonalReference history={history} />)
@@ -169,7 +169,7 @@ describe('FirstPersonalReference', () => {
         await Promise.resolve()
 
         //Assert
-        expect(helpers.updateForm).toHaveBeenCalled()
+        expect(helpers.updateApplicationForm).toHaveBeenCalled()
 	})
 	
 	it('should call onChangeStatus on submit', async () => {
@@ -178,7 +178,7 @@ describe('FirstPersonalReference', () => {
             push: jest.fn()
 		}
 		
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         // Act
         const wrapper = mount(<SecondPersonalReference history={history} />)
@@ -189,20 +189,20 @@ describe('FirstPersonalReference', () => {
         expect(onChangeStatusMock).toHaveBeenCalledWith('referencesStatus', 0)
 	})
 	
-	it('should call updateForm on save and go back click', () => {
+	it('should call updateApplicationForm on save and go back click', () => {
         // Arrange
         const history = {
             push: jest.fn()
 		}
 		
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         // Act
         const wrapper = mount(<SecondPersonalReference history={history} />)
         wrapper.find('button').at(2).simulate('click')
 
         // Assert
-        expect(helpers.updateForm).toHaveBeenCalled()
+        expect(helpers.updateApplicationForm).toHaveBeenCalled()
 	})
 	
 	it('should push to the start page on save and go back click', async () => {
@@ -213,7 +213,7 @@ describe('FirstPersonalReference', () => {
         const match = {
             params: []
         }
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
+        helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0)) 
 
         // Act
         const wrapper = mount(<SecondPersonalReference history={history} match={match} />)

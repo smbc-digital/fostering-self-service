@@ -6,12 +6,11 @@ import {
     MemorableDateInputContainer,
     AddressPicker 
 } from 'smbc-react-components'
-
 import PropTypes from 'prop-types'
-import { getPageRoute, getCurrentApplicant, updateForm, FormName } from 'helpers'
+import { getPageRoute, getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import moment from 'moment-timezone'
 import SubmitButton from 'components/SubmitButton'
-import { Applicant } from '../../../../Provider'
+import { Applicant } from 'components/Provider'
 
 const AboutOverSixteens = ({history, match}) => {
     const context = useContext(Context)
@@ -45,7 +44,7 @@ const AboutOverSixteens = ({history, match}) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.ChildrenLivingAwayFromYourHome, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.ChildrenLivingAwayFromYourHome, {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })

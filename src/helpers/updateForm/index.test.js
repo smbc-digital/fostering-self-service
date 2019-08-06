@@ -1,4 +1,13 @@
-import { updateFormStatus, updateForm, FormName, TaskStatus, parseFormData } from '../updateForm'
+import { 
+    updateFormStatus, 
+    updateApplicationForm, 
+    updateHomeVisitForm,
+    HomeVisitFormName,
+    ApplicationFormName,
+    TaskStatus, 
+    StageName, 
+    parseFormData 
+} from '../updateForm'
 import * as helpers from '../index'
 
 describe('updateFormStatus', () => {
@@ -9,7 +18,12 @@ describe('updateFormStatus', () => {
     it('should call setStatus when TaskStatus is None', () => {
         const mockSetStatus = jest.fn()
 
-        updateFormStatus(FormName.TellUsAboutYourself, TaskStatus.None, mockSetStatus)
+        updateFormStatus({
+            form: HomeVisitFormName.TellUsAboutYourself,
+             currentStatus: TaskStatus.None, 
+             stage: StageName.HomeVisit,
+             setStatus: mockSetStatus
+        })
 
         expect(mockSetStatus.mock.calls.length).toBe(1)
         expect(mockSetStatus.mock.calls[0][0]).toBe(TaskStatus.NotCompleted)
@@ -18,20 +32,25 @@ describe('updateFormStatus', () => {
     it('should not call setStatus when TaskStatus is NotCompleted', () => {
         const mockSetStatus = jest.fn()
 
-        updateFormStatus(FormName.TellUsAboutYourself, TaskStatus.NotCompleted, mockSetStatus)
+        updateFormStatus({
+            form: HomeVisitFormName.TellUsAboutYourself,
+            currentStatus: TaskStatus.NotCompleted, 
+            stage: StageName.HomeVisit,
+            setStatus: mockSetStatus
+        })
 
         expect(mockSetStatus.mock.calls.length).toBe(0)
     })
 })
 
-describe('updateForm', () => {
+describe('updateApplicationForm', () => {
     beforeEach(() => {
         jest.resetAllMocks()
     })
 
     it('should throw error when endpoint not found', async () => {
         // Act & Assert
-        await expect(updateForm('', {}))
+        await expect(updateApplicationForm('', {}))
             .rejects
             .toThrow('No matching endpoint for given form.')
     })
@@ -46,7 +65,7 @@ describe('updateForm', () => {
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
         
         // Act
-        await updateForm(FormName.TellUsAboutYourself, {})
+        await updateApplicationForm(ApplicationFormName.GpDetails, {})
 
         // Assert
         expect(helpers.fetchWithTimeout).toHaveBeenCalled()
@@ -63,7 +82,7 @@ describe('updateForm', () => {
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
 
         // Act & Assert
-        await expect(updateForm(FormName.TellUsAboutYourself, {}))
+        await expect(updateApplicationForm(ApplicationFormName.GpDetails, {}))
             .rejects
             .toThrow(expectedError)
     })
@@ -80,7 +99,70 @@ describe('updateForm', () => {
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
         
         // Act
-        await updateForm(FormName.TellUsAboutYourself, {})
+        await updateApplicationForm(ApplicationFormName.GpDetails, {})
+        
+        // Assert
+        expect(mockJson).toHaveBeenCalled()
+    })
+})
+
+describe('updateHomeVisitForm', () => {
+    beforeEach(() => {
+        jest.resetAllMocks()
+    })
+
+    it('should throw error when endpoint not found', async () => {
+        // Act & Assert
+        await expect(updateHomeVisitForm('', {}))
+            .rejects
+            .toThrow('No matching endpoint for given form.')
+    })
+
+    it('should call fetchWithTimeout', async () => {
+        // Arrange
+        const mockPromise = Promise.resolve({
+            ok: true, 
+            json: jest.fn()
+        })
+
+        helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+        
+        // Act
+        await updateHomeVisitForm(HomeVisitFormName.YourEmploymentDetails, {})
+
+        // Assert
+        expect(helpers.fetchWithTimeout).toHaveBeenCalled()
+    })
+
+    it('should throw error', async () => {
+        // Arrange
+        const expectedError = 'Test error'
+        const mockPromise = Promise.resolve({
+            ok: false,
+            statusText: expectedError
+        })
+
+        helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+
+        // Act & Assert
+        await expect(updateHomeVisitForm(HomeVisitFormName.YourEmploymentDetails, {}))
+            .rejects
+            .toThrow(expectedError)
+    })
+
+    it('should call .json()', async () => {
+        // Arrange
+        const mockJson = jest.fn()
+
+        const mockPromise = Promise.resolve({
+            ok: true,
+            json: mockJson
+        })
+
+        helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+        
+        // Act
+        await updateHomeVisitForm(HomeVisitFormName.YourEmploymentDetails, {})
         
         // Assert
         expect(mockJson).toHaveBeenCalled()
@@ -166,7 +248,7 @@ describe('getFormUpdateEndpoint' , () => {
             helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
             
             // Act
-            await updateForm(formName, {})
+            await updateHomeVisitForm(formName, {})
     
             // Assert
             expect(helpers.fetchWithTimeout).toHaveBeenCalledWith(expectedEnpoint, {
@@ -181,15 +263,12 @@ describe('getFormUpdateEndpoint' , () => {
         })
     }
 
-    getFormUpdateEndpoint(FormName.YourEmploymentDetails, '/fostering/your-employment-details')
-    getFormUpdateEndpoint(FormName.LanguagesSpokenInYourHome, '/fostering/languages-spoken-in-your-home')
-    getFormUpdateEndpoint(FormName.YourFosteringHistory, '/fostering/your-fostering-history')
-    getFormUpdateEndpoint(FormName.YourPartnership, '/fostering/partnership-status')
-    getFormUpdateEndpoint(FormName.TellUsAboutYourInterestInFostering, '/fostering/interest-in-fostering')
-    getFormUpdateEndpoint(FormName.YourHealth, '/fostering/about-your-health')
-    getFormUpdateEndpoint(FormName.YourHousehold, '/fostering/household')
-    getFormUpdateEndpoint(FormName.ChildrenLivingAwayFromYourHome, '/fostering/children-living-away-from-home')
-    getFormUpdateEndpoint(FormName.GpDetails, '/fostering/gp-details')
-    getFormUpdateEndpoint(FormName.References, '/fostering/update-references')
-
+    getFormUpdateEndpoint(HomeVisitFormName.YourEmploymentDetails, '/fostering/home-visit/your-employment-details')
+    getFormUpdateEndpoint(HomeVisitFormName.LanguagesSpokenInYourHome, '/fostering/home-visit/languages-spoken-in-your-home')
+    getFormUpdateEndpoint(HomeVisitFormName.YourFosteringHistory, '/fostering/home-visit/your-fostering-history')
+    getFormUpdateEndpoint(HomeVisitFormName.YourPartnership, '/fostering/home-visit/partnership-status')
+    getFormUpdateEndpoint(HomeVisitFormName.TellUsAboutYourInterestInFostering, '/fostering/home-visit/interest-in-fostering')
+    getFormUpdateEndpoint(HomeVisitFormName.YourHealth, '/fostering/home-visit/about-your-health')
+    getFormUpdateEndpoint(HomeVisitFormName.YourHousehold, '/fostering/home-visit/household')
+    getFormUpdateEndpoint(HomeVisitFormName.ChildrenLivingAwayFromYourHome, '/fostering/home-visit/children-living-away-from-home')
 })

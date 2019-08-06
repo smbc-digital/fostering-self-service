@@ -1,9 +1,9 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AreYouEmployed from './index'
-import { Applicant } from '../../../../Provider'
-import * as helpers from '../../../../../helpers'
+import { Applicant } from 'components/Provider'
+import * as helpers from 'helpers'
 
-describe('YourEmploymentDetails', () => {
+describe('AreYouEmployed', () => {
 
     const onChangeApplicantMock = jest.fn()
     const onChangeStatusMock = jest.fn()
@@ -166,7 +166,7 @@ describe('YourEmploymentDetails', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(4))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(4))
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
@@ -239,7 +239,7 @@ describe('YourEmploymentDetails', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
@@ -315,7 +315,7 @@ describe('YourEmploymentDetails', () => {
             params: ['second-applicant']
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
@@ -369,7 +369,7 @@ describe('YourEmploymentDetails', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
@@ -411,7 +411,7 @@ describe('YourEmploymentDetails', () => {
         }
 
         const mockPromise = Promise.resolve()
-        helpers.updateFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
+        helpers.updateHomeVisitFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
             setStatus(status)
         })
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
@@ -466,7 +466,7 @@ describe('YourEmploymentDetails', () => {
             params: undefined
         }
 
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error() })
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
         // Act

@@ -1,10 +1,10 @@
 import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, SelectInputContainer } from 'smbc-react-components'
-import { Context } from '../../../../../context'
-import { getCurrentApplicant, getPageRoute, updateForm, FormName } from '../../../../../helpers'
-import { Applicant } from '../../../../Provider'
-import SubmitButton from '../../../../SubmitButton'
+import { Context } from 'context'
+import { getCurrentApplicant, getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { Applicant } from 'components/Provider'
+import SubmitButton from 'components/SubmitButton'
 
 const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
@@ -17,7 +17,7 @@ const MoreAboutYou = ({ history, match }) => {
         setIsLoading(true)
 
         try {
-            const status = await updateForm(FormName.TellUsAboutYourself, {
+            const status = await updateHomeVisitForm(HomeVisitFormName.TellUsAboutYourself, {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })

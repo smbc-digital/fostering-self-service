@@ -1,7 +1,7 @@
-import { React, mount, useContextMock, renderer } from '../../../../../helpers/SetupTest'
+import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import KnownByAnotherName from './index'
-import { Applicant } from '../../../../Provider'
-import * as helpers from '../../../../../helpers'
+import { Applicant } from 'components/Provider'
+import * as helpers from 'helpers'
 
 describe('KnownByAnotherName', () => {
 
@@ -124,8 +124,8 @@ describe('KnownByAnotherName', () => {
         }
         
         const mockPromise = Promise.resolve()
-        helpers.updateFormStatus = jest.fn().mockImplementation((form, status, setStatus) => {
-            setStatus(status)
+        helpers.updateFormStatus = jest.fn().mockImplementation(({ setStatus, currentStatus }) => {
+            setStatus(currentStatus)
         })
         helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
 

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`YourEmploymnetDetails snapshot renders correctly 1`] = `
+exports[`EmploymentDetails snapshot renders correctly 1`] = `
 <form
   onSubmit={[Function]}
 >

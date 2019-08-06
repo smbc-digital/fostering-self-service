@@ -15,13 +15,13 @@ describe('MarriageDate', () => {
         })
     }) 
 
-    it('should call updateForm', async () => {
+    it('should call updateHomeVisitForm', async () => {
         // Arrange
         const history = {
             push: jest.fn()
         }
         
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve())
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve())
         const wrapper = mount(<MarriageDate history={history} />)
         
         // Act
@@ -29,7 +29,7 @@ describe('MarriageDate', () => {
         await Promise.resolve()
 
         // Assert
-        expect(helpers.updateForm).toHaveBeenCalled()
+        expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
     })
 
     it('should push to next page on submit', async () => {
@@ -38,7 +38,7 @@ describe('MarriageDate', () => {
             push: jest.fn()
         }
         
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
         const wrapper = mount(<MarriageDate history={history} />)
         
         // Act
@@ -55,7 +55,7 @@ describe('MarriageDate', () => {
             push: jest.fn()
         }
         
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
         const wrapper = mount(<MarriageDate history={history} />)
         
         // Act
@@ -66,13 +66,13 @@ describe('MarriageDate', () => {
         expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
     })
 
-    it('should call updateForm on save and go back', async () => {
+    it('should call updateHomeVisitForm on save and go back', async () => {
         // Arrange
         const history = {
             push: jest.fn()
         }
         
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
         const wrapper = mount(<MarriageDate history={history} />)
         
         // Act
@@ -80,7 +80,7 @@ describe('MarriageDate', () => {
         await Promise.resolve()
 
         // Assert
-        expect(helpers.updateForm).toHaveBeenCalled()
+        expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
     })
 
     it('should call onChangeStatus', async () => {
@@ -89,7 +89,7 @@ describe('MarriageDate', () => {
             push: jest.fn()
         }
         
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
         const wrapper = mount(<MarriageDate history={history} />)
         
         // Act
@@ -100,13 +100,13 @@ describe('MarriageDate', () => {
         expect(onChangeStatusMock).toHaveBeenCalled()
     })
 
-    it('should push to error page on updateForm error', async () => {
+    it('should push to error page on updateHomeVisitForm error', async () => {
         // Arrange
         const history = {
             push: jest.fn()
         }
         
-        helpers.updateForm = jest.fn().mockImplementation(() => { throw new Error() })
+        helpers.updateHomeVisitForm = jest.fn().mockImplementation(() => { throw new Error() })
         const wrapper = mount(<MarriageDate history={history} />)
         
         // Act
@@ -122,7 +122,7 @@ describe('MarriageDate', () => {
             push: jest.fn()
         }
         
-        helpers.updateForm = jest.fn().mockReturnValue(Promise.resolve(0))
+        helpers.updateHomeVisitForm = jest.fn().mockReturnValue(Promise.resolve(0))
         const wrapper = mount(<MarriageDate history={history} />)
         
         // Act
