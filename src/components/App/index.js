@@ -72,7 +72,7 @@ const App = () => {
 }
 
 JointApplicationOnlyRoute.propTypes = {
-	component: PropTypes.element
+	component: PropTypes.func
 }
 
 export default App

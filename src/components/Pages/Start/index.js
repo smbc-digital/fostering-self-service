@@ -229,7 +229,7 @@ Start.propTypes = {
 TaskLink.propTypes = {
 	route: PropTypes.string,
 	name: PropTypes.string,
-	status: PropTypes.object,
+	status: PropTypes.number,
 	disabled: PropTypes.bool
 }
 
