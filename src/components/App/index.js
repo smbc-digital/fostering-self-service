@@ -44,7 +44,7 @@ const App = () => {
 			<Route exact path={getPageRoute(24)} component={FirstPersonalReference} />
 			<Route exact path={getPageRoute(25)} component={SecondPersonalReference} />
 			<Route exact path="/error" component={ErrorPage} />
-			{disabledHomeVisitRoutes || <Fragment>
+			{!disabledHomeVisitRoutes ? <Fragment>
 				<Route exact path={`${getPageRoute(2)}/(|second-applicant)?`} component={KnownByAnotherName} />
 				<Route exact path={`${getPageRoute(3)}/(|second-applicant)?`} component={MoreAboutYou} />
 				<Route exact path={`${getPageRoute(4)}/(|second-applicant)?`} component={AreYouEmployed} />
@@ -64,8 +64,7 @@ const App = () => {
 				<Route exact path={`${getPageRoute(18)}/(|second-applicant)?`} component={AboutUnderSixteens} />
 				<Route exact path={`${getPageRoute(19)}/(|second-applicant)?`} component={AnyOverSixteens} />
 				<Route exact path={`${getPageRoute(20)}/(|second-applicant)?`} component={AboutOverSixteens} />
-			</Fragment>
-			}
+			</Fragment> : null}
 			<Redirect to={getPageRoute(1)} />
 		</Switch>
 	)
