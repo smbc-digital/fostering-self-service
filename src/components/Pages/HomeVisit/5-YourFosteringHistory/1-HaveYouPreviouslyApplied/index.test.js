@@ -5,13 +5,13 @@ import * as helpers from 'helpers'
 
 describe('HaveYouPreviouslyApplied', () => {
 
-    const onChangeApplicantMock = jest.fn()
+    const onChangeTargetMock = jest.fn()
     const onChangeStatusMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             firstApplicant: {
                 previouslyApplied: {

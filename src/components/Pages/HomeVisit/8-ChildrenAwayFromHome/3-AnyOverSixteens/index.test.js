@@ -5,13 +5,13 @@ import * as helpers from 'helpers'
 
 describe('AnyOverSixteens', () => {
 
-    const onChangeApplicantMock = jest.fn()
+    const onChangeTargetMock = jest.fn()
     const onChangeStatusMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 childrenLivingAwayFromYourHomeStatus: 0
@@ -91,7 +91,7 @@ describe('AnyOverSixteens', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 childrenLivingAwayFromYourHomeStatus: 0
@@ -172,7 +172,7 @@ describe('AnyOverSixteens', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 childrenLivingAwayFromYourHomeStatus: 0
@@ -218,7 +218,7 @@ describe('AnyOverSixteens', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 childrenLivingAwayFromYourHomeStatus: 0
@@ -278,7 +278,7 @@ describe('AnyOverSixteens', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 childrenLivingAwayFromYourHomeStatus: 0
@@ -319,7 +319,7 @@ describe('AnyOverSixteens', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 
-    it('should call onChangeApplicant', () => {
+    it('should call onChangeTarget', () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -335,7 +335,7 @@ describe('AnyOverSixteens', () => {
         wrapper.find('input').first().simulate('change')
 
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
+        expect(onChangeTargetMock).toHaveBeenCalled()
     })
 
     it('should update form status', async () => {
@@ -366,7 +366,7 @@ describe('AnyOverSixteens', () => {
         // Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 childrenLivingAwayFromYourHomeStatus: 0

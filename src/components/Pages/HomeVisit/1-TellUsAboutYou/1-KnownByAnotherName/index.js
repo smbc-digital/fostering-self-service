@@ -8,10 +8,10 @@ import { Applicant } from 'components/Provider'
 const KnownByAnotherName = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant } = context
+    const { onChangeTarget, secondApplicant } = context
     const { everBeenKnownByAnotherName, firstName, lastName, anotherName } = context[currentApplicant]
 
-    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
+    const onChange = (event, isValid) => onChangeTarget(event, isValid, currentApplicant)
 
     const options = [
         {

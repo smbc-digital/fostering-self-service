@@ -9,7 +9,7 @@ import SubmitButton from 'components/SubmitButton'
 const YourHealth = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant, onChangeStatus } = context
+    const { onChangeTarget, secondApplicant, onChangeStatus } = context
     const { firstName, lastName, registeredDisabled, practitioner } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
 
@@ -47,7 +47,7 @@ const YourHealth = ({ history, match }) => {
     }
 
     const onChange = (event, isValid) => {
-        return onChangeApplicant(event, isValid, currentApplicant) 
+        return onChangeTarget(event, isValid, currentApplicant) 
     }
 
     const optionsDisabled = [

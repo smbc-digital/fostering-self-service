@@ -5,7 +5,7 @@ import { getPageRoute } from 'helpers'
 import { Context } from 'context'
 
 const FirstPersonalReference = ({ history }) => {
-	const { firstPersonalReference, secondApplicant, onChangeApplicant } = useContext(Context)
+	const { firstPersonalReference, secondApplicant, onChangeTarget } = useContext(Context)
 	const { firstName, lastName, relationshipToYou, numberOfYearsKnown, emailAddress, phoneNumber, address } = firstPersonalReference
 	const [isValid, setIsValid] = useState(false)
 
@@ -19,7 +19,7 @@ const FirstPersonalReference = ({ history }) => {
 		history.push(getPageRoute(25))
 	}
 
-	const onChange = (event, isValid) => onChangeApplicant(event, isValid, 'firstPersonalReference')
+	const onChange = (event, isValid) => onChangeTarget(event, isValid, 'firstPersonalReference')
 
 	return (
 		<Fragment>

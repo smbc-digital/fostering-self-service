@@ -16,7 +16,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
     const context = useContext(Context)
 	const currentApplicant = getCurrentApplicant(match)
 	const { childrenUnderSixteenLivingAwayFromHome, firstName, lastName } = context[currentApplicant]
-	const { secondApplicant, onChangeApplicant, onChangeStatus } = context
+	const { secondApplicant, onChangeTarget, onChangeStatus } = context
     const [isLoading, setIsLoading] = useState(false)
     const [isValid, setIsValid] = useState(true)
 
@@ -30,7 +30,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
 
 
     const onChange = (event, isValid) => {
-        return onChangeApplicant(event, isValid, currentApplicant)
+        return onChangeTarget(event, isValid, currentApplicant)
     }
 	
     const onPersonChange = (values, isValid) => {

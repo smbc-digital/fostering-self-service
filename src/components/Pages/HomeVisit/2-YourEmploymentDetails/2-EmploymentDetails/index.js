@@ -10,7 +10,7 @@ import SubmitButton from 'components/SubmitButton'
 const EmploymentDetails = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant,  onChangeStatus } = context
+    const { onChangeTarget, secondApplicant,  onChangeStatus } = context
     const { firstName, lastName, currentEmployer, jobTitle, currentHoursOfWork } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
 
@@ -63,7 +63,7 @@ const EmploymentDetails = ({ history, match }) => {
     ]
 
     const onChange = (event, isValid) => {
-        return onChangeApplicant(event, isValid, currentApplicant)
+        return onChangeTarget(event, isValid, currentApplicant)
     }
 
     return <form onSubmit={onSubmit}>

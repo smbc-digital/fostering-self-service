@@ -7,7 +7,7 @@ import SubmitButton from 'components/SubmitButton'
 
 const SecondPersonalReference = ({ history }) => {
 	const context = useContext(Context)
-	const { onChangeStatus, familyReference, firstPersonalReference, secondPersonalReference, secondApplicant, onChangeApplicant } = context
+	const { onChangeStatus, familyReference, firstPersonalReference, secondPersonalReference, secondApplicant, onChangeTarget } = context
 	const { firstName, lastName, relationshipToYou, numberOfYearsKnown, emailAddress, phoneNumber, address } = secondPersonalReference
 	const [isValid, setIsValid] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
@@ -54,7 +54,7 @@ const SecondPersonalReference = ({ history }) => {
 		handleFormUpdate(getPageRoute(1))
 	}
 
-	const onChange = (event, isValid) => onChangeApplicant(event, isValid, 'secondPersonalReference')
+	const onChange = (event, isValid) => onChangeTarget(event, isValid, 'secondPersonalReference')
 
 	return (
 		<Fragment>

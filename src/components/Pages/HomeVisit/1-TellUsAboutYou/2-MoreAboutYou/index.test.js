@@ -6,12 +6,12 @@ import * as helpers from 'helpers'
 describe('MoreAboutYou', () => {
 
     const onChangeStatusMock = jest.fn()
-    const onChangeApplicantMock = jest.fn()
+    const onChangeTargetMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             country: [],
             nationality: [],
@@ -242,7 +242,7 @@ describe('MoreAboutYou', () => {
         expect(history.push).toHaveBeenCalledWith('/error')
     })
 
-    it('should call onChangeApplicant', async () => {
+    it('should call onChangeTarget', async () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -261,7 +261,7 @@ describe('MoreAboutYou', () => {
             .simulate('change')
 
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
+        expect(onChangeTargetMock).toHaveBeenCalled()
     })
 
     describe('snapshot', () => {

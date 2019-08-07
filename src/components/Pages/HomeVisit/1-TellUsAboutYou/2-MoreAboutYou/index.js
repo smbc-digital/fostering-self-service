@@ -9,7 +9,7 @@ import SubmitButton from 'components/SubmitButton'
 const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant, onChangeStatus } = context
+    const { onChangeTarget, secondApplicant, onChangeStatus } = context
     const { firstName, lastName, nationality, ethnicity, religion, placeOfBirth, gender } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
 
@@ -48,7 +48,7 @@ const MoreAboutYou = ({ history, match }) => {
     } 
 
     const onChange = (event, isValid) => {
-        return onChangeApplicant(event, isValid, currentApplicant) 
+        return onChangeTarget(event, isValid, currentApplicant) 
     }
 
     return (

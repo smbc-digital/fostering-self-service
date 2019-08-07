@@ -4,13 +4,13 @@ import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
 
 describe('AnyChildrenUnderSixteen', () => {
-	const onChangeApplicantMock = jest.fn()
+	const onChangeTargetMock = jest.fn()
 	const onChangeStatusMock = jest.fn()
 
 	beforeEach(() => {
 		useContextMock.mockReturnValue({
 			currentApplicant: Applicant.FirstApplicant,
-			onChangeApplicant: onChangeApplicantMock,
+			onChangeTarget: onChangeTargetMock,
 			onChangeStatus: onChangeStatusMock,
 			statuses: {
 				ChildrenLivingAwayFromHome: 0
@@ -89,7 +89,7 @@ describe('AnyChildrenUnderSixteen', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0
@@ -172,7 +172,7 @@ describe('AnyChildrenUnderSixteen', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0
@@ -213,7 +213,7 @@ describe('AnyChildrenUnderSixteen', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 
-    it('should call onChangeApplicant', () => {
+    it('should call onChangeTarget', () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -229,7 +229,7 @@ describe('AnyChildrenUnderSixteen', () => {
         wrapper.find('input').first().simulate('change')
 
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
+        expect(onChangeTargetMock).toHaveBeenCalled()
     })
     
     it('should update form status', async () => {
@@ -260,7 +260,7 @@ describe('AnyChildrenUnderSixteen', () => {
         // Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0

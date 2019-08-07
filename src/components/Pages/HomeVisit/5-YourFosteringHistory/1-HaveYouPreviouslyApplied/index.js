@@ -10,9 +10,9 @@ const HaveYouPreviouslyApplied = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
     const { previouslyApplied, firstName, lastName } = context[currentApplicant]
-    const {  secondApplicant, onChangeApplicant, onChangeStatus } = context
+    const {  secondApplicant, onChangeTarget, onChangeStatus } = context
 
-    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
+    const onChange = (event, isValid) => onChangeTarget(event, isValid, currentApplicant)
     const [isLoading, setIsLoading] = useState(false)
 
     const options = [

@@ -5,13 +5,13 @@ import * as helpers from 'helpers'
 
 describe('KnownByAnotherName', () => {
 
-    const onChangeApplicantMock = jest.fn()
+    const onChangeTargetMock = jest.fn()
     const onChangeStatusMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 TellUsAboutYourselfStatus: 0
@@ -94,7 +94,7 @@ describe('KnownByAnotherName', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
     })
 
-    it('should call onChangeApplicant', () => {
+    it('should call onChangeTarget', () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -110,7 +110,7 @@ describe('KnownByAnotherName', () => {
         wrapper.find('input').first().simulate('change')
 
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
+        expect(onChangeTargetMock).toHaveBeenCalled()
     })
 
     it('should update form status', async () => {

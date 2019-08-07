@@ -15,7 +15,7 @@ import { Applicant } from 'components/Provider'
 const AreYouEmployed = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeApplicant, secondApplicant,  onChangeStatus } = context
+    const { onChangeTarget, secondApplicant,  onChangeStatus } = context
     const { firstName, lastName, areYouEmployed } = context[currentApplicant]
     const [isLoading, setIsLoading] = useState(false)
     const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)
@@ -99,7 +99,7 @@ const AreYouEmployed = ({ history, match }) => {
     }, [])
 
     const onChange = (event, isValid) => {
-        return onChangeApplicant(event, isValid, currentApplicant)
+        return onChangeTarget(event, isValid, currentApplicant)
     }
 
     const radioValue = `${areYouEmployed.value}`

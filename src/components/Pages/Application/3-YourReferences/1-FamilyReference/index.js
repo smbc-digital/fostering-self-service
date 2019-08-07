@@ -5,7 +5,7 @@ import { getPageRoute } from 'helpers'
 import { Context } from 'context'
 
 const FamilyReference = ({ history }) => {
-	const { familyReference, secondApplicant, onChangeApplicant } = useContext(Context)
+	const { familyReference, secondApplicant, onChangeTarget } = useContext(Context)
 	const { firstName, lastName, relationshipToYou, emailAddress, phoneNumber, address } = familyReference
 	const [isValid, setIsValid] = useState(false)
 
@@ -19,7 +19,7 @@ const FamilyReference = ({ history }) => {
 		history.push(getPageRoute(24))
 	}
 
-	const onChange = (event, isValid) => onChangeApplicant(event, isValid, 'familyReference')
+	const onChange = (event, isValid) => onChangeTarget(event, isValid, 'familyReference')
 
 	return (
 		<Fragment>

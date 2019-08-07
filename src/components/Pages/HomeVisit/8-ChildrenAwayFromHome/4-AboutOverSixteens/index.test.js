@@ -5,12 +5,12 @@ import * as helpers from 'helpers'
 
 describe('AboutOverSixteens', () => {
     const onChangeStatusMock = jest.fn()
-    const onChangeApplicantMock = jest.fn()
+    const onChangeTargetMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 childrenLivingAwayFromYourHomeStatus: 0
@@ -246,7 +246,7 @@ describe('AboutOverSixteens', () => {
         expect(history.push).toHaveBeenCalledWith('/error')
     })
 
-    it('should call onChangeApplicant', async () => {
+    it('should call onChangeTarget', async () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -265,13 +265,13 @@ describe('AboutOverSixteens', () => {
             .simulate('change')
 
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
+        expect(onChangeTargetMock).toHaveBeenCalled()
     })
 
     it('should setIsDobValid when Date of birth is set', () => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 childrenLivingAwayFromYourHomeStatus: 0
@@ -304,11 +304,11 @@ describe('AboutOverSixteens', () => {
         const wrapper = mount(<AboutOverSixteens history={{}} match={match}/>)
 
         // Act
-        onChangeApplicantMock.mockReset()
+        onChangeTargetMock.mockReset()
         wrapper.find('input[name="year"]').simulate('change', { target: { value: '2017', name: 'year' } })
         
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalledWith({'target': {'name': 'childrenOverSixteenLivingAwayFromHome', 'value': [{'IsDobValid': false, 'dateOfBirth': null}]}}, true, 'firstApplicant')
+        expect(onChangeTargetMock).toHaveBeenCalledWith({'target': {'name': 'childrenOverSixteenLivingAwayFromHome', 'value': [{'IsDobValid': false, 'dateOfBirth': null}]}}, true, 'firstApplicant')
     })
 
     describe('snapshot', () => {

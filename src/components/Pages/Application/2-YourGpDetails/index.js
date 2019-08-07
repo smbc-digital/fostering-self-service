@@ -16,11 +16,11 @@ import SubmitButton from 'components/SubmitButton'
 const YourGpDetails = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
-    const { onChangeStatus, onChangeApplicant, firstApplicant, secondApplicant } = context
+    const { onChangeStatus, onChangeTarget, firstApplicant, secondApplicant } = context
     const { firstName, lastName, nameOfGp, nameOfGpPractice, gpPhoneNumber, gpAddress } = context[currentApplicant] 
     const [isLoading, setIsLoading] = useState(false)
 
-    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
+    const onChange = (event, isValid) => onChangeTarget(event, isValid, currentApplicant)
 
     useEffect(() => {
         updateFormStatus({

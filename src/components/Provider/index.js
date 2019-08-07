@@ -43,7 +43,7 @@ const Provider = ({ children }) => {
 		setState({ ...state, statuses: { ...state.statuses, [name]: value }})
 	}
 
-	const onChangeApplicant = (event, isValid, currentApplicant) => {
+	const onChangeTarget = (event, isValid, currentApplicant) => {
 		setState({
 			...state,
 			[currentApplicant]: {
@@ -126,7 +126,7 @@ const Provider = ({ children }) => {
 		return <p>Loading...</p>
 	}
 
-	return <Context.Provider value={{...state, onChange, onChangeApplicant, onChangeStatus}}>
+	return <Context.Provider value={{...state, onChange, onChangeTarget, onChangeStatus}}>
 		{children}
 	</Context.Provider>
 }

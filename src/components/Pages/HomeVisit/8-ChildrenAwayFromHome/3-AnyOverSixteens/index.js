@@ -20,7 +20,7 @@ const AnyOverSixteens = ({ history, match }) => {
     const context = useContext(Context)
     const currentApplicant = getCurrentApplicant(match)
     const { anyChildrenOverSixteen, firstName, lastName } = context[currentApplicant]
-    const { secondApplicant, onChangeApplicant, onChangeStatus, statuses: { childrenLivingAwayFromYourHomeStatus } } = context
+    const { secondApplicant, onChangeTarget, onChangeStatus, statuses: { childrenLivingAwayFromYourHomeStatus } } = context
     const [isLoading, setIsLoading] = useState(false)
     const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)
 
@@ -101,7 +101,7 @@ const AnyOverSixteens = ({ history, match }) => {
         })
     }, [])
 
-    const onChange = (event, isValid) => onChangeApplicant(event, isValid, currentApplicant)
+    const onChange = (event, isValid) => onChangeTarget(event, isValid, currentApplicant)
     
     const radioValue = `${anyChildrenOverSixteen.value}`
     return (

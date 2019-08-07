@@ -5,13 +5,13 @@ import * as helpers from 'helpers'
 
 describe('AreYouEmployed', () => {
 
-    const onChangeApplicantMock = jest.fn()
+    const onChangeTargetMock = jest.fn()
     const onChangeStatusMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0
@@ -107,7 +107,7 @@ describe('AreYouEmployed', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0
@@ -202,7 +202,7 @@ describe('AreYouEmployed', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0
@@ -256,7 +256,7 @@ describe('AreYouEmployed', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0
@@ -332,7 +332,7 @@ describe('AreYouEmployed', () => {
         //Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0
@@ -381,7 +381,7 @@ describe('AreYouEmployed', () => {
         expect(history.push).toHaveBeenCalledWith(pageRoute)
     })
 
-    it('should call onChangeApplicant', () => {
+    it('should call onChangeTarget', () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -397,7 +397,7 @@ describe('AreYouEmployed', () => {
         wrapper.find('input').first().simulate('change')
 
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
+        expect(onChangeTargetMock).toHaveBeenCalled()
     })
 
     it('should update form status', async () => {
@@ -429,7 +429,7 @@ describe('AreYouEmployed', () => {
         // Arrange
         useContextMock.mockReturnValue({
             currentApplicant: Applicant.FirstApplicant,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 YourEmploymentDetails: 0

@@ -6,7 +6,7 @@ import * as helpers from 'helpers'
 describe('YourGpDetails', () => {
     
     const onChangeStatusMock = jest.fn()
-    const onChangeApplicantMock = jest.fn()
+    const onChangeTargetMock = jest.fn()
 
     beforeEach(() => {
         jest.resetAllMocks()
@@ -15,7 +15,7 @@ describe('YourGpDetails', () => {
                 gpDetailsStatus: TaskStatus.Completed
             },
             onChangeStatus: onChangeStatusMock,
-            onChangeApplicant: onChangeApplicantMock,
+            onChangeTarget: onChangeTargetMock,
             firstApplicant: {
                 nameOfGp: {
                     value: 'test',
@@ -59,7 +59,7 @@ describe('YourGpDetails', () => {
                 gpDetailsStatus: TaskStatus.None
             },
             onChangeStatus: onChangeStatusMock,
-            onChangeApplicant: jest.fn(),
+            onChangeTarget: jest.fn(),
             firstApplicant: {
                 nameOfGp: {
                     value: 'test',
@@ -270,7 +270,7 @@ describe('YourGpDetails', () => {
         expect(wrapper.find('SubmitButton').first().props().isLoading).toBe(true)
     })
 
-    it('should call onChangeApplicant', () => {
+    it('should call onChangeTarget', () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -284,7 +284,7 @@ describe('YourGpDetails', () => {
         wrapper.find('input').first().simulate('change')
 
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
+        expect(onChangeTargetMock).toHaveBeenCalled()
     })
 
     it('should update form status', () => {
@@ -294,7 +294,7 @@ describe('YourGpDetails', () => {
                 gpDetailsStatus: TaskStatus.None
             },
             onChangeStatus: onChangeStatusMock,
-            onChangeApplicant: jest.fn(),
+            onChangeTarget: jest.fn(),
             firstApplicant: {
                 nameOfGp: {
                     value: 'test',

@@ -6,7 +6,7 @@ import { getPageRoute } from '../../../../../helpers'
 describe('FirstPersonalReference', () => {
 
 	const onChangeStatusMock = jest.fn()
-	const onChangeApplicantMock = jest.fn()
+	const onChangeTargetMock = jest.fn()
 
 	beforeEach(() => {
 		jest.resetAllMocks()
@@ -15,7 +15,7 @@ describe('FirstPersonalReference', () => {
 				referencesStatus: TaskStatus.Completed
 			},
 			onChangeStatus: onChangeStatusMock,
-			onChangeApplicant: onChangeApplicantMock,
+			onChangeTarget: onChangeTargetMock,
 			firstApplicant: {
 				firstName: {
                     value: 'test',
@@ -77,7 +77,7 @@ describe('FirstPersonalReference', () => {
 		expect(history.push).toHaveBeenCalledWith(getPageRoute(25))
 	})
 
-	it('should call onChangeApplicant', () => {
+	it('should call onChangeTarget', () => {
 		// Arrange
         const history = {
             push: jest.fn()
@@ -88,7 +88,7 @@ describe('FirstPersonalReference', () => {
         wrapper.find('input').first().simulate('change')
 
         // Assert
-        expect(onChangeApplicantMock).toHaveBeenCalled()
+        expect(onChangeTargetMock).toHaveBeenCalled()
 	})
 	
 	describe('snapshot', () => {
@@ -107,7 +107,7 @@ describe('FirstPersonalReference', () => {
 				referencesStatus: TaskStatus.Completed
 				},
 				onChangeStatus: onChangeStatusMock,
-				onChangeApplicant: onChangeApplicantMock,
+				onChangeTarget: onChangeTargetMock,
 				firstApplicant: {
 					firstName: {
 						value: 'test',

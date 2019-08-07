@@ -7,7 +7,7 @@ import { FosteringErrorRoute } from 'config'
 
 const TestComponent = ({ context: {
     onChange,
-    onChangeApplicant,
+    onChangeTarget,
     onChangeStatus,
     someOtherProperty,
     firstApplicant,
@@ -28,7 +28,7 @@ const TestComponent = ({ context: {
     }
 
     const onClickApplicant = () => {
-        onChangeApplicant(
+        onChangeTarget(
             {
                 target: {
                     name: 'firstName',
@@ -198,7 +198,7 @@ describe('Provider', () => {
         })
     })
 
-    describe('onChangeApplicant', () => {
+    describe('onChangeTarget', () => {
         it('should update state', async () => {
             // Arrange
             const [wrapper, fetchPromise] = await mountProviderWithCase(
