@@ -27,7 +27,8 @@ module.exports = (env, argv) => {
         config.devtool = 'source-map'
         config.devServer = {
             inline: true,
-            historyApiFallback: true
+            historyApiFallback: true,
+            sockPort: 8080
         }
         config.plugins = [
             new HtmlWebpackPlugin({

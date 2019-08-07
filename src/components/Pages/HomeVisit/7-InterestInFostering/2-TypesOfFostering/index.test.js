@@ -1,6 +1,7 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import TypesOfFostering from './index'
 import * as helpers from 'helpers'
+import { START_PAGE, YOUR_HOUSEHOLD } from 'routes'
 
 describe('TypesOfFostering', () => {
 
@@ -34,7 +35,7 @@ describe('TypesOfFostering', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(14))
+        expect(history.push).toHaveBeenCalledWith(YOUR_HOUSEHOLD)
     })
 
     it('should call updateHomeVisitForm', async () => {
@@ -117,7 +118,7 @@ describe('TypesOfFostering', () => {
         await Promise.resolve()
         
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     describe('snapshot', () => {

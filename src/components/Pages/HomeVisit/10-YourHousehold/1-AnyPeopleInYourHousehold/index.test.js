@@ -1,6 +1,6 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AnyPeopleInYourHousehold from './index'
-import * as helpers from 'helpers'
+import { DO_YOU_HAVE_ANY_PETS, WHO_LIVES_IN_YOUR_HOME } from 'routes'
 
 describe('AnyPeopleInYourHousehold', () => {
     beforeEach(() => {
@@ -28,7 +28,7 @@ describe('AnyPeopleInYourHousehold', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(16))
+        expect(history.push).toHaveBeenCalledWith(DO_YOU_HAVE_ANY_PETS)
     })
 
     
@@ -54,7 +54,7 @@ describe('AnyPeopleInYourHousehold', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(15))
+        expect(history.push).toHaveBeenCalledWith(WHO_LIVES_IN_YOUR_HOME)
     })
 
     describe('snapshot', () => {

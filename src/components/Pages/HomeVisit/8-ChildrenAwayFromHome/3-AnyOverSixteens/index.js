@@ -7,7 +7,6 @@ import {
 import PropTypes from 'prop-types'
 import { 
     getCurrentApplicant,
-    getPageRoute, 
     updateHomeVisitForm, 
     HomeVisitFormName, 
     updateFormStatus,
@@ -15,6 +14,7 @@ import {
 } from 'helpers'
 import { Context } from 'context'
 import { Applicant } from 'components/Provider'
+import { START_PAGE, CHILDREN_OVER_SIXTEEN_LIVING_AWAY, ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY } from 'routes'
 
 const AnyOverSixteens = ({ history, match }) => {
     const context = useContext(Context)
@@ -59,7 +59,7 @@ const AnyOverSixteens = ({ history, match }) => {
         event.stopPropagation()
         event.preventDefault()
 
-        await handleFormUpdate(getPageRoute(1))
+        await handleFormUpdate(START_PAGE)
     }
 
     const onSubmit = event => {
@@ -70,25 +70,25 @@ const AnyOverSixteens = ({ history, match }) => {
                 event.stopPropagation()
                 event.preventDefault()
 
-                handleFormUpdate(getPageRoute(1)) //this might need to be changed
+                handleFormUpdate(START_PAGE) //this might need to be changed
                 return
             }
             event.stopPropagation()
             event.preventDefault()
 
-            handleFormUpdate(`${getPageRoute(19)}/second-applicant`)
+            handleFormUpdate(`${CHILDREN_OVER_SIXTEEN_LIVING_AWAY}/second-applicant`)
             return
         } else if (anyChildrenOverSixteen.value == 'true' || anyChildrenOverSixteen.value == true) {
             if (currentApplicant === Applicant.SecondApplicant) {
-                history.push(`${getPageRoute(20)}/second-applicant`) 
+                history.push(`${ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY}/second-applicant`) 
                 return
             }
-            history.push(getPageRoute(20))    
+            history.push(ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY)    
         } else {
             event.stopPropagation()
             event.preventDefault()
 
-            handleFormUpdate(getPageRoute(1))  //this might need to be changed
+            handleFormUpdate(START_PAGE)  //this might need to be changed
         }
     }
 

@@ -2,9 +2,10 @@ import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { getCurrentApplicant, getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import { Applicant } from 'components/Provider'
 import SubmitButton from 'components/SubmitButton'
+import { ABOUT_YOUR_HEALTH, YOUR_INTEREST_IN_FOSTERING, START_PAGE } from 'routes'
 
 const YourHealth = ({ history, match }) => {
     const context = useContext(Context)
@@ -32,18 +33,18 @@ const YourHealth = ({ history, match }) => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(11)}/second-applicant`)
+            history.push(`${ABOUT_YOUR_HEALTH}/second-applicant`)
             return
         }
 
-        await handleFormUpdate(getPageRoute(12))
+        await handleFormUpdate(YOUR_INTEREST_IN_FOSTERING)
     }
 
     const onSaveAndGoBackClick = async event => {
         event.stopPropagation()
         event.preventDefault()
 
-        await handleFormUpdate(getPageRoute(1))
+        await handleFormUpdate(START_PAGE)
     }
 
     const onChange = (event, isValid) => {

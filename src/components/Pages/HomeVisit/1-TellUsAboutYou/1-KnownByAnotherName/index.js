@@ -2,8 +2,9 @@ import React, { useContext, useEffect, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor, TextInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { getPageRoute, getCurrentApplicant, updateFormStatus, HomeVisitFormName, StageName } from 'helpers'
+import { getCurrentApplicant, updateFormStatus, HomeVisitFormName, StageName } from 'helpers'
 import { Applicant } from 'components/Provider'
+import { MORE_ABOUT_YOU } from 'routes'
 
 const KnownByAnotherName = ({ history, match }) => {
     const context = useContext(Context)
@@ -41,7 +42,7 @@ const KnownByAnotherName = ({ history, match }) => {
 
     const onSubmit = event => {
         event.preventDefault()
-        let nextPageRoute = getPageRoute(3)
+        let nextPageRoute = MORE_ABOUT_YOU
 
         if (currentApplicant === Applicant.SecondApplicant) {
             nextPageRoute += '/second-applicant'

@@ -4,7 +4,8 @@ import moment from 'moment-timezone'
 import { MemorableDateInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
-import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { FOSTERING_HISTORY, START_PAGE } from 'routes'
 
 const MarriageDate = ({ history }) => {
     const [isLoading, setIsLoading] = useState(false)
@@ -31,14 +32,14 @@ const MarriageDate = ({ history }) => {
     const onSubmit = event => {
         event.preventDefault()
 
-        handleFormUpdate(getPageRoute(10))
+        handleFormUpdate(FOSTERING_HISTORY)
     }
 
     const onSaveAndGoBackClick = event => {
         event.preventDefault()
         event.stopPropagation()
 
-        handleFormUpdate(getPageRoute(1))
+        handleFormUpdate(START_PAGE)
     }
 
     return (

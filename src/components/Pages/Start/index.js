@@ -3,9 +3,21 @@ import moment from 'moment-timezone'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { TaskItem, TaskStatus } from 'smbc-react-components'
-import { Context } from '../../../context'
-import { getPageRoute } from '../../../helpers'
+import { Context } from 'context'
 import { AfterHomeVisitTimePeriod } from 'config'
+import { 
+	PARTNERSHIP_STATUS, 
+	KNOWN_BY_ANOTHER_NAME, 
+	ARE_YOU_EMPLOYED, 
+	LANGUAGES_SPOKEN_IN_YOUR_HOME, 
+	ABOUT_YOUR_HEALTH, 
+	YOUR_INTEREST_IN_FOSTERING, 
+	YOUR_HOUSEHOLD, 
+	CHILDREN_UNDER_SIXTEEN_LIVING_AWAY, 
+	ABOUT_YOUR_GP, 
+	FAMILY_REFERENCE,
+	FOSTERING_HISTORY
+} from 'routes'
 
 const TaskLink = ({ route, name, status, disabled }) => {
 
@@ -45,56 +57,56 @@ const FormLinks = ({ disabled, displayStatus }) => {
 	return <Fragment>
 		<p>You can answer the questions in this section to help you to prepare for your home visit. This step is optional however, your fostering journey can be made simpler by telling us more about yourself. You can make changes to your answers up to 30 minutes before your home visit and your social worker will be able to see your answers before your appointment.</p>
 		<TaskLink
-			route='/fostering/known-by-another-name'
+			route={KNOWN_BY_ANOTHER_NAME}
 			status={displayStatus ? tellUsAboutYourselfStatus : undefined}
 			name='Tell us more about you'
 			disabled={disabled}
 		/>
 		<TaskLink
-			route='/fostering/are-you-employed'
+			route={ARE_YOU_EMPLOYED}
 			status={displayStatus ? yourEmploymentDetailsStatus : undefined}
 			name='Your employment details'
 			disabled={disabled}
 		/>
 		<TaskLink
-			route='/fostering/languages-spoken-in-your-home'
+			route={LANGUAGES_SPOKEN_IN_YOUR_HOME}
 			status={displayStatus ? languageSpokenInYourHomeStatus : undefined}
 			name='Tell us about the languages that are spoken in your home'
 			disabled={disabled}
 		/>
 		{secondApplicant && <TaskLink
-			route={getPageRoute(7)}
+			route={PARTNERSHIP_STATUS}
 			status={displayStatus ? yourPartnershipStatus : undefined}
 			name='Your partnership status'
 			disabled={disabled}
 		/>
 		}
 		<TaskLink
-			route='/fostering/your-fostering-history'
+			route={FOSTERING_HISTORY}
 			status={displayStatus ? yourFosteringHistoryStatus : undefined}
 			name='Your fostering history'
 			disabled={disabled}
 		/>
 		<TaskLink
-			route='/fostering/about-your-health'
+			route={ABOUT_YOUR_HEALTH}
 			status={displayStatus ? yourHealthStatus : undefined}
 			name='Your health'
 			disabled={disabled}
 		/>
 		<TaskLink
-			route={getPageRoute(12)}
+			route={YOUR_INTEREST_IN_FOSTERING}
 			status={displayStatus ? tellUsAboutYourInterestInFosteringStatus : undefined}
 			name='Tell us about your interest in fostering'
 			disabled={disabled}
 		/>
 		<TaskLink
-			route={getPageRoute(14)}
+			route={YOUR_HOUSEHOLD}
 			status={displayStatus ? yourHouseholdStatus : undefined}
 			name='Your household'
 			disabled={disabled}
 		/>
 		<TaskLink
-			route={getPageRoute(17)}
+			route={CHILDREN_UNDER_SIXTEEN_LIVING_AWAY}
 			status={displayStatus ? childrenLivingAwayFromYourHomeStatus : undefined}
 			name='Children living away from your home'
 			disabled={disabled}
@@ -113,13 +125,13 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 		<Fragment>
 		<p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>
 		<TaskLink
-			route={getPageRoute(22)}
+			route={ABOUT_YOUR_GP}
 			status={gpDetailsStatus}
 			name='Your GP details'
 			disabled={disabled}
 		/>
 		<TaskLink
-			route={getPageRoute(23)}
+			route={FAMILY_REFERENCE}
 			status={referencesStatus}
 			name='Personal references'
 			disabled={disabled}

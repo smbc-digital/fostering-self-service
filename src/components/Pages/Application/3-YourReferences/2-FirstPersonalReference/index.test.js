@@ -1,7 +1,7 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import FirstPersonalReference from './index'
 import { TaskStatus } from 'helpers'
-import { getPageRoute } from '../../../../../helpers'
+import { SECOND_PERSONAL_REFERENCE } from 'routes'
 
 describe('FirstPersonalReference', () => {
 
@@ -74,7 +74,7 @@ describe('FirstPersonalReference', () => {
 		wrapper.find('Button').at(0).simulate('submit')
 
 		// Assert
-		expect(history.push).toHaveBeenCalledWith(getPageRoute(25))
+		expect(history.push).toHaveBeenCalledWith(SECOND_PERSONAL_REFERENCE)
 	})
 
 	it('should call onChangeTarget', () => {

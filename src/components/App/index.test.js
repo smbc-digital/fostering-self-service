@@ -3,7 +3,7 @@ import { Router } from 'react-router'
 import App from './index.js'
 import { createBrowserHistory as createHistory } from 'history'
 import moment from 'moment-timezone'
-import { getPageRoute } from 'helpers/pagehelper'
+import { START_PAGE, KNOWN_BY_ANOTHER_NAME } from 'routes'
 
 describe('App', () => {
 	beforeEach(() => {
@@ -19,7 +19,7 @@ describe('App', () => {
 		// Arrange
 		let history = createHistory()
 
-		history.push(getPageRoute(2))
+		history.push(KNOWN_BY_ANOTHER_NAME)
 
 		useContextMock.mockReturnValue({
 			homeVisitDateTime: {
@@ -41,7 +41,7 @@ describe('App', () => {
 		// Arrange
 		let history = createHistory()
 
-		history.push(getPageRoute(2))
+		history.push(KNOWN_BY_ANOTHER_NAME)
 
 		useContextMock.mockReturnValue({
 			homeVisitDateTime: {
@@ -84,7 +84,7 @@ describe('App', () => {
 
 		let history = createHistory()
 
-		history.push(getPageRoute(1))
+		history.push(START_PAGE)
 		// Act
 		const enzymeWrapper = mount(
 			<Router history={history}>

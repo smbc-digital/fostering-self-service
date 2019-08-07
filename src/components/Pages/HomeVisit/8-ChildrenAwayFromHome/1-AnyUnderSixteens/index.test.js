@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AnyChildrenUnderSixteen from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { ABOUT_CHILDREN_UNDER_SIXTEEN_LIVING_AWAY, CHILDREN_UNDER_SIXTEEN_LIVING_AWAY, START_PAGE } from 'routes'
 
 describe('AnyChildrenUnderSixteen', () => {
 	const onChangeTargetMock = jest.fn()
@@ -80,8 +81,7 @@ describe('AnyChildrenUnderSixteen', () => {
         wrapper.find('Button').at(0).simulate('submit')
 
         // Assert
-        const pageRoute = helpers.getPageRoute(18)
-		expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+		expect(history.push).toHaveBeenCalledWith(ABOUT_CHILDREN_UNDER_SIXTEEN_LIVING_AWAY + '/second-applicant')
 	})
 
 	it('should push to second user on same page, when user selects false', async () => {
@@ -140,10 +140,8 @@ describe('AnyChildrenUnderSixteen', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(17)
-
 		// Assert
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(CHILDREN_UNDER_SIXTEEN_LIVING_AWAY + '/second-applicant')
 	})
 	
 	it('should push to AboutChildrenUnderSixteen, when user selects true', () => {
@@ -161,10 +159,8 @@ describe('AnyChildrenUnderSixteen', () => {
 		// Act
         wrapper.find('Button').at(0).simulate('submit')
 
-        const pageRoute = helpers.getPageRoute(18)
-
 		// Assert
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(ABOUT_CHILDREN_UNDER_SIXTEEN_LIVING_AWAY)
     })
 
     it('should push to page 1 when click save and go back', async () => {
@@ -208,9 +204,7 @@ describe('AnyChildrenUnderSixteen', () => {
         await wrapper.find('Button').at(1).simulate('click')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(1)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should call onChangeTarget', () => {

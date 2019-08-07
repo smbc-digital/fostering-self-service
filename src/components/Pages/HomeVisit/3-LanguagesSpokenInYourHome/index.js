@@ -2,8 +2,9 @@ import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, TextAreaInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import SubmitButton from 'components/SubmitButton'
+import { PARTNERSHIP_STATUS, FOSTERING_HISTORY, START_PAGE } from 'routes'
 
 const LanguagesSpokenInYourHome = ({ history }) => {
 	const context = useContext(Context)
@@ -30,10 +31,10 @@ const LanguagesSpokenInYourHome = ({ history }) => {
 		event.preventDefault()
 
         if(withPartner.value === 'Yes') {
-            handleFormUpdate(getPageRoute(7))
+            handleFormUpdate(PARTNERSHIP_STATUS)
         }
         else {
-            handleFormUpdate(getPageRoute(10))
+            handleFormUpdate(FOSTERING_HISTORY)
         }
 	}
 
@@ -41,7 +42,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
         event.stopPropagation()
         event.preventDefault()
 
-        handleFormUpdate(getPageRoute(1))
+        handleFormUpdate(START_PAGE)
     } 
 
 	return (

@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { AlertForm, TextInputContainer, AddressPicker, Button, Anchor } from 'smbc-react-components'
-import { getPageRoute } from 'helpers'
+import { FIRST_PERSONAL_REFERENCE } from 'routes'
 import { Context } from 'context'
 
 const FamilyReference = ({ history }) => {
@@ -16,7 +16,7 @@ const FamilyReference = ({ history }) => {
 	
 	const onSubmit = event => {
 		event.preventDefault()
-		history.push(getPageRoute(24))
+		history.push(FIRST_PERSONAL_REFERENCE)
 	}
 
 	const onChange = (event, isValid) => onChangeTarget(event, isValid, 'familyReference')

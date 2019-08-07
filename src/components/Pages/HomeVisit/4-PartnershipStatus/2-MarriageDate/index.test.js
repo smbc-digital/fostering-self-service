@@ -1,6 +1,7 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import MarriageDate from './index'
 import * as helpers from 'helpers'
+import { FOSTERING_HISTORY, START_PAGE } from 'routes'
 
 describe('MarriageDate', () => {
 
@@ -46,7 +47,7 @@ describe('MarriageDate', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(10))
+        expect(history.push).toHaveBeenCalledWith(FOSTERING_HISTORY)
     })
 
     it('should push to start page', async () => {
@@ -63,7 +64,7 @@ describe('MarriageDate', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should call updateHomeVisitForm on save and go back', async () => {

@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import KnownByAnotherName from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { MORE_ABOUT_YOU } from 'routes'
 
 describe('KnownByAnotherName', () => {
 
@@ -90,8 +91,7 @@ describe('KnownByAnotherName', () => {
         wrapper.find('Button').simulate('submit')
 
         // Assert
-        const pageRoute = helpers.getPageRoute(3)
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(MORE_ABOUT_YOU + '/second-applicant')
     })
 
     it('should call onChangeTarget', () => {

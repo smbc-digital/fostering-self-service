@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import HaveYouPreviouslyApplied from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { FOSTERING_HISTORY, ABOUT_YOUR_HEALTH, START_PAGE } from 'routes'
 
 describe('HaveYouPreviouslyApplied', () => {
 
@@ -62,7 +63,7 @@ describe('HaveYouPreviouslyApplied', () => {
         await wrapper.find('form').simulate('submit')
         await Promise.resolve()
 
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(10)+'/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(FOSTERING_HISTORY +'/second-applicant')
     })
 
     it('should push to correct page onSubmit with second applicant', async () => {
@@ -83,7 +84,7 @@ describe('HaveYouPreviouslyApplied', () => {
         await wrapper.find('form').simulate('submit')
         await Promise.resolve()
 
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(11))
+        expect(history.push).toHaveBeenCalledWith(ABOUT_YOUR_HEALTH)
     })
 
     it('should push to correct page on error', async () => {
@@ -125,7 +126,7 @@ describe('HaveYouPreviouslyApplied', () => {
         await wrapper.find('Button').at(1).simulate('click')
         await Promise.resolve()
 
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     describe('snapshot', () => {

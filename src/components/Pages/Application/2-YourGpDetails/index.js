@@ -5,10 +5,10 @@ import {
     updateApplicationForm, 
     ApplicationFormName, 
     getCurrentApplicant, 
-    getPageRoute, 
     updateFormStatus,
     StageName 
 } from 'helpers'
+import { START_PAGE, ABOUT_YOUR_GP, FAMILY_REFERENCE } from 'routes'
 import { Applicant } from 'components/Provider'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
@@ -50,18 +50,18 @@ const YourGpDetails = ({ history, match }) => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(22)}/second-applicant`)
+            history.push(`${ABOUT_YOUR_GP}/second-applicant`)
             return
         }
 
-        handleFormUpdate(getPageRoute(23))
+        handleFormUpdate(FAMILY_REFERENCE)
     }
 
     const onSaveAndGoBackClick = event => {
         event.preventDefault()
         event.stopPropagation()
 
-        handleFormUpdate(getPageRoute(1))
+        handleFormUpdate(START_PAGE)
     }
 
     return (

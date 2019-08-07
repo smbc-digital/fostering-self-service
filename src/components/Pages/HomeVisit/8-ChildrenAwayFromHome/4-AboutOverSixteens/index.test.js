@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AboutOverSixteens from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { START_PAGE, CHILDREN_OVER_SIXTEEN_LIVING_AWAY } from 'routes'
 
 describe('AboutOverSixteens', () => {
     const onChangeStatusMock = jest.fn()
@@ -115,8 +116,7 @@ describe('AboutOverSixteens', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(1)
-        expect(history.push).toHaveBeenCalledWith(`${pageRoute}`)
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
   
     it('should push to next page on submit, when joint applicant', async () => {
@@ -138,8 +138,7 @@ describe('AboutOverSixteens', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(19)
-        expect(history.push).toHaveBeenCalledWith(`${pageRoute}/second-applicant`)
+        expect(history.push).toHaveBeenCalledWith(`${CHILDREN_OVER_SIXTEEN_LIVING_AWAY}/second-applicant`)
     })
 
     it('should call updateHomeVisitForm on form sum on form submit', async () => {
@@ -223,7 +222,7 @@ describe('AboutOverSixteens', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should push to error page on updateHomeVisitForm error', async () => {

@@ -1,6 +1,7 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import DoYouHaveAnyPets from './index'
 import * as helpers from 'helpers'
+import { CHILDREN_UNDER_SIXTEEN_LIVING_AWAY, START_PAGE } from 'routes'
 
 describe('DoYouHaveAnyPets', () => {
     const mockOnChangeStatus = jest.fn()
@@ -43,7 +44,7 @@ describe('DoYouHaveAnyPets', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(17))
+        expect(history.push).toHaveBeenCalledWith(CHILDREN_UNDER_SIXTEEN_LIVING_AWAY)
         expect(mockOnChangeStatus).toHaveBeenCalledWith('yourHouseholdStatus', 0)
     })
 
@@ -60,7 +61,7 @@ describe('DoYouHaveAnyPets', () => {
         await Promise.resolve()
         
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
         expect(mockOnChangeStatus).toHaveBeenCalledWith('yourHouseholdStatus', 0)
     })
 

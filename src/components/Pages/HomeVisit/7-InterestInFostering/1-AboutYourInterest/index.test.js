@@ -1,6 +1,7 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AboutYourInterest from './index'
 import * as helpers from 'helpers'
+import { TYPES_OF_FOSTERING } from 'routes'
 
 describe('AboutYourInterest', () => {
 
@@ -48,7 +49,7 @@ describe('AboutYourInterest', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(13))
+        expect(history.push).toHaveBeenCalledWith(TYPES_OF_FOSTERING)
     })
 
     describe('snapshot', () => {

@@ -1,6 +1,7 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import LanguagesSpokenInYourHome from './index'
 import * as helpers from 'helpers'
+import { START_PAGE, PARTNERSHIP_STATUS, FOSTERING_HISTORY } from 'routes'
 
 describe('LanguagesSpokenInYourHome', () => {
 	const onChangeStatusMock = jest.fn()
@@ -38,8 +39,7 @@ describe('LanguagesSpokenInYourHome', () => {
 		await Promise.resolve()
 
 		// Assert
-		const pageRoute = helpers.getPageRoute(7)
-		expect(history.push).toHaveBeenCalledWith(pageRoute)
+		expect(history.push).toHaveBeenCalledWith(PARTNERSHIP_STATUS)
 	})
 
 	it('should push to next page on submit for single applicants', async () => {
@@ -73,8 +73,7 @@ describe('LanguagesSpokenInYourHome', () => {
 		await Promise.resolve()
 
 		// Assert
-		const pageRoute = helpers.getPageRoute(10)
-		expect(history.push).toHaveBeenCalledWith(pageRoute)
+		expect(history.push).toHaveBeenCalledWith(FOSTERING_HISTORY)
 	})
 
 	it('should call updateHomeVisitForm on form submit', async () => {
@@ -146,7 +145,7 @@ describe('LanguagesSpokenInYourHome', () => {
 		await Promise.resolve()
 
 		// Assert
-		expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))		
+		expect(history.push).toHaveBeenCalledWith(START_PAGE)		
 	})
 
 	it('should push to error page on updateHomeVisitForm error', async () => {

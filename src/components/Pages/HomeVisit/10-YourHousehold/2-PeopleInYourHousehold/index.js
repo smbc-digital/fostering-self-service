@@ -8,8 +8,8 @@ import {
     MemorableDateInputContainer
 } from 'smbc-react-components'
 import PropTypes from 'prop-types'
-import { getPageRoute } from 'helpers'
 import moment from 'moment-timezone'
+import { DO_YOU_HAVE_ANY_PETS } from 'routes'
 
 const PeopleInYourHousehold = ({ history }) => {
     const { onChange, otherPeopleInYourHousehold } = useContext(Context)
@@ -26,7 +26,7 @@ const PeopleInYourHousehold = ({ history }) => {
     const onSubmit = event => {
         event.preventDefault()
 
-        history.push(getPageRoute(16))
+        history.push(DO_YOU_HAVE_ANY_PETS)
     }
 
     const onPersonChange = (values, isValid) => {

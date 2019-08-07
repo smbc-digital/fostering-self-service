@@ -4,13 +4,13 @@ import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from 'context'
 import { 
     getCurrentApplicant, 
-    getPageRoute, 
     updateFormStatus, 
     HomeVisitFormName, 
     StageName, 
     updateHomeVisitForm 
 } from 'helpers'
 import { Applicant } from 'components/Provider'
+import { START_PAGE, LANGUAGES_SPOKEN_IN_YOUR_HOME, ARE_YOU_EMPLOYED, EMPLOYMENT_DETAILS } from 'routes'
 
 const AreYouEmployed = ({ history, match }) => {
     const context = useContext(Context)
@@ -57,7 +57,7 @@ const AreYouEmployed = ({ history, match }) => {
         event.stopPropagation()
         event.preventDefault()
 
-        await handleFormUpdate(getPageRoute(1))
+        await handleFormUpdate(START_PAGE)
     }
 
     const onSubmit = event => {
@@ -68,25 +68,25 @@ const AreYouEmployed = ({ history, match }) => {
                 event.stopPropagation()
                 event.preventDefault()
 
-                handleFormUpdate(getPageRoute(6))
+                handleFormUpdate(LANGUAGES_SPOKEN_IN_YOUR_HOME)
                 return
             }
             event.stopPropagation()
             event.preventDefault()
 
-            handleFormUpdate(`${getPageRoute(4)}/second-applicant`)
+            handleFormUpdate(`${ARE_YOU_EMPLOYED}/second-applicant`)
             return
         } else if(areYouEmployed.value == 'true' || areYouEmployed.value == true) {
             if(currentApplicant === Applicant.SecondApplicant){
-                history.push(`${getPageRoute(5)}/second-applicant`)
+                history.push(`${EMPLOYMENT_DETAILS}/second-applicant`)
                 return
             }
-            history.push(getPageRoute(5))
+            history.push(EMPLOYMENT_DETAILS)
         } else {
             event.stopPropagation()
             event.preventDefault()
 
-            handleFormUpdate(getPageRoute(6))
+            handleFormUpdate(LANGUAGES_SPOKEN_IN_YOUR_HOME)
         }
     }
     useEffect(() => {

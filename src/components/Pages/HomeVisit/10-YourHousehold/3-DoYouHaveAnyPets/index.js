@@ -1,9 +1,10 @@
 import React, { useContext, Fragment, useState } from 'react'
 import { Context } from 'context'
 import { RadioInputsContainer, TextAreaInputContainer } from 'smbc-react-components'
-import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import PropTypes from 'prop-types'
 import SubmitButton from 'components/SubmitButton'
+import { START_PAGE, CHILDREN_UNDER_SIXTEEN_LIVING_AWAY } from 'routes'
 
 const DoYouHaveAnyPets = ({ history }) => {
     const {
@@ -38,13 +39,13 @@ const DoYouHaveAnyPets = ({ history }) => {
         event.preventDefault()
         event.stopPropagation()
 
-        handleFormUpdate(getPageRoute(1))
+        handleFormUpdate(START_PAGE)
     }
 
     const onSubmit = event => {
         event.preventDefault()
 
-        handleFormUpdate(getPageRoute(17))
+        handleFormUpdate(CHILDREN_UNDER_SIXTEEN_LIVING_AWAY)
     }
 
     const options = [

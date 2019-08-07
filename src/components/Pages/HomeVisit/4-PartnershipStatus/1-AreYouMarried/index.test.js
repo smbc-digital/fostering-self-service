@@ -1,6 +1,6 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AreYouMarried from './index'
-import { getPageRoute } from 'helpers'
+import { DATE_OF_MARRIAGE_OR_PARTNERSHIP, DATE_OF_MOVE_IN_TOGETHER, FOSTERING_HISTORY } from 'routes'
 
 describe('AreYouMarried', () => {
 
@@ -40,7 +40,7 @@ describe('AreYouMarried', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(getPageRoute(8))
+        expect(history.push).toHaveBeenCalledWith(DATE_OF_MARRIAGE_OR_PARTNERSHIP)
     })
 
     it('should push to next page, when not married', () => {
@@ -65,7 +65,7 @@ describe('AreYouMarried', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(getPageRoute(9))
+        expect(history.push).toHaveBeenCalledWith(DATE_OF_MOVE_IN_TOGETHER)
     })
 
     it('should push to next page', () => {
@@ -79,7 +79,7 @@ describe('AreYouMarried', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(getPageRoute(10))
+        expect(history.push).toHaveBeenCalledWith(FOSTERING_HISTORY)
     })
 
     describe('snapshot', () => {

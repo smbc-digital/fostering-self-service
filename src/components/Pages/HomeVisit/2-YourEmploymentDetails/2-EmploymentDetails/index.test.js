@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import EmploymentDetails from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { LANGUAGES_SPOKEN_IN_YOUR_HOME, ARE_YOU_EMPLOYED, START_PAGE } from 'routes'
 
 describe('EmploymentDetails', () => {
 
@@ -129,8 +130,7 @@ describe('EmploymentDetails', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(6)
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(LANGUAGES_SPOKEN_IN_YOUR_HOME)
     })
 
     it('should push to next page on submit, when second applicant', () => {
@@ -149,8 +149,7 @@ describe('EmploymentDetails', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        const pageRoute = helpers.getPageRoute(4)
-        expect(history.push).toHaveBeenCalledWith(`${pageRoute}/second-applicant`)
+        expect(history.push).toHaveBeenCalledWith(`${ARE_YOU_EMPLOYED}/second-applicant`)
     })
 
     it('should call updateForm on form submit', async () => {
@@ -234,7 +233,7 @@ describe('EmploymentDetails', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should push to error page on updateForm error', async () => {

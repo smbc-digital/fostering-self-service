@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import MoreAboutYou from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { ARE_YOU_EMPLOYED, KNOWN_BY_ANOTHER_NAME, START_PAGE } from 'routes'
 
 describe('MoreAboutYou', () => {
 
@@ -114,8 +115,7 @@ describe('MoreAboutYou', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(4)
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(ARE_YOU_EMPLOYED)
     })
 
     it('should push to next page on submit, when second applicant', () => {
@@ -134,8 +134,7 @@ describe('MoreAboutYou', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        const pageRoute = helpers.getPageRoute(2)
-        expect(history.push).toHaveBeenCalledWith(`${pageRoute}/second-applicant`)
+        expect(history.push).toHaveBeenCalledWith(`${KNOWN_BY_ANOTHER_NAME}/second-applicant`)
     })
 
     it('should call updateForm on form submit', async () => {
@@ -219,7 +218,7 @@ describe('MoreAboutYou', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))        
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)        
     })
 
     it('should push to error page on updateForm error', async () => {

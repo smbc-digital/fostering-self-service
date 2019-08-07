@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AnyOverSixteens from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { CHILDREN_OVER_SIXTEEN_LIVING_AWAY, START_PAGE, ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY } from 'routes'
 
 describe('AnyOverSixteens', () => {
 
@@ -82,8 +83,7 @@ describe('AnyOverSixteens', () => {
         wrapper.find('Button').at(0).simulate('submit')
 
         // Assert
-        const pageRoute = helpers.getPageRoute(20)
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY + '/second-applicant')
     })
 
     it('should push to second user on same page, when user selects false', async () => {
@@ -142,10 +142,8 @@ describe('AnyOverSixteens', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(19)
-
         //Assert
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(CHILDREN_OVER_SIXTEEN_LIVING_AWAY + '/second-applicant')
     })
 
     it('should push to AboutOverSixteens, when user selects true', () => {
@@ -162,9 +160,7 @@ describe('AnyOverSixteens', () => {
 
         wrapper.find('Button').at(0).simulate('submit')
 
-        const pageRoute = helpers.getPageRoute(20)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY)
     })
 
     it('should push to page 21 when user selects false and there are no second applicant', async () => {
@@ -208,9 +204,7 @@ describe('AnyOverSixteens', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(1)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should push to page 21 when second applicant selects false', async () => {
@@ -268,9 +262,7 @@ describe('AnyOverSixteens', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(1)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should push to page 1 when single applicant selects false', async () => {
@@ -314,9 +306,7 @@ describe('AnyOverSixteens', () => {
         await wrapper.find('Button').at(1).simulate('click')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(1)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should call onChangeTarget', () => {

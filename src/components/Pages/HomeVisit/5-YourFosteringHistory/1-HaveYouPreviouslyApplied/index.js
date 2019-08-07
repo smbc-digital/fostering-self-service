@@ -2,9 +2,10 @@ import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import {RadioInputsContainer} from 'smbc-react-components'
 import { Context } from 'context'
-import { getCurrentApplicant, getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import { Applicant } from 'components/Provider'
 import SubmitButton from 'components/SubmitButton'
+import { FOSTERING_HISTORY, ABOUT_YOUR_HEALTH, START_PAGE } from 'routes'
 
 const HaveYouPreviouslyApplied = ({ history, match }) => {
     const context = useContext(Context)
@@ -51,18 +52,18 @@ const HaveYouPreviouslyApplied = ({ history, match }) => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(10)}/second-applicant`)
+            history.push(`${FOSTERING_HISTORY}/second-applicant`)
             return
         }
 
-        await handleFormUpdate(getPageRoute(11)) 
+        await handleFormUpdate(ABOUT_YOUR_HEALTH) 
     }
 
     const onSaveAndGoBackClick = async event => {
         event.stopPropagation()
         event.preventDefault()
 
-        await handleFormUpdate(getPageRoute(1))
+        await handleFormUpdate(START_PAGE)
     }
 
     const radioValue = `${previouslyApplied.value}`

@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import YourHealth from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from '/helpers'
+import { ABOUT_YOUR_HEALTH, START_PAGE } from 'routes'
 
 describe('YourHealth', () => {
 
@@ -155,9 +156,7 @@ describe('YourHealth', () => {
 
         wrapper.find('Button').simulate('submit')
 
-        const pageRoute = helpers.getPageRoute(11)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(ABOUT_YOUR_HEALTH + '/second-applicant')
     })
 
     it('should call onChangeTarget', () => {
@@ -197,7 +196,7 @@ describe('YourHealth', () => {
         await wrapper.find('Button').at(1).simulate('click')
         await Promise.resolve()
 
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
     
     describe('snapshot', () => {

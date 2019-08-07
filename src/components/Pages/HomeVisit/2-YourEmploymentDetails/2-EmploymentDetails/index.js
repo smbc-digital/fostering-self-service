@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, RadioInputsContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { getCurrentApplicant, getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import { Applicant } from 'components/Provider'
 import SubmitButton from 'components/SubmitButton'
+import { ARE_YOU_EMPLOYED, LANGUAGES_SPOKEN_IN_YOUR_HOME, START_PAGE } from 'routes'
 
 
 const EmploymentDetails = ({ history, match }) => {
@@ -33,18 +34,18 @@ const EmploymentDetails = ({ history, match }) => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(4)}/second-applicant`)
+            history.push(`${ARE_YOU_EMPLOYED}/second-applicant`)
             return
         }
 
-        await handleFormUpdate(getPageRoute(6))
+        await handleFormUpdate(LANGUAGES_SPOKEN_IN_YOUR_HOME)
     }
 
     const onSaveAndGoBackClick = async event => {
         event.stopPropagation()
         event.preventDefault()
 
-        await handleFormUpdate(getPageRoute(1))
+        await handleFormUpdate(START_PAGE)
     }
 
     const options = [

@@ -2,8 +2,9 @@ import React, { Fragment, useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import { CheckboxInputsContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import SubmitButton from 'components/SubmitButton' 
+import { YOUR_HOUSEHOLD, START_PAGE } from 'routes'
 
 const TypesOfFostering = ({ history }) => {
     const { typesOfFostering, reasonsForFostering, onChange, onChangeStatus } = useContext(Context)
@@ -71,13 +72,13 @@ const TypesOfFostering = ({ history }) => {
 
     const onSubmit = event => {
         event.preventDefault()
-        handleFormUpdate(getPageRoute(14))
+        handleFormUpdate(YOUR_HOUSEHOLD)
     }
 
     const onSaveAndGoBackClick = event => {
         event.preventDefault()
         event.stopPropagation()
-        handleFormUpdate(getPageRoute(1))
+        handleFormUpdate(START_PAGE)
     }
 
     return (

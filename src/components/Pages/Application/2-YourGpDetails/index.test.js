@@ -1,6 +1,7 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import YourGpDetails from './index'
 import { TaskStatus } from 'helpers'
+import { START_PAGE, ABOUT_YOUR_GP, FAMILY_REFERENCE } from 'routes'
 import * as helpers from 'helpers'
 
 describe('YourGpDetails', () => {
@@ -137,7 +138,7 @@ describe('YourGpDetails', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(`${helpers.getPageRoute(22)}/second-applicant`)
+        expect(history.push).toHaveBeenCalledWith(`${ABOUT_YOUR_GP}/second-applicant`)
     })
 
     it('should call updateApplicationForm on submit', async () => {
@@ -194,7 +195,7 @@ describe('YourGpDetails', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(23))
+        expect(history.push).toHaveBeenCalledWith(FAMILY_REFERENCE)
     })
 
     it('should push to error page on submit', async () => {
@@ -249,7 +250,7 @@ describe('YourGpDetails', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should set isLoading on submit', () => {

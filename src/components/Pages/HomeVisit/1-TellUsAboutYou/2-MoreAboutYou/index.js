@@ -2,9 +2,10 @@ import React, { useContext, Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, SelectInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { getCurrentApplicant, getPageRoute, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import { Applicant } from 'components/Provider'
 import SubmitButton from 'components/SubmitButton'
+import { KNOWN_BY_ANOTHER_NAME, ARE_YOU_EMPLOYED, START_PAGE } from 'routes'
 
 const MoreAboutYou = ({ history, match }) => {
     const context = useContext(Context)
@@ -33,18 +34,18 @@ const MoreAboutYou = ({ history, match }) => {
         event.preventDefault()
 
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            history.push(`${getPageRoute(2)}/second-applicant`)
+            history.push(`${KNOWN_BY_ANOTHER_NAME}/second-applicant`)
             return
         }
 
-        await handleFormUpdate(getPageRoute(4))
+        await handleFormUpdate(ARE_YOU_EMPLOYED)
     }
 
     const onSaveAndGoBackClick = async event => {
         event.stopPropagation()
         event.preventDefault()
 
-        await handleFormUpdate(getPageRoute(1))
+        await handleFormUpdate(START_PAGE)
     } 
 
     const onChange = (event, isValid) => {

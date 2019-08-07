@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import SecondPersonalReference from './index'
 import { TaskStatus } from 'helpers'
 import * as helpers from 'helpers'
+import { START_PAGE, RELATIONSHIP_TO_COUNCIL_EMPLOYEES } from 'routes'
 
 describe('FirstPersonalReference', () => {
 
@@ -136,7 +137,7 @@ describe('FirstPersonalReference', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(26))
+        expect(history.push).toHaveBeenCalledWith(RELATIONSHIP_TO_COUNCIL_EMPLOYEES)
 	})
 	
 	it('should push to error page on submit', async () => {
@@ -221,7 +222,7 @@ describe('FirstPersonalReference', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
 	it('should call onChangeTarget', () => {

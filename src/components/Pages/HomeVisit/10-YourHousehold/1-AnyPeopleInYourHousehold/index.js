@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, Fragment } from 'react'
 import { Context } from 'context'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
-import { getPageRoute, updateFormStatus, HomeVisitFormName, StageName } from 'helpers'
+import { updateFormStatus, HomeVisitFormName, StageName } from 'helpers'
 import PropTypes from 'prop-types'
+import { WHO_LIVES_IN_YOUR_HOME, DO_YOU_HAVE_ANY_PETS } from 'routes'
 
 const AnyPeopleInYourHousehold = ({ history }) => {
     const { onChange, onChangeStatus, anyOtherPeopleInYourHousehold, statuses: { yourHouseholdStatus } } = useContext(Context)
@@ -11,11 +12,11 @@ const AnyPeopleInYourHousehold = ({ history }) => {
         event.preventDefault()
 
         if(anyOtherPeopleInYourHousehold.value === 'true' || anyOtherPeopleInYourHousehold.value === true){
-            history.push(getPageRoute(15))
+            history.push(WHO_LIVES_IN_YOUR_HOME)
             return
         }
 
-        history.push(getPageRoute(16))
+        history.push(DO_YOU_HAVE_ANY_PETS)
     }
 
     useEffect(() => {

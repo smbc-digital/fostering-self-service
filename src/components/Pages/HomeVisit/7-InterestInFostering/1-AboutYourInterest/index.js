@@ -2,7 +2,8 @@ import React, { Fragment, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { TextAreaInputContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from 'context'
-import { updateFormStatus, HomeVisitFormName, getPageRoute, StageName } from 'helpers'
+import { updateFormStatus, HomeVisitFormName, StageName } from 'helpers'
+import { TYPES_OF_FOSTERING } from 'routes'
 
 const AboutYourInterest = ({ history }) => {
     const { onChange, onChangeStatus, reasonsForFostering, statuses: { tellUsAboutYourInterestInFosteringStatus } } = useContext(Context)
@@ -18,7 +19,7 @@ const AboutYourInterest = ({ history }) => {
 
     const onSubmit = event => {
         event.preventDefault()
-        history.push(getPageRoute(13))
+        history.push(TYPES_OF_FOSTERING)
     }
 
     return (

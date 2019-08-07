@@ -2,7 +2,8 @@ import React, { useContext, Fragment, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from 'context'
-import { getPageRoute, HomeVisitFormName, updateFormStatus, StageName } from 'helpers'
+import { HomeVisitFormName, updateFormStatus, StageName } from 'helpers'
+import { DATE_OF_MARRIAGE_OR_PARTNERSHIP, DATE_OF_MOVE_IN_TOGETHER, FOSTERING_HISTORY } from 'routes'
 
 const AreYouMarried = ({ history }) => {
     const { onChange, onChangeStatus, marriedOrInACivilPartnership, statuses: { yourPartnershipStatus } } = useContext(Context)
@@ -27,16 +28,16 @@ const AreYouMarried = ({ history }) => {
         event.preventDefault()
         
 		if (marriedOrInACivilPartnershipValue === 'true') {
-            history.push(getPageRoute(8))
+            history.push(DATE_OF_MARRIAGE_OR_PARTNERSHIP)
             return
         }
         
         if (marriedOrInACivilPartnershipValue === 'false'){
-            history.push(getPageRoute(9))
+            history.push(DATE_OF_MOVE_IN_TOGETHER)
             return
         }
 
-		history.push(getPageRoute(10))
+		history.push(FOSTERING_HISTORY)
 	}
 
     useEffect(() => {

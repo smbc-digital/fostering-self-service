@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AboutUnderSixteens from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { CHILDREN_OVER_SIXTEEN_LIVING_AWAY, CHILDREN_UNDER_SIXTEEN_LIVING_AWAY, START_PAGE } from 'routes'
 
 describe('AboutUnderSixteens', () => {
     const onChangeStatusMock = jest.fn()
@@ -154,8 +155,7 @@ describe('AboutUnderSixteens', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(19)
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(CHILDREN_OVER_SIXTEEN_LIVING_AWAY)
     })
 
     it('should push to page 17 on submit, when on single applicant but joint application', async () => {
@@ -261,8 +261,7 @@ describe('AboutUnderSixteens', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(17)
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(CHILDREN_UNDER_SIXTEEN_LIVING_AWAY + '/second-applicant')
     })
 
     it('should push to page 19 on submit, when on joint applicant', async () => {
@@ -368,8 +367,7 @@ describe('AboutUnderSixteens', () => {
         await Promise.resolve()
 
         // Assert
-        const pageRoute = helpers.getPageRoute(19)
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(CHILDREN_OVER_SIXTEEN_LIVING_AWAY)
     })
     
     it('should call updateHomeVisitForm on form submit', async () => {
@@ -453,7 +451,7 @@ describe('AboutUnderSixteens', () => {
         await Promise.resolve()
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(1))
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should push to error page on updateHomeVisitForm error', async () => {

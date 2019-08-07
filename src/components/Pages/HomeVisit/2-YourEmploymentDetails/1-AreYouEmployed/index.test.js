@@ -2,6 +2,7 @@ import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AreYouEmployed from './index'
 import { Applicant } from 'components/Provider'
 import * as helpers from 'helpers'
+import { EMPLOYMENT_DETAILS, ARE_YOU_EMPLOYED, LANGUAGES_SPOKEN_IN_YOUR_HOME, START_PAGE } from 'routes'
 
 describe('AreYouEmployed', () => {
 
@@ -98,8 +99,7 @@ describe('AreYouEmployed', () => {
         wrapper.find('Button').at(0).simulate('submit')
 
         // Assert
-        const pageRoute = helpers.getPageRoute(5)
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(EMPLOYMENT_DETAILS + '/second-applicant')
     })
 
     it('should push to second user on same page, when user selects false', async () => {
@@ -173,9 +173,7 @@ describe('AreYouEmployed', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(4)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute + '/second-applicant')
+        expect(history.push).toHaveBeenCalledWith(ARE_YOU_EMPLOYED + '/second-applicant')
     })
 
     it('should push to EmploymentDetails, when user selects true', () => {
@@ -192,9 +190,7 @@ describe('AreYouEmployed', () => {
 
         wrapper.find('Button').at(0).simulate('submit')
 
-        const pageRoute = helpers.getPageRoute(5)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(EMPLOYMENT_DETAILS)
     })
 
     it('should push to page 6 when user selects false and there are no second applicant', async () => {
@@ -246,9 +242,7 @@ describe('AreYouEmployed', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(6)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(LANGUAGES_SPOKEN_IN_YOUR_HOME)
     })
 
     it('should push to page 6 when second applicant selects false', async () => {
@@ -322,9 +316,7 @@ describe('AreYouEmployed', () => {
         await wrapper.find('Button').at(0).simulate('submit')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(6)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(LANGUAGES_SPOKEN_IN_YOUR_HOME)
     })
 
     it('should push to page 1 when applicant click save and go back', async () => {
@@ -376,9 +368,7 @@ describe('AreYouEmployed', () => {
         await wrapper.find('Button').at(1).simulate('click')
         await Promise.resolve()
 
-        const pageRoute = helpers.getPageRoute(1)
-
-        expect(history.push).toHaveBeenCalledWith(pageRoute)
+        expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
 
     it('should call onChangeTarget', () => {

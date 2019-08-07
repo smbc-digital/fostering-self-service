@@ -1,6 +1,6 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import PeopleInYourHousehold from './index'
-import * as helpers from 'helpers'
+import { DO_YOU_HAVE_ANY_PETS } from 'routes'
 
 describe('PeopleInYourHousehold', () => {
     const mockOnChange = jest.fn()
@@ -26,7 +26,7 @@ describe('PeopleInYourHousehold', () => {
         wrapper.find('form').simulate('submit')
 
         // Assert
-        expect(history.push).toHaveBeenCalledWith(helpers.getPageRoute(16))
+        expect(history.push).toHaveBeenCalledWith(DO_YOU_HAVE_ANY_PETS)
     })
 
     it('Should call onChange with new values', () => {

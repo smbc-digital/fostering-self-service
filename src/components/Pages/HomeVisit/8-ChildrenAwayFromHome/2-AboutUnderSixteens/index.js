@@ -7,10 +7,11 @@ import {
     AddressPicker 
 } from 'smbc-react-components'
 import PropTypes from 'prop-types'
-import { getPageRoute, getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import moment from 'moment-timezone'
 import SubmitButton from 'components/SubmitButton'
 import { Applicant } from 'config'
+import { START_PAGE, CHILDREN_UNDER_SIXTEEN_LIVING_AWAY, CHILDREN_OVER_SIXTEEN_LIVING_AWAY } from 'routes'
 
 const AboutAnyUnderSixteen = ({history, match}) => {
     const context = useContext(Context)
@@ -62,7 +63,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
         event.stopPropagation()
         event.preventDefault()
 
-        await handleFormUpdate(getPageRoute(1))
+        await handleFormUpdate(START_PAGE)
 	}
 	
 	const onSubmit = event => {
@@ -70,10 +71,10 @@ const AboutAnyUnderSixteen = ({history, match}) => {
 		event.preventDefault()
 
 		if(currentApplicant == Applicant.FirstApplicant && secondApplicant){
-			handleFormUpdate(`${getPageRoute(17)}/second-applicant`)
+			handleFormUpdate(`${CHILDREN_UNDER_SIXTEEN_LIVING_AWAY}/second-applicant`)
 			return
 		}
-		handleFormUpdate(getPageRoute(19))
+		handleFormUpdate(CHILDREN_OVER_SIXTEEN_LIVING_AWAY)
 		return
 	}
 

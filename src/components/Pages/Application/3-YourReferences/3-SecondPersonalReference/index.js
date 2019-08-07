@@ -1,9 +1,10 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { AlertForm, TextInputContainer, AddressPicker } from 'smbc-react-components'
-import { ApplicationFormName, updateApplicationForm, getPageRoute, updateFormStatus, StageName } from 'helpers'
+import { ApplicationFormName, updateApplicationForm, updateFormStatus, StageName } from 'helpers'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
+import { START_PAGE, RELATIONSHIP_TO_COUNCIL_EMPLOYEES } from 'routes'
 
 const SecondPersonalReference = ({ history }) => {
 	const context = useContext(Context)
@@ -44,14 +45,14 @@ const SecondPersonalReference = ({ history }) => {
 	
 	const onSubmit = event => {
 		event.preventDefault()
-		handleFormUpdate(getPageRoute(26))
+		handleFormUpdate(RELATIONSHIP_TO_COUNCIL_EMPLOYEES)
 	}
 
 	const onSaveAndGoBackClick = event => {
         event.preventDefault()
 		event.stopPropagation()
 
-		handleFormUpdate(getPageRoute(1))
+		handleFormUpdate(START_PAGE)
 	}
 
 	const onChange = (event, isValid) => onChangeTarget(event, isValid, 'secondPersonalReference')
