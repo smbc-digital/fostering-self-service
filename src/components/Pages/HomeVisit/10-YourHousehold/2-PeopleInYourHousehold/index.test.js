@@ -9,7 +9,7 @@ describe('PeopleInYourHousehold', () => {
         useContextMock.mockReturnValue({
             onChange: mockOnChange,
             otherPeopleInYourHousehold: {
-                value: [{'IsDobValid': false, 'dateOfBirth': '2016-02-20'}],
+                value: [{'IsDobValid': false, 'dateOfBirth': '2016-02-20', 'firstName': 'test'}],
                 isValid: false
             },
         })
@@ -32,7 +32,7 @@ describe('PeopleInYourHousehold', () => {
     it('Should call onChange with new values', () => {
         // Act
         const wrapper = mount(<PeopleInYourHousehold history={history} />)
-        wrapper.find('input').at(1).simulate('change')
+        wrapper.find('input').at(1).simulate('change', { target: { value: 'test', name: 'firstName' } })
 
         // Assert
         expect(mockOnChange).toHaveBeenCalled()
@@ -45,7 +45,7 @@ describe('PeopleInYourHousehold', () => {
         wrapper.find('input[name="year"]').simulate('change', { target: { value: '2015', name: 'year' } })
 
         // Assert
-        expect(mockOnChange).toHaveBeenCalledWith({'target': {'name': 'otherPeopleInYourHousehold', 'value': [{'IsDobValid': true, 'dateOfBirth': '2015-2-20'}]}}, true)
+        expect(mockOnChange).toHaveBeenCalledWith({'target': {'name': 'otherPeopleInYourHousehold', 'value': [{'IsDobValid': true, 'dateOfBirth': '2015-2-20', 'firstName': 'test'}]}}, true)
     })
 
     describe('snapshot', () => {

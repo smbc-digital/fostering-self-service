@@ -33,7 +33,7 @@ Array [
       onKeyDown={[Function]}
       pattern={undefined}
       type="text"
-      value={undefined}
+      value="test"
     />
     <label
       className="optional"
