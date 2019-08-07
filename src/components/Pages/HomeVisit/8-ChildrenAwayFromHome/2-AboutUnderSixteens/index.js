@@ -136,6 +136,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                 <AddressPicker
                     onChange={onComponentChange}
                     name="address"
+                    maxLength='60'
                     address={values.address}
                     enableH2={true}
                     showOnlyManual={true}

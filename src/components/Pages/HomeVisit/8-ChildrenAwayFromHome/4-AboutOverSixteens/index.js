@@ -136,6 +136,7 @@ const AboutOverSixteens = ({history, match}) => {
                     onChange={onComponentChange}
                     address={values.address}
                     showOnlyManual={true}
+                    maxLength='60'
                     name='address'
                     noPostcodeValidation={true}
                     optional
