@@ -132,6 +132,8 @@ const mountProviderWithCase = async (children, secondApplicant) => {
 
 describe('Provider', () => {
 
+    delete window.location
+    
     beforeEach(() => {
         jest.resetAllMocks()
     })
@@ -147,7 +149,7 @@ describe('Provider', () => {
     it('should redirect to error page', async () => {
         // Arrange
         const replaceMock = jest.fn()
-        Object.defineProperty(global.window.location, 'replace', { value: replaceMock })
+        window.location = { replace: replaceMock }
         helpers.fetchWithTimeout = jest.fn().mockImplementation(() => { throw new Error() })
         
         // Act
