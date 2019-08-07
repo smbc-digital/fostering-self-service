@@ -16,7 +16,9 @@ describe('ScrollToTop', () => {
         it('should scroll the window when the url changes', () => {
             // Arrange
             const props = {
-                location: '/test'
+                location: {
+                    path: '/test'
+                }
             }
 
             global.scrollTo = jest.fn()
@@ -28,7 +30,7 @@ describe('ScrollToTop', () => {
             )
 
             // Act
-            wrapper.setProps({location: '/test2'})
+            wrapper.setProps(props)
             
             // Assert
             expect(global.scrollTo).toHaveBeenCalledWith(0,0)
@@ -37,7 +39,9 @@ describe('ScrollToTop', () => {
         it('should not scroll the window when the url hasn\'t changed', () => {
             // Arrange
             const props = {
-                location: '/test'
+                location: {
+                    path: '/test'
+                }
             }
 
             global.scrollTo = jest.fn()
@@ -49,7 +53,7 @@ describe('ScrollToTop', () => {
             )
 
             // Act
-            wrapper.setProps({location: '/test'})
+            wrapper.setProps(props)
             
             // Assert
             expect(global.scrollTo).toHaveBeenCalledTimes(1)
