@@ -13,7 +13,7 @@ import {
     StageName 
 } from 'helpers'
 import { Context } from 'context'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import { START_PAGE, CHILDREN_OVER_SIXTEEN_LIVING_AWAY, ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY } from 'routes'
 
 const AnyOverSixteens = ({ history, match }) => {

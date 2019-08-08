@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
 import moment from 'moment-timezone'
 import SubmitButton from 'components/SubmitButton'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import { START_PAGE, CHILDREN_OVER_SIXTEEN_LIVING_AWAY } from 'routes'
 
 const AboutOverSixteens = ({history, match}) => {

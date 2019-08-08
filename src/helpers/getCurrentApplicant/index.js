@@ -1,4 +1,4 @@
-import { Applicant } from '../../components/Provider'
+import { Applicant } from 'constants'
 import { SecondApplicantRoute } from '../../config'
 
 const getCurrentApplicant = match => {

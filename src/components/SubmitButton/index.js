@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 import { Button, Anchor } from 'smbc-react-components'
-import { Applicant } from '../Provider'
+import { Applicant } from 'constants'
 
 const SubmitButton = ({ currentApplicant, secondApplicant, onSaveAndGoBackClick, history, isValid, isLoading }) => {
     const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)

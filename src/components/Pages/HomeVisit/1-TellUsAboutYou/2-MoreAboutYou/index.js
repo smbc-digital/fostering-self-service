@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { TextInputContainer, SelectInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
 import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import SubmitButton from 'components/SubmitButton'
 import { KNOWN_BY_ANOTHER_NAME, ARE_YOU_EMPLOYED, START_PAGE } from 'routes'
 

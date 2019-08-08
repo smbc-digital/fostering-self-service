@@ -2,11 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Context } from 'context'
 
-export const Applicant = {
-	FirstApplicant: 'firstApplicant',
-	SecondApplicant: 'secondApplicant',
-}
-
 const reduceProperties = object => Object.keys(object).reduce((acc, property) => {
 	return {
 		...acc,
@@ -68,7 +63,15 @@ const mapCaseToContext = ({ fosteringCase: caseResponse, country, ethnicity, nat
 	}
 }
 
-const mappedCase = mapCaseToContext(__FORM_DATA)
+const getMappedCase = () => {
+	try {
+		return mapCaseToContext(window.__FORM_DATA)
+	} catch (error) {
+		window.location.replace('/fostering/error')
+	}
+}
+
+const mappedCase = getMappedCase()
 
 const Provider = ({ children }) => {
 	const [state, setState] = useState(mappedCase)

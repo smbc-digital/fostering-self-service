@@ -9,7 +9,7 @@ import {
     StageName, 
     updateHomeVisitForm 
 } from 'helpers'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import { START_PAGE, LANGUAGES_SPOKEN_IN_YOUR_HOME, ARE_YOU_EMPLOYED, EMPLOYMENT_DETAILS } from 'routes'
 
 const AreYouEmployed = ({ history, match }) => {

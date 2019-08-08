@@ -1,6 +1,6 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import MoreAboutYou from './index'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import * as helpers from 'helpers'
 import { ARE_YOU_EMPLOYED, KNOWN_BY_ANOTHER_NAME, START_PAGE } from 'routes'
 
