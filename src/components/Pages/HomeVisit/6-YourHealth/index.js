@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { RadioInputsContainer } from 'smbc-react-components'
 import { Context } from 'context'
 import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import SubmitButton from 'components/SubmitButton'
 import { ABOUT_YOUR_HEALTH, YOUR_INTEREST_IN_FOSTERING, START_PAGE } from 'routes'
 

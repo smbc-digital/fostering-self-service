@@ -1,6 +1,6 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import AboutOverSixteens from './index'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import * as helpers from 'helpers'
 import { START_PAGE, CHILDREN_OVER_SIXTEEN_LIVING_AWAY } from 'routes'
 

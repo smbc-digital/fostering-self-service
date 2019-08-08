@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor, TextInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
 import { getCurrentApplicant, updateFormStatus, HomeVisitFormName, StageName } from 'helpers'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import { MORE_ABOUT_YOU } from 'routes'
 
 const KnownByAnotherName = ({ history, match }) => {
