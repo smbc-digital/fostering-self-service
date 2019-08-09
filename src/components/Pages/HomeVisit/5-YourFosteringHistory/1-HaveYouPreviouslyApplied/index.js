@@ -1,8 +1,8 @@
-import React, { useContext, Fragment, useState } from 'react'
+import React, { useContext, Fragment, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import {RadioInputsContainer} from 'smbc-react-components'
 import { Context } from 'context'
-import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { getCurrentApplicant, updateHomeVisitForm, HomeVisitFormName, updateFormStatus, StageName } from 'helpers'
 import { Applicant } from 'components/Provider'
 import SubmitButton from 'components/SubmitButton'
 import { FOSTERING_HISTORY, ABOUT_YOUR_HEALTH, START_PAGE } from 'routes'
@@ -58,6 +58,15 @@ const HaveYouPreviouslyApplied = ({ history, match }) => {
 
         await handleFormUpdate(ABOUT_YOUR_HEALTH) 
     }
+
+    useEffect(() => {
+        updateFormStatus({
+            form: HomeVisitFormName.YourFosteringHistory,
+            stage: StageName.HomeVisit,
+            currentStatus:context.statuses.yourFosteringHistoryStatus,
+            setStatus: newStatus => context.onChangeStatus('yourFosteringHistoryStatus', newStatus)
+        })
+    }, [])
 
     const onSaveAndGoBackClick = async event => {
         event.stopPropagation()

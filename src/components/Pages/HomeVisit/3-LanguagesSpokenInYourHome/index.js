@@ -1,8 +1,8 @@
-import React, { useContext, Fragment, useState } from 'react'
+import React, { useContext, Fragment, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, TextAreaInputContainer } from 'smbc-react-components'
 import { Context } from 'context'
-import { updateHomeVisitForm, HomeVisitFormName } from 'helpers'
+import { updateHomeVisitForm, HomeVisitFormName, updateFormStatus, StageName } from 'helpers'
 import SubmitButton from 'components/SubmitButton'
 import { PARTNERSHIP_STATUS, FOSTERING_HISTORY, START_PAGE } from 'routes'
 
@@ -36,7 +36,16 @@ const LanguagesSpokenInYourHome = ({ history }) => {
         else {
             handleFormUpdate(FOSTERING_HISTORY)
         }
-	}
+    }
+    
+    useEffect(() => {
+        updateFormStatus({
+            form: HomeVisitFormName.LanguagesSpokenInYourHome,
+            stage: StageName.HomeVisit,
+            currentStatus:context.statuses.languageSpokenInYourHomeStatus,
+            setStatus: newStatus => context.onChangeStatus('languageSpokenInYourHomeStatus', newStatus)
+        })
+    }, [])
 
 	const onSaveAndGoBackClick = event => {
         event.stopPropagation()
@@ -76,7 +85,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
                     onSaveAndGoBackClick={onSaveAndGoBackClick}
                     history={history}
                     isLoading={isLoading}
-                />
+                />          
             </form>
         </Fragment>
     )
