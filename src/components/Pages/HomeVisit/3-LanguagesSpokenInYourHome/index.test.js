@@ -9,6 +9,9 @@ describe('LanguagesSpokenInYourHome', () => {
 	beforeEach(() => {
 		useContextMock.mockReturnValue({
 			onChangeStatus: onChangeStatusMock,
+			statuses: {
+                languageSpokenInYourHomeStatus: 0
+            },
 			primaryLanguage: {
 				value: 'English',
 				isValid: true
@@ -50,6 +53,9 @@ describe('LanguagesSpokenInYourHome', () => {
 
 		useContextMock.mockReturnValue({
 			onChangeStatus: onChangeStatusMock,
+			statuses: {
+                languageSpokenInYourHomeStatus: 0
+            },
 			primaryLanguage: {
 				value: 'English',
 				isValid: true

@@ -14,6 +14,9 @@ describe('HaveYouPreviouslyApplied', () => {
             currentApplicant: Applicant.FirstApplicant,
             onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
+            statuses: {
+                yourFosteringHistoryStatus: 0
+            },
             firstApplicant: {
                 previouslyApplied: {
                     value: 'true',
