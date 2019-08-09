@@ -67,7 +67,7 @@ const SecondPersonalReference = ({ history }) => {
 			{secondApplicant && 
 			<AlertForm
 				level='information'
-				content='Your referee must have known you for at least 2 years and be able to comment on your home life and contact with children. They must not be related to you or your partner.'
+				content='Your referee must have known you and your partner for at least 2 years and be able to comment on your home life and contact with children. They must not be related to you or your partner.'
 			/> ||
 			<AlertForm
 				level='information'

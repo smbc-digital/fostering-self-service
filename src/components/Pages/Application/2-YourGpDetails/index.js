@@ -9,7 +9,7 @@ import {
     StageName 
 } from 'helpers'
 import { START_PAGE, ABOUT_YOUR_GP, FAMILY_REFERENCE } from 'routes'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import { Context } from 'context'
 import SubmitButton from 'components/SubmitButton'
 

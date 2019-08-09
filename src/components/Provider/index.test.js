@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
-import { React, mount } from '../../helpers/SetupTest'
-import Provider, { Applicant } from '../Provider'
-import { Context } from '../../context/'
-import * as helpers from '../../helpers'
-import { FosteringErrorRoute } from 'config'
+import { React, mount } from 'helpers/SetupTest'
+import Provider from '../Provider'
+import { Applicant } from 'constants'
+import { Context } from 'context'
 
 const TestComponent = ({ context: {
     onChange,
@@ -81,55 +80,6 @@ TestComponent.propTypes = {
     context: PropTypes.object
 }
 
-const mountProviderWithCase = async (children, secondApplicant) => {
-    const mockCaseResponse = {
-        fosteringCase: {
-            statuses: {
-                status: 0
-            },
-            firstApplicant: {
-                firstName: 'firstName',
-                lastName: ''
-            },
-            secondApplicant: secondApplicant || null,
-            familyReference: {
-                firstName: 'family',
-                lastName: '',
-                address: {
-                    postcode: ''
-                }
-            },
-            firstPersonalReference: {
-                firstName: 'firstPersonal',
-                lastName: '',
-                address: ''
-            },
-            secondPersonalReference: {
-                firstName: 'secondPersonal',
-                lastName: '',
-                address: ''
-            },
-            someOtherProperty: 'value'
-        },
-        country: [''], 
-        ethnicity: [''], 
-        nationality: ['']
-    }
-
-    const responseMock = { json: jest.fn().mockReturnValue(mockCaseResponse) }
-    const fetchPromise = Promise.resolve(responseMock)
-    helpers.fetchWithTimeout = jest.fn().mockReturnValue(fetchPromise)
-    const wrapper = mount(<Provider>{children}</Provider>)
-
-    // Ensure the response is mapped to context and isLoading state is updated
-    await fetchPromise
-    wrapper.setProps()
-    await fetchPromise
-    wrapper.setProps()
-
-    return [wrapper, fetchPromise]
-}
-
 describe('Provider', () => {
 
     delete window.location
@@ -138,38 +88,9 @@ describe('Provider', () => {
         jest.resetAllMocks()
     })
 
-    it('should render loading state', () => {
-        // Arrange
-        const wrapper = mount(<Provider />)
-
-        // Assert
-        expect(wrapper.find('p').text()).toEqual('Loading...')
-    })
-
-    it('should redirect to error page', async () => {
-        // Arrange
-        const replaceMock = jest.fn()
-        window.location = { replace: replaceMock }
-        helpers.fetchWithTimeout = jest.fn().mockImplementation(() => { throw new Error() })
-        
-        // Act
-        mount(<Provider />)
-
-        // Assert
-        expect(window.location.replace).toHaveBeenCalledWith(FosteringErrorRoute)
-    })
-
-    it('should render itself', async () => {
-        // Arrange
-        const [wrapper] = await mountProviderWithCase()
-
-        // Assert
-        expect(wrapper.find('Provider').exists()).toBe(true)
-    })
-
     it('should map case to context', async () => {
         // Arrange
-        const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>)
+        const wrapper = mount(<Provider><Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer></Provider>)
 
         // Assert
         expect(wrapper.find('.name').text()).toEqual('firstName')
@@ -179,7 +100,7 @@ describe('Provider', () => {
 
     it('should map second applicant to context', async () => {
         // Arrange
-        const [wrapper] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>, { firstName: 'testName' })
+        const wrapper = mount(<Provider><Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer></Provider>)
 
         // Assert
         expect(wrapper.find('.second-applicant-name').text()).toEqual('testName')
@@ -188,14 +109,17 @@ describe('Provider', () => {
     describe('onChange', () => {
         it('should update state', async () => {
             // Arrange
-            const [wrapper, fetchPromise] = await mountProviderWithCase(<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>)
+            const wrapper = mount(
+				<Provider>
+					<Context.Consumer>{context => <TestComponent context={context} />}</Context.Consumer>
+				</Provider>
+			)
 
             // Assert
             expect(wrapper.find('.someOtherProperty').text()).toEqual('value')
             wrapper.find('#test-button').simulate('click')
             wrapper.update()
 
-            await fetchPromise
             expect(wrapper.find('.someOtherProperty').text()).toEqual('newValue')
         })
     })
@@ -203,10 +127,12 @@ describe('Provider', () => {
     describe('onChangeTarget', () => {
         it('should update state', async () => {
             // Arrange
-            const [wrapper, fetchPromise] = await mountProviderWithCase(
-                <Context.Consumer>
-                    {context => <TestComponent context={context} />}
-                </Context.Consumer>
+            const wrapper = mount(
+                <Provider>
+                    <Context.Consumer>
+                        {context => <TestComponent context={context} />}
+                    </Context.Consumer>
+                </Provider>
             )
 
             // Assert
@@ -214,7 +140,6 @@ describe('Provider', () => {
             wrapper.find('#test-button-applicant').simulate('click')
             wrapper.update()
 
-            await fetchPromise
             expect(wrapper.find('.name').text()).toEqual('newName')
         })
     })
@@ -222,10 +147,12 @@ describe('Provider', () => {
     describe('onChangeStatus', () => {
         it('should update status', async () => {
             // Arrange
-            const [wrapper, fetchPromise] = await mountProviderWithCase(
-                <Context.Consumer>
-                    {context => <TestComponent context={context} />}
-                </Context.Consumer>
+            const wrapper = mount(
+                <Provider>
+                    <Context.Consumer>
+                        {context => <TestComponent context={context} />}
+                    </Context.Consumer>
+                </Provider>
             )
 
             // Assert
@@ -234,7 +161,6 @@ describe('Provider', () => {
             wrapper.find('#test-button-status').simulate('click')
             wrapper.update()
 
-            await fetchPromise
             expect(wrapper.find('.status').text()).toEqual('1')
         })
     })

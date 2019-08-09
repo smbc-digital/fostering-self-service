@@ -1,6 +1,6 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
 import YourHealth from './index'
-import { Applicant } from 'components/Provider'
+import { Applicant } from 'constants'
 import * as helpers from '/helpers'
 import { ABOUT_YOUR_HEALTH, START_PAGE } from 'routes'
 
