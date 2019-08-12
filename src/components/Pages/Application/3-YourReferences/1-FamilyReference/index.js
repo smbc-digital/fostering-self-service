@@ -3,17 +3,28 @@ import PropTypes from 'prop-types'
 import { AlertForm, TextInputContainer, AddressPicker, Button, Anchor } from 'smbc-react-components'
 import { FIRST_PERSONAL_REFERENCE } from 'routes'
 import { Context } from 'context'
+import { ApplicationFormName, updateFormStatus, StageName } from '../../../../../helpers'
 
 const FamilyReference = ({ history }) => {
 	const { familyReference, secondApplicant, onChangeTarget } = useContext(Context)
 	const { firstName, lastName, relationshipToYou, emailAddress, phoneNumber, address } = familyReference
-	const [isValid, setIsValid] = useState(false)
+    const [isValid, setIsValid] = useState(false)
+    const context = useContext(Context)
 
 	useEffect(() => {
 		let valid = firstName.isValid && lastName.isValid && relationshipToYou.isValid && emailAddress.isValid && phoneNumber.isValid && address.isValid
 		setIsValid(valid)
-	}, [familyReference], [])
-	
+    }, [familyReference], [])
+
+    useEffect(() => {
+        updateFormStatus({
+            form: ApplicationFormName.FamilyReference,
+            stage: StageName.Application,
+            currentStatus:context.statuses.referencesStatus,
+            setStatus: newStatus => context.onChangeStatus('referencesStatus', newStatus)
+        })
+    }, [])
+
 	const onSubmit = event => {
 		event.preventDefault()
 		history.push(FIRST_PERSONAL_REFERENCE)
