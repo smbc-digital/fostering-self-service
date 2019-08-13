@@ -222,6 +222,13 @@ Array [
             Personal references
           </p>
         </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Councillors
+          </p>
+        </div>
         <span
           className="status-cant-start"
         >
@@ -499,6 +506,13 @@ Array [
         >
           <p>
             Personal references
+          </p>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Councillors
           </p>
         </div>
         <span

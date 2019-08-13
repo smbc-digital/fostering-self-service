@@ -16,7 +16,8 @@ import {
 	CHILDREN_UNDER_SIXTEEN_LIVING_AWAY, 
 	ABOUT_YOUR_GP, 
 	FAMILY_REFERENCE,
-	FOSTERING_HISTORY
+	FOSTERING_HISTORY,
+	RELATIONSHIP_TO_COUNCIL_EMPLOYEES
 } from 'routes'
 
 const TaskLink = ({ route, name, status, disabled }) => {
@@ -117,7 +118,8 @@ const FormLinks = ({ disabled, displayStatus }) => {
 const AdditionalInformationFormLinks = ({ disabled }) => {
 	const { statuses: { 
 			gpDetailsStatus,
-			referencesStatus
+			referencesStatus,
+			councillorsOrEmployeesStatus
 		}
 	} = useContext(Context)
 	
@@ -134,6 +136,12 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 			route={FAMILY_REFERENCE}
 			status={referencesStatus}
 			name='Personal references'
+			disabled={disabled}
+		/>
+		<TaskLink
+			route={RELATIONSHIP_TO_COUNCIL_EMPLOYEES}
+			status={councillorsOrEmployeesStatus}
+			name='Councillors'
 			disabled={disabled}
 		/>
 		</Fragment>
