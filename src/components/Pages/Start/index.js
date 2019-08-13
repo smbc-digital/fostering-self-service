@@ -153,7 +153,6 @@ const Start = () => {
 				left: 0,
 				behavior: 'smooth'
 			})
-			console.log(resultsRef)
 	}, [])
 
 	const tasks = [
