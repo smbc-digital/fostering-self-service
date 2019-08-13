@@ -19,16 +19,43 @@ const reduceMandatoryAddressProperties = object =>  {
 	}
 }
 
+const isObject =  function(obj) {
+	var type = typeof obj
+	return type === 'function' || type === 'object' && !!obj
+}
+
+const reduceAddressHistoryProperties = (object, acc = {}, propertyMap = false) =>
+  Object.keys(object).reduce((acc, property) => {
+	if (isObject(object[property])) {
+		const reduced = reduceAddressHistoryProperties(object[property], {}, true)
+		return propertyMap ? {[property]: {...reduced}, ...acc} : {[property]: {values: {...reduced}}, ...acc}
+	}
+
+    return {
+		...acc,
+		[property]: {
+			value:
+			object[property] === null || object[property] === undefined
+				? ''
+				: object[property],
+			isValid: object[property] !== null
+		}
+	}
+  }, acc)
+
 const mapCaseToContext = ({ fosteringCase: caseResponse, country, ethnicity, nationality }) => {
 	const statuses = {...caseResponse.statuses}
 
 	let secondApplicantDetails = undefined
 	delete caseResponse.statuses
 	const firstApplicantDetails = reduceProperties(caseResponse.firstApplicant)
+	
+	firstApplicantDetails.addressHistory = [reduceAddressHistoryProperties(caseResponse.firstApplicant.addressHistory)]
 	delete caseResponse.firstApplicant
 
 	if (caseResponse.secondApplicant !== null) {
 		secondApplicantDetails = reduceProperties(caseResponse.secondApplicant)
+		secondApplicantDetails.addressHistory = [reduceAddressHistoryProperties(caseResponse.secondApplicant.addressHistory)]
 	}
 	delete caseResponse.secondApplicant
 

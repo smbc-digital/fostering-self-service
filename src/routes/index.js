@@ -9,7 +9,7 @@ import YourHealth from 'components/Pages/HomeVisit/6-YourHealth'
 import { AboutYourInterest, TypesOfFostering } from 'components/Pages/HomeVisit/7-InterestInFostering'
 import { AnyUnderSixteens, AboutUnderSixteens, AnyOverSixteens, AboutOverSixteens } from 'components/Pages/HomeVisit/8-ChildrenAwayFromHome'
 import { AnyPeopleInYourHousehold, PeopleInYourHousehold, DoYouHaveAnyPets } from 'components/Pages/HomeVisit/10-YourHousehold'
-import { YourGpDetails } from 'components/Pages/Application'
+import { YourGpDetails, YourAddressHistory } from 'components/Pages/Application'
 import { FamilyReference, FirstPersonalReference, SecondPersonalReference } from 'components/Pages/Application/3-YourReferences'
 
 export const START_PAGE = '/fostering/your-fostering-journey'
@@ -32,6 +32,7 @@ export const CHILDREN_UNDER_SIXTEEN_LIVING_AWAY = '/fostering/children-under-six
 export const ABOUT_CHILDREN_UNDER_SIXTEEN_LIVING_AWAY = '/fostering/about-children-under-sixteen-living-away'
 export const CHILDREN_OVER_SIXTEEN_LIVING_AWAY = '/fostering/children-over-sixteen-living-away'
 export const ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY = '/fostering/about-children-over-sixteen-living-away'
+export const ADDRESS_HISTORY = '/fostering/address-history'
 export const ABOUT_YOUR_GP = '/fostering/about-your-gp'
 export const FAMILY_REFERENCE = '/fostering/family-reference'
 export const FIRST_PERSONAL_REFERENCE = '/fostering/first-personal-reference'
@@ -150,6 +151,12 @@ export const RouterConfig = [
         path: ABOUT_CHILDREN_OVER_SIXTEEN_LIVING_AWAY,
         component: AboutOverSixteens,
         stage: StageName.HomeVisit,
+        bothApplicants: true
+    },
+    {
+        path: ADDRESS_HISTORY,
+        component: YourAddressHistory,
+        stage: StageName.Application,
         bothApplicants: true
     },
     {
