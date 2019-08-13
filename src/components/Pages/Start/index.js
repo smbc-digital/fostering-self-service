@@ -123,7 +123,7 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 	
 	return (
 		<Fragment>
-		<p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>
+		<p>After your home visit, you must give us more information so that we can carry out personal checks and contact your referees.</p>
 		<TaskLink
 			route={ABOUT_YOUR_GP}
 			status={gpDetailsStatus}
@@ -153,6 +153,7 @@ const Start = () => {
 				left: 0,
 				behavior: 'smooth'
 			})
+			console.log(resultsRef)
 	}, [])
 
 	const tasks = [
