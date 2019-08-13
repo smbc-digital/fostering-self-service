@@ -13,7 +13,7 @@ import SubmitButton from 'components/SubmitButton'
 const YourAddressHistory = (match) => {
 	const context = useContext(Context)
 	const currentApplicant = getCurrentApplicant(match)
-	const { onChange, country, secondApplicant } = context
+	const { onChange, onChangeTarget, country, secondApplicant } = context
 	const { addressHistory } = context[currentApplicant]
 	const [isLoading] = useState(false)
 
@@ -27,31 +27,35 @@ const YourAddressHistory = (match) => {
     }, [])
 
 	const onAddressChange = (values, isValid) => {
-        onChange({
+        onChangeTarget({
             target: {
                 name: 'addressHistory',
                 value: values
             }
-        }, isValid)
+        }, isValid, currentApplicant)
 	}
 	
 	const onSaveAndGoBackClick = () => {
 
 	}
 
-	const renderComponent = (onChange, firstRef, values, index) => {
-		const onComponentChange = ({ target: { name, value }}, isValid) => {
-			let newValues = { ...values, [name]: value }
+	const renderComponent = (onChange, firstInputRef, values, index) => {
+		const onComponentChange = (data) => {
+			let newValues = { ...values, [index]: data }
 			
-            onChange(newValues, isValid, index)
+            onChange({
+				target: {
+					name: 'addressHistory',
+					value: newValues
+				}
+			}, true)
 		}
 		
-		console.log(values)
 		return (
-			<AddressHistoryDetails 
+			<AddressHistoryDetails
 				options={country}
-				dateFrom={values[index].dateFrom}
-				address={values[index].address}
+				dateFrom={values.dateFrom}
+				address={values.address}
 				addressHeader='Tell us your previous address'
 				dateHeader='Tell us when you moved into this address'
 				onChange={onComponentChange}
@@ -68,7 +72,7 @@ const YourAddressHistory = (match) => {
 			removeItemMessage='Remove this address'
 			showAddMoreButton={true}
 			renderComponent={renderComponent}
-			values={addressHistory[0]}
+			values={addressHistory}
 		/>
 		{/* <SubmitButton
 			currentApplicant={currentApplicant}

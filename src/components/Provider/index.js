@@ -24,11 +24,11 @@ const isObject =  function(obj) {
 	return type === 'function' || type === 'object' && !!obj
 }
 
-const reduceAddressHistoryProperties = (object, acc = {}, propertyMap = false) =>
+const reduceAddressHistoryProperties = (object, acc = {}) =>
   Object.keys(object).reduce((acc, property) => {
 	if (isObject(object[property])) {
-		const reduced = reduceAddressHistoryProperties(object[property], {}, true)
-		return propertyMap ? {[property]: {...reduced}, ...acc} : {[property]: {values: {...reduced}}, ...acc}
+		const reduced = reduceAddressHistoryProperties(object[property])
+		return {[property]: {...reduced}, ...acc}
 	}
 
     return {
@@ -50,12 +50,12 @@ const mapCaseToContext = ({ fosteringCase: caseResponse, country, ethnicity, nat
 	delete caseResponse.statuses
 	const firstApplicantDetails = reduceProperties(caseResponse.firstApplicant)
 	
-	firstApplicantDetails.addressHistory = [reduceAddressHistoryProperties(caseResponse.firstApplicant.addressHistory)]
+	firstApplicantDetails.addressHistory = Object.values(reduceAddressHistoryProperties(caseResponse.firstApplicant.addressHistory))
 	delete caseResponse.firstApplicant
 
 	if (caseResponse.secondApplicant !== null) {
 		secondApplicantDetails = reduceProperties(caseResponse.secondApplicant)
-		secondApplicantDetails.addressHistory = [reduceAddressHistoryProperties(caseResponse.secondApplicant.addressHistory)]
+		secondApplicantDetails.addressHistory = Object.values(reduceAddressHistoryProperties(caseResponse.secondApplicant.addressHistory))
 	}
 	delete caseResponse.secondApplicant
 
