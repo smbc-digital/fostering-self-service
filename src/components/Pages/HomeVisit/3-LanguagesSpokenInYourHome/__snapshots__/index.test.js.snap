@@ -55,6 +55,7 @@ Array [
       maxLength="500"
       name="otherLanguages"
       onChange={[Function]}
+      optional="true"
       value="Welsh"
     />
     <p
