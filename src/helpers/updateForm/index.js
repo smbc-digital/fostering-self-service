@@ -26,7 +26,8 @@ const HomeVisitFormName = {
 
 const ApplicationFormName = {
     References: 0,
-    GpDetails: 1
+    GpDetails: 1,
+    Councillors: 2
 }
 
 const getHomeVisitUpdateEndpoint = form => {
@@ -60,6 +61,8 @@ const getApplicationUpdateEndpoint = form => {
             return '/fostering/application/references'
         case ApplicationFormName.GpDetails:
             return '/fostering/application/gp-details'
+        case ApplicationFormName.Councillors:
+            return '/fostering/application/councillors-details'
         default:
             throw new Error('No matching endpoint for given form.')
     }
