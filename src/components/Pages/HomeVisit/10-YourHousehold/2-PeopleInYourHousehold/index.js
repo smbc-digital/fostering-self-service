@@ -77,6 +77,8 @@ const PeopleInYourHousehold = ({ history }) => {
                     maxLength='60'
                     value={values.gender}
                     onChange={onComponentChange}
+                    optional={true}
+                    hideOptional={true}
                 />
                 <TextInputContainer
                     label='Relationship to you'

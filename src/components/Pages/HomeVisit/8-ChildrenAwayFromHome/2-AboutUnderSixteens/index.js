@@ -117,6 +117,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                     maxLength='60'
                     value={values.gender}                   
                     onChange={onComponentChange}
+                    optional={true}
                     hideOptional={true}
                 />
                 <MemorableDateInputContainer

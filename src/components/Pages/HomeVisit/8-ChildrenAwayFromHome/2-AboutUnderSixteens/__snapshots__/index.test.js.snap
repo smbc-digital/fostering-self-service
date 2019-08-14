@@ -72,14 +72,14 @@ Array [
       }
     />
     <label
-      className=""
+      className="optional"
       htmlFor="gender"
     >
       Gender
     </label>
     <input
-      aria-label="Gender"
-      aria-live="off"
+      aria-label=""
+      aria-live=""
       className=""
       id="gender"
       inputMode={undefined}
