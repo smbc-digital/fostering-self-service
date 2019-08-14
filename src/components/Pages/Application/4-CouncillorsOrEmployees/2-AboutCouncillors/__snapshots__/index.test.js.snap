@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutCouncillors snapshot should render correctly 1`] = `
+Array [
+  <h1>
+    Your fostering journey
+  </h1>,
+  <h2>
+    Tell us about the local councillor or council employee who you have a personal relationship with
+  </h2>,
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      className=""
+      htmlFor="councillorName"
+    >
+      Name of councillor or council employee
+    </label>
+    <input
+      aria-label="Name of councillor or council employee"
+      aria-live="off"
+      className=""
+      id="councillorName"
+      inputMode={undefined}
+      maxLength="60"
+      min={undefined}
+      name="councillorName"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value={undefined}
+    />
+    <label
+      className=""
+      htmlFor="relationship"
+    >
+      Tell us how you know this person
+    </label>
+    <p
+      className="smallerText"
+    >
+      Your description can be up to 500 characters
+    </p>
+    <textarea
+      aria-label={undefined}
+      aria-live="off"
+      className={
+        Array [
+          "char-limit",
+        ]
+      }
+      id="relationship"
+      maxLength={500}
+      name="relationship"
+      onChange={[Function]}
+      value=""
+    />
+    <p
+      className="smallerText"
+    >
+      You have 
+      500
+       characters remaining
+    </p>
+    <a
+      className="anchor-with-icon"
+      href="#"
+      onClick={[Function]}
+    >
+       
+      <i
+        className="fa fa-plus-square fa-lg"
+      />
+      Add another person
+    </a>
+    <button
+      className="button-primary"
+      disabled={true}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <button
+      className="button-disabled left-chevron"
+      disabled={true}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
+`;

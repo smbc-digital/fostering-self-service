@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { ComponentsList, TextInputContainer, TextAreaInputContainer, Button } from 'smbc-react-components'
 import { Context } from 'context'
 import { getCurrentApplicant, updateApplicationForm, ApplicationFormName } from 'helpers'
@@ -136,6 +137,11 @@ const AboutCouncillors = ({ match, history }) => {
 			</form>
 		</Fragment>
 	)
+}
+
+AboutCouncillors.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object
 }
 
 export default AboutCouncillors

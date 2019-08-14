@@ -7,45 +7,45 @@ describe('AboutCouncillors', () => {
     const mockOnChangeTarget = jest.fn()
     const mockOnChangeStatus = jest.fn()
 
-	beforeEach(() => {
+    beforeEach(() => {
         helpers.updateApplicationForm = jest.fn().mockReturnValue(Promise.resolve(0))
 
-		useContextMock.mockReturnValue({
-			firstApplicant: {
-				councillorRelationshipDetails: {
-					value: [],
-					isValid: false
-				}
-			},
+        useContextMock.mockReturnValue({
+            firstApplicant: {
+                councillorRelationshipDetails: {
+                    value: [],
+                    isValid: false
+                }
+            },
             onChangeTarget: mockOnChangeTarget,
             onChangeStatus: mockOnChangeStatus
-		})
-	})
+        })
+    })
 
-	const nextPageTestInputs = [
-		{
-			expectedRoute: START_PAGE,
+    const nextPageTestInputs = [
+        {
+            expectedRoute: START_PAGE,
             matchParams: ['second-applicant'],
             secondApplicant: {
                 councillorRelationshipDetails: {
                     value: []
                 }
             }
-		},
+        },
         {
             expectedRoute: `${RELATIONSHIP_TO_COUNCIL_EMPLOYEES}/second-applicant`,
             matchParams: [],
             secondApplicant: {}
         },
-		{
-			expectedRoute: START_PAGE,
+        {
+            expectedRoute: START_PAGE,
             matchParams: [],
             secondApplicant: undefined
-		}
-	]
+        }
+    ]
 
-	nextPageTestInputs.forEach(({ expectedRoute, matchParams, secondApplicant }) => {
-		it('should push to next page', async () => {
+    nextPageTestInputs.forEach(({ expectedRoute, matchParams, secondApplicant }) => {
+        it('should push to next page', async () => {
             // Arrange
             useContextMock.mockReturnValue({
                 firstApplicant: {
@@ -58,24 +58,24 @@ describe('AboutCouncillors', () => {
                 onChangeTarget: mockOnChangeTarget,
                 onChangeStatus: jest.fn()
             })
-			const match = {
-				params: matchParams
-			}
+            const match = {
+                params: matchParams
+            }
 
-			const history = {
-				push: jest.fn()
-			}
+            const history = {
+                push: jest.fn()
+            }
 
-			// Act
-			const wrapper = mount(<AboutCouncillors history={history} match={match} />)
-			wrapper.find('form').simulate('submit')
+            // Act
+            const wrapper = mount(<AboutCouncillors history={history} match={match} />)
+            wrapper.find('form').simulate('submit')
             await Promise.resolve()
 
-			// Assert
-			expect(history.push).toHaveBeenCalledWith(expectedRoute)
-		})
+            // Assert
+            expect(history.push).toHaveBeenCalledWith(expectedRoute)
+        })
     })
-    
+
     it('should call updateApplicationForm', async () => {
         // Arrange        
         const match = {
@@ -95,7 +95,7 @@ describe('AboutCouncillors', () => {
         expect(helpers.updateApplicationForm).toHaveBeenCalled()
     })
 
-    it ('should push to error page on submit', () => {
+    it('should push to error page on submit', () => {
         // Arrange
         const match = {
             params: []
@@ -115,7 +115,7 @@ describe('AboutCouncillors', () => {
         expect(history.push).toHaveBeenCalledWith('/error')
     })
 
-    it ('should call onChangeStatus', async () => {
+    it('should call onChangeStatus', async () => {
         // Arrange 
         const match = {
             params: []
@@ -212,5 +212,70 @@ describe('AboutCouncillors', () => {
         // Assert
         expect(wrapper.find('Button').first().props().isValid).toBe(false)
         expect(wrapper.find('Button').last().props().isValid).toBe(false)
+    })
+
+    it('should call onChangeTarget', () => {
+        // Arrange
+        const match = {
+            params: []
+        }
+
+        const history = {
+            push: jest.fn()
+        }
+
+        // Act
+        const wrapper = mount(<AboutCouncillors match={match} history={history} />)
+        wrapper.find('input#councillorName').first().simulate('change', { target: { name: 'councillorName', value: 'test'}})
+        wrapper.find('textarea#relationship').first().simulate('change', { target: { name: 'relationship', value: 'test'}})
+
+        // Assert
+        expect(mockOnChangeTarget).toHaveBeenCalledTimes(2)
+
+    })
+
+    it ('should call updateApplicationForm with start page', async () => {
+        // Arrange
+        const match = {
+            params: []
+        }
+
+        const history = {
+            push: jest.fn()
+        }
+
+        useContextMock.mockReturnValue({
+            firstApplicant: {
+                councillorRelationshipDetails: {
+                    value: [
+                        {
+                            relationship: 'test',
+                            councillorName: 'test'
+                        }
+                    ],
+                    isValid: true
+                }
+            },
+            onChangeTarget: mockOnChangeTarget,
+            onChangeStatus: mockOnChangeStatus
+        })
+
+        // Act
+        const wrapper = mount(<AboutCouncillors match={match} history={history} />)
+        wrapper.find('Button').last().simulate('click')
+        await Promise.resolve()
+
+        // Assert
+        expect(helpers.updateApplicationForm).toHaveBeenCalled()
+    })
+
+    describe('snapshot', () => {
+        it('should render correctly', () => {
+            const tree = renderer
+                .create(<AboutCouncillors history={{}} match={{ params: [] }} />)
+                .toJSON()
+
+            expect(tree).toMatchSnapshot()
+        })
     })
 })
