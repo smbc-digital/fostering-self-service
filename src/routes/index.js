@@ -11,7 +11,7 @@ import { AnyUnderSixteens, AboutUnderSixteens, AnyOverSixteens, AboutOverSixteen
 import { AnyPeopleInYourHousehold, PeopleInYourHousehold, DoYouHaveAnyPets } from 'components/Pages/HomeVisit/10-YourHousehold'
 import { YourGpDetails } from 'components/Pages/Application'
 import { FamilyReference, FirstPersonalReference, SecondPersonalReference } from 'components/Pages/Application/3-YourReferences'
-import { DoYouKnowCouncillors } from 'components/Pages/Application/4-CouncillorsOrEmployees'
+import { DoYouKnowCouncillors, AboutCouncillors } from 'components/Pages/Application/4-CouncillorsOrEmployees'
 
 export const START_PAGE = '/fostering/your-fostering-journey'
 export const KNOWN_BY_ANOTHER_NAME = '/fostering/known-by-another-name'
@@ -177,6 +177,12 @@ export const RouterConfig = [
     {
         path: RELATIONSHIP_TO_COUNCIL_EMPLOYEES,
         component: DoYouKnowCouncillors,
+        stage: StageName.Application,
+        bothApplicants: true
+    },
+    {
+        path: ABOUT_RELATIONSHIP_TO_COUNCIL_EMPLOYEES,
+        component: AboutCouncillors,
         stage: StageName.Application,
         bothApplicants: true
     }

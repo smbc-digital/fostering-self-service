@@ -51,6 +51,7 @@ const PeopleInYourHousehold = ({ history }) => {
         return (
             <Fragment>
                 <TextInputContainer
+                    inputRef={firstInputRef}
                     label='First name'
                     id='firstName'
                     type='text'

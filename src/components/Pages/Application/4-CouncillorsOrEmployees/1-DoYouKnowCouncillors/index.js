@@ -39,6 +39,7 @@ const DoYouKnowCouncillors = ({ history, match }) => {
     }, [])
 
     const hasContactWithCouncillorRadioValue = `${hasContactWithCouncillor.value}`
+    const isSavingAllowed = !secondApplicant || currentApplicant === Applicant.SecondApplicant
 
     const options = [
         {
@@ -65,6 +66,7 @@ const DoYouKnowCouncillors = ({ history, match }) => {
             })
             onChangeStatus('councillorsOrEmployeesStatus', status)
             history.push(nextPageRoute)
+            setIsLoading(false)
         } catch(error) {
             history.push('/error')
         }
@@ -84,13 +86,12 @@ const DoYouKnowCouncillors = ({ history, match }) => {
             return
         }
 
-        let nextPageRoute = START_PAGE
-
         if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
-            nextPageRoute = `${RELATIONSHIP_TO_COUNCIL_EMPLOYEES}/second-applicant`
+            history.push(`${RELATIONSHIP_TO_COUNCIL_EMPLOYEES}/second-applicant`)
+            return
         }
 
-        handleFormUpdate(nextPageRoute)
+        handleFormUpdate(START_PAGE)
     }
 
     const onSaveAndGoBackClick = event => {
@@ -106,20 +107,20 @@ const DoYouKnowCouncillors = ({ history, match }) => {
             <form onSubmit={onSubmit}>
                 <RadioInputsContainer
                     displayHeading
-                    header='Do you have a personal relationship or any contact with a local councillor or council employee?'
+                    header='Do you have a personal relationship with a local councillor or council employee?'
                     value={hasContactWithCouncillorRadioValue}
                     onChange={(event, isValid) => onChangeTarget(event, isValid, currentApplicant)}
                     options={options}
                 />
                 <Button
-                    label={hasContactWithCouncillorRadioValue === 'false' ? 'Save and next step' : 'Next step'}
+                    label={hasContactWithCouncillorRadioValue === 'false' && isSavingAllowed ? 'Save and next step' : 'Next step'}
                     isValid={!saveAndGoBackClicked && hasContactWithCouncillor.isValid}
                     isLoading={isLoading && !saveAndGoBackClicked}
                 />
                 <Anchor label='Back' history={history} />
-                <Button
+                {isSavingAllowed && <Button
                     label="Save and go back to fostering area"
-                    isValid={!isLoading && !saveAndGoBackClicked && hasContactWithCouncillorRadioValue === 'false'  && hasContactWithCouncillor.isValid}
+                    isValid={!isLoading && !saveAndGoBackClicked && hasContactWithCouncillorRadioValue === 'false'  && hasContactWithCouncillor.isValid && isSavingAllowed}
                     isLoading={isLoading && saveAndGoBackClicked}
                     colour={hasContactWithCouncillorRadioValue !== 'false' ? 'disabled' : 'inverted'}
                     onButtonClick={event => {
@@ -128,7 +129,7 @@ const DoYouKnowCouncillors = ({ history, match }) => {
                         }
                     }
                     useLeftChevron
-                />
+                />}
             </form>
         </Fragment>
     )

@@ -89,6 +89,7 @@ const AboutOverSixteens = ({history, match}) => {
         return (
             <Fragment>
                 <TextInputContainer
+                    inputRef={firstInputRef}
                     label='First name'
                     id='firstName'
                     type='text'
