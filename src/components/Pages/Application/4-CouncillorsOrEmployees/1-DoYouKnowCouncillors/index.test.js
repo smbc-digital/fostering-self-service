@@ -131,7 +131,7 @@ describe('DoYouKnowCouncillors', () => {
             await Promise.resolve()
 
             // Assert
-            expect(history.push).toBeCalledWith(expectedRoute)
+            expect(history.push).toHaveBeenCalledWith(expectedRoute)
         })
     })
 
@@ -232,7 +232,7 @@ describe('DoYouKnowCouncillors', () => {
         helpers.updateFormStatus = jest.fn() 
 
         // Act
-        const wrapper = mount(<DoYouKnowCouncillors history={history} match={match} />)
+        mount(<DoYouKnowCouncillors history={history} match={match} />)
 
         // Assert
         expect(helpers.updateFormStatus).toHaveBeenCalled()
@@ -240,7 +240,11 @@ describe('DoYouKnowCouncillors', () => {
 
     describe('snapshot', () => {
         it('should render correctly', () => {
+            const tree = renderer
+                .create(<DoYouKnowCouncillors history={{}} match={{ params: [] }} />)
+                .toJSON()
 
+            expect(tree).toMatchSnapshot()
         })
     })
 })

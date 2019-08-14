@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { Anchor, RadioInputsContainer, Button } from 'smbc-react-components'
 import { Context } from 'context'
 import { 
@@ -65,7 +66,6 @@ const DoYouKnowCouncillors = ({ history, match }) => {
             onChangeStatus('councillorsOrEmployeesStatus', status)
             history.push(nextPageRoute)
         } catch(error) {
-            console.log('YOU HAVE A ERROR, DIK DIK: ', error)
             history.push('/error')
         }
     }
@@ -132,6 +132,11 @@ const DoYouKnowCouncillors = ({ history, match }) => {
             </form>
         </Fragment>
     )
+}
+
+DoYouKnowCouncillors.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object
 }
 
 export default DoYouKnowCouncillors
