@@ -57,6 +57,8 @@ const getHomeVisitUpdateEndpoint = form => {
 
 const getApplicationUpdateEndpoint = form => {
     switch (form) {
+        case ApplicationFormName.AddressHistory:
+            return '/fostering/application/address-history'
         case ApplicationFormName.References:
             return '/fostering/application/references'
         case ApplicationFormName.GpDetails:
