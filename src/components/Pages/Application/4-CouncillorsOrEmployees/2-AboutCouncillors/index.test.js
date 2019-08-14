@@ -153,7 +153,7 @@ describe('AboutCouncillors', () => {
         expect(wrapper.find('Button').first().props().isLoading).toBe(true)
     })
 
-    it('should set isValid', async () => {
+    it('should set isValid', () => {
         // Arrange
         const match = {
             params: []
@@ -167,7 +167,7 @@ describe('AboutCouncillors', () => {
             firstApplicant: {
                 councillorRelationshipDetails: {
                     value: [{
-                        relationships: 'somthing great',
+                        relationship: 'somthing great',
                         councillorName: 'some great name'
                     }],
                     isValid: true
@@ -179,11 +179,38 @@ describe('AboutCouncillors', () => {
 
         // Act
         const wrapper = mount(<AboutCouncillors match={match} history={history} />)
-        wrapper.find('form').simulate('submit')
-        await Promise.resolve()
 
         // Assert
         expect(wrapper.find('Button').first().props().isValid).toBe(true)
         expect(wrapper.find('Button').last().props().isValid).toBe(true)
+    })
+
+    it('should set isValid to false', () => {
+        // Arrange
+        const match = {
+            params: []
+        }
+
+        const history = {
+            push: jest.fn()
+        }
+
+        useContextMock.mockReturnValue({
+            firstApplicant: {
+                councillorRelationshipDetails: {
+                    value: [],
+                    isValid: false
+                }
+            },
+            onChangeTarget: mockOnChangeTarget,
+            onChangeStatus: mockOnChangeStatus
+        })
+
+        // Act
+        const wrapper = mount(<AboutCouncillors match={match} history={history} />)
+
+        // Assert
+        expect(wrapper.find('Button').first().props().isValid).toBe(false)
+        expect(wrapper.find('Button').last().props().isValid).toBe(false)
     })
 })

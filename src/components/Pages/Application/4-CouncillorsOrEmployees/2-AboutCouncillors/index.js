@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { ComponentsList, TextInputContainer, TextAreaInputContainer, Button } from 'smbc-react-components'
 import { Context } from 'context'
 import { getCurrentApplicant, updateApplicationForm, ApplicationFormName } from 'helpers'
@@ -6,6 +6,7 @@ import { Applicant } from 'constants'
 import { RELATIONSHIP_TO_COUNCIL_EMPLOYEES, START_PAGE } from 'routes'
 
 const AboutCouncillors = ({ match, history }) => {
+	const [isValid, setIsValid] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)
 	const currentApplicant = getCurrentApplicant(match)
@@ -17,6 +18,16 @@ const AboutCouncillors = ({ match, history }) => {
 		onChangeStatus
     } = useContext(Context)
     const isSavingAllowed = !secondApplicant || currentApplicant === Applicant.SecondApplicant
+
+	useEffect(() => {
+		let checkIsValid = councillorRelationshipDetails.value.length > 0 && councillorRelationshipDetails.value.every( _ => {
+			return _.relationship !== '' 
+			&& typeof _.relationship === 'string'
+			&& _.councillorName !== ''
+			&& typeof _.councillorName === 'string'
+		})
+		setIsValid(checkIsValid)
+	}, [councillorRelationshipDetails])
 
 	const onCouncillorChange = (values, isValid) => {
 		onChangeTarget(
@@ -107,14 +118,14 @@ const AboutCouncillors = ({ match, history }) => {
 				/>
                 <Button 
                     label={isSavingAllowed ? 'Save and next step' : 'Next step'} 
-                    isValid={true} 
+                    isValid={isValid} 
                     isLoading={isLoading && !saveAndGoBackClicked} 
                 />
                 {isSavingAllowed && <Button
                     label="Save and go back to fostering area"
-                    isValid={!isLoading && !saveAndGoBackClicked}
+                    isValid={isValid}
                     isLoading={isLoading && saveAndGoBackClicked}
-                    colour={false ? 'disabled' : 'inverted'}
+                    colour={!isValid ? 'disabled' : 'inverted'}
                     onButtonClick={event => {
                             setSaveAndGoBackClicked(true)
                             onSaveAndGoBackClick(event)
