@@ -45,14 +45,14 @@ Array [
         className="additional-list-component"
       >
         <label
-          className=""
+          className="optional"
           htmlFor="anotherName"
         >
           Previous name
         </label>
         <input
-          aria-label="Previous name"
-          aria-live="off"
+          aria-label=""
+          aria-live=""
           className=""
           id="anotherName"
           inputMode={undefined}
