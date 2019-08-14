@@ -10,6 +10,7 @@ import {
 describe('DoYouKnowCouncillors', () => {
 
     const onChangeStatusMock = jest.fn()
+    const onChangeTargetMock = jest.fn()
 
     beforeEach(() => {
         useContextMock.mockReturnValue({
@@ -19,7 +20,7 @@ describe('DoYouKnowCouncillors', () => {
                     isValid: false
                 }
             },
-            onChangeTarget: jest.fn(),
+            onChangeTarget: onChangeTargetMock,
             onChangeStatus: onChangeStatusMock,
             statuses: {
                 councillorsOrEmployeesStatus: 0
@@ -236,6 +237,24 @@ describe('DoYouKnowCouncillors', () => {
 
         // Assert
         expect(helpers.updateFormStatus).toHaveBeenCalled()
+    })
+
+    it('should call onChangeTarget', () => {
+        // Arrange 
+        const history = {
+            push: jest.fn()
+        }
+
+        const match = {
+            params: []
+        }
+
+        // Act
+        const wrapper = mount(<DoYouKnowCouncillors history={history} match={match} />)
+        wrapper.find('input').first().simulate('change')
+
+        // Assert
+        expect(onChangeTargetMock).toHaveBeenCalled()
     })
 
     describe('snapshot', () => {
