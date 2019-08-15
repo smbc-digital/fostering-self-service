@@ -48,7 +48,6 @@ const PeopleInYourHousehold = ({ history }) => {
             onChange(newValues, isValid, index)
         }
 
-        console.log(values)
         return (
             <Fragment>
                 <TextInputContainer

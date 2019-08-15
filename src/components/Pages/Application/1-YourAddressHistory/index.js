@@ -1,22 +1,23 @@
 import React, { useContext, useEffect, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { AddressHistoryDetails, ComponentsList, TextInputContainer, SelectInputContainer, MemorableDateInputContainer } from 'smbc-react-components'
+import { ComponentsList, TextInputContainer, SelectInputContainer, MemorableDateInputContainer, AlertForm } from 'smbc-react-components'
 import { 
     ApplicationFormName, 
     getCurrentApplicant, 
 	updateFormStatus,
-	updateAddressHistory,
-    StageName 
+	StageName,
+	updateApplicationForm 
 } from 'helpers'
-import { START_PAGE } from 'routes'
 import { Context } from 'context'
+import { START_PAGE, ABOUT_YOUR_GP, ADDRESS_HISTORY } from 'routes'
+import { Applicant } from 'constants'
 import moment from 'moment'
 import SubmitButton from 'components/SubmitButton'
 
-const YourAddressHistory = (match) => {
+const YourAddressHistory = ({history, match}) => {
 	const context = useContext(Context)
 	const currentApplicant = getCurrentApplicant(match)
-	const { onChangeTarget, country, secondApplicant } = context
+	const { onChangeTarget, onChangeStatus, country, secondApplicant } = context
 	const { addressHistory, firstName, lastName } = context[currentApplicant]
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -29,7 +30,7 @@ const YourAddressHistory = (match) => {
         })
     }, [])
 
-	const onAddressChange = (values, isValid, index) => {
+	const onAddressChange = (values, isValid) => {
         onChangeTarget({
             target: {
                 name: 'addressHistory',
@@ -45,21 +46,26 @@ const YourAddressHistory = (match) => {
 
 		var allFieldsValid = addressHistory.value.length > 1 
 			? 
-			addressHistory.value.every((addressData) => {
-				return addressData.dateFrom.isValid && addressData.address.addressLine1.isValid && addressData.address.town.isValid && addressData.address.country.isValid
+			addressHistory.value.every((addressData, index) => {
+				if(index == 0){
+					return addressData.dateFrom.isValid
+				} else {
+					if(addressData.dateFrom === undefined || addressData.address === undefined){
+						return false
+					} else {
+						return addressData.dateFrom.isValid && addressData.address.addressLine1.isValid && addressData.address.town.isValid && addressData.address.country.isValid
+					}
+				}
 				})
 			: true
 
-		console.log(allFieldsValid)
-		console.log(dateInLastTenYears)
 		return allFieldsValid && dateInLastTenYears
 	}
 
 	const handleFormUpdate = async nextPageRoute => {
-        setIsLoading(true)
-
+		setIsLoading(true)
         try {
-            const status = await updateAddressHistory(ApplicationFormName.AddressHistory, {
+            const status = await updateApplicationForm(ApplicationFormName.AddressHistory, {
                 firstApplicant: context.firstApplicant,
                 secondApplicant: context.secondApplicant
             })
@@ -78,9 +84,20 @@ const YourAddressHistory = (match) => {
         await handleFormUpdate(START_PAGE)
 	}
 
+	const onSubmit = (event) => {
+		event.preventDefault()
+
+        if (currentApplicant === Applicant.FirstApplicant && secondApplicant) {
+			handleFormUpdate(`${ADDRESS_HISTORY}/second-applicant`)
+			return
+        }
+
+        handleFormUpdate(ABOUT_YOUR_GP)
+	}
+
 	const renderComponent = (onChange, firstInputRef, values, index) => {
 		const onComponentChange = ({ target: { name, value }}, isValid) => {
-			let newValues = ''
+			let newValues = {}
 			if(name === 'dateFrom'){
 				newValues = {
 					...values,
@@ -108,69 +125,81 @@ const YourAddressHistory = (match) => {
 			value: values.dateFrom === undefined ? '' : moment(values.dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).format('YYYY-M-D'),
 			isValid: values.dateFrom === undefined ? false : values.dateFrom.isValid
 		}
+
+		const dateMinusTenYears = moment().subtract(10, 'years').format('MMMM YYYY')
+		const alertContent = 'You must tell us where you’ve lived since ' + `${dateMinusTenYears}` + ', starting with the most recent address and working backwards. If you’ve been a student during the last 10 years, you’ll need to enter all of your term-time addresses. If you’ve lived in emergency accommodation, you’ll need to enter the name and address of the shelter you were living in.'
 		
 		return (
 			<Fragment>
-				<h3>Tell us your previous address</h3>
-				<TextInputContainer
-					label="Address line 1"
-					name='addressLine1'
-					type="text"
-					id='addressLine1'
-					maxLength={60}
-					value={values.address.addressLine1.value}
-					optional={false}
-					onChange={onComponentChange}	
-				/>
-				<TextInputContainer
-					label="Address line 2"
-					name='addressLine2'
-					type="text"
-					id='addressLine2'
-					maxLength={60}
-					value={values.address.addressLine2.value}
-					optional
-					onChange={onComponentChange}
-				/>
-				<TextInputContainer
-					label="City/town"
-					name='town'
-					type="text"
-					id='town'
-					maxLength={60}
-					value={values.address.town.value}
-					optional={false}
-					onChange={onComponentChange}
-				/>
-				<TextInputContainer
-					label="County/province"
-					name='county'
-					type="text"
-					id='county'
-					maxLength={60}
-					value={values.address.county.value}
-					optional
-					onChange={onComponentChange}
-				/>
-				<SelectInputContainer
-					label='Country'
-					name='country'
-					id='country'
-					value={values.address.country.value}
-					options={country}
-					onChange={onComponentChange}
-				/>
-				<TextInputContainer
-					label="Postcode"
-					name='postcode'
-					type="text"
-					id='postcode'
-					maxLength={60}
-					value={values.address.postcode.value}
-					optional
-					hideOptional
-					onChange={onComponentChange}
-				/> 
+				{ index === 1 && 
+					<AlertForm
+					level='information'
+					content={alertContent}
+				/>}
+				{ index !== 0 && 
+				<Fragment>
+					<h3>Tell us your previous address</h3>
+					<TextInputContainer
+						label="Address line 1"
+						name='addressLine1'
+						type="text"
+						id='addressLine1'
+						maxLength={60}
+						value={values.address === undefined || values.address.addressLine1 === undefined ? '' : values.address.addressLine1.value}
+						optional={false}
+						onChange={onComponentChange}
+					/>
+					<TextInputContainer
+						label="Address line 2"
+						name='addressLine2'
+						type="text"
+						id='addressLine2'
+						maxLength={60}
+						value={values.address === undefined || values.address.addressLine2 === undefined ? '' : values.address.addressLine2.value}
+						optional
+						onChange={onComponentChange}
+					/>
+					<TextInputContainer
+						label="City/town"
+						name='town'
+						type="text"
+						id='town'
+						maxLength={60}
+						value={values.address === undefined || values.address.town === undefined ?  '' : values.address.town.value}
+						optional={false}
+						onChange={onComponentChange}
+					/>
+					<TextInputContainer
+						label="County/province"
+						name='county'
+						type="text"
+						id='county'
+						maxLength={60}
+						value={values.address === undefined || values.address.county === undefined ?  '' : values.address.county.value}
+						optional
+						onChange={onComponentChange}
+					/>
+					<SelectInputContainer
+						label='Country'
+						name='country'
+						id='country'
+						value={values.address === undefined || values.address.country === undefined ?  '' : values.address.country.value}
+						options={country}
+						onChange={onComponentChange}
+					/>
+					<TextInputContainer
+						label="Postcode"
+						name='postcode'
+						type="text"
+						id='postcode'
+						maxLength={60}
+						value={values.address === undefined || values.address.postcode === undefined ?  '' : values.address.postcode.value}
+						optional
+						hideOptional
+						onChange={onComponentChange}
+					/> 
+				</Fragment>
+				}
 				<MemorableDateInputContainer 
 					showDay={false}
 					heading={index == 0 ? 'Tell us when you moved into your current address' : 'Tell us when you moved into this address'}
@@ -183,13 +212,13 @@ const YourAddressHistory = (match) => {
 		)
 	} 
 
-	console.log('re-render')
 	return (
-		<form>
+		<form onSubmit={onSubmit}>
 			<h1>Your fostering journey</h1>
             <h2>Your address history</h2>
             {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
-			<ComponentsList 
+			<ComponentsList
+				key={currentApplicant} 
 				onChange={onAddressChange}
 				componentName='addressHistoryDetails'
 				addItemMessage='Add another address'
@@ -201,8 +230,6 @@ const YourAddressHistory = (match) => {
 				showRemoveOnAllComponents={false}
 			/>
 			<SubmitButton
-				currentApplicant={currentApplicant}
-				secondApplicant={secondApplicant}
 				history={history}
 				onSaveAndGoBackClick={onSaveAndGoBackClick}
 				isLoading={isLoading}

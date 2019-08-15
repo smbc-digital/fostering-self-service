@@ -55,7 +55,7 @@ const mapCaseToContext = ({ fosteringCase: caseResponse, country, ethnicity, nat
 
 	if (caseResponse.secondApplicant !== null) {
 		secondApplicantDetails = reduceProperties(caseResponse.secondApplicant)
-		secondApplicantDetails.addressHistory = Object.values(reduceAddressHistoryProperties(caseResponse.secondApplicant.addressHistory))
+		secondApplicantDetails.addressHistory = { value: Object.values(reduceAddressHistoryProperties(caseResponse.secondApplicant.addressHistory)) }
 	}
 	delete caseResponse.secondApplicant
 

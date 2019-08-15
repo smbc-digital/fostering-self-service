@@ -86,6 +86,23 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
     }
 }, {})
 
+const reduceAddressHistoryProperties = object => object.map((acc, property) => {
+    return {
+        ...acc,
+        address: {
+            'addressLine1': object[property].address.addressLine1.value,
+            'addressLine2': object[property].address.addressLine2 !== undefined ? object[property].address.addressLine2.value : '',
+            'town': object[property].address.town.value,
+            'county': object[property].address.county !== undefined ? object[property].address.county.value : '',
+            'country': object[property].address.country.value,
+            'postcode': object[property].address.postcode !== undefined ? object[property].address.postcode.value : '',
+        },
+        dateFrom: object[property].dateFrom.value,
+    }
+
+}, {})
+
+
 const updateForm = async (endpoint, formData) => {
     const parsedFormData = parseFormData(formData)
 
@@ -131,10 +148,16 @@ const parseFormData = ({ firstApplicant, secondApplicant, familyReference, first
 
     if (firstApplicant) {
         parsedObject.firstApplicant = reduceProperties(firstApplicant)
+        if(parsedObject.firstApplicant.addressHistory){
+            parsedObject.firstApplicant.addressHistory = reduceAddressHistoryProperties(firstApplicant.addressHistory.value)
+        }
     }
 
     if (secondApplicant) {
         parsedObject.secondApplicant = reduceProperties(secondApplicant)
+        if(parsedObject.secondApplicant.addressHistory){
+            parsedObject.secondApplicant.addressHistory = reduceAddressHistoryProperties(secondApplicant.addressHistory.value)
+        }
     }
 
     if (familyReference) {
