@@ -29,6 +29,12 @@ describe('AboutCouncillors', () => {
             secondApplicant: {
                 councillorRelationshipDetails: {
                     value: []
+                },
+                firstName: {
+                    value: 'first name'
+                },
+                lastName: {
+                    value: 'last name'
                 }
             }
         },
@@ -52,6 +58,12 @@ describe('AboutCouncillors', () => {
                     councillorRelationshipDetails: {
                         value: [],
                         isValid: false
+                    },
+                    firstName: {
+                        value: 'first name'
+                    },
+                    lastName: {
+                        value: 'last name'
                     }
                 },
                 secondApplicant,

@@ -141,7 +141,7 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 		<TaskLink
 			route={RELATIONSHIP_TO_COUNCIL_EMPLOYEES}
 			status={councillorsOrEmployeesStatus}
-			name='Councillors'
+			name='Personal relationships with local councillors or council employees'
 			disabled={disabled}
 		/>
 		</Fragment>

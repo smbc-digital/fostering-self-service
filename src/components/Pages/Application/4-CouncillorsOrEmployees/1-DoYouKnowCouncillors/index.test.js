@@ -68,6 +68,12 @@ describe('DoYouKnowCouncillors', () => {
                 hasContactWithCouncillor: {
                     value: true,
                     isValid: false
+                },
+                firstName: {
+                    value: 'first name'
+                },
+                lastName: {
+                    value: 'last name'
                 }
             },
             secondApplicant: {}
@@ -80,6 +86,12 @@ describe('DoYouKnowCouncillors', () => {
                 hasContactWithCouncillor: {
                     value: true,
                     isValid: false
+                },
+                firstName: {
+                    value: 'first name'
+                },
+                lastName: {
+                    value: 'last name'
                 }
             }
         },
@@ -100,6 +112,12 @@ describe('DoYouKnowCouncillors', () => {
                 hasContactWithCouncillor: {
                     value: false,
                     isValid: false
+                },
+                firstName: {
+                    value: 'first name'
+                },
+                lastName: {
+                    value: 'last name'
                 }
             },
             secondApplicant: {}

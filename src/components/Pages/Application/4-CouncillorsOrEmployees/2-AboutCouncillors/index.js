@@ -1,6 +1,6 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { ComponentsList, TextInputContainer, TextAreaInputContainer, Button } from 'smbc-react-components'
+import { ComponentsList, TextInputContainer, TextAreaInputContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from 'context'
 import { getCurrentApplicant, updateApplicationForm, ApplicationFormName } from 'helpers'
 import { Applicant } from 'constants'
@@ -12,11 +12,11 @@ const AboutCouncillors = ({ match, history }) => {
     const [saveAndGoBackClicked, setSaveAndGoBackClicked] = useState(false)
 	const currentApplicant = getCurrentApplicant(match)
 	const {
-        [currentApplicant]: { councillorRelationshipDetails },
-        firstApplicant,
+		firstApplicant,
 		secondApplicant,
 		onChangeTarget,
-		onChangeStatus
+		onChangeStatus,
+		[currentApplicant]: { councillorRelationshipDetails, firstName, lastName }
     } = useContext(Context)
     const isSavingAllowed = !secondApplicant || currentApplicant === Applicant.SecondApplicant
 
@@ -107,7 +107,8 @@ const AboutCouncillors = ({ match, history }) => {
 	return (
 		<Fragment>
 			<h1>Your fostering journey</h1>
-			<h2>Tell us about the local councillor or council employee who you have a personal relationship with</h2>
+			<h2>Personal relationships with local councillors or council employees</h2>
+			{secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
 			<form onSubmit={onSubmit}>
 				<ComponentsList
 					onChange={onCouncillorChange}
@@ -119,9 +120,10 @@ const AboutCouncillors = ({ match, history }) => {
 				/>
                 <Button 
                     label={isSavingAllowed ? 'Save and next step' : 'Next step'} 
-                    isValid={isValid} 
+                    isValid={isValid && !saveAndGoBackClicked} 
                     isLoading={isLoading && !saveAndGoBackClicked} 
                 />
+				<Anchor label='Back' history={history} />
                 {isSavingAllowed && <Button
                     label="Save and go back to fostering area"
                     isValid={isValid}

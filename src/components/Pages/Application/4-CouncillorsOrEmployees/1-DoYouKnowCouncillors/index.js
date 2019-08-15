@@ -26,7 +26,7 @@ const DoYouKnowCouncillors = ({ history, match }) => {
         onChangeTarget,
         onChangeStatus,
         statuses: { councillorsOrEmployeesStatus },
-        [currentApplicant]: { hasContactWithCouncillor }
+        [currentApplicant]: { hasContactWithCouncillor, firstName, lastName }
     } = useContext(Context)
     
     useEffect(() => {
@@ -104,6 +104,8 @@ const DoYouKnowCouncillors = ({ history, match }) => {
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
+            <h2>Personal relationships with local councillors or council employees</h2>
+            {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
             <form onSubmit={onSubmit}>
                 <RadioInputsContainer
                     displayHeading

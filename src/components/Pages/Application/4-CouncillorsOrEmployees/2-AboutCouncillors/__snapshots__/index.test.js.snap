@@ -6,7 +6,7 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Tell us about the local councillor or council employee who you have a personal relationship with
+    Personal relationships with local councillors or council employees
   </h2>,
   <form
     onSubmit={[Function]}
@@ -55,7 +55,6 @@ Array [
       maxLength={500}
       name="relationship"
       onChange={[Function]}
-      optional={undefined}
       value=""
     />
     <p
@@ -85,6 +84,14 @@ Array [
     >
       Save and next step
     </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Back
+      </a>
+    </p>
     <button
       className="button-disabled left-chevron"
       disabled={true}
