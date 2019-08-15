@@ -96,6 +96,7 @@ const SecondPersonalReference = ({ history }) => {
                     type='text'
                     maxLength={60}
                     value={relationshipToYou.value}
+                    customValidationMessage='Enter this person&#39;s relationship to you'
                     onChange={onChange}
                 />
 				<TextInputContainer
@@ -103,7 +104,8 @@ const SecondPersonalReference = ({ history }) => {
 					id='numberOfYearsKnown'
 					type='text'
 					maxLength={60}
-					value={numberOfYearsKnown.value}
+                    value={numberOfYearsKnown.value}
+                    customValidationMessage='Enter the length of time you&#39;ve known this person'
 					onChange={onChange}
 				/>
 				<TextInputContainer

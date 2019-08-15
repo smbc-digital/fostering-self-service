@@ -71,6 +71,7 @@ const FamilyReference = ({ history }) => {
                     type='text'
                     maxLength={60}
                     value={relationshipToYou.value}
+                    customValidationMessage='Enter this person&#39;s relationship to you'
                     onChange={onChange}
                 />
 				<TextInputContainer
