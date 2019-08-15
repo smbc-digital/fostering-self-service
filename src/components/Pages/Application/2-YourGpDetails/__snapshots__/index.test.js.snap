@@ -102,7 +102,7 @@ Array [
       className=""
       id="addressLine1"
       inputMode={undefined}
-      maxLength={undefined}
+      maxLength="60"
       min={undefined}
       name="addressLine1"
       onChange={[Function]}
@@ -134,7 +134,7 @@ Array [
       className=""
       id="addressLine2"
       inputMode={undefined}
-      maxLength={undefined}
+      maxLength="60"
       min={undefined}
       name="addressLine2"
       onChange={[Function]}
@@ -155,7 +155,7 @@ Array [
       className=""
       id="town"
       inputMode={undefined}
-      maxLength={undefined}
+      maxLength="60"
       min={undefined}
       name="town"
       onChange={[Function]}
@@ -176,7 +176,7 @@ Array [
       className=""
       id="postcode"
       inputMode={undefined}
-      maxLength={undefined}
+      maxLength="60"
       min={undefined}
       name="postcode"
       onChange={[Function]}
