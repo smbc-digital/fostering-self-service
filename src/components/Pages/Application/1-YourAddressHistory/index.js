@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { AddressHistoryDetails, ComponentsList } from 'smbc-react-components'
+import { AddressHistoryDetails, ComponentsList, TextInputContainer, SelectInputContainer, MemorableDateInputContainer } from 'smbc-react-components'
 import { 
     ApplicationFormName, 
     getCurrentApplicant, 
@@ -29,7 +29,7 @@ const YourAddressHistory = (match) => {
         })
     }, [])
 
-	const onAddressChange = (values, isValid) => {
+	const onAddressChange = (values, isValid, index) => {
         onChangeTarget({
             target: {
                 name: 'addressHistory',
@@ -79,27 +79,111 @@ const YourAddressHistory = (match) => {
 	}
 
 	const renderComponent = (onChange, firstInputRef, values, index) => {
-		const onComponentChange = (data) => {
-            onChange(data, true, index)
+		const onComponentChange = ({ target: { name, value }}, isValid) => {
+			let newValues = ''
+			if(name === 'dateFrom'){
+				newValues = {
+					...values,
+						['dateFrom']: {
+							value: value, 
+							isValid
+					}
+				} 
+			} else {
+				newValues = {
+					...values,
+						['address']: {
+							...values['address'],
+							[name]: {
+								value: value, 
+								isValid
+						}
+					}
+				}
+			}
+			onChange(newValues, isValid, index)
 		}
 		
 		const date = {
 			value: values.dateFrom === undefined ? '' : moment(values.dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).format('YYYY-M-D'),
 			isValid: values.dateFrom === undefined ? false : values.dateFrom.isValid
 		}
+		
 		return (
-			<AddressHistoryDetails
-				options={country}
-				dateFrom={date}
-				address={values.address}
-				addressHeader='Tell us your previous address'
-				dateHeader={index == 0 ? 'Tell us when you moved into your current address' : 'Tell us when you moved into this address'}
-				onChange={onComponentChange}
-				hideAddress={index == 0}
-			/>
+			<Fragment>
+				<h3>Tell us your previous address</h3>
+				<TextInputContainer
+					label="Address line 1"
+					name='addressLine1'
+					type="text"
+					id='addressLine1'
+					maxLength={60}
+					value={values.address.addressLine1.value}
+					optional={false}
+					onChange={onComponentChange}	
+				/>
+				<TextInputContainer
+					label="Address line 2"
+					name='addressLine2'
+					type="text"
+					id='addressLine2'
+					maxLength={60}
+					value={values.address.addressLine2.value}
+					optional
+					onChange={onComponentChange}
+				/>
+				<TextInputContainer
+					label="City/town"
+					name='town'
+					type="text"
+					id='town'
+					maxLength={60}
+					value={values.address.town.value}
+					optional={false}
+					onChange={onComponentChange}
+				/>
+				<TextInputContainer
+					label="County/province"
+					name='county'
+					type="text"
+					id='county'
+					maxLength={60}
+					value={values.address.county.value}
+					optional
+					onChange={onComponentChange}
+				/>
+				<SelectInputContainer
+					label='Country'
+					name='country'
+					id='country'
+					value={values.address.country.value}
+					options={country}
+					onChange={onComponentChange}
+				/>
+				<TextInputContainer
+					label="Postcode"
+					name='postcode'
+					type="text"
+					id='postcode'
+					maxLength={60}
+					value={values.address.postcode.value}
+					optional
+					hideOptional
+					onChange={onComponentChange}
+				/> 
+				<MemorableDateInputContainer 
+					showDay={false}
+					heading={index == 0 ? 'Tell us when you moved into your current address' : 'Tell us when you moved into this address'}
+					description='For example, 3 1980'
+					onChange={onComponentChange}
+					name='dateFrom'
+					value={date.value}
+				/>
+			</Fragment>
 		)
 	} 
 
+	console.log('re-render')
 	return (
 		<form>
 			<h1>Your fostering journey</h1>
