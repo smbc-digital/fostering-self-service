@@ -82,6 +82,7 @@ const YourGpDetails = ({ history, match }) => {
                     value={nameOfGp.value}
                     onChange={onChange}
                     isValid={false}
+                    customValidationMessage='Enter the name of your GP'
                 />
                 <TextInputContainer
                     label='Name of GP practice'
@@ -90,6 +91,7 @@ const YourGpDetails = ({ history, match }) => {
                     maxLength={60}
                     value={nameOfGpPractice.value}
                     onChange={onChange}
+                    customValidationMessage='Enter the name of your GP practice'
                 />
                 <TextInputContainer
                     label='Phone number'
