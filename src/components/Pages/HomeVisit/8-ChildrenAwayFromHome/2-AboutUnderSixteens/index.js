@@ -145,6 +145,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                     showOnlyManual={true}
                     noPostcodeValidation={true}
                     optional
+                    requiredFullAddressIfOptional={false}
                     hideLine2OptionalText={true}
                     hideOptional={true}
                     />
