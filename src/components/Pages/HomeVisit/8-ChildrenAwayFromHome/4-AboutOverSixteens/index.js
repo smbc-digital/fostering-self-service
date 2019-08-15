@@ -143,6 +143,7 @@ const AboutOverSixteens = ({history, match}) => {
                     noPostcodeValidation={true}
                     optional
                     hideLine2OptionalText={true}
+                    hideOptional={true}
                     />
             </Fragment>
         )
