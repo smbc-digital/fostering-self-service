@@ -56,7 +56,7 @@ Array [
           className=""
           id="anotherName"
           inputMode={undefined}
-          maxLength="60"
+          maxLength={60}
           min={undefined}
           name="anotherName"
           onChange={[Function]}

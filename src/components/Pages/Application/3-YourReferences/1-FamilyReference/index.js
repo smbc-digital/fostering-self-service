@@ -53,7 +53,7 @@ const FamilyReference = ({ history }) => {
                     label='First name'
                     id='firstName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={firstName.value}
                     onChange={onChange}
                 />
@@ -61,7 +61,7 @@ const FamilyReference = ({ history }) => {
                     label='Last name'
                     id='lastName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={lastName.value}
                     onChange={onChange}
                 />
@@ -69,7 +69,7 @@ const FamilyReference = ({ history }) => {
                     label='Relationship to you'
                     id='relationshipToYou'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={relationshipToYou.value}
                     onChange={onChange}
                 />
@@ -77,7 +77,7 @@ const FamilyReference = ({ history }) => {
                     label='Email address'
                     id='emailAddress'
                     type='email'
-                    maxLength='60'
+                    maxLength={60}
                     value={emailAddress.value}
                     onChange={onChange}
                 />
@@ -85,7 +85,7 @@ const FamilyReference = ({ history }) => {
                     label='Phone number'
                     id='phoneNumber'
                     type='tel'
-                    maxLength='11'
+                    maxLength={11}
                     value={phoneNumber.value}
                     onChange={onChange}
                 />

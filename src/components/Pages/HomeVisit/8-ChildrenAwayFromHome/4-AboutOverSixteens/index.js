@@ -93,7 +93,7 @@ const AboutOverSixteens = ({history, match}) => {
                     label='First name'
                     id='firstName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.firstName}
                     onChange={onComponentChange}
                     optional={true}
@@ -103,7 +103,7 @@ const AboutOverSixteens = ({history, match}) => {
                     label='Last name'
                     id='lastName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.lastName}
                     onChange={onComponentChange}
                     optional={true}
@@ -113,7 +113,7 @@ const AboutOverSixteens = ({history, match}) => {
                     label='Gender'
                     id='gender'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.gender}
                     onChange={onComponentChange}
                     optional={true}
@@ -138,7 +138,7 @@ const AboutOverSixteens = ({history, match}) => {
                     onChange={onComponentChange}
                     address={values.address}
                     showOnlyManual={true}
-                    maxLength='60'
+                    maxLength={60}
                     name='address'
                     noPostcodeValidation={true}
                     optional

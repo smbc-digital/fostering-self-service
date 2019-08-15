@@ -338,7 +338,7 @@ describe('YourGpDetails', () => {
         })
 
         // Act
-        mount(<YourGpDetails match={match}/>)
+        mount(<YourGpDetails history={{}} match={match}/>)
 
         // Assert
         expect(onChangeStatusMock).toHaveBeenCalledWith('gpDetailsStatus', TaskStatus.None)

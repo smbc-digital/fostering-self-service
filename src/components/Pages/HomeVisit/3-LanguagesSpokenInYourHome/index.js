@@ -63,7 +63,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
                     label='Primary language'
                     id='primaryLanguage'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={primaryLanguage.value}
                     onChange={onChange}
                     optional={true}
@@ -74,10 +74,10 @@ const LanguagesSpokenInYourHome = ({ history }) => {
                     label='List any other languages'
                     id='otherLanguages'
                     type='text'
-                    maxLength='500'
+                    maxLength={500}
                     value={otherLanguages.value}
                     onChange={onChange}
-                    optional='true'
+                    optional={true}
                     hideOptional={true}
                     maxLengthMessage='Your list can be up to 500 characters long'
                 />

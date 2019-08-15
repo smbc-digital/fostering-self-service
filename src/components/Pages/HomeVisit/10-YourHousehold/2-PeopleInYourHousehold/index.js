@@ -55,7 +55,7 @@ const PeopleInYourHousehold = ({ history }) => {
                     label='First name'
                     id='firstName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.firstName}
                     onChange={onComponentChange}
                     optional={true}
@@ -65,7 +65,7 @@ const PeopleInYourHousehold = ({ history }) => {
                     label='Last name'
                     id='lastName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.lastName}
                     onChange={onComponentChange}
                     optional={true}
@@ -75,7 +75,7 @@ const PeopleInYourHousehold = ({ history }) => {
                     label='Gender'
                     id='gender'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.gender}
                     onChange={onComponentChange}
                     optional={true}
@@ -85,7 +85,7 @@ const PeopleInYourHousehold = ({ history }) => {
                     label='Relationship to you'
                     id='relationshipToYou'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.relationshipToYou}
                     onChange={onComponentChange}
                     optional={true}

@@ -23,7 +23,7 @@ Array [
       className=""
       id="primaryLanguage"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="primaryLanguage"
       onChange={[Function]}
@@ -52,10 +52,10 @@ Array [
         ]
       }
       id="otherLanguages"
-      maxLength="500"
+      maxLength={500}
       name="otherLanguages"
       onChange={[Function]}
-      optional="true"
+      optional={true}
       value="Welsh"
     />
     <p

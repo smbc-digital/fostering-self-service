@@ -78,7 +78,7 @@ const SecondPersonalReference = ({ history }) => {
                     label='First name'
                     id='firstName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={firstName.value}
                     onChange={onChange}
                 />
@@ -86,7 +86,7 @@ const SecondPersonalReference = ({ history }) => {
                     label='Last name'
                     id='lastName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={lastName.value}
                     onChange={onChange}
                 />
@@ -94,7 +94,7 @@ const SecondPersonalReference = ({ history }) => {
                     label='Relationship to you'
                     id='relationshipToYou'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={relationshipToYou.value}
                     onChange={onChange}
                 />
@@ -102,7 +102,7 @@ const SecondPersonalReference = ({ history }) => {
 					label='How long have you known this person?'
 					id='numberOfYearsKnown'
 					type='text'
-					maxLength='60'
+					maxLength={60}
 					value={numberOfYearsKnown.value}
 					onChange={onChange}
 				/>
@@ -110,7 +110,7 @@ const SecondPersonalReference = ({ history }) => {
                     label='Email address'
                     id='emailAddress'
                     type='email'
-                    maxLength='60'
+                    maxLength={60}
                     value={emailAddress.value}
                     onChange={onChange}
                 />
@@ -118,7 +118,7 @@ const SecondPersonalReference = ({ history }) => {
                     label='Phone number'
                     id='phoneNumber'
                     type='tel'
-                    maxLength='11'
+                    maxLength={11}
                     value={phoneNumber.value}
                     onChange={onChange}
                 />

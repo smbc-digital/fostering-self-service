@@ -78,7 +78,7 @@ const YourGpDetails = ({ history, match }) => {
                     label='Name of GP'
                     id='nameOfGp'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={nameOfGp.value}
                     onChange={onChange}
                     isValid={false}
@@ -87,7 +87,7 @@ const YourGpDetails = ({ history, match }) => {
                     label='Name of GP practice'
                     id='nameOfGpPractice'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={nameOfGpPractice.value}
                     onChange={onChange}
                 />
@@ -95,7 +95,7 @@ const YourGpDetails = ({ history, match }) => {
                     label='Phone number'
                     id='gpPhoneNumber'
                     type='tel'
-                    maxLength='11'
+                    maxLength={11}
                     value={gpPhoneNumber.value}
                     onChange={onChange}
                 />

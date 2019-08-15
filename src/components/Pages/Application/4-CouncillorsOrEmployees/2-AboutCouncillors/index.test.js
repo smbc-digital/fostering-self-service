@@ -228,6 +228,21 @@ describe('AboutCouncillors', () => {
 
     it('should call onChangeTarget', () => {
         // Arrange
+        useContextMock.mockReturnValue({
+            firstApplicant: {
+                councillorRelationshipDetails: {
+                    value: [
+                        {
+                            councillorName: 'name',
+                            relationship: 'relationship'
+                        }
+                    ],
+                    isValid: false
+                }
+            },
+            onChangeTarget: mockOnChangeTarget,
+            onChangeStatus: mockOnChangeStatus
+        })
         const match = {
             params: []
         }

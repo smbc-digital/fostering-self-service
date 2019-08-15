@@ -75,7 +75,7 @@ const EmploymentDetails = ({ history, match }) => {
                     label='Current employer'
                     id='currentEmployer'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     optional={true}
                     hideOptional
                     value={currentEmployer.value}
@@ -85,7 +85,7 @@ const EmploymentDetails = ({ history, match }) => {
                     label='Job title'
                     id='jobTitle'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     optional={true}
                     hideOptional
                     value={jobTitle.value}

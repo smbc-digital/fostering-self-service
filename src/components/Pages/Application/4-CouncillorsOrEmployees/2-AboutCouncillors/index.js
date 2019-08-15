@@ -55,7 +55,7 @@ const AboutCouncillors = ({ match, history }) => {
 					label="Name of councillor or council employee"
 					id="councillorName"
 					type="text"
-					maxLength="60"
+					maxLength={60}
 					value={values.councillorName}
 					onChange={onComponentChange}
 				/>

@@ -39,7 +39,7 @@ Array [
       className=""
       id="nameOfGp"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="nameOfGp"
       onChange={[Function]}
@@ -60,7 +60,7 @@ Array [
       className=""
       id="nameOfGpPractice"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="nameOfGpPractice"
       onChange={[Function]}
@@ -81,7 +81,7 @@ Array [
       className=""
       id="gpPhoneNumber"
       inputMode={undefined}
-      maxLength="11"
+      maxLength={11}
       min={undefined}
       name="gpPhoneNumber"
       onChange={[Function]}
