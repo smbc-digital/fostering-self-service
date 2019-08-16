@@ -27,7 +27,8 @@ const HomeVisitFormName = {
 const ApplicationFormName = {
     References: 0,
     GpDetails: 1,
-    AddressHistory: 2
+    CouncillorsOrEmployees: 2,
+    AddressHistory: 3
 }
 
 const getHomeVisitUpdateEndpoint = form => {
