@@ -85,7 +85,7 @@ Array [
       className=""
       id="gender"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="gender"
       onChange={[Function]}
@@ -106,7 +106,7 @@ Array [
       className=""
       id="religion"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="religion"
       onChange={[Function]}

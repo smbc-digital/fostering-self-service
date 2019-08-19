@@ -91,10 +91,11 @@ const AboutAnyUnderSixteen = ({history, match}) => {
         return (
             <Fragment>
                 <TextInputContainer
+                    inputRef={firstInputRef}
                     label='First name'
                     id='firstName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.firstName}
                     onChange={onComponentChange}
                     optional={true}
@@ -104,7 +105,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                     label='Last name'
                     id='lastName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.lastName}
                     onChange={onComponentChange}
                     optional={true}
@@ -114,9 +115,10 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                     label='Gender'
                     id='gender'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={values.gender}                   
                     onChange={onComponentChange}
+                    optional={true}
                     hideOptional={true}
                 />
                 <MemorableDateInputContainer
@@ -137,13 +139,15 @@ const AboutAnyUnderSixteen = ({history, match}) => {
                 <AddressPicker
                     onChange={onComponentChange}
                     name="address"
-                    maxLength='60'
+                    maxLength={60}
                     address={values.address}
                     enableH2={true}
                     showOnlyManual={true}
                     noPostcodeValidation={true}
                     optional
+                    requiredFullAddressIfOptional={false}
                     hideLine2OptionalText={true}
+                    hideOptional={true}
                     />
             </Fragment>
         )

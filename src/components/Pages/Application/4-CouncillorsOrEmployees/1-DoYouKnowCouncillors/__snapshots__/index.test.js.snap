@@ -1,25 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`KnownByAnotherName snapshot renders correctly 1`] = `
+exports[`DoYouKnowCouncillors snapshot should render correctly 1`] = `
 Array [
   <h1>
     Your fostering journey
   </h1>,
   <h2>
-    Tell us more about you
+    Personal relationships with local councillors or council employees
   </h2>,
-  <h3>
-    first name
-     
-    last name
-  </h3>,
   <form
     onSubmit={[Function]}
   >
     <h3
       className="no-margin-bottom"
     >
-      Have you ever been known by another name?
+      Do you have a personal relationship with a local councillor or council employee?
     </h3>
     <fieldset>
       <div
@@ -27,44 +22,19 @@ Array [
         role="radiogroup"
       >
         <input
-          checked={true}
+          checked={false}
           disabled={undefined}
-          id="have-you-been-known-yes"
-          name="everBeenKnownByAnotherName"
+          id="has-contact-with-councillor-yes"
+          name="hasContactWithCouncillor"
           onChange={[Function]}
           type="radio"
           value="true"
         />
         <label
-          htmlFor="have-you-been-known-yes"
+          htmlFor="has-contact-with-councillor-yes"
         >
           Yes
         </label>
-      </div>
-      <div
-        className="additional-list-component"
-      >
-        <label
-          className="optional"
-          htmlFor="anotherName"
-        >
-          Previous name
-        </label>
-        <input
-          aria-label=""
-          aria-live=""
-          className=""
-          id="anotherName"
-          inputMode={undefined}
-          maxLength={60}
-          min={undefined}
-          name="anotherName"
-          onChange={[Function]}
-          onKeyDown={[Function]}
-          pattern={undefined}
-          type="text"
-          value="last name"
-        />
       </div>
       <div
         className="input-radio-container"
@@ -73,14 +43,14 @@ Array [
         <input
           checked={false}
           disabled={undefined}
-          id="have-you-been-known-no"
-          name="everBeenKnownByAnotherName"
+          id="has-contact-with-councillor-no"
+          name="hasContactWithCouncillor"
           onChange={[Function]}
           type="radio"
           value="false"
         />
         <label
-          htmlFor="have-you-been-known-no"
+          htmlFor="has-contact-with-councillor-no"
         >
           No
         </label>
@@ -88,7 +58,7 @@ Array [
     </fieldset>
     <button
       className="button-primary"
-      disabled={false}
+      disabled={true}
       id={undefined}
       onClick={undefined}
       type="submit"
@@ -103,6 +73,15 @@ Array [
         Back
       </a>
     </p>
+    <button
+      className="button-disabled left-chevron"
+      disabled={true}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
   </form>,
 ]
 `;

@@ -11,7 +11,8 @@ describe('SubmitButton', () => {
     it('should render Next Step and back button when the current applicant is first and there is no second applicant', () => {
         // Arrange
         const props = {
-            currentApplicant: Applicant.FirstApplicant
+            currentApplicant: Applicant.FirstApplicant,
+            history: {}
         }
 
         const wrapper = mount(
@@ -27,7 +28,8 @@ describe('SubmitButton', () => {
         // Arrange
         const props = {
             currentApplicant: Applicant.FirstApplicant,
-            secondApplicant: {}
+            secondApplicant: {},
+            history: {}
         }
 
         const wrapper = mount(

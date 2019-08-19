@@ -17,7 +17,8 @@ import {
 	ADDRESS_HISTORY, 
 	ABOUT_YOUR_GP, 
 	FAMILY_REFERENCE,
-	FOSTERING_HISTORY
+	FOSTERING_HISTORY,
+	RELATIONSHIP_TO_COUNCIL_EMPLOYEES
 } from 'routes'
 
 const TaskLink = ({ route, name, status, disabled }) => {
@@ -119,13 +120,14 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 	const { statuses: {
 			addressHistoryStatus,
 			gpDetailsStatus,
-			referencesStatus
+			referencesStatus,
+			councillorsOrEmployeesStatus
 		}
 	} = useContext(Context)
 	
 	return (
 		<Fragment>
-		<p>After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.</p>
+		<p>After your home visit, you must give us more information so that we can carry out personal checks and contact your referees.</p>
 		<TaskLink
 			route={ADDRESS_HISTORY}
 			status={addressHistoryStatus}
@@ -142,6 +144,12 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 			route={FAMILY_REFERENCE}
 			status={referencesStatus}
 			name='Personal references'
+			disabled={disabled}
+		/>
+		<TaskLink
+			route={RELATIONSHIP_TO_COUNCIL_EMPLOYEES}
+			status={councillorsOrEmployeesStatus}
+			name='Personal relationships with local councillors or council employees'
 			disabled={disabled}
 		/>
 		</Fragment>
@@ -206,16 +214,18 @@ const Start = () => {
 			displayHr: false
 		},
 		{
-			title: 'Assessment and training',
-			body: () => <p>Complete the assessment stage of your fostering journey and attend training sessions.</p>,
-			status: TaskStatus.CantStart,
-			disabled: true
-		},
-		{
-			title: 'Approval',
-			body: () => <p>Go to panel and a decision will be made about whether you can become a foster carer.</p>,
-			disabled: true
-		}
+			title: 'Next Steps',
+			body: () => <Fragment>
+				<p>The fostering team will use the information that you’ve provided to carry out statutory checks and request personal and health references from your referees and GP.</p>
+				<p>You’ll complete the assessment stage of your fostering journey where you’ll:</p>
+				<ul>
+					<li>attend training sessions, including the Skills to Foster course to help prepare you for becoming a foster carer</li>
+					<li>have more meetings with your social worker so that they can find out more about you and your reasons for wanting to become a foster carer</li>
+					<li>get to know current foster carers and other people who are starting their fostering journey</li>
+				</ul>
+				<p>You’ll then go to panel where a decision will be made about whether you can become a foster carer.</p>
+				</Fragment>
+		}		
 	]
 
 	return (

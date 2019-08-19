@@ -84,7 +84,7 @@ const MoreAboutYou = ({ history, match }) => {
                     id='gender'
                     value={gender.value}
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     onChange={onChange}
                     hideOptional={true}
                     optional={true}
@@ -93,7 +93,7 @@ const MoreAboutYou = ({ history, match }) => {
                     label='Religion or faith group'
                     id='religion'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={religion.value}
                     onChange={onChange}
                     optional={true}

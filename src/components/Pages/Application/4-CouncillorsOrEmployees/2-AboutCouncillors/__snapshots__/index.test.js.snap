@@ -1,47 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LanguagesSpokenInYourHome snapshot renders correctly 1`] = `
+exports[`AboutCouncillors snapshot should render correctly 1`] = `
 Array [
   <h1>
     Your fostering journey
   </h1>,
   <h2>
-    Tell us about the languages that are spoken in your home
+    Personal relationships with local councillors or council employees
   </h2>,
   <form
     onSubmit={[Function]}
   >
     <label
-      className="optional"
-      htmlFor="primaryLanguage"
+      className=""
+      htmlFor="councillorName"
     >
-      Primary language
+      Name of councillor or council employee
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label="Name of councillor or council employee"
+      aria-live="off"
       className=""
-      id="primaryLanguage"
+      id="councillorName"
       inputMode={undefined}
       maxLength={60}
       min={undefined}
-      name="primaryLanguage"
+      name="councillorName"
       onChange={[Function]}
       onKeyDown={[Function]}
       pattern={undefined}
       type="text"
-      value="English"
+      value={undefined}
     />
     <label
-      className="optional"
-      htmlFor="otherLanguages"
+      className=""
+      htmlFor="relationship"
     >
-      List any other languages
+      Tell us how you know this person
     </label>
     <p
       className="smallerText"
     >
-      Your list can be up to 500 characters long
+      Your description can be up to 500 characters
     </p>
     <textarea
       aria-label={undefined}
@@ -51,22 +51,33 @@ Array [
           "char-limit",
         ]
       }
-      id="otherLanguages"
+      id="relationship"
       maxLength={500}
-      name="otherLanguages"
+      name="relationship"
       onChange={[Function]}
-      value="Welsh"
+      value=""
     />
     <p
       className="smallerText"
     >
       You have 
-      495
+      500
        characters remaining
     </p>
+    <a
+      className="anchor-with-icon"
+      href="#"
+      onClick={[Function]}
+    >
+       
+      <i
+        className="fa fa-plus-square fa-lg"
+      />
+      Add another person
+    </a>
     <button
       className="button-primary"
-      disabled={false}
+      disabled={true}
       id={undefined}
       onClick={undefined}
       type="submit"
@@ -82,8 +93,8 @@ Array [
       </a>
     </p>
     <button
-      className="button-inverted left-chevron"
-      disabled={false}
+      className="button-disabled left-chevron"
+      disabled={true}
       id={undefined}
       onClick={[Function]}
       type="submit"

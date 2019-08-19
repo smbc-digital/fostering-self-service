@@ -206,7 +206,7 @@ Array [
           Additional information
         </h2>
         <p>
-          After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.
+          After your home visit, you must give us more information so that we can carry out personal checks and contact your referees.
         </p>
         <div
           className="anchor-with-status"
@@ -229,6 +229,13 @@ Array [
             Personal references
           </p>
         </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Personal relationships with local councillors or council employees
+          </p>
+        </div>
         <span
           className="status-cant-start"
         >
@@ -237,36 +244,33 @@ Array [
       </div>
     </li>
     <li
-      className="disabled"
+      className={undefined}
     >
       <div
         className="task-item"
       >
         <h2>
-          Assessment and training
+          Next Steps
         </h2>
         <p>
-          Complete the assessment stage of your fostering journey and attend training sessions.
+          The fostering team will use the information that you’ve provided to carry out statutory checks and request personal and health references from your referees and GP.
         </p>
-        <span
-          className="status-cant-start"
-        >
-          Can't start yet
-        </span>
-        <hr />
-      </div>
-    </li>
-    <li
-      className="disabled"
-    >
-      <div
-        className="task-item"
-      >
-        <h2>
-          Approval
-        </h2>
         <p>
-          Go to panel and a decision will be made about whether you can become a foster carer.
+          You’ll complete the assessment stage of your fostering journey where you’ll:
+        </p>
+        <ul>
+          <li>
+            attend training sessions, including the Skills to Foster course to help prepare you for becoming a foster carer
+          </li>
+          <li>
+            have more meetings with your social worker so that they can find out more about you and your reasons for wanting to become a foster carer
+          </li>
+          <li>
+            get to know current foster carers and other people who are starting their fostering journey
+          </li>
+        </ul>
+        <p>
+          You’ll then go to panel where a decision will be made about whether you can become a foster carer.
         </p>
         <hr />
       </div>
@@ -492,7 +496,7 @@ Array [
           Additional information
         </h2>
         <p>
-          After your home visit, you’ll need to give us more information so that we can carry out personal checks and contact your referees.
+          After your home visit, you must give us more information so that we can carry out personal checks and contact your referees.
         </p>
         <div
           className="anchor-with-status"
@@ -515,6 +519,13 @@ Array [
             Personal references
           </p>
         </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Personal relationships with local councillors or council employees
+          </p>
+        </div>
         <span
           className="status-cant-start"
         >
@@ -523,36 +534,33 @@ Array [
       </div>
     </li>
     <li
-      className="disabled"
+      className={undefined}
     >
       <div
         className="task-item"
       >
         <h2>
-          Assessment and training
+          Next Steps
         </h2>
         <p>
-          Complete the assessment stage of your fostering journey and attend training sessions.
+          The fostering team will use the information that you’ve provided to carry out statutory checks and request personal and health references from your referees and GP.
         </p>
-        <span
-          className="status-cant-start"
-        >
-          Can't start yet
-        </span>
-        <hr />
-      </div>
-    </li>
-    <li
-      className="disabled"
-    >
-      <div
-        className="task-item"
-      >
-        <h2>
-          Approval
-        </h2>
         <p>
-          Go to panel and a decision will be made about whether you can become a foster carer.
+          You’ll complete the assessment stage of your fostering journey where you’ll:
+        </p>
+        <ul>
+          <li>
+            attend training sessions, including the Skills to Foster course to help prepare you for becoming a foster carer
+          </li>
+          <li>
+            have more meetings with your social worker so that they can find out more about you and your reasons for wanting to become a foster carer
+          </li>
+          <li>
+            get to know current foster carers and other people who are starting their fostering journey
+          </li>
+        </ul>
+        <p>
+          You’ll then go to panel where a decision will be made about whether you can become a foster carer.
         </p>
         <hr />
       </div>

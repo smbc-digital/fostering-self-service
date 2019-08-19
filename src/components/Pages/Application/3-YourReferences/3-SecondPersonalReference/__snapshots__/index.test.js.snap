@@ -42,7 +42,7 @@ Array [
       className=""
       id="firstName"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="firstName"
       onChange={[Function]}
@@ -63,7 +63,7 @@ Array [
       className=""
       id="lastName"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="lastName"
       onChange={[Function]}
@@ -84,7 +84,7 @@ Array [
       className=""
       id="relationshipToYou"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="relationshipToYou"
       onChange={[Function]}
@@ -105,7 +105,7 @@ Array [
       className=""
       id="numberOfYearsKnown"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="numberOfYearsKnown"
       onChange={[Function]}
@@ -126,7 +126,7 @@ Array [
       className=""
       id="emailAddress"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="emailAddress"
       onChange={[Function]}
@@ -147,7 +147,7 @@ Array [
       className=""
       id="phoneNumber"
       inputMode={undefined}
-      maxLength="11"
+      maxLength={11}
       min={undefined}
       name="phoneNumber"
       onChange={[Function]}
@@ -265,7 +265,7 @@ Array [
       className=""
       id="firstName"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="firstName"
       onChange={[Function]}
@@ -286,7 +286,7 @@ Array [
       className=""
       id="lastName"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="lastName"
       onChange={[Function]}
@@ -307,7 +307,7 @@ Array [
       className=""
       id="relationshipToYou"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="relationshipToYou"
       onChange={[Function]}
@@ -328,7 +328,7 @@ Array [
       className=""
       id="numberOfYearsKnown"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="numberOfYearsKnown"
       onChange={[Function]}
@@ -349,7 +349,7 @@ Array [
       className=""
       id="emailAddress"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="emailAddress"
       onChange={[Function]}
@@ -370,7 +370,7 @@ Array [
       className=""
       id="phoneNumber"
       inputMode={undefined}
-      maxLength="11"
+      maxLength={11}
       min={undefined}
       name="phoneNumber"
       onChange={[Function]}

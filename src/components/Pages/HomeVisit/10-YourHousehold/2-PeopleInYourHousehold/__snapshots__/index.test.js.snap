@@ -26,7 +26,7 @@ Array [
       className=""
       id="firstName"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="firstName"
       onChange={[Function]}
@@ -47,7 +47,7 @@ Array [
       className=""
       id="lastName"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="lastName"
       onChange={[Function]}
@@ -57,18 +57,18 @@ Array [
       value={undefined}
     />
     <label
-      className=""
+      className="optional"
       htmlFor="gender"
     >
       Gender
     </label>
     <input
-      aria-label="Gender"
-      aria-live="off"
+      aria-label=""
+      aria-live=""
       className=""
       id="gender"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="gender"
       onChange={[Function]}
@@ -89,7 +89,7 @@ Array [
       className=""
       id="relationshipToYou"
       inputMode={undefined}
-      maxLength="60"
+      maxLength={60}
       min={undefined}
       name="relationshipToYou"
       onChange={[Function]}

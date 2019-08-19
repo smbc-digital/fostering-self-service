@@ -25,8 +25,9 @@ const KnownByAnotherName = ({ history, match }) => {
                     label='Previous name'
                     id='anotherName'
                     type='text'
-                    maxLength='60'
-                    optional={false}
+                    maxLength={60}
+                    optional={true}
+                    hideOptional={true}
                     value={anotherName.value}
                     onChange={onChange}
                 />

@@ -42,7 +42,7 @@ const FirstPersonalReference = ({ history }) => {
                     label='First name'
                     id='firstName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={firstName.value}
                     onChange={onChange}
                 />
@@ -50,7 +50,7 @@ const FirstPersonalReference = ({ history }) => {
                     label='Last name'
                     id='lastName'
                     type='text'
-                    maxLength='60'
+                    maxLength={60}
                     value={lastName.value}
                     onChange={onChange}
                 />
@@ -58,23 +58,25 @@ const FirstPersonalReference = ({ history }) => {
                     label='Relationship to you'
                     id='relationshipToYou'
                     type='text'
-                    maxLength='60'
-                    value={relationshipToYou.value}
+                    maxLength={60}
+					value={relationshipToYou.value}
+					customValidationMessage='Enter this person&#39;s relationship to you'
                     onChange={onChange}
                 />
 				<TextInputContainer
 					label='How long have you known this person?'
 					id='numberOfYearsKnown'
 					type='text'
-					maxLength='60'
+					maxLength={60}
 					value={numberOfYearsKnown.value}
+					customValidationMessage='Enter the length of time you&#39;ve known this person'
 					onChange={onChange}
 				/>
 				<TextInputContainer
                     label='Email address'
                     id='emailAddress'
                     type='email'
-                    maxLength='60'
+                    maxLength={60}
                     value={emailAddress.value}
                     onChange={onChange}
                 />
@@ -82,7 +84,7 @@ const FirstPersonalReference = ({ history }) => {
                     label='Phone number'
                     id='phoneNumber'
                     type='tel'
-                    maxLength='11'
+                    maxLength={11}
                     value={phoneNumber.value}
                     onChange={onChange}
                 />
