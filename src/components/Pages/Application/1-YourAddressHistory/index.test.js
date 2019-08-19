@@ -346,7 +346,7 @@ describe('YourAddressHistory', () => {
 		wrapper.find('input[name="year"]').simulate('change', { target: {value: '', name: 'year'} })
 
 		// Assert
-		expect(onChangeTargetMock).toHaveBeenCalledWith({"target": {"name": "addressHistory", "value": [{"address": {"addressLine1": {"isValid": true, "value": "addressLine1"}, "addressLine2": {"isValid": true, "value": "addressLine2"}, "country": {"isValid": true, "value": "country"}, "county": {"isValid": true, "value": "county"}, "postcode": {"isValid": true, "value": "postcode"}, "town": {"isValid": true, "value": "town"}}, "dateFrom": {"isValid": false, "value": null}}]}}, false, 'firstApplicant')
+		expect(onChangeTargetMock).toHaveBeenCalledWith({'target': {'name': 'addressHistory', 'value': [{'address': {'addressLine1': {'isValid': true, 'value': 'addressLine1'}, 'addressLine2': {'isValid': true, 'value': 'addressLine2'}, 'country': {'isValid': true, 'value': 'country'}, 'county': {'isValid': true, 'value': 'county'}, 'postcode': {'isValid': true, 'value': 'postcode'}, 'town': {'isValid': true, 'value': 'town'}}, 'dateFrom': {'isValid': false, 'value': null}}]}}, false, 'firstApplicant')
 	})
 
 	
@@ -444,8 +444,8 @@ describe('YourAddressHistory', () => {
 		wrapper.find('input[name="addressLine1"]').simulate('change', { target: {value: 'new address line 1 value', name: 'addressLine1'} })
 
 		// Assert
-		expect(onChangeTargetMock).toHaveBeenCalledWith({"target": {"name": "addressHistory", "value": [{"address": {"addressLine1": {"isValid": true, "value": "addressLine1"}, "addressLine2": {"isValid": true, "value": "addressLine2"}, "country": {"isValid": true, "value": "country"}, "county": {"isValid": true, "value": "county"}, "postcode": {"isValid": true, "value": "postcode"}, "town": {"isValid": true, "value": "town"}}, "dateFrom": {"isValid": true,
-"value": "01-01-2009"}}, {"address": {"addressLine1": {"isValid": true, "value": "new address line 1 value"}, "addressLine2": {"isValid": true, "value": "addressLine2"}, "country": {"isValid": true, "value": "country"}, "county": {"isValid": true, "value": "county"}, "postcode": {"isValid": true, "value": "postcode"}, "town": {"isValid": true, "value": "town"}}, "dateFrom": {"isValid": true, "value": "01-01-2009"}}]}}, true, 'firstApplicant')
+		expect(onChangeTargetMock).toHaveBeenCalledWith({'target': {'name': 'addressHistory', 'value': [{'address': {'addressLine1': {'isValid': true, 'value': 'addressLine1'}, 'addressLine2': {'isValid': true, 'value': 'addressLine2'}, 'country': {'isValid': true, 'value': 'country'}, 'county': {'isValid': true, 'value': 'county'}, 'postcode': {'isValid': true, 'value': 'postcode'}, 'town': {'isValid': true, 'value': 'town'}}, 'dateFrom': {'isValid': true,
+'value': '01-01-2009'}}, {'address': {'addressLine1': {'isValid': true, 'value': 'new address line 1 value'}, 'addressLine2': {'isValid': true, 'value': 'addressLine2'}, 'country': {'isValid': true, 'value': 'country'}, 'county': {'isValid': true, 'value': 'county'}, 'postcode': {'isValid': true, 'value': 'postcode'}, 'town': {'isValid': true, 'value': 'town'}}, 'dateFrom': {'isValid': true, 'value': '01-01-2009'}}]}}, true, 'firstApplicant')
 	})
 
 	it('should checkIsValid when multiple addresses', () => {
@@ -538,99 +538,9 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={{}} match={match}/>)
 
 		// Assert
-		expect(wrapper.find('Button').first().prop('disabled')).toEqual(undefined);
+		expect(wrapper.find('Button').first().prop('disabled')).toEqual(undefined)
 
 	})
-
-	// it('should checkIsValid with multiple addresses when dateFrom is undefined', () => {
-	// 	// Arrange
-	// 	useContextMock.mockReturnValue({
-	// 		currentApplicant: Applicant.FirstApplicant,
-	// 		onChangeStatus: onChangeStatusMock,
-	// 		onChangeTarget: onChangeTargetMock,
-	// 		country: [{value: 'test', name: 'test'}],
-	// 		statuses: {
-	// 			addressHistoryStatus: 0
-	// 		},
-	// 		firstApplicant: {
-	// 			addressHistory: {
-	// 				value: [{
-	// 					address: {
-	// 						addressLine1: {
-	// 							value: 'addressLine1',
-	// 							isValid: true
-	// 						},
-	// 						addressLine2: {
-	// 							value: 'addressLine2',
-	// 							isValid: true
-	// 						},
-	// 						town: {
-	// 							value: 'town',
-	// 							isValid: true
-	// 						},
-	// 						county: {
-	// 							value: 'county',
-	// 							isValid: true
-	// 						},
-	// 						country: {
-	// 							value: 'country',
-	// 							isValid: true
-	// 						},
-	// 						postcode: {
-	// 							value: 'postcode',
-	// 							isValid: true
-	// 						}
-	// 					},
-	// 					dateFrom: {
-	// 						value: '01-01-2009',
-	// 						isValid: true
-	// 					}
-
-	// 				},
-	// 				{
-	// 					address: {
-	// 						addressLine1: {
-	// 							value: 'addressLine1',
-	// 							isValid: true
-	// 						},
-	// 						addressLine2: {
-	// 							value: 'addressLine2',
-	// 							isValid: true
-	// 						},
-	// 						town: {
-	// 							value: 'town',
-	// 							isValid: true
-	// 						},
-	// 						county: {
-	// 							value: 'county',
-	// 							isValid: true
-	// 						},
-	// 						country: {
-	// 							value: 'country',
-	// 							isValid: true
-	// 						},
-	// 						postcode: {
-	// 							value: 'postcode',
-	// 							isValid: true
-	// 						}
-	// 					},
-	// 					dateFrom: undefined
-	// 				}],
-	// 				isValid: true
-	// 			}
-	// 		}
-	// 	})
-
-	// 	const match = {
-	// 		params: undefined
-	// 	}
-
-	// 	const wrapper = mount(<YourAddressHistory history={{}} match={match}/>)
-
-	// 	// Assert
-	// 	expect(wrapper.find('Button').at(0).prop('disabled')).toEqual('disabled')
-
-	// })
 
 	describe('snapshot', () => {
 		it('renders firstApplicant correctly for single applicant', () => {

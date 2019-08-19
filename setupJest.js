@@ -22,10 +22,12 @@ global.__FORM_DATA = {
 		},
 		firstApplicant: {
 			firstName: 'firstName',
-			lastName: ''
+			lastName: '',
+			addressHistory: [{address: {}, dateFrom: {}}]
 		},
-		secondApplicant: { 
-            firstName: 'testName' 
+		secondApplicant: {
+			firstName: 'testName' ,
+			addressHistory: [{address: {}, dateFrom: {}}]
         },
 		familyReference: {
 			firstName: 'family',

@@ -147,6 +147,7 @@ const updateFormStatus = ({ form, stage, currentStatus, setStatus }) => {
 }
 
 const parseFormData = ({ firstApplicant, secondApplicant, familyReference, firstPersonalReference, secondPersonalReference, ...formData }) => {
+    console.log(firstApplicant)
     let parsedObject = reduceProperties(formData)
 
     if (firstApplicant) {
