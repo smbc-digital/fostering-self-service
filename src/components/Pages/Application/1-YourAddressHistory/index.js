@@ -211,6 +211,10 @@ const YourAddressHistory = ({history, match}) => {
 					onChange={onComponentChange}
 					name='dateFrom'
 					value={date.value}
+					customValidation={{
+                        invalidAfterDate: moment(),
+                        customValidationMessage: 'Check the date and try again'
+                    }}
 				/>
 				{ index === 0 && showAddMoreOnFirstComponent && 
 					<AlertForm
