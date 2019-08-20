@@ -32,6 +32,85 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
         onChange={[Function]}
         onKeyDown={[Function]}
         type="number"
+        value=""
+      />
+    </div>
+    <div>
+      <label>
+        Year
+      </label>
+      <input
+        aria-label="year"
+        className=""
+        name="year"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        type="number"
+        value=""
+      />
+    </div>
+  </fieldset>
+  <button
+    className="button-primary"
+    disabled={true}
+    id={undefined}
+    onClick={undefined}
+    type="submit"
+  >
+    Save and next step
+  </button>
+  <p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </p>
+  <button
+    className="button-inverted left-chevron"
+    disabled={true}
+    id={undefined}
+    onClick={[Function]}
+    type="submit"
+  >
+    Save and go back to fostering area
+  </button>
+</form>
+`;
+
+exports[`YourAddressHistory snapshot renders firstApplicant correctly for single applicant when first date entered is not more than 10 years ago 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <h1>
+    Your fostering journey
+  </h1>
+  <h2>
+    Your address history
+  </h2>
+  <h3
+    className="no-margin-bottom"
+  >
+    Tell us when you moved into your current address
+  </h3>
+  <fieldset
+    className="input-memorable-date"
+  >
+    <p>
+      For example, 3 1980
+    </p>
+    <div>
+      <label>
+        Month
+      </label>
+      <input
+        aria-label="month"
+        className=""
+        name="month"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        type="number"
         value="1"
       />
     </div>
@@ -46,7 +125,118 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
         onChange={[Function]}
         onKeyDown={[Function]}
         type="number"
-        value="2009"
+        value="2015"
+      />
+    </div>
+  </fieldset>
+  <div>
+    <section
+      className="alert-information-form"
+    >
+      <span
+        className="fa fa-info-circle"
+      />
+      <p
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "You must tell us where you’ve lived since August 2009, starting with the most recent address and working backwards. If you’ve been a student during the last 10 years, you’ll need to enter all of your term-time addresses. If you’ve lived in emergency accommodation, you’ll need to enter the name and address of the shelter you were living in.",
+          }
+        }
+      />
+    </section>
+  </div>
+  <a
+    className="anchor-with-icon"
+    href="#"
+    onClick={[Function]}
+  >
+     
+    <i
+      className="fa fa-plus-square fa-lg"
+    />
+    Add another address
+  </a>
+  <button
+    className="button-primary"
+    disabled={true}
+    id={undefined}
+    onClick={undefined}
+    type="submit"
+  >
+    Save and next step
+  </button>
+  <p>
+    <a
+      href="#"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </p>
+  <button
+    className="button-inverted left-chevron"
+    disabled={true}
+    id={undefined}
+    onClick={[Function]}
+    type="submit"
+  >
+    Save and go back to fostering area
+  </button>
+</form>
+`;
+
+exports[`YourAddressHistory snapshot renders second applicant correctly when no data 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <h1>
+    Your fostering journey
+  </h1>
+  <h2>
+    Your address history
+  </h2>
+  <h3>
+    Second
+     
+    Applicant
+  </h3>
+  <h3
+    className="no-margin-bottom"
+  >
+    Tell us when you moved into your current address
+  </h3>
+  <fieldset
+    className="input-memorable-date"
+  >
+    <p>
+      For example, 3 1980
+    </p>
+    <div>
+      <label>
+        Month
+      </label>
+      <input
+        aria-label="month"
+        className=""
+        name="month"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        type="number"
+        value="6"
+      />
+    </div>
+    <div>
+      <label>
+        Year
+      </label>
+      <input
+        aria-label="year"
+        className=""
+        name="year"
+        onChange={[Function]}
+        onKeyDown={[Function]}
+        type="number"
+        value="2016"
       />
     </div>
   </fieldset>
@@ -271,101 +461,6 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
     />
     Remove this address
   </a>
-  <a
-    className="anchor-with-icon"
-    href="#"
-    onClick={[Function]}
-  >
-     
-    <i
-      className="fa fa-plus-square fa-lg"
-    />
-    Add another address
-  </a>
-  <button
-    className="button-primary"
-    disabled={true}
-    id={undefined}
-    onClick={undefined}
-    type="submit"
-  >
-    Save and next step
-  </button>
-  <p>
-    <a
-      href="#"
-      onClick={[Function]}
-    >
-      Back
-    </a>
-  </p>
-  <button
-    className="button-inverted left-chevron"
-    disabled={true}
-    id={undefined}
-    onClick={[Function]}
-    type="submit"
-  >
-    Save and go back to fostering area
-  </button>
-</form>
-`;
-
-exports[`YourAddressHistory snapshot renders second applicant correctly when no data 1`] = `
-<form
-  onSubmit={[Function]}
->
-  <h1>
-    Your fostering journey
-  </h1>
-  <h2>
-    Your address history
-  </h2>
-  <h3>
-    Second
-     
-    Applicant
-  </h3>
-  <h3
-    className="no-margin-bottom"
-  >
-    Tell us when you moved into your current address
-  </h3>
-  <fieldset
-    className="input-memorable-date"
-  >
-    <p>
-      For example, 3 1980
-    </p>
-    <div>
-      <label>
-        Month
-      </label>
-      <input
-        aria-label="month"
-        className=""
-        name="month"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value=""
-      />
-    </div>
-    <div>
-      <label>
-        Year
-      </label>
-      <input
-        aria-label="year"
-        className=""
-        name="year"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value=""
-      />
-    </div>
-  </fieldset>
   <a
     className="anchor-with-icon"
     href="#"

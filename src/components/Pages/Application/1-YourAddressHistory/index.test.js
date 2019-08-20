@@ -581,12 +581,67 @@ describe('YourAddressHistory', () => {
 									isValid: true
 								}
 							},
+							dateFrom: undefined
+						}],
+						isValid: false
+					}
+				}
+			})
+			
+			const match = {
+				params: undefined
+			}
+
+			const tree = renderer
+				.create(<YourAddressHistory history={{}} match={match}/>)
+				.toJSON()
+
+			expect(tree).toMatchSnapshot()
+		})
+
+		it('renders firstApplicant correctly for single applicant when first date entered is not more than 10 years ago', () => {
+			useContextMock.mockReturnValue({
+				currentApplicant: Applicant.FirstApplicant,
+				onChangeStatus: onChangeStatusMock,
+				onChangeTarget: onChangeTargetMock,
+				country: [{value: 'test', name: 'test'}],
+				statuses: {
+					addressHistoryStatus: 0
+				},
+				firstApplicant: {
+					addressHistory: {
+						value: [{
+							address: {
+								addressLine1: {
+									value: 'addressLine1',
+									isValid: true
+								},
+								addressLine2: {
+									value: 'addressLine2',
+									isValid: true
+								},
+								town: {
+									value: 'town',
+									isValid: true
+								},
+								county: {
+									value: 'county',
+									isValid: true
+								},
+								country: {
+									value: 'test',
+									isValid: true
+								},
+								postcode: {
+									value: 'postcode',
+									isValid: true
+								}
+							},
 							dateFrom: {
-								value: '01-01-2009',
+								value: '01-01-2015',
 								isValid: true
 							}
-						},
-						{}],
+						}],
 						isValid: false
 					}
 				}
@@ -641,6 +696,12 @@ describe('YourAddressHistory', () => {
 					addressHistory: {
 						value: [{
 							address: {},
+							dateFrom: {
+								value: '02-06-2016',
+								isValid: true
+							}
+						}, {
+							address: undefined,
 							dateFrom: undefined
 						}],
 						isValid: false

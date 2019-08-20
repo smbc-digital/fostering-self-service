@@ -20,6 +20,7 @@ const YourAddressHistory = ({history, match}) => {
 	const { onChangeTarget, onChangeStatus, country, secondApplicant } = context
 	const { addressHistory, firstName, lastName } = context[currentApplicant]
 	const [isLoading, setIsLoading] = useState(false)
+	const showAddMoreOnFirstComponent = addressHistory.value[0].dateFrom === undefined ? false : moment(addressHistory.value[0].dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).isAfter(moment().subtract(10, 'years'))
 
     useEffect(() => {
         updateFormStatus({
@@ -39,8 +40,14 @@ const YourAddressHistory = ({history, match}) => {
         }, isValid, currentApplicant)
 	}
 
+	const dispalyAddMore = () => {
+		let dateOverLastTenYears = addressHistory.value[0].dateFrom === undefined ? false : moment(addressHistory.value[0].dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).isAfter(moment().subtract(10, 'years'))
+
+		return dateOverLastTenYears
+	}
+
 	const isButtonValid = () => {
-		let dateInLastTenYears = addressHistory.value.some(address => {
+		let dateOverLastTenYears = addressHistory.value.some(address => {
 			return address.dateFrom === undefined ? false : moment(address.dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).isBefore(moment().subtract(10, 'years'))
 		})
 
@@ -59,7 +66,7 @@ const YourAddressHistory = ({history, match}) => {
 				})
 			: true
 
-		return allFieldsValid && dateInLastTenYears
+		return allFieldsValid && dateOverLastTenYears
 	}
 
 	const handleFormUpdate = async nextPageRoute => {
@@ -127,15 +134,12 @@ const YourAddressHistory = ({history, match}) => {
 		}
 
 		const dateMinusTenYears = moment().subtract(10, 'years').format('MMMM YYYY')
+
 		const alertContent = 'You must tell us where you’ve lived since ' + `${dateMinusTenYears}` + ', starting with the most recent address and working backwards. If you’ve been a student during the last 10 years, you’ll need to enter all of your term-time addresses. If you’ve lived in emergency accommodation, you’ll need to enter the name and address of the shelter you were living in.'
 		
 		return (
 			<Fragment>
-				{ index === 1 && 
-					<AlertForm
-					level='information'
-					content={alertContent}
-				/>}
+
 				{ index !== 0 && 
 				<Fragment>
 					<h3>Tell us your previous address</h3>
@@ -208,6 +212,11 @@ const YourAddressHistory = ({history, match}) => {
 					name='dateFrom'
 					value={date.value}
 				/>
+				{ index === 0 && showAddMoreOnFirstComponent && 
+					<AlertForm
+					level='information'
+					content={alertContent}
+				/>}
 			</Fragment>
 		)
 	} 
@@ -223,11 +232,12 @@ const YourAddressHistory = ({history, match}) => {
 				componentName='addressHistoryDetails'
 				addItemMessage='Add another address'
 				removeItemMessage='Remove this address'
-				showAddMoreButton={true}
+				showAddMoreButton={dispalyAddMore()}
 				renderComponent={renderComponent}
 				values={addressHistory.value}
 				showRemoveonAllExceptFirstComponent={true}
 				showRemoveOnAllComponents={false}
+				showAddMoreOnFirstComponent={showAddMoreOnFirstComponent}
 			/>
 			<SubmitButton
 				history={history}
