@@ -34,7 +34,6 @@ Array [
       maxLength={2000}
       name="reasonsForFostering"
       onChange={[Function]}
-      optional={undefined}
       value=""
     />
     <p
