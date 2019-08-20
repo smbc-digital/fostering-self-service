@@ -119,7 +119,7 @@ const DoYouKnowCouncillors = ({ history, match }) => {
                     isValid={!saveAndGoBackClicked && hasContactWithCouncillor.isValid}
                     isLoading={isLoading && !saveAndGoBackClicked}
                 />
-                <Anchor label='Back' history={history} />
+                <Anchor label='Previous' history={history} />
                 {isSavingAllowed && <Button
                     label="Save and go back to fostering area"
                     isValid={!isLoading && !saveAndGoBackClicked && hasContactWithCouncillorRadioValue === 'false'  && hasContactWithCouncillor.isValid && isSavingAllowed}

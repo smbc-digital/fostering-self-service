@@ -57,7 +57,7 @@ const AnyPeopleInYourHousehold = ({ history }) => {
                 />
                 <Button label="Next step" isValid={true} />
             </form>
-            <Anchor label='Back' history={history} />
+            <Anchor label='Previous' history={history} />
         </Fragment>
     )
 }

@@ -14,7 +14,7 @@ const SubmitButton = ({ currentApplicant, secondApplicant, onSaveAndGoBackClick,
                 isLoading={isLoading}
             />
             <Anchor
-                label='Back'
+                label='Previous'
                 history={history} />
         </Fragment>
     }
@@ -26,7 +26,7 @@ const SubmitButton = ({ currentApplicant, secondApplicant, onSaveAndGoBackClick,
             isLoading={isLoading && !saveAndGoBackClicked}
         />
         <Anchor
-            label='Back'
+            label='Previous'
             history={history} />
         <Button
             label="Save and go back to fostering area"

@@ -64,7 +64,7 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
       href="#"
       onClick={[Function]}
     >
-      Back
+      Previous
     </a>
   </p>
   <button
@@ -170,7 +170,7 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
       href="#"
       onClick={[Function]}
     >
-      Back
+      Previous
     </a>
   </p>
   <button
@@ -486,7 +486,7 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
       href="#"
       onClick={[Function]}
     >
-      Back
+      Previous
     </a>
   </p>
   <button

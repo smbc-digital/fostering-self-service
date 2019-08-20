@@ -35,7 +35,7 @@ const AboutYourInterest = ({ history }) => {
                     value={reasonsForFostering.value}
                 />
                 <Button label="Next step" isValid />
-                <Anchor label='Back' history={history} />
+                <Anchor label='Previous' history={history} />
             </form>
         </Fragment>
     )

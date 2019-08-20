@@ -122,7 +122,7 @@ const AnyOverSixteens = ({ history, match }) => {
 					isValid={!saveAndGoBackClicked}
 					isLoading={isLoading && !saveAndGoBackClicked}
 				/>
-				<Anchor label='Back' history = { history } />
+				<Anchor label='Previous' history = { history } />
                 <Button
 					label="Save and go back to fostering area"
 					isValid={!isLoading && !saveAndGoBackClicked && radioValue !== 'true'}

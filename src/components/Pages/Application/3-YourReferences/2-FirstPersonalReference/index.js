@@ -100,7 +100,7 @@ const FirstPersonalReference = ({ history }) => {
 					isValid={isValid}
 				/> 
 				<Anchor
-					label='Back'
+					label='Previous'
 					history={history} 
 				/> 
 			</form>
