@@ -53,7 +53,7 @@ const AboutCouncillors = ({ match, history }) => {
 				<TextInputContainer
 					inputRef={firstInputRef}
 					label="Name of councillor or council employee"
-					validationMessage="Enter the name of the councillor or council employee"
+					customValidationMessage="Enter the name of the councillor or council employee"
 					id="councillorName"
 					type="text"
 					maxLength={60}
