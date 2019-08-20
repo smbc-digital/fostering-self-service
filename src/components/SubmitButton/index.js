@@ -14,7 +14,7 @@ const SubmitButton = ({ currentApplicant, secondApplicant, onSaveAndGoBackClick,
                 isLoading={isLoading}
             />
             <Anchor
-                label='Back'
+                label='Previous'
                 history={history} />
         </Fragment>
     }
