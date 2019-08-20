@@ -434,7 +434,7 @@ Array [
       </a>
     </p>
     <button
-      className="button-inverted left-chevron"
+      className="button-disabled left-chevron"
       disabled={true}
       id={undefined}
       onClick={[Function]}
