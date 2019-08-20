@@ -230,9 +230,7 @@ const Start = () => {
 
 	return (
 		<Fragment>
-			<div className='grid-100'>
-				<h1>Start your fostering journey</h1>
-			</div>
+			<h1>Start your fostering journey</h1>
 			<ol className='task-item-list'>
 				{tasks.map((task, index) => <li
 					key={index}
