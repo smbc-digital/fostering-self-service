@@ -67,6 +67,7 @@ const EmploymentDetails = ({ history, match }) => {
         return onChangeTarget(event, isValid, currentApplicant)
     }
 
+    
     return <form onSubmit={onSubmit}>
                 <h1>Your fostering journey</h1>
                 <h2>Your employment details</h2>

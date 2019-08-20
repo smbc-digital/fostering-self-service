@@ -13,7 +13,8 @@ import {
 	ABOUT_YOUR_HEALTH, 
 	YOUR_INTEREST_IN_FOSTERING, 
 	YOUR_HOUSEHOLD, 
-	CHILDREN_UNDER_SIXTEEN_LIVING_AWAY, 
+	CHILDREN_UNDER_SIXTEEN_LIVING_AWAY,
+	ADDRESS_HISTORY, 
 	ABOUT_YOUR_GP, 
 	FAMILY_REFERENCE,
 	FOSTERING_HISTORY,
@@ -116,7 +117,8 @@ const FormLinks = ({ disabled, displayStatus }) => {
 }
 
 const AdditionalInformationFormLinks = ({ disabled }) => {
-	const { statuses: { 
+	const { statuses: {
+			addressHistoryStatus,
 			gpDetailsStatus,
 			referencesStatus,
 			councillorsOrEmployeesStatus
@@ -126,6 +128,12 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 	return (
 		<Fragment>
 		<p>After your home visit, you must give us more information so that we can carry out personal checks and contact your referees.</p>
+		<TaskLink
+			route={ADDRESS_HISTORY}
+			status={addressHistoryStatus}
+			name='Address history'
+			disabled={disabled}
+		/>
 		<TaskLink
 			route={ABOUT_YOUR_GP}
 			status={gpDetailsStatus}

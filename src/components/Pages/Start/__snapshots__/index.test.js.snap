@@ -212,6 +212,13 @@ Array [
           className="anchor-with-status"
         >
           <p>
+            Address history
+          </p>
+        </div>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
             Your GP details
           </p>
         </div>
@@ -491,6 +498,13 @@ Array [
         <p>
           After your home visit, you must give us more information so that we can carry out personal checks and contact your referees.
         </p>
+        <div
+          className="anchor-with-status"
+        >
+          <p>
+            Address history
+          </p>
+        </div>
         <div
           className="anchor-with-status"
         >

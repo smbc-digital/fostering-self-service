@@ -1,7 +1,7 @@
 import { 
     updateFormStatus, 
     updateApplicationForm, 
-    updateHomeVisitForm,
+    updateHomeVisitForm, 
     HomeVisitFormName,
     ApplicationFormName,
     TaskStatus, 
@@ -41,6 +41,7 @@ describe('updateFormStatus', () => {
 
         expect(mockSetStatus.mock.calls.length).toBe(0)
     })
+
 })
 
 describe('updateApplicationForm', () => {
@@ -234,12 +235,88 @@ describe('parseFormData()', () => {
         expect(result.secondPersonalReference.firstName).toBe('second personal reference first name')
         expect(result.secondPersonalReference.address.postcode).toBe('second personal reference postcode')
     })
+
+    it('should reduce addrssHistory for first Application', async () => {
+        const mockPromise = Promise.resolve({
+            ok: true, 
+            json: jest.fn()
+        })
+
+        const formDate = {
+            firstApplicant: { 
+                addressHistory: {
+                    value: [
+                        {address: {
+                            addressLine1: {
+                                value: undefined,
+                                isValid: false
+                            },
+                            town: {
+                                value: undefined,
+                                isValid: false
+                            },
+                            country: {
+                                value: undefined,
+                                isValid: false
+                            }
+                        }, dateFrom: { value: '01/01/1999', isValid: true }}
+                ]}
+            },
+            secondApplicant: { 
+                addressHistory: {
+                    value: [
+                        {address: {
+                            addressLine1: {
+                                value: 'line1',
+                                isValid: true
+                            },
+                            addressLine2: {
+                                value: 'line2',
+                                isValid: true
+                            },
+                            town: {
+                                value: 'town',
+                                isValid: true
+                            },
+                            county: {
+                                value: 'county',
+                                isValid: true
+                            },
+                            country: {
+                                value: 'country',
+                                isValid: true
+                            },
+                            postcode: {
+                                value: 'postcode',
+                                isValid: true
+                            }
+                        }, dateFrom: { value: '01/01/1999', isValid: true }}
+                ]}
+            }
+        }
+
+        helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+        
+        // Act
+        await updateApplicationForm(ApplicationFormName.AddressHistory, formDate)
+
+        // Assert
+        expect(helpers.fetchWithTimeout).toHaveBeenCalledWith('/fostering/application/address-history', {
+            method: 'PATCH',
+            credentials: 'include',
+            body: '{"firstApplicant":{"addressHistory":[{"address":{"addressLine2":"","county":"","postcode":""},"dateFrom":"01/01/1999"}]},"secondApplicant":{"addressHistory":[{"address":{"addressLine1":"line1","addressLine2":"line2","town":"town","county":"county","country":"country","postcode":"postcode"},"dateFrom":"01/01/1999"}]}}',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }, 30000)
+    })
 })
 
 describe('getFormUpdateEndpoint' , () => {
  
-    const getFormUpdateEndpoint = (formName, expectedEnpoint) => {
-        it('should return correct endpoin for form', async () => {
+    const getHomeVisitFormUpdateEndpoint = (formName, expectedEnpoint) => {
+        it('should return correct endpoin for home visit form', async () => {
             const mockPromise = Promise.resolve({
                 ok: true, 
                 json: jest.fn()
@@ -263,12 +340,45 @@ describe('getFormUpdateEndpoint' , () => {
         })
     }
 
-    getFormUpdateEndpoint(HomeVisitFormName.YourEmploymentDetails, '/fostering/home-visit/your-employment-details')
-    getFormUpdateEndpoint(HomeVisitFormName.LanguagesSpokenInYourHome, '/fostering/home-visit/languages-spoken-in-your-home')
-    getFormUpdateEndpoint(HomeVisitFormName.YourFosteringHistory, '/fostering/home-visit/your-fostering-history')
-    getFormUpdateEndpoint(HomeVisitFormName.YourPartnership, '/fostering/home-visit/partnership-status')
-    getFormUpdateEndpoint(HomeVisitFormName.TellUsAboutYourInterestInFostering, '/fostering/home-visit/interest-in-fostering')
-    getFormUpdateEndpoint(HomeVisitFormName.YourHealth, '/fostering/home-visit/about-your-health')
-    getFormUpdateEndpoint(HomeVisitFormName.YourHousehold, '/fostering/home-visit/household')
-    getFormUpdateEndpoint(HomeVisitFormName.ChildrenLivingAwayFromYourHome, '/fostering/home-visit/children-living-away-from-home')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.YourEmploymentDetails, '/fostering/home-visit/your-employment-details')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.TellUsAboutYourself, '/fostering/home-visit/about-yourself')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.LanguagesSpokenInYourHome, '/fostering/home-visit/languages-spoken-in-your-home')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.YourFosteringHistory, '/fostering/home-visit/your-fostering-history')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.YourPartnership, '/fostering/home-visit/partnership-status')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.TellUsAboutYourInterestInFostering, '/fostering/home-visit/interest-in-fostering')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.YourHealth, '/fostering/home-visit/about-your-health')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.YourHousehold, '/fostering/home-visit/household')
+    getHomeVisitFormUpdateEndpoint(HomeVisitFormName.ChildrenLivingAwayFromYourHome, '/fostering/home-visit/children-living-away-from-home')
+
+
+    const getApplicationFormUpdateEndpoint = (formName, expectedEnpoint) => {
+        it('should return correct endpoin for application form', async () => {
+            const mockPromise = Promise.resolve({
+                ok: true, 
+                json: jest.fn()
+            })
+    
+            helpers.fetchWithTimeout = jest.fn().mockReturnValue(mockPromise)
+            
+            // Act
+            await updateApplicationForm(formName, {})
+    
+            // Assert
+            expect(helpers.fetchWithTimeout).toHaveBeenCalledWith(expectedEnpoint, {
+                method: 'PATCH',
+                credentials: 'include',
+                body: '{}',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }, 30000)
+        })
+
+    }
+
+    getApplicationFormUpdateEndpoint(ApplicationFormName.AddressHistory, '/fostering/application/address-history')
+    getApplicationFormUpdateEndpoint(ApplicationFormName.GpDetails, '/fostering/application/gp-details')
+    getApplicationFormUpdateEndpoint(ApplicationFormName.References, '/fostering/application/references')
+    getApplicationFormUpdateEndpoint(ApplicationFormName.Councillors, '/fostering/application/councillors-details')
 })
