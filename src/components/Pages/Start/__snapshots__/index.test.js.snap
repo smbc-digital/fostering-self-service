@@ -14,21 +14,17 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
-          <h2>
-            Contact the fostering team
-          </h2>
-        </div>
+        <h2>
+          Contact the fostering team
+        </h2>
         <p>
           Contact the fostering team to tell us that you’re interested in becoming a foster carer.
         </p>
+        <span
+          className="status-completed"
+        >
+          Completed
+        </span>
         <hr />
       </div>
     </li>
@@ -38,21 +34,17 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
-          <h2>
-            Find out more about fostering
-          </h2>
-        </div>
+        <h2>
+          Find out more about fostering
+        </h2>
         <p>
           Speak to the fostering team about your interest in fostering and arrange a home visit.
         </p>
+        <span
+          className="status-completed"
+        >
+          Completed
+        </span>
         <hr />
       </div>
     </li>
@@ -62,13 +54,9 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <h2>
-            Answer questions before your home visit
-          </h2>
-        </div>
+        <h2>
+          Answer questions before your home visit
+        </h2>
         <p>
           You can answer the questions in this section to help you to prepare for your home visit. This step is optional however, your fostering journey can be made simpler by telling us more about yourself. You can make changes to your answers up to 30 minutes before your home visit and your social worker will be able to see your answers before your appointment.
         </p>
@@ -195,13 +183,9 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <h2>
-            Home visit
-          </h2>
-        </div>
+        <h2>
+          Home visit
+        </h2>
         <p>
           Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. 
         </p>
@@ -214,18 +198,9 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <span
-            className="status-cant-start"
-          >
-            Can't start yet
-          </span>
-          <h2>
-            Additional information
-          </h2>
-        </div>
+        <h2>
+          Additional information
+        </h2>
         <p>
           After your home visit, you must give us more information so that we can carry out personal checks and contact your referees.
         </p>
@@ -257,6 +232,11 @@ Array [
             Personal relationships with local councillors or council employees
           </p>
         </div>
+        <span
+          className="status-cant-start"
+        >
+          Can't start yet
+        </span>
       </div>
     </li>
     <li
@@ -265,13 +245,9 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <h2>
-            Next steps
-          </h2>
-        </div>
+        <h2>
+          Next steps
+        </h2>
         <p>
           The fostering team will use the information that you’ve provided to carry out statutory checks and request personal and health references from your referees and GP.
         </p>
@@ -312,21 +288,17 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
-          <h2>
-            Contact the fostering team
-          </h2>
-        </div>
+        <h2>
+          Contact the fostering team
+        </h2>
         <p>
           Contact the fostering team to tell us that you’re interested in becoming a foster carer.
         </p>
+        <span
+          className="status-completed"
+        >
+          Completed
+        </span>
         <hr />
       </div>
     </li>
@@ -336,21 +308,17 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
-          <h2>
-            Find out more about fostering
-          </h2>
-        </div>
+        <h2>
+          Find out more about fostering
+        </h2>
         <p>
           Speak to the fostering team about your interest in fostering and arrange a home visit.
         </p>
+        <span
+          className="status-completed"
+        >
+          Completed
+        </span>
         <hr />
       </div>
     </li>
@@ -360,13 +328,9 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <h2>
-            Answer questions before your home visit
-          </h2>
-        </div>
+        <h2>
+          Answer questions before your home visit
+        </h2>
         <p>
           You can answer the questions in this section to help you to prepare for your home visit. This step is optional however, your fostering journey can be made simpler by telling us more about yourself. You can make changes to your answers up to 30 minutes before your home visit and your social worker will be able to see your answers before your appointment.
         </p>
@@ -493,13 +457,9 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <h2>
-            Home visit
-          </h2>
-        </div>
+        <h2>
+          Home visit
+        </h2>
         <p>
           Your home visit appointment will be on
           <strong>
@@ -523,18 +483,9 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <span
-            className="status-cant-start"
-          >
-            Can't start yet
-          </span>
-          <h2>
-            Additional information
-          </h2>
-        </div>
+        <h2>
+          Additional information
+        </h2>
         <p>
           After your home visit, you must give us more information so that we can carry out personal checks and contact your referees.
         </p>
@@ -566,6 +517,11 @@ Array [
             Personal relationships with local councillors or council employees
           </p>
         </div>
+        <span
+          className="status-cant-start"
+        >
+          Can't start yet
+        </span>
       </div>
     </li>
     <li
@@ -574,13 +530,9 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
-          <h2>
-            Next steps
-          </h2>
-        </div>
+        <h2>
+          Next steps
+        </h2>
         <p>
           The fostering team will use the information that you’ve provided to carry out statutory checks and request personal and health references from your referees and GP.
         </p>
