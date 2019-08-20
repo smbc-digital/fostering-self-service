@@ -55,7 +55,6 @@ Array [
       maxLength={500}
       name="relationship"
       onChange={[Function]}
-      optional={undefined}
       value=""
     />
     <p
