@@ -164,7 +164,7 @@ const YourAddressHistory = ({history, match}) => {
 						onChange={onComponentChange}
 					/>
 					<TextInputContainer
-						label="City/town"
+						label="City or town"
 						name='town'
 						type="text"
 						id='town'
@@ -174,7 +174,7 @@ const YourAddressHistory = ({history, match}) => {
 						onChange={onComponentChange}
 					/>
 					<TextInputContainer
-						label="County/province"
+						label="County or province"
 						name='county'
 						type="text"
 						id='county'

@@ -256,6 +256,18 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
       />
     </section>
   </div>
+  <a
+    className="anchor-with-icon"
+    href="#"
+    onClick={[Function]}
+  >
+     
+    <i
+      className="fa fa-minus-square fa-lg"
+    />
+    Remove this address
+  </a>
+  <hr />
   <h3>
     Tell us your previous address
   </h3>
@@ -316,10 +328,10 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
     className=""
     htmlFor="town"
   >
-    City/town
+    City or town
   </label>
   <input
-    aria-label="City/town"
+    aria-label="City or town"
     aria-live="off"
     className=""
     id="town"
@@ -337,7 +349,7 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
     aria-hidden="true"
     className="optional"
   >
-    County/province
+    County or province
   </h3>
   <p
     className="optional"
@@ -348,7 +360,7 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
     className="optional sr-only"
     htmlFor="county"
   >
-    County/province optional
+    County or province optional
   </label>
   <input
     aria-label=""
