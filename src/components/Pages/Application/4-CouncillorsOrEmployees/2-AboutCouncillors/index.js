@@ -123,7 +123,7 @@ const AboutCouncillors = ({ match, history }) => {
                     isValid={isValid && !saveAndGoBackClicked} 
                     isLoading={isLoading && !saveAndGoBackClicked} 
                 />
-				<Anchor label='Back' history={history} />
+				<Anchor label='Previous' history={history} />
                 {isSavingAllowed && <Button
                     label="Save and go back to fostering area"
                     isValid={isValid}

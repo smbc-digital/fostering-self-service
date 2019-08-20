@@ -207,7 +207,7 @@ Array [
         href="#"
         onClick={[Function]}
       >
-        Back
+        Previous
       </a>
     </p>
   </form>,
@@ -421,7 +421,7 @@ Array [
         href="#"
         onClick={[Function]}
       >
-        Back
+        Previous
       </a>
     </p>
   </form>,

@@ -74,7 +74,7 @@ exports[`AreYouEmployed snapshot renders correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      Back
+      Previous
     </a>
   </p>
   <button
