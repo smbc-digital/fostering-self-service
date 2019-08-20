@@ -133,10 +133,7 @@ const YourAddressHistory = ({history, match}) => {
 			isValid: values.dateFrom === undefined ? false : values.dateFrom.isValid
 		}
 
-		const dateMinusTenYears = moment().subtract(10, 'years').format('MMMM YYYY')
-
-		const alertContent = 'You must tell us where you’ve lived since ' + `${dateMinusTenYears}` + ', starting with the most recent address and working backwards. If you’ve been a student during the last 10 years, you’ll need to enter all of your term-time addresses. If you’ve lived in emergency accommodation, you’ll need to enter the name and address of the shelter you were living in.'
-		
+	
 		return (
 			<Fragment>
 
@@ -216,20 +213,24 @@ const YourAddressHistory = ({history, match}) => {
                         customValidationMessage: 'Check the date and try again'
                     }}
 				/>
-				{ index === 0 && showAddMoreOnFirstComponent && 
-					<AlertForm
-					level='information'
-					content={alertContent}
-				/>}
+				
 			</Fragment>
 		)
 	} 
+
+	const dateMinusTenYears = moment().subtract(10, 'years').format('MMMM YYYY')
+	const alertContent = 'You must tell us where you’ve lived since ' + `${dateMinusTenYears}` + ', starting with the most recent address and working backwards.'
 
 	return (
 		<form onSubmit={onSubmit}>
 			<h1>Your fostering journey</h1>
             <h2>Your address history</h2>
-            {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
+			{ showAddMoreOnFirstComponent && 
+					<AlertForm
+					level='information'
+					content={alertContent}
+			/>}
+			{secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
 			<ComponentsList
 				key={currentApplicant} 
 				onChange={onAddressChange}

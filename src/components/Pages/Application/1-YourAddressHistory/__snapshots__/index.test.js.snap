@@ -89,6 +89,22 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
   <h2>
     Your address history
   </h2>
+  <div>
+    <section
+      className="alert-information-form"
+    >
+      <span
+        className="fa fa-info-circle"
+      />
+      <p
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "You must tell us where you’ve lived since August 2009, starting with the most recent address and working backwards.",
+          }
+        }
+      />
+    </section>
+  </div>
   <h3
     className="no-margin-bottom"
   >
@@ -129,22 +145,6 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
       />
     </div>
   </fieldset>
-  <div>
-    <section
-      className="alert-information-form"
-    >
-      <span
-        className="fa fa-info-circle"
-      />
-      <p
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "You must tell us where you’ve lived since August 2009, starting with the most recent address and working backwards. If you’ve been a student during the last 10 years, you’ll need to enter all of your term-time addresses. If you’ve lived in emergency accommodation, you’ll need to enter the name and address of the shelter you were living in.",
-          }
-        }
-      />
-    </section>
-  </div>
   <a
     className="anchor-with-icon"
     href="#"
@@ -195,6 +195,22 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
   <h2>
     Your address history
   </h2>
+  <div>
+    <section
+      className="alert-information-form"
+    >
+      <span
+        className="fa fa-info-circle"
+      />
+      <p
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "You must tell us where you’ve lived since August 2009, starting with the most recent address and working backwards.",
+          }
+        }
+      />
+    </section>
+  </div>
   <h3>
     Second
      
@@ -240,22 +256,6 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
       />
     </div>
   </fieldset>
-  <div>
-    <section
-      className="alert-information-form"
-    >
-      <span
-        className="fa fa-info-circle"
-      />
-      <p
-        dangerouslySetInnerHTML={
-          Object {
-            "__html": "You must tell us where you’ve lived since August 2009, starting with the most recent address and working backwards. If you’ve been a student during the last 10 years, you’ll need to enter all of your term-time addresses. If you’ve lived in emergency accommodation, you’ll need to enter the name and address of the shelter you were living in.",
-          }
-        }
-      />
-    </section>
-  </div>
   <h3>
     Tell us your previous address
   </h3>
