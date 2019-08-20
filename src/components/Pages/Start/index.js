@@ -214,7 +214,7 @@ const Start = () => {
 			displayHr: false
 		},
 		{
-			title: 'Next Steps',
+			title: 'Next steps',
 			body: () => <Fragment>
 				<p>The fostering team will use the information that you’ve provided to carry out statutory checks and request personal and health references from your referees and GP.</p>
 				<p>You’ll complete the assessment stage of your fostering journey where you’ll:</p>
@@ -224,7 +224,9 @@ const Start = () => {
 					<li>get to know current foster carers and other people who are starting their fostering journey</li>
 				</ul>
 				<p>You’ll then go to panel where a decision will be made about whether you can become a foster carer.</p>
-				</Fragment>
+				</Fragment>,
+			disabled: !enableAdditionalInformationSection.value,
+			displayHr: false
 		}		
 	]
 
