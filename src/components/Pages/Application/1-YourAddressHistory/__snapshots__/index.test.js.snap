@@ -256,6 +256,18 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
       />
     </section>
   </div>
+  <a
+    className="anchor-with-icon"
+    href="#"
+    onClick={[Function]}
+  >
+     
+    <i
+      className="fa fa-minus-square fa-lg"
+    />
+    Remove this address
+  </a>
+  <hr />
   <h3>
     Tell us your previous address
   </h3>
