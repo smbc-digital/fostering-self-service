@@ -57,7 +57,7 @@ const YourAddressHistory = ({history, match}) => {
 				if(index == 0){
 					return addressData.dateFrom.isValid
 				} else {
-					if(addressData.dateFrom === undefined || addressData.address === undefined){
+					if(addressData.dateFrom === undefined || addressData.address === undefined || addressData.address.addressLine1 === undefined || addressData.address.town === undefined || addressData.address.country === undefined){
 						return false
 					} else {
 						return addressData.dateFrom.isValid && addressData.address.addressLine1.isValid && addressData.address.town.isValid && addressData.address.country.isValid
@@ -105,6 +105,7 @@ const YourAddressHistory = ({history, match}) => {
 	const renderComponent = (onChange, firstInputRef, values, index) => {
 		const onComponentChange = ({ target: { name, value }}, isValid) => {
 			let newValues = {}
+
 			if(name === 'dateFrom'){
 				newValues = {
 					...values,
