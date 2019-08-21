@@ -14,9 +14,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <span
             className="status-completed"
           >
@@ -38,9 +36,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <span
             className="status-completed"
           >
@@ -62,9 +58,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <h2>
             Answer questions before your home visit
           </h2>
@@ -195,9 +189,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <h2>
             Home visit
           </h2>
@@ -214,9 +206,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <span
             className="status-cant-start"
           >
@@ -265,9 +255,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <h2>
             Next steps
           </h2>
@@ -312,9 +300,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <span
             className="status-completed"
           >
@@ -336,9 +322,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <span
             className="status-completed"
           >
@@ -360,9 +344,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <h2>
             Answer questions before your home visit
           </h2>
@@ -493,9 +475,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <h2>
             Home visit
           </h2>
@@ -523,9 +503,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <span
             className="status-cant-start"
           >
@@ -574,9 +552,7 @@ Array [
       <div
         className="task-item"
       >
-        <div
-          className="task-item-heading"
-        >
+        <div>
           <h2>
             Next steps
           </h2>
