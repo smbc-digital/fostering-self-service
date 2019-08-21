@@ -256,7 +256,6 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
       />
     </div>
   </fieldset>
-  <hr />
   <h3>
     Tell us your previous address
   </h3>
