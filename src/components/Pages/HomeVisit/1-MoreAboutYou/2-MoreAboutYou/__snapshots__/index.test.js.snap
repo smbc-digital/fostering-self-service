@@ -23,14 +23,7 @@ Array [
       >
         Country of birth
       </label>
-      <span
-        className="sr-only"
-        role="combobox"
-      >
-        
-      </span>
       <select
-        aria-live="off"
         id="placeOfBirth"
         name="placeOfBirth"
         onChange={[Function]}
@@ -49,14 +42,7 @@ Array [
       >
         Nationality
       </label>
-      <span
-        className="sr-only"
-        role="combobox"
-      >
-        
-      </span>
       <select
-        aria-live="off"
         id="nationality"
         name="nationality"
         onChange={[Function]}
@@ -75,14 +61,7 @@ Array [
       >
         Ethnicity
       </label>
-      <span
-        className="sr-only"
-        role="combobox"
-      >
-        
-      </span>
       <select
-        aria-live="off"
         id="ethnicity"
         name="ethnicity"
         onChange={[Function]}
