@@ -23,16 +23,25 @@ Array [
       >
         Country of birth
       </label>
+      <span
+        className="sr-only"
+        role="combobox"
+      >
+        
+      </span>
       <select
+        aria-live="off"
         id="placeOfBirth"
         name="placeOfBirth"
         onChange={[Function]}
         value="a place"
       >
         <option
-          disabled={true}
+          disabled={false}
           value=""
-        />
+        >
+          Select a country...
+        </option>
       </select>
     </fieldset>
     <fieldset>
@@ -42,16 +51,25 @@ Array [
       >
         Nationality
       </label>
+      <span
+        className="sr-only"
+        role="combobox"
+      >
+        
+      </span>
       <select
+        aria-live="off"
         id="nationality"
         name="nationality"
         onChange={[Function]}
         value="a place"
       >
         <option
-          disabled={true}
+          disabled={false}
           value=""
-        />
+        >
+          Select a nationality...
+        </option>
       </select>
     </fieldset>
     <fieldset>
@@ -61,16 +79,25 @@ Array [
       >
         Ethnicity
       </label>
+      <span
+        className="sr-only"
+        role="combobox"
+      >
+        
+      </span>
       <select
+        aria-live="off"
         id="ethnicity"
         name="ethnicity"
         onChange={[Function]}
         value="a place"
       >
         <option
-          disabled={true}
+          disabled={false}
           value=""
-        />
+        >
+          Select an ethnicity...
+        </option>
       </select>
     </fieldset>
     <label

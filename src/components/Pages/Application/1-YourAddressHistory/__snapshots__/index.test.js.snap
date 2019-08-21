@@ -373,7 +373,14 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
     >
       Country
     </label>
+    <span
+      className="sr-only"
+      role="combobox"
+    >
+      
+    </span>
     <select
+      aria-live="off"
       id="country"
       name="country"
       onChange={[Function]}
@@ -382,7 +389,9 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
       <option
         disabled={true}
         value=""
-      />
+      >
+        Select a country...
+      </option>
       <option
         value="test"
       >

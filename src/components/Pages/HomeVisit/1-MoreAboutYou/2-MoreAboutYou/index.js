@@ -64,6 +64,9 @@ const MoreAboutYou = ({ history, match }) => {
                     value={placeOfBirth.value}
                     options={context.country}
                     onChange={onChange}
+                    placeholder='Select a country...'
+                    optional
+                    hideOptionalText
                 />
                 <SelectInputContainer
                     label='Nationality'
@@ -71,6 +74,9 @@ const MoreAboutYou = ({ history, match }) => {
                     value={nationality.value}
                     options={context.nationality}
                     onChange={onChange}
+                    placeholder='Select a nationality...'
+                    optional
+                    hideOptionalText
                 />
                 <SelectInputContainer
                     label='Ethnicity'
@@ -78,6 +84,9 @@ const MoreAboutYou = ({ history, match }) => {
                     value={ethnicity.value}
                     options={context.ethnicity}
                     onChange={onChange}
+                    placeholder='Select an ethnicity...'
+                    optional
+                    hideOptionalText
                 />
                 <TextInputContainer
                     label='Gender'

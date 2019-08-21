@@ -188,6 +188,7 @@ const YourAddressHistory = ({history, match}) => {
 						value={values.address === undefined || values.address.country === undefined ?  '' : values.address.country.value}
 						options={country}
 						onChange={onComponentChange}
+						placeholder='Select a country...'
 					/>
 					<TextInputContainer
 						label="Postcode"
