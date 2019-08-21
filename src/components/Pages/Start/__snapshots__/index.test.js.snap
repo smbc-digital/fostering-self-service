@@ -184,7 +184,7 @@ Array [
       </div>
     </li>
     <li
-      className="disabled"
+      className={undefined}
     >
       <div
         className="task-item"
@@ -470,7 +470,7 @@ Array [
       </div>
     </li>
     <li
-      className="disabled"
+      className={undefined}
     >
       <div
         className="task-item"

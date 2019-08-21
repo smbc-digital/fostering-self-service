@@ -23,7 +23,7 @@
 		"react-google-recaptcha": "^1.0.5",
 		"react-router": "^5.0.1",
 		"react-router-dom": "^5.0.1",
-		"smbc-react-components": "^4.1.115"
+		"smbc-react-components": "^4.1.118"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.3",

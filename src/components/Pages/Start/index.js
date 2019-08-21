@@ -203,7 +203,6 @@ const Start = () => {
 					</p>}
 				<p>Your social worker will come to your home to find out more about you and your reasons for wanting to become a foster carer. If you’ve answered the questions in section 3, you’ll talk more about them. </p>
 			</Fragment>,
-			disabled: true,
 			status: isPastHomeVisitDateTime ? TaskStatus.Completed : TaskStatus.None
 		},
 		{
