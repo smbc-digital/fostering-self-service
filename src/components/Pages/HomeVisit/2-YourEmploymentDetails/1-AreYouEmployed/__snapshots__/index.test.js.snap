@@ -78,7 +78,7 @@ exports[`AreYouEmployed snapshot renders correctly 1`] = `
     </a>
   </p>
   <button
-    className="button-disabled left-chevron"
+    className="button-inverted left-chevron"
     disabled={true}
     id={undefined}
     onClick={[Function]}

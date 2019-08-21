@@ -108,7 +108,7 @@ const AboutCouncillors = ({ match, history }) => {
 	return (
 		<Fragment>
 			<h1>Your fostering journey</h1>
-			<h2>Personal relationships with local councillors or council employees</h2>
+			<h2>Local councillors and council employees</h2>
 			{secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
 			<form onSubmit={onSubmit}>
 				<ComponentsList
@@ -129,7 +129,7 @@ const AboutCouncillors = ({ match, history }) => {
                     label="Save and go back to fostering area"
                     isValid={isValid}
                     isLoading={isLoading && saveAndGoBackClicked}
-                    colour={!isValid ? 'disabled' : 'inverted'}
+                    colour='inverted'
                     onButtonClick={event => {
                             setSaveAndGoBackClicked(true)
                             onSaveAndGoBackClick(event)

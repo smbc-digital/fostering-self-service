@@ -32,7 +32,7 @@ const SubmitButton = ({ currentApplicant, secondApplicant, onSaveAndGoBackClick,
             label="Save and go back to fostering area"
             isValid={!isLoading && !saveAndGoBackClicked && isValid}
             isLoading={isLoading && saveAndGoBackClicked}
-            colour={isValid ? 'inverted' : 'disabled'}
+            colour='inverted'
             onButtonClick={event => {
                     setSaveAndGoBackClicked(true)
                     onSaveAndGoBackClick(event)

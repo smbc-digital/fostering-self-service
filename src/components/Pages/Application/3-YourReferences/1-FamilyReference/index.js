@@ -37,8 +37,8 @@ const FamilyReference = ({ history }) => {
 			<h1>Your fostering journey</h1>
 			<h2>Personal References</h2>
 			{secondApplicant && 
-			<h3>Tell us the details of the relative who can give you a personal reference for you and your partner</h3> ||
-			<h3>Tell us the details of the relative who can give you a personal reference for you</h3>}
+			<h3>Tell us about the relative who can give a personal reference for you and your partner</h3> ||
+			<h3>Tell us about the relative who can give a personal reference for you</h3>}
 			{secondApplicant && 
 			<AlertForm
 				level='information'

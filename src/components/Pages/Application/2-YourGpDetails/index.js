@@ -67,7 +67,7 @@ const YourGpDetails = ({ history, match }) => {
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
-            <h2>Tell us about your GP </h2>
+            <h2>Your GP details</h2>
             {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
             <AlertForm
                 level='information'

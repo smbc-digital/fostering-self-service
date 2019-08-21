@@ -6,7 +6,7 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Tell us about your interest in fostering
+    Your interest in fostering
   </h2>,
   <form
     onSubmit={[Function]}

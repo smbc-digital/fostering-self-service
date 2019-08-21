@@ -84,7 +84,7 @@ const TypesOfFostering = ({ history }) => {
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
-            <h2>Tell us about your interest in fostering</h2>
+            <h2>Your interest in fostering</h2>
             <form onSubmit={onSubmit}>
                 <CheckboxInputsContainer
                     name='typesOfFostering'

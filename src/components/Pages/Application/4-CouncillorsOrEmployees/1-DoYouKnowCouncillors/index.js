@@ -104,7 +104,7 @@ const DoYouKnowCouncillors = ({ history, match }) => {
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
-            <h2>Personal relationships with local councillors or council employees</h2>
+            <h2>Local councillors and council employees</h2>
             {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
             <form onSubmit={onSubmit}>
                 <RadioInputsContainer
@@ -124,7 +124,7 @@ const DoYouKnowCouncillors = ({ history, match }) => {
                     label="Save and go back to fostering area"
                     isValid={!isLoading && !saveAndGoBackClicked && hasContactWithCouncillorRadioValue === 'false'  && hasContactWithCouncillor.isValid && isSavingAllowed}
                     isLoading={isLoading && saveAndGoBackClicked}
-                    colour={hasContactWithCouncillorRadioValue !== 'false' ? 'disabled' : 'inverted'}
+                    colour='inverted'
                     onButtonClick={event => {
                             setSaveAndGoBackClicked(true)
                             onSaveAndGoBackClick(event)

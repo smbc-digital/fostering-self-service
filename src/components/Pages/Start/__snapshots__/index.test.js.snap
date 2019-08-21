@@ -73,7 +73,7 @@ Array [
             href="/fostering/known-by-another-name"
             onClick={[Function]}
           >
-            Tell us more about you
+            More about you
           </a>
           <span
             className="status-completed"
@@ -103,7 +103,7 @@ Array [
             href="/fostering/languages-spoken-in-your-home"
             onClick={[Function]}
           >
-            Tell us about the languages that are spoken in your home
+            Languages spoken in your home
           </a>
           <span
             className="status-completed"
@@ -158,7 +158,7 @@ Array [
             href="/fostering/your-interest-in-fostering"
             onClick={[Function]}
           >
-            Tell us about your interest in fostering
+            Your interest in fostering
           </a>
         </div>
         <div
@@ -244,7 +244,7 @@ Array [
           className="anchor-with-status"
         >
           <p>
-            Personal relationships with local councillors or council employees
+            Local councillors and council employees
           </p>
         </div>
       </div>
@@ -359,7 +359,7 @@ Array [
             href="/fostering/known-by-another-name"
             onClick={[Function]}
           >
-            Tell us more about you
+            More about you
           </a>
           <span
             className="status-completed"
@@ -389,7 +389,7 @@ Array [
             href="/fostering/languages-spoken-in-your-home"
             onClick={[Function]}
           >
-            Tell us about the languages that are spoken in your home
+            Languages spoken in your home
           </a>
           <span
             className="status-completed"
@@ -444,7 +444,7 @@ Array [
             href="/fostering/your-interest-in-fostering"
             onClick={[Function]}
           >
-            Tell us about your interest in fostering
+            Your interest in fostering
           </a>
         </div>
         <div
@@ -541,7 +541,7 @@ Array [
           className="anchor-with-status"
         >
           <p>
-            Personal relationships with local councillors or council employees
+            Local councillors and council employees
           </p>
         </div>
       </div>

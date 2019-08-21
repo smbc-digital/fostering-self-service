@@ -6,7 +6,7 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Tell us about the languages that are spoken in your home
+    Languages spoken in your home
   </h2>,
   <form
     onSubmit={[Function]}

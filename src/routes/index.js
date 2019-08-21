@@ -1,6 +1,6 @@
 import { StageName } from 'helpers'
 import Start from 'components/Pages/Start'
-import { KnownByAnotherName, MoreAboutYou } from 'components/Pages/HomeVisit/1-TellUsAboutYou'
+import { KnownByAnotherName, MoreAboutYou } from 'components/Pages/HomeVisit/1-MoreAboutYou'
 import { AreYouEmployed, EmploymentDetails } from 'components/Pages/HomeVisit/2-YourEmploymentDetails'
 import LanguagesSpokenInYourHome from 'components/Pages/HomeVisit/3-LanguagesSpokenInYourHome'
 import { AreYouMarried, MarriageDate, MovedInTogetherDate } from 'components/Pages/HomeVisit/4-PartnershipStatus'

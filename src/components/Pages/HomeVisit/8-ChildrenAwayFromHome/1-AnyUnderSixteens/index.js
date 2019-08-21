@@ -132,7 +132,7 @@ const AnyUnderSixteens = ({ history, match }) => {
 					label="Save and go back to fostering area"
 					isValid={!isLoading && !saveAndGoBackClicked && radioValue !== 'true'}
 					isLoading={isLoading && saveAndGoBackClicked}
-					colour={radioValue !== 'true' ? 'inverted' : 'disabled'}
+					colour='inverted'
 					onButtonClick={event => {
 						setSaveAndGoBackClicked(true)
 						onSaveAndGoBackClick(event)

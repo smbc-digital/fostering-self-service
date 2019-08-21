@@ -61,7 +61,7 @@ const FormLinks = ({ disabled, displayStatus }) => {
 		<TaskLink
 			route={KNOWN_BY_ANOTHER_NAME}
 			status={displayStatus ? tellUsAboutYourselfStatus : undefined}
-			name='Tell us more about you'
+			name='More about you'
 			disabled={disabled}
 		/>
 		<TaskLink
@@ -73,7 +73,7 @@ const FormLinks = ({ disabled, displayStatus }) => {
 		<TaskLink
 			route={LANGUAGES_SPOKEN_IN_YOUR_HOME}
 			status={displayStatus ? languageSpokenInYourHomeStatus : undefined}
-			name='Tell us about the languages that are spoken in your home'
+			name='Languages spoken in your home'
 			disabled={disabled}
 		/>
 		{secondApplicant && <TaskLink
@@ -98,7 +98,7 @@ const FormLinks = ({ disabled, displayStatus }) => {
 		<TaskLink
 			route={YOUR_INTEREST_IN_FOSTERING}
 			status={displayStatus ? tellUsAboutYourInterestInFosteringStatus : undefined}
-			name='Tell us about your interest in fostering'
+			name='Your interest in fostering'
 			disabled={disabled}
 		/>
 		<TaskLink
@@ -149,7 +149,7 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 		<TaskLink
 			route={RELATIONSHIP_TO_COUNCIL_EMPLOYEES}
 			status={councillorsOrEmployeesStatus}
-			name='Personal relationships with local councillors or council employees'
+			name='Local councillors and council employees'
 			disabled={disabled}
 		/>
 		</Fragment>

@@ -68,7 +68,7 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
     </a>
   </p>
   <button
-    className="button-disabled left-chevron"
+    className="button-inverted left-chevron"
     disabled={true}
     id={undefined}
     onClick={[Function]}
@@ -174,7 +174,7 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
     </a>
   </p>
   <button
-    className="button-disabled left-chevron"
+    className="button-inverted left-chevron"
     disabled={true}
     id={undefined}
     onClick={[Function]}
@@ -491,7 +491,7 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
     </a>
   </p>
   <button
-    className="button-disabled left-chevron"
+    className="button-inverted left-chevron"
     disabled={true}
     id={undefined}
     onClick={[Function]}

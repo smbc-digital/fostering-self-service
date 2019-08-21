@@ -57,7 +57,7 @@ const LanguagesSpokenInYourHome = ({ history }) => {
 	return (
         <Fragment>
             <h1>Your fostering journey</h1>
-            <h2>Tell us about the languages that are spoken in your home</h2>
+            <h2>Languages spoken in your home</h2>
             <form onSubmit={onSubmit}>
                 <TextInputContainer
                     label='Primary language'

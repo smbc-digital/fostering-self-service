@@ -6,7 +6,7 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Personal relationships with local councillors or council employees
+    Local councillors and council employees
   </h2>,
   <form
     onSubmit={[Function]}
@@ -74,7 +74,7 @@ Array [
       </a>
     </p>
     <button
-      className="button-disabled left-chevron"
+      className="button-inverted left-chevron"
       disabled={true}
       id={undefined}
       onClick={[Function]}

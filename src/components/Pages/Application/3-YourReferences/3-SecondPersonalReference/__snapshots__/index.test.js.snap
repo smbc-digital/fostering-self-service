@@ -9,7 +9,7 @@ Array [
     Personal References
   </h2>,
   <h3>
-    Tell us the details of the second person who can give you a personal reference for you and your partner
+    Tell us about the second person who can give a personal reference for you and your partner
   </h3>,
   <div>
     <section
@@ -232,7 +232,7 @@ Array [
     Personal References
   </h2>,
   <h3>
-    Tell us the details of the second person who can give you a personal reference for you
+    Tell us about the second person who can give a personal reference for you
   </h3>,
   <div>
     <section
@@ -434,7 +434,7 @@ Array [
       </a>
     </p>
     <button
-      className="button-disabled left-chevron"
+      className="button-inverted left-chevron"
       disabled={true}
       id={undefined}
       onClick={[Function]}

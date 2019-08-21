@@ -55,7 +55,7 @@ const MoreAboutYou = ({ history, match }) => {
     return (
         <Fragment>
             <h1>Your fostering journey</h1>
-            <h2>Tell us more about you</h2>
+            <h2>More about you</h2>
             {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
             <form onSubmit={onSubmit}>
                 <SelectInputContainer
