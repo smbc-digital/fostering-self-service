@@ -50,17 +50,6 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
       />
     </div>
   </fieldset>
-  <a
-    className="anchor-with-icon"
-    href="#"
-    onClick={[Function]}
-  >
-     
-    <i
-      className="fa fa-plus-square fa-lg"
-    />
-    Add another address
-  </a>
   <button
     className="button-primary"
     disabled={true}

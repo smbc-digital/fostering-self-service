@@ -63,6 +63,34 @@ const YourAddressHistory = ({history, match}) => {
 		return dateOverLastTenYears && allFieldsValid
 	}
 
+	const displayAddAnotherOnFirstAddress = () => {
+		if(addressHistory.value.length > 1 ){
+			let dateOverLastTenYears = addressHistory.value.some(address => {
+				return address.dateFrom === undefined ? false : moment(address.dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).isBefore(moment().subtract(10, 'years'))
+			})
+
+			var allFieldsValid = addressHistory.value.length > 1 
+			? 
+			addressHistory.value.every((addressData, index) => {
+				if(index == 0){
+					return addressData.dateFrom.isValid
+				} else {
+					if(addressData.dateFrom === undefined || addressData.address === undefined || addressData.address.addressLine1 === undefined || addressData.address.town === undefined || addressData.address.country === undefined){
+						return false
+					} else {
+						return addressData.dateFrom.isValid && addressData.address.addressLine1.isValid && addressData.address.town.isValid && addressData.address.country.isValid
+					}
+				}
+				})
+			: true
+
+			return dateOverLastTenYears && allFieldsValid
+		} else {
+			const showAddMoreOnFirstComponent = addressHistory.value[0].dateFrom === undefined ? false : moment(addressHistory.value[0].dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).isAfter(moment().subtract(10, 'years'))
+			
+			return !showAddMoreOnFirstComponent
+		}
+	}
 	
 	const handleFormUpdate = async nextPageRoute => {
 		setIsLoading(true)
@@ -234,7 +262,7 @@ const YourAddressHistory = ({history, match}) => {
 				componentName='addressHistoryDetails'
 				addItemMessage='Add another address'
 				removeItemMessage='Remove this address'
-				showAddMoreButton={!isFormValid()}
+				showAddMoreButton={!displayAddAnotherOnFirstAddress()}
 				renderComponent={renderComponent}
 				values={addressHistory.value}
 				showRemoveonAllExceptFirstComponent={true}
