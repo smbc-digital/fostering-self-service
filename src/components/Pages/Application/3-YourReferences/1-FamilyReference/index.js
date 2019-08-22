@@ -35,18 +35,18 @@ const FamilyReference = ({ history }) => {
 	return (
 		<Fragment>
 			<h1>Your fostering journey</h1>
-			<h2>Personal References</h2>
+			<h2>Personal references</h2>
 			{secondApplicant && 
 			<h3>Tell us about the relative who can give a personal reference for you and your partner</h3> ||
 			<h3>Tell us about the relative who can give a personal reference for you</h3>}
 			{secondApplicant && 
 			<AlertForm
 				level='information'
-				content='Your referee must be related to you or your partner and be able to comment on your home life and contact with children.'
+				content='Your referee must be related to you or your partner and be able to comment on your home life and your contact with children.'
 			/> ||
 			<AlertForm
 				level='information'
-				content='Your referee must be related to you and be able to comment on your home life and contact with children.'
+				content='Your referee must be related to you and be able to comment on your home life and your contact with children.'
 			/> }
 			<form onSubmit={onSubmit}>
                 <TextInputContainer

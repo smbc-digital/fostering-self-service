@@ -6,7 +6,7 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Personal References
+    Personal references
   </h2>,
   <h3>
     Tell us about the second person who can give a personal reference for you and your partner
@@ -21,7 +21,7 @@ Array [
       <p
         dangerouslySetInnerHTML={
           Object {
-            "__html": "Your referee must have known you and your partner for at least 2 years and be able to comment on your home life and contact with children. They must not be related to you or your partner.",
+            "__html": "Your referee must have known you and your partner for at least 2 years and be able to comment on your home life and your  with children. They must not be related to you or your partner.",
           }
         }
       />
@@ -229,7 +229,7 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Personal References
+    Personal references
   </h2>,
   <h3>
     Tell us about the second person who can give a personal reference for you
@@ -244,7 +244,7 @@ Array [
       <p
         dangerouslySetInnerHTML={
           Object {
-            "__html": "Your referee must have known you for at least 2 years and be able to comment on your home life and contact with children. They must not be related to you.",
+            "__html": "Your referee must have known you for at least 2 years and be able to comment on your home life and your contact with children. They must not be related to you.",
           }
         }
       />
