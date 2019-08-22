@@ -24,18 +24,18 @@ const FirstPersonalReference = ({ history }) => {
 	return (
 		<Fragment>
 			<h1>Your fostering journey</h1>
-			<h2>Personal References</h2>
+			<h2>Personal references</h2>
 			{secondApplicant && 
 			<h3>Tell us about the first person who can give a personal reference for you and your partner</h3> ||
 			<h3>Tell us about the first person who can give a personal reference for you</h3>}
 			{secondApplicant && 
 			<AlertForm
 				level='information'
-				content='Your referee must have known you and your partner for at least 2 years and be able to comment on your home life and contact with children. They must not be related to you or your partner.'
+				content='Your referee must have known you and your partner for at least 2 years and be able to comment on your home life and your contact with children. They must not be related to you or your partner.'
 			/> ||
 			<AlertForm
 				level='information'
-				content='Your referee must have known you for at least 2 years and be able to comment on your home life and contact with children. They must not be related to you.'
+				content='Your referee must have known you for at least 2 years and be able to comment on your home life and your contact with children. They must not be related to you.'
 			/> }
 			<form onSubmit={onSubmit}>
                 <TextInputContainer

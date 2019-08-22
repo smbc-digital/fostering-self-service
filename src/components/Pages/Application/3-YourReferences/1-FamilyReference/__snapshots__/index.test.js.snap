@@ -6,7 +6,7 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Personal References
+    Personal references
   </h2>,
   <h3>
     Tell us about the relative who can give a personal reference for you and your partner
@@ -21,7 +21,7 @@ Array [
       <p
         dangerouslySetInnerHTML={
           Object {
-            "__html": "Your referee must be related to you or your partner and be able to comment on your home life and contact with children.",
+            "__html": "Your referee must be related to you or your partner and be able to comment on your home life and your contact with children.",
           }
         }
       />
@@ -199,7 +199,7 @@ Array [
     Your fostering journey
   </h1>,
   <h2>
-    Personal References
+    Personal references
   </h2>,
   <h3>
     Tell us about the relative who can give a personal reference for you
@@ -214,7 +214,7 @@ Array [
       <p
         dangerouslySetInnerHTML={
           Object {
-            "__html": "Your referee must be related to you and be able to comment on your home life and contact with children.",
+            "__html": "Your referee must be related to you and be able to comment on your home life and your contact with children.",
           }
         }
       />

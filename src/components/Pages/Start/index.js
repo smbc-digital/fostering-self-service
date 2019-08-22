@@ -164,11 +164,7 @@ const Start = () => {
 
 	useEffect(() => {
 		if (resultsRef.current)
-			window.scrollTo({
-				top: resultsRef.current.offsetTop,
-				left: 0,
-				behavior: 'smooth'
-			})
+			window.scrollTo(0, resultsRef.current.offsetTop)
 	}, [])
 
 	const tasks = [

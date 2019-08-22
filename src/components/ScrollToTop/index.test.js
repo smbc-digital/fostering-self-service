@@ -58,5 +58,29 @@ describe('ScrollToTop', () => {
             // Assert
             expect(global.scrollTo).toHaveBeenCalledTimes(1)
         })
+
+        it('should not scroll if path ignored', () => {
+            // Arrange 
+            const props = {
+                location: {
+                    pathname: '/route'
+                },
+                ignoredPaths: ['/route']
+            }
+
+            global.scrollTo = jest.fn()
+
+            const wrapper = mount(
+                <ScrollToTop {...props}>
+                    <h1>test</h1>
+                </ScrollToTop>
+            )
+
+            // Act
+            wrapper.setProps(props)
+
+            // Assert
+            expect(global.scrollTo).not.toHaveBeenCalled()
+        })
     })
 })
