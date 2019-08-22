@@ -211,11 +211,13 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
       />
     </section>
   </div>
-  <h3>
+  <p
+    className="h3"
+  >
     Second
      
     Applicant
-  </h3>
+  </p>
   <h3
     className="no-margin-bottom"
   >

@@ -255,7 +255,7 @@ const YourAddressHistory = ({history, match}) => {
 					level='information'
 					content={alertContent}
 			/>}
-			{secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
+			{secondApplicant && <p className='h3'>{firstName.value} {lastName.value}</p>}
 			<ComponentsList
 				key={currentApplicant} 
 				onChange={onAddressChange}
