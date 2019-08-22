@@ -6,11 +6,15 @@ import Start from './index'
 describe('Start', () => {
 
     beforeEach(() => {
+        window.HTMLElement.prototype.scrollIntoView = jest.fn()
+
         useContextMock.mockReturnValue({
             homeVisitDateTime: {
                 value: moment().add(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
-            enableAdditionalInformationSection: true,
+            enableAdditionalInformationSection: {
+                value: true
+            },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 2,
@@ -27,8 +31,9 @@ describe('Start', () => {
     it('should render correct Task status', () => {
         var wrapper = mount(<Router><Start/></Router>)
        
+        expect(wrapper.find('span').get(0).props.className).toEqual('status-completed')
+        expect(wrapper.find('span').get(1).props.className).toEqual('status-completed')
         expect(wrapper.find('span').get(2).props.className).toEqual('status-completed')
-        expect(wrapper.find('span').get(3).props.className).toEqual('status-not-completed')
     })
 
     it('should render disabled task list items', () => {
@@ -39,7 +44,9 @@ describe('Start', () => {
             homeVisitDateTime: { 
                 value: moment().add(30, 'minutes').format('DD/MM/YYYY HH:mm')
             },
-            enableAdditionalInformationSection: true,
+            enableAdditionalInformationSection: {
+                value: true
+            },
         })
 
         // Act
@@ -57,7 +64,9 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().add(10, 'd').format('DD/MM/YYYY HH:mm')
             },
-            enableAdditionalInformationSection: true,
+            enableAdditionalInformationSection: {
+                value: false
+            },
             statuses: {}
         })
 
@@ -75,7 +84,9 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().subtract(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
-            enableAdditionalInformationSection: true,
+            enableAdditionalInformationSection: {
+                value: false
+            },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -95,7 +106,9 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().subtract(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
-            enableAdditionalInformationSection: true,
+            enableAdditionalInformationSection: {
+                value: true
+            },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -117,7 +130,9 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: moment().subtract(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
-            enableAdditionalInformationSection: true,
+            enableAdditionalInformationSection: {
+                value: true
+            },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -142,7 +157,9 @@ describe('Start', () => {
             homeVisitDateTime: {
                 value: mockedDate.format('DD/MM/YYYY HH:mm')
             },
-            enableAdditionalInformationSection: true,
+            enableAdditionalInformationSection: {
+                value: true
+            },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -166,7 +183,9 @@ describe('Start', () => {
                 homeVisitDateTime: {
                     value: null
                 },
-                enableAdditionalInformationSection: true,
+                enableAdditionalInformationSection: {
+                    value: true
+                },
                 statuses: {
                     tellUsAboutYourselfStatus: 1,
                     yourEmploymentDetailsStatus: 2,
@@ -191,7 +210,9 @@ describe('Start', () => {
                 homeVisitDateTime: {
                     value: moment('25/07/2190 13:10', 'DD/MM/YYYY HH:mm')
                 },
-                enableAdditionalInformationSection: true,
+                enableAdditionalInformationSection: {
+                    value: true
+                },
                 statuses: {
                     tellUsAboutYourselfStatus: 1,
                     yourEmploymentDetailsStatus: 2,

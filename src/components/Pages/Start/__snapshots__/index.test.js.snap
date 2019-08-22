@@ -59,6 +59,11 @@ Array [
         className="task-item"
       >
         <div>
+          <span
+            className="status-completed"
+          >
+            Completed
+          </span>
           <h2>
             Answer questions before your home visit
           </h2>
@@ -69,117 +74,65 @@ Array [
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/known-by-another-name"
-            onClick={[Function]}
-          >
+          <p>
             More about you
-          </a>
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/are-you-employed"
-            onClick={[Function]}
-          >
+          <p>
             Your employment details
-          </a>
-          <span
-            className="status-not-completed"
-          >
-            Not completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/languages-spoken-in-your-home"
-            onClick={[Function]}
-          >
+          <p>
             Languages spoken in your home
-          </a>
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/your-partnership-status"
-            onClick={[Function]}
-          >
+          <p>
             Your partnership status
-          </a>
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/your-fostering-history"
-            onClick={[Function]}
-          >
+          <p>
             Your fostering history
-          </a>
-          <span
-            className="status-not-completed"
-          >
-            Not completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/about-your-health"
-            onClick={[Function]}
-          >
+          <p>
             Your health
-          </a>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/your-interest-in-fostering"
-            onClick={[Function]}
-          >
+          <p>
             Your interest in fostering
-          </a>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/your-household"
-            onClick={[Function]}
-          >
+          <p>
             Your household
-          </a>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/children-under-sixteen-living-away"
-            onClick={[Function]}
-          >
+          <p>
             Children living away from your home
-          </a>
+          </p>
         </div>
       </div>
     </li>
@@ -201,17 +154,12 @@ Array [
       </div>
     </li>
     <li
-      className="disabled"
+      className={undefined}
     >
       <div
         className="task-item"
       >
         <div>
-          <span
-            className="status-cant-start"
-          >
-            Can't start yet
-          </span>
           <h2>
             Additional information
           </h2>
@@ -222,35 +170,47 @@ Array [
         <div
           className="anchor-with-status"
         >
-          <p>
+          <a
+            href="/fostering/address-history"
+            onClick={[Function]}
+          >
             Your address history
-          </p>
+          </a>
         </div>
         <div
           className="anchor-with-status"
         >
-          <p>
+          <a
+            href="/fostering/about-your-gp"
+            onClick={[Function]}
+          >
             Your GP details
-          </p>
+          </a>
         </div>
         <div
           className="anchor-with-status"
         >
-          <p>
+          <a
+            href="/fostering/family-reference"
+            onClick={[Function]}
+          >
             Personal references
-          </p>
+          </a>
         </div>
         <div
           className="anchor-with-status"
         >
-          <p>
+          <a
+            href="/fostering/relationship-to-council-employees"
+            onClick={[Function]}
+          >
             Local councillors and council employees
-          </p>
+          </a>
         </div>
       </div>
     </li>
     <li
-      className="disabled"
+      className={undefined}
     >
       <div
         className="task-item"
@@ -345,6 +305,11 @@ Array [
         className="task-item"
       >
         <div>
+          <span
+            className="status-completed"
+          >
+            Completed
+          </span>
           <h2>
             Answer questions before your home visit
           </h2>
@@ -355,117 +320,65 @@ Array [
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/known-by-another-name"
-            onClick={[Function]}
-          >
+          <p>
             More about you
-          </a>
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/are-you-employed"
-            onClick={[Function]}
-          >
+          <p>
             Your employment details
-          </a>
-          <span
-            className="status-not-completed"
-          >
-            Not completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/languages-spoken-in-your-home"
-            onClick={[Function]}
-          >
+          <p>
             Languages spoken in your home
-          </a>
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/your-partnership-status"
-            onClick={[Function]}
-          >
+          <p>
             Your partnership status
-          </a>
-          <span
-            className="status-completed"
-          >
-            Completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/your-fostering-history"
-            onClick={[Function]}
-          >
+          <p>
             Your fostering history
-          </a>
-          <span
-            className="status-not-completed"
-          >
-            Not completed
-          </span>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/about-your-health"
-            onClick={[Function]}
-          >
+          <p>
             Your health
-          </a>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/your-interest-in-fostering"
-            onClick={[Function]}
-          >
+          <p>
             Your interest in fostering
-          </a>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/your-household"
-            onClick={[Function]}
-          >
+          <p>
             Your household
-          </a>
+          </p>
         </div>
         <div
           className="anchor-with-status"
         >
-          <a
-            href="/fostering/children-under-sixteen-living-away"
-            onClick={[Function]}
-          >
+          <p>
             Children living away from your home
-          </a>
+          </p>
         </div>
       </div>
     </li>
@@ -498,17 +411,12 @@ Array [
       </div>
     </li>
     <li
-      className="disabled"
+      className={undefined}
     >
       <div
         className="task-item"
       >
         <div>
-          <span
-            className="status-cant-start"
-          >
-            Can't start yet
-          </span>
           <h2>
             Additional information
           </h2>
@@ -519,35 +427,47 @@ Array [
         <div
           className="anchor-with-status"
         >
-          <p>
+          <a
+            href="/fostering/address-history"
+            onClick={[Function]}
+          >
             Your address history
-          </p>
+          </a>
         </div>
         <div
           className="anchor-with-status"
         >
-          <p>
+          <a
+            href="/fostering/about-your-gp"
+            onClick={[Function]}
+          >
             Your GP details
-          </p>
+          </a>
         </div>
         <div
           className="anchor-with-status"
         >
-          <p>
+          <a
+            href="/fostering/family-reference"
+            onClick={[Function]}
+          >
             Personal references
-          </p>
+          </a>
         </div>
         <div
           className="anchor-with-status"
         >
-          <p>
+          <a
+            href="/fostering/relationship-to-council-employees"
+            onClick={[Function]}
+          >
             Local councillors and council employees
-          </p>
+          </a>
         </div>
       </div>
     </li>
     <li
-      className="disabled"
+      className={undefined}
     >
       <div
         className="task-item"
