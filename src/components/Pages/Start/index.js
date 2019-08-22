@@ -164,7 +164,7 @@ const Start = () => {
 
 	useEffect(() => {
 		if (resultsRef.current)
-			window.scrollTo(0, resultsRef.current.offsetTop)
+			resultsRef.current.scrollIntoView()
 	}, [])
 
 	const tasks = [
