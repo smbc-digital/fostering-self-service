@@ -180,7 +180,7 @@ const Start = () => {
 		},
 		{
 			title: 'Answer questions before your home visit',
-			body: () => <FormLinks disabled={disabled} displayStatus={!isPastHomeVisitDateTime} />,
+			body: () => <FormLinks disabled={disabled} displayStatus={!isPastHomeVisitDateTime || enableAdditionalInformationSection.value} />,
 			displayHr: false,
 			status: isPastHomeVisitDateTime ? TaskStatus.Completed : TaskStatus.None
 		},
