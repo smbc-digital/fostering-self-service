@@ -40,35 +40,30 @@ const YourAddressHistory = ({history, match}) => {
         }, isValid, currentApplicant)
 	}
 
-	const dispalyAddMore = () => {
-		let dateOverLastTenYears = addressHistory.value[0].dateFrom === undefined ? false : moment(addressHistory.value[0].dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).isAfter(moment().subtract(10, 'years'))
-
-		return dateOverLastTenYears
-	}
-
-	const isButtonValid = () => {
+	const isFormValid = () => {
 		let dateOverLastTenYears = addressHistory.value.some(address => {
 			return address.dateFrom === undefined ? false : moment(address.dateFrom.value, ['DD/MM/YYYY', 'YYYY-M-D']).isBefore(moment().subtract(10, 'years'))
 		})
 
 		var allFieldsValid = addressHistory.value.length > 1 
-			? 
-			addressHistory.value.every((addressData, index) => {
-				if(index == 0){
-					return addressData.dateFrom.isValid
+		? 
+		addressHistory.value.every((addressData, index) => {
+			if(index == 0){
+				return addressData.dateFrom.isValid
+			} else {
+				if(addressData.dateFrom === undefined || addressData.address === undefined || addressData.address.addressLine1 === undefined || addressData.address.town === undefined || addressData.address.country === undefined){
+					return false
 				} else {
-					if(addressData.dateFrom === undefined || addressData.address === undefined || addressData.address.addressLine1 === undefined || addressData.address.town === undefined || addressData.address.country === undefined){
-						return false
-					} else {
-						return addressData.dateFrom.isValid && addressData.address.addressLine1.isValid && addressData.address.town.isValid && addressData.address.country.isValid
-					}
+					return addressData.dateFrom.isValid && addressData.address.addressLine1.isValid && addressData.address.town.isValid && addressData.address.country.isValid
 				}
-				})
-			: true
+			}
+			})
+		: true
 
-		return allFieldsValid && dateOverLastTenYears
+		return dateOverLastTenYears && allFieldsValid
 	}
 
+	
 	const handleFormUpdate = async nextPageRoute => {
 		setIsLoading(true)
         try {
@@ -239,7 +234,7 @@ const YourAddressHistory = ({history, match}) => {
 				componentName='addressHistoryDetails'
 				addItemMessage='Add another address'
 				removeItemMessage='Remove this address'
-				showAddMoreButton={dispalyAddMore()}
+				showAddMoreButton={!isFormValid()}
 				renderComponent={renderComponent}
 				values={addressHistory.value}
 				showRemoveonAllExceptFirstComponent={true}
@@ -250,7 +245,7 @@ const YourAddressHistory = ({history, match}) => {
 				history={history}
 				onSaveAndGoBackClick={onSaveAndGoBackClick}
 				isLoading={isLoading}
-				isValid={isButtonValid()}
+				isValid={isFormValid()}
 			/>
 		</form>
 	)
