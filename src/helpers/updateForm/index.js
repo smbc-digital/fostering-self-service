@@ -90,20 +90,26 @@ const reduceProperties = object => Object.keys(object).reduce((acc, property) =>
 }, {})
 
 const reduceAddressHistoryProperties = object => object.map((acc, property) => {
-    return {
-        ...acc,
-        address: {
-            'addressLine1': object[property].address.addressLine1.value,
-            'addressLine2': object[property].address.addressLine2 !== undefined ? object[property].address.addressLine2.value : '',
-            'town': object[property].address.town.value,
-            'county': object[property].address.county !== undefined ? object[property].address.county.value : '',
-            'country': object[property].address.country.value,
-            'postcode': object[property].address.postcode !== undefined ? object[property].address.postcode.value : '',
-        },
-        dateFrom: object[property].dateFrom.value,
+    if(object[property].address !== undefined  || object[property].dateFrom !== undefined)
+    {
+        return {
+            ...acc,        
+            address: {            
+                'addressLine1':  object[property].address.addressLine1 !== undefined ? object[property].address.addressLine1.value : '',
+                'addressLine2':  object[property].address.addressLine2 !== undefined ? object[property].address.addressLine2.value : '',
+                'town': object[property].address.town !== undefined ? object[property].address.town.value : '',
+                'county': object[property].address.county !== undefined ? object[property].address.county.value : '',
+                'country': object[property].address.country !== undefined ? object[property].address.country.value : '',
+                'postcode': object[property].address.postcode !== undefined ? object[property].address.postcode.value : '',
+            },
+            dateFrom: object[property].dateFrom.value,
+        }
     }
-
-}, {})
+    else
+    {
+        return {...acc}
+    }
+},{})
 
 
 const updateForm = async (endpoint, formData) => {
