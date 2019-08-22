@@ -127,7 +127,7 @@ const AboutCouncillors = ({ match, history }) => {
 				<Anchor label='Previous' history={history} />
                 {isSavingAllowed && <Button
                     label="Save and go back to fostering area"
-                    isValid={isValid}
+                    isValid={isValid && !isLoading}
                     isLoading={isLoading && saveAndGoBackClicked}
                     colour='inverted'
                     onButtonClick={event => {
