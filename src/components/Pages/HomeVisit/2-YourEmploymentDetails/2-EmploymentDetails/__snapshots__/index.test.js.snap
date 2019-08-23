@@ -1,123 +1,127 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmploymentDetails snapshot renders correctly 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <h1>
     Your fostering journey
-  </h1>
+  </h1>,
   <h2>
     Your employment details
-  </h2>
-  <h3>
+  </h2>,
+  <p
+    className="h3"
+  >
     first name
      
     last name
-  </h3>
-  <label
-    className="optional"
-    htmlFor="currentEmployer"
+  </p>,
+  <form
+    onSubmit={[Function]}
   >
-    Current employer
-  </label>
-  <input
-    aria-label=""
-    aria-live=""
-    className=""
-    id="currentEmployer"
-    inputMode={undefined}
-    maxLength={60}
-    min={undefined}
-    name="currentEmployer"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value="employer1"
-  />
-  <label
-    className="optional"
-    htmlFor="jobTitle"
-  >
-    Job title
-  </label>
-  <input
-    aria-label=""
-    aria-live=""
-    className=""
-    id="jobTitle"
-    inputMode={undefined}
-    maxLength={60}
-    min={undefined}
-    name="jobTitle"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value="ceo"
-  />
-  <h3
-    className="no-margin-bottom"
-  >
-    Current hours of work
-  </h3>
-  <fieldset>
-    <div
-      className="input-radio-container"
-      role="radiogroup"
+    <label
+      className="optional"
+      htmlFor="currentEmployer"
     >
-      <input
-        checked={false}
-        disabled={undefined}
-        id="current-hours-of-work-full-time"
-        name="currentHoursOfWork"
-        onChange={[Function]}
-        type="radio"
-        value="2"
-      />
-      <label
-        htmlFor="current-hours-of-work-full-time"
+      Current employer
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="currentEmployer"
+      inputMode={undefined}
+      maxLength={60}
+      min={undefined}
+      name="currentEmployer"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="employer1"
+    />
+    <label
+      className="optional"
+      htmlFor="jobTitle"
+    >
+      Job title
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="jobTitle"
+      inputMode={undefined}
+      maxLength={60}
+      min={undefined}
+      name="jobTitle"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value="ceo"
+    />
+    <h3
+      className="no-margin-bottom"
+    >
+      Current hours of work
+    </h3>
+    <fieldset>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
       >
-        Full time
-      </label>
-    </div>
-    <div
-      className="input-radio-container"
-      role="radiogroup"
-    >
-      <input
-        checked={true}
-        disabled={undefined}
-        id="current-hours-of-work-part-time"
-        name="currentHoursOfWork"
-        onChange={[Function]}
-        type="radio"
-        value="1"
-      />
-      <label
-        htmlFor="current-hours-of-work-part-time"
+        <input
+          checked={false}
+          disabled={undefined}
+          id="current-hours-of-work-full-time"
+          name="currentHoursOfWork"
+          onChange={[Function]}
+          type="radio"
+          value="2"
+        />
+        <label
+          htmlFor="current-hours-of-work-full-time"
+        >
+          Full time
+        </label>
+      </div>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
       >
-        Part time
-      </label>
-    </div>
-  </fieldset>
-  <button
-    className="button-primary"
-    disabled={false}
-    id={undefined}
-    onClick={undefined}
-    type="submit"
-  >
-    Next step
-  </button>
-  <p>
-    <a
-      href="#"
-      onClick={[Function]}
+        <input
+          checked={true}
+          disabled={undefined}
+          id="current-hours-of-work-part-time"
+          name="currentHoursOfWork"
+          onChange={[Function]}
+          type="radio"
+          value="1"
+        />
+        <label
+          htmlFor="current-hours-of-work-part-time"
+        >
+          Part time
+        </label>
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
     >
-      Previous
-    </a>
-  </p>
-</form>
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Previous
+      </a>
+    </p>
+  </form>,
+]
 `;

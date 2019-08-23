@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { TextInputContainer, RadioInputsContainer } from 'smbc-react-components'
 import { Context } from 'context'
@@ -68,10 +68,12 @@ const EmploymentDetails = ({ history, match }) => {
     }
 
     
-    return <form onSubmit={onSubmit}>
-                <h1>Your fostering journey</h1>
-                <h2>Your employment details</h2>
-                {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
+    return (
+        <Fragment>
+            <h1>Your fostering journey</h1>
+            <h2>Your employment details</h2>
+            {secondApplicant && <p className='h3'>{firstName.value} {lastName.value}</p>}
+            <form onSubmit={onSubmit}>
                 <TextInputContainer
                     label='Current employer'
                     id='currentEmployer'
@@ -107,6 +109,8 @@ const EmploymentDetails = ({ history, match }) => {
                     isLoading={isLoading}
                 />
             </form>
+        </Fragment>
+    )
 }
 
 EmploymentDetails.propTypes = {

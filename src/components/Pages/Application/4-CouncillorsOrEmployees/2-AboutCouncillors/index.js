@@ -109,7 +109,7 @@ const AboutCouncillors = ({ match, history }) => {
 		<Fragment>
 			<h1>Your fostering journey</h1>
 			<h2>Local councillors and council employees</h2>
-			{secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
+			{secondApplicant && <p className='h3'>{firstName.value} {lastName.value}</p>}
 			<form onSubmit={onSubmit}>
 				<ComponentsList
 					onChange={onCouncillorChange}

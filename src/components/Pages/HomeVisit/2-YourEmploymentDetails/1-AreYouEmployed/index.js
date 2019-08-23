@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { RadioInputsContainer, Button, Anchor } from 'smbc-react-components'
 import { Context } from 'context'
@@ -104,36 +104,38 @@ const AreYouEmployed = ({ history, match }) => {
 
     const radioValue = `${areYouEmployed.value}`
     return (
-        <form onSubmit={onSubmit}>
+        <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Your employment details</h2>
-            {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
-            <RadioInputsContainer
-                displayHeading
-                header='Are you employed?'
-                options={options}
-                onChange={onChange}
-                value={radioValue}
-            />
+            {secondApplicant && <p className='h3'>{firstName.value} {lastName.value}</p>}
+            <form onSubmit={onSubmit}>
+                <RadioInputsContainer
+                    displayHeading
+                    header='Are you employed?'
+                    options={options}
+                    onChange={onChange}
+                    value={radioValue}
+                />
 
-        <Button
-            label={radioValue === 'false' ? 'Save and next step' : 'Next step'}
-            isValid={!saveAndGoBackClicked}
-            isLoading={isLoading && !saveAndGoBackClicked}
-        />
-        <Anchor label='Previous' history={history} />
-        <Button
-            label="Save and go back to fostering area"
-            isValid={!isLoading && !saveAndGoBackClicked && radioValue === 'false'}
-            isLoading={isLoading && saveAndGoBackClicked}
-            colour='inverted'
-            onButtonClick={event => {
-                    setSaveAndGoBackClicked(true)
-                    onSaveAndGoBackClick(event)
+            <Button
+                label={radioValue === 'false' ? 'Save and next step' : 'Next step'}
+                isValid={!saveAndGoBackClicked}
+                isLoading={isLoading && !saveAndGoBackClicked}
+            />
+            <Anchor label='Previous' history={history} />
+            <Button
+                label="Save and go back to fostering area"
+                isValid={!isLoading && !saveAndGoBackClicked && radioValue === 'false'}
+                isLoading={isLoading && saveAndGoBackClicked}
+                colour='inverted'
+                onButtonClick={event => {
+                        setSaveAndGoBackClicked(true)
+                        onSaveAndGoBackClick(event)
+                    }
                 }
-            }
-            useLeftChevron={true} />
-        </form>
+                useLeftChevron={true} />
+            </form>
+        </Fragment>
     )
 }
 

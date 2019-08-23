@@ -1,90 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AreYouEmployed snapshot renders correctly 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <h1>
     Your fostering journey
-  </h1>
+  </h1>,
   <h2>
     Your employment details
-  </h2>
-  <h3>
+  </h2>,
+  <p
+    className="h3"
+  >
     first name
      
     last name
-  </h3>
-  <h3
-    className="no-margin-bottom"
+  </p>,
+  <form
+    onSubmit={[Function]}
   >
-    Are you employed?
-  </h3>
-  <fieldset>
-    <div
-      className="input-radio-container"
-      role="radiogroup"
+    <h3
+      className="no-margin-bottom"
     >
-      <input
-        checked={true}
-        disabled={undefined}
-        id="are-you-employed-yes"
-        name="areYouEmployed"
-        onChange={[Function]}
-        type="radio"
-        value="true"
-      />
-      <label
-        htmlFor="are-you-employed-yes"
+      Are you employed?
+    </h3>
+    <fieldset>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
       >
-        Yes
-      </label>
-    </div>
-    <div
-      className="input-radio-container"
-      role="radiogroup"
+        <input
+          checked={true}
+          disabled={undefined}
+          id="are-you-employed-yes"
+          name="areYouEmployed"
+          onChange={[Function]}
+          type="radio"
+          value="true"
+        />
+        <label
+          htmlFor="are-you-employed-yes"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        className="input-radio-container"
+        role="radiogroup"
+      >
+        <input
+          checked={false}
+          disabled={undefined}
+          id="are-you-employed-no"
+          name="areYouEmployed"
+          onChange={[Function]}
+          type="radio"
+          value="false"
+        />
+        <label
+          htmlFor="are-you-employed-no"
+        >
+          No
+        </label>
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={false}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
     >
-      <input
-        checked={false}
-        disabled={undefined}
-        id="are-you-employed-no"
-        name="areYouEmployed"
-        onChange={[Function]}
-        type="radio"
-        value="false"
-      />
-      <label
-        htmlFor="are-you-employed-no"
+      Next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
       >
-        No
-      </label>
-    </div>
-  </fieldset>
-  <button
-    className="button-primary"
-    disabled={false}
-    id={undefined}
-    onClick={undefined}
-    type="submit"
-  >
-    Next step
-  </button>
-  <p>
-    <a
-      href="#"
+        Previous
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={true}
+      id={undefined}
       onClick={[Function]}
+      type="submit"
     >
-      Previous
-    </a>
-  </p>
-  <button
-    className="button-inverted left-chevron"
-    disabled={true}
-    id={undefined}
-    onClick={[Function]}
-    type="submit"
-  >
-    Save and go back to fostering area
-  </button>
-</form>
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
 `;

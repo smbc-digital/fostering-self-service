@@ -8,11 +8,13 @@ Array [
   <h2>
     Children living away from your home
   </h2>,
-  <h3>
+  <p
+    className="h3"
+  >
     ap first name
      
     ap last name
-  </h3>,
+  </p>,
   <h3>
     Tell us about your children aged 16 or over living away from your home
   </h3>,

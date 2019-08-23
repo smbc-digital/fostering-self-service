@@ -157,7 +157,7 @@ const AboutAnyUnderSixteen = ({history, match}) => {
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Children living away from your home</h2>
-            {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
+            {secondApplicant && <p className='h3'>{firstName.value} {lastName.value}</p>}
             <h3>Tell us about your children under 16 living away from your home</h3> 
             <form onSubmit={onSubmit}>
                 <ComponentsList

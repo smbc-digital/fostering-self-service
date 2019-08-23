@@ -67,7 +67,7 @@ const KnownByAnotherName = ({ history, match }) => {
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>More about you</h2>
-            {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
+            {secondApplicant && <p className='h3'>{firstName.value} {lastName.value}</p>}
             <form onSubmit={onSubmit}>
                 <RadioInputsContainer
                     displayHeading

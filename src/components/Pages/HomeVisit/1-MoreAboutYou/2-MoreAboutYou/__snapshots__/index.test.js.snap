@@ -8,11 +8,13 @@ Array [
   <h2>
     More about you
   </h2>,
-  <h3>
+  <p
+    className="h3"
+  >
     first name
      
     last name
-  </h3>,
+  </p>,
   <form
     onSubmit={[Function]}
   >

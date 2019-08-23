@@ -68,7 +68,7 @@ const YourGpDetails = ({ history, match }) => {
         <Fragment>
             <h1>Your fostering journey</h1>
             <h2>Your GP details</h2>
-            {secondApplicant && <h3>{firstName.value} {lastName.value}</h3>}
+            {secondApplicant && <p className='h3'>{firstName.value} {lastName.value}</p>}
             <AlertForm
                 level='information'
                 content='We need to check that you’re fit and healthy enough to look after a child. We’ll pay for you to have a medical assessment from your GP and our medical advisor will then talk to your social worker about your fitness to foster.'
