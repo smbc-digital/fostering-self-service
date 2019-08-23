@@ -1,94 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`YourAddressHistory snapshot renders firstApplicant correctly for single applicant 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <h1>
     Your fostering journey
-  </h1>
+  </h1>,
   <h2>
     Your address history
-  </h2>
-  <h3
-    className="no-margin-bottom"
+  </h2>,
+  <form
+    onSubmit={[Function]}
   >
-    Tell us when you moved into your current address
-  </h3>
-  <fieldset
-    className="input-memorable-date"
-  >
-    <p>
-      For example, 3 1980
-    </p>
-    <div>
-      <label>
-        Month
-      </label>
-      <input
-        aria-label="month"
-        className=""
-        name="month"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value=""
-      />
-    </div>
-    <div>
-      <label>
-        Year
-      </label>
-      <input
-        aria-label="year"
-        className=""
-        name="year"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value=""
-      />
-    </div>
-  </fieldset>
-  <button
-    className="button-primary"
-    disabled={true}
-    id={undefined}
-    onClick={undefined}
-    type="submit"
-  >
-    Save and next step
-  </button>
-  <p>
-    <a
-      href="#"
-      onClick={[Function]}
+    <h3
+      className="no-margin-bottom"
     >
-      Previous
-    </a>
-  </p>
-  <button
-    className="button-inverted left-chevron"
-    disabled={true}
-    id={undefined}
-    onClick={[Function]}
-    type="submit"
-  >
-    Save and go back to fostering area
-  </button>
-</form>
+      Tell us when you moved into your current address
+    </h3>
+    <fieldset
+      className="input-memorable-date"
+    >
+      <p>
+        For example, 3 1980
+      </p>
+      <div>
+        <label>
+          Month
+        </label>
+        <input
+          aria-label="month"
+          className=""
+          name="month"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+      <div>
+        <label>
+          Year
+        </label>
+        <input
+          aria-label="year"
+          className=""
+          name="year"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+    </fieldset>
+    <button
+      className="button-primary"
+      disabled={true}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Previous
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={true}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
 `;
 
 exports[`YourAddressHistory snapshot renders firstApplicant correctly for single applicant when first date entered is not more than 10 years ago 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <h1>
     Your fostering journey
-  </h1>
+  </h1>,
   <h2>
     Your address history
-  </h2>
+  </h2>,
   <div>
     <section
       className="alert-information-form"
@@ -104,97 +104,99 @@ exports[`YourAddressHistory snapshot renders firstApplicant correctly for single
         }
       />
     </section>
-  </div>
-  <h3
-    className="no-margin-bottom"
+  </div>,
+  <form
+    onSubmit={[Function]}
   >
-    Tell us when you moved into your current address
-  </h3>
-  <fieldset
-    className="input-memorable-date"
-  >
-    <p>
-      For example, 3 1980
-    </p>
-    <div>
-      <label>
-        Month
-      </label>
-      <input
-        aria-label="month"
-        className=""
-        name="month"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value="1"
-      />
-    </div>
-    <div>
-      <label>
-        Year
-      </label>
-      <input
-        aria-label="year"
-        className=""
-        name="year"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value="2015"
-      />
-    </div>
-  </fieldset>
-  <a
-    className="anchor-with-icon"
-    href="#"
-    onClick={[Function]}
-  >
-     
-    <i
-      className="fa fa-plus-square fa-lg"
-    />
-    Add another address
-  </a>
-  <button
-    className="button-primary"
-    disabled={true}
-    id={undefined}
-    onClick={undefined}
-    type="submit"
-  >
-    Save and next step
-  </button>
-  <p>
+    <h3
+      className="no-margin-bottom"
+    >
+      Tell us when you moved into your current address
+    </h3>
+    <fieldset
+      className="input-memorable-date"
+    >
+      <p>
+        For example, 3 1980
+      </p>
+      <div>
+        <label>
+          Month
+        </label>
+        <input
+          aria-label="month"
+          className=""
+          name="month"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value="1"
+        />
+      </div>
+      <div>
+        <label>
+          Year
+        </label>
+        <input
+          aria-label="year"
+          className=""
+          name="year"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value="2015"
+        />
+      </div>
+    </fieldset>
     <a
+      className="anchor-with-icon"
       href="#"
       onClick={[Function]}
     >
-      Previous
+       
+      <i
+        className="fa fa-plus-square fa-lg"
+      />
+      Add another address
     </a>
-  </p>
-  <button
-    className="button-inverted left-chevron"
-    disabled={true}
-    id={undefined}
-    onClick={[Function]}
-    type="submit"
-  >
-    Save and go back to fostering area
-  </button>
-</form>
+    <button
+      className="button-primary"
+      disabled={true}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Previous
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={true}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
 `;
 
 exports[`YourAddressHistory snapshot renders second applicant correctly when no data 1`] = `
-<form
-  onSubmit={[Function]}
->
+Array [
   <h1>
     Your fostering journey
-  </h1>
+  </h1>,
   <h2>
     Your address history
-  </h2>
+  </h2>,
   <div>
     <section
       className="alert-information-form"
@@ -210,305 +212,309 @@ exports[`YourAddressHistory snapshot renders second applicant correctly when no 
         }
       />
     </section>
-  </div>
+  </div>,
   <p
     className="h3"
   >
     Second
      
     Applicant
-  </p>
-  <h3
-    className="no-margin-bottom"
+  </p>,
+  <form
+    onSubmit={[Function]}
   >
-    Tell us when you moved into your current address
-  </h3>
-  <fieldset
-    className="input-memorable-date"
-  >
-    <p>
-      For example, 3 1980
-    </p>
-    <div>
-      <label>
-        Month
-      </label>
-      <input
-        aria-label="month"
-        className=""
-        name="month"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value="6"
-      />
-    </div>
-    <div>
-      <label>
-        Year
-      </label>
-      <input
-        aria-label="year"
-        className=""
-        name="year"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value="2016"
-      />
-    </div>
-  </fieldset>
-  <hr />
-  <h3>
-    Tell us your previous address
-  </h3>
-  <label
-    className=""
-    htmlFor="addressLine1"
-  >
-    Address line 1
-  </label>
-  <input
-    aria-label="Address line 1"
-    aria-live="off"
-    className=""
-    id="addressLine1"
-    inputMode={undefined}
-    maxLength={60}
-    min={undefined}
-    name="addressLine1"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value=""
-  />
-  <h3
-    aria-hidden="true"
-    className="optional"
-  >
-    Address line 2
-  </h3>
-  <p
-    className="optional"
-  >
-    (optional)
-  </p>
-  <label
-    className="optional sr-only"
-    htmlFor="addressLine2"
-  >
-    Address line 2 optional
-  </label>
-  <input
-    aria-label=""
-    aria-live=""
-    className=""
-    id="addressLine2"
-    inputMode={undefined}
-    maxLength={60}
-    min={undefined}
-    name="addressLine2"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value=""
-  />
-  <label
-    className=""
-    htmlFor="town"
-  >
-    City or town
-  </label>
-  <input
-    aria-label="City or town"
-    aria-live="off"
-    className=""
-    id="town"
-    inputMode={undefined}
-    maxLength={60}
-    min={undefined}
-    name="town"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value=""
-  />
-  <h3
-    aria-hidden="true"
-    className="optional"
-  >
-    County or province
-  </h3>
-  <p
-    className="optional"
-  >
-    (optional)
-  </p>
-  <label
-    className="optional sr-only"
-    htmlFor="county"
-  >
-    County or province optional
-  </label>
-  <input
-    aria-label=""
-    aria-live=""
-    className=""
-    id="county"
-    inputMode={undefined}
-    maxLength={60}
-    min={undefined}
-    name="county"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value=""
-  />
-  <fieldset>
+    <h3
+      className="no-margin-bottom"
+    >
+      Tell us when you moved into your current address
+    </h3>
+    <fieldset
+      className="input-memorable-date"
+    >
+      <p>
+        For example, 3 1980
+      </p>
+      <div>
+        <label>
+          Month
+        </label>
+        <input
+          aria-label="month"
+          className=""
+          name="month"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value="6"
+        />
+      </div>
+      <div>
+        <label>
+          Year
+        </label>
+        <input
+          aria-label="year"
+          className=""
+          name="year"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value="2016"
+        />
+      </div>
+    </fieldset>
+    <hr />
+    <h3>
+      Tell us your previous address
+    </h3>
     <label
       className=""
-      htmlFor="country"
+      htmlFor="addressLine1"
     >
-      Country
+      Address line 1
     </label>
-    <span
-      className="sr-only"
-      role="combobox"
-    >
-      
-    </span>
-    <select
+    <input
+      aria-label="Address line 1"
       aria-live="off"
-      id="country"
-      name="country"
+      className=""
+      id="addressLine1"
+      inputMode={undefined}
+      maxLength={60}
+      min={undefined}
+      name="addressLine1"
       onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
       value=""
+    />
+    <h3
+      aria-hidden="true"
+      className="optional"
     >
-      <option
-        disabled={true}
-        value=""
-      >
-        Select a country...
-      </option>
-      <option
-        value="test"
-      >
-        test
-      </option>
-    </select>
-  </fieldset>
-  <label
-    className="optional"
-    htmlFor="postcode"
-  >
-    Postcode
-  </label>
-  <input
-    aria-label=""
-    aria-live=""
-    className=""
-    id="postcode"
-    inputMode={undefined}
-    maxLength={60}
-    min={undefined}
-    name="postcode"
-    onChange={[Function]}
-    onKeyDown={[Function]}
-    pattern={undefined}
-    type="text"
-    value=""
-  />
-  <h3
-    className="no-margin-bottom"
-  >
-    Tell us when you moved into this address
-  </h3>
-  <fieldset
-    className="input-memorable-date"
-  >
-    <p>
-      For example, 3 1980
+      Address line 2
+    </h3>
+    <p
+      className="optional"
+    >
+      (optional)
     </p>
-    <div>
-      <label>
-        Month
-      </label>
-      <input
-        aria-label="month"
-        className=""
-        name="month"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value=""
-      />
-    </div>
-    <div>
-      <label>
-        Year
-      </label>
-      <input
-        aria-label="year"
-        className=""
-        name="year"
-        onChange={[Function]}
-        onKeyDown={[Function]}
-        type="number"
-        value=""
-      />
-    </div>
-  </fieldset>
-  <a
-    className="anchor-with-icon"
-    href="#"
-    onClick={[Function]}
-  >
-     
-    <i
-      className="fa fa-minus-square fa-lg"
+    <label
+      className="optional sr-only"
+      htmlFor="addressLine2"
+    >
+      Address line 2 optional
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="addressLine2"
+      inputMode={undefined}
+      maxLength={60}
+      min={undefined}
+      name="addressLine2"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value=""
     />
-    Remove this address
-  </a>
-  <a
-    className="anchor-with-icon"
-    href="#"
-    onClick={[Function]}
-  >
-     
-    <i
-      className="fa fa-plus-square fa-lg"
+    <label
+      className=""
+      htmlFor="town"
+    >
+      City or town
+    </label>
+    <input
+      aria-label="City or town"
+      aria-live="off"
+      className=""
+      id="town"
+      inputMode={undefined}
+      maxLength={60}
+      min={undefined}
+      name="town"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value=""
     />
-    Add another address
-  </a>
-  <button
-    className="button-primary"
-    disabled={true}
-    id={undefined}
-    onClick={undefined}
-    type="submit"
-  >
-    Save and next step
-  </button>
-  <p>
+    <h3
+      aria-hidden="true"
+      className="optional"
+    >
+      County or province
+    </h3>
+    <p
+      className="optional"
+    >
+      (optional)
+    </p>
+    <label
+      className="optional sr-only"
+      htmlFor="county"
+    >
+      County or province optional
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="county"
+      inputMode={undefined}
+      maxLength={60}
+      min={undefined}
+      name="county"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value=""
+    />
+    <fieldset>
+      <label
+        className=""
+        htmlFor="country"
+      >
+        Country
+      </label>
+      <span
+        className="sr-only"
+        role="combobox"
+      >
+        
+      </span>
+      <select
+        aria-live="off"
+        id="country"
+        name="country"
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          disabled={true}
+          value=""
+        >
+          Select a country...
+        </option>
+        <option
+          value="test"
+        >
+          test
+        </option>
+      </select>
+    </fieldset>
+    <label
+      className="optional"
+      htmlFor="postcode"
+    >
+      Postcode
+    </label>
+    <input
+      aria-label=""
+      aria-live=""
+      className=""
+      id="postcode"
+      inputMode={undefined}
+      maxLength={60}
+      min={undefined}
+      name="postcode"
+      onChange={[Function]}
+      onKeyDown={[Function]}
+      pattern={undefined}
+      type="text"
+      value=""
+    />
+    <h3
+      className="no-margin-bottom"
+    >
+      Tell us when you moved into this address
+    </h3>
+    <fieldset
+      className="input-memorable-date"
+    >
+      <p>
+        For example, 3 1980
+      </p>
+      <div>
+        <label>
+          Month
+        </label>
+        <input
+          aria-label="month"
+          className=""
+          name="month"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+      <div>
+        <label>
+          Year
+        </label>
+        <input
+          aria-label="year"
+          className=""
+          name="year"
+          onChange={[Function]}
+          onKeyDown={[Function]}
+          type="number"
+          value=""
+        />
+      </div>
+    </fieldset>
     <a
+      className="anchor-with-icon"
       href="#"
       onClick={[Function]}
     >
-      Previous
+       
+      <i
+        className="fa fa-minus-square fa-lg"
+      />
+      Remove this address
     </a>
-  </p>
-  <button
-    className="button-inverted left-chevron"
-    disabled={true}
-    id={undefined}
-    onClick={[Function]}
-    type="submit"
-  >
-    Save and go back to fostering area
-  </button>
-</form>
+    <a
+      className="anchor-with-icon"
+      href="#"
+      onClick={[Function]}
+    >
+       
+      <i
+        className="fa fa-plus-square fa-lg"
+      />
+      Add another address
+    </a>
+    <button
+      className="button-primary"
+      disabled={true}
+      id={undefined}
+      onClick={undefined}
+      type="submit"
+    >
+      Save and next step
+    </button>
+    <p>
+      <a
+        href="#"
+        onClick={[Function]}
+      >
+        Previous
+      </a>
+    </p>
+    <button
+      className="button-inverted left-chevron"
+      disabled={true}
+      id={undefined}
+      onClick={[Function]}
+      type="submit"
+    >
+      Save and go back to fostering area
+    </button>
+  </form>,
+]
 `;

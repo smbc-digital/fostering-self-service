@@ -247,7 +247,7 @@ const YourAddressHistory = ({history, match}) => {
 	const alertContent = 'You must tell us where you’ve lived since ' + `${dateMinusTenYears}` + ', starting with the most recent address and working backwards.'
 
 	return (
-		<form onSubmit={onSubmit}>
+		<Fragment>
 			<h1>Your fostering journey</h1>
             <h2>Your address history</h2>
 			{ showAddMoreOnFirstComponent && 
@@ -256,26 +256,28 @@ const YourAddressHistory = ({history, match}) => {
 					content={alertContent}
 			/>}
 			{secondApplicant && <p className='h3'>{firstName.value} {lastName.value}</p>}
-			<ComponentsList
-				key={currentApplicant} 
-				onChange={onAddressChange}
-				componentName='addressHistoryDetails'
-				addItemMessage='Add another address'
-				removeItemMessage='Remove this address'
-				showAddMoreButton={!displayAddAnotherOnFirstAddress()}
-				renderComponent={renderComponent}
-				values={addressHistory.value}
-				showRemoveonAllExceptFirstComponent={true}
-				showRemoveOnAllComponents={false}
-				showAddMoreOnFirstComponent={showAddMoreOnFirstComponent}
-			/>
-			<SubmitButton
-				history={history}
-				onSaveAndGoBackClick={onSaveAndGoBackClick}
-				isLoading={isLoading}
-				isValid={isFormValid()}
-			/>
-		</form>
+			<form onSubmit={onSubmit}>
+				<ComponentsList
+					key={currentApplicant} 
+					onChange={onAddressChange}
+					componentName='addressHistoryDetails'
+					addItemMessage='Add another address'
+					removeItemMessage='Remove this address'
+					showAddMoreButton={!displayAddAnotherOnFirstAddress()}
+					renderComponent={renderComponent}
+					values={addressHistory.value}
+					showRemoveonAllExceptFirstComponent={true}
+					showRemoveOnAllComponents={false}
+					showAddMoreOnFirstComponent={showAddMoreOnFirstComponent}
+				/>
+				<SubmitButton
+					history={history}
+					onSaveAndGoBackClick={onSaveAndGoBackClick}
+					isLoading={isLoading}
+					isValid={isFormValid()}
+				/>
+			</form>
+		</Fragment>
 	)
 }
 
