@@ -12,7 +12,7 @@ Array [
     onSubmit={[Function]}
   >
     <label
-      className=""
+      className={undefined}
       htmlFor="councillorName"
     >
       Name of councillor or council employee
@@ -33,7 +33,7 @@ Array [
       value={undefined}
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="relationship"
     >
       Tell us how you know this person
