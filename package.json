@@ -19,7 +19,7 @@
 		"moment-timezone": "^0.5.26",
 		"react": "^16.8.6",
 		"react-async-script": "^1.1.1",
-		"react-dom": "^16.8.6",
+		"react-dom": "^16.9.0",
 		"react-google-recaptcha": "^1.0.5",
 		"react-router": "^5.0.1",
 		"react-router-dom": "^5.0.1",
