@@ -1,8 +1,7 @@
-import { Applicant } from 'constants'
-import { SecondApplicantRoute } from '../../config'
+import { Applicant, SECOND_APPLICANT_ROUTE } from 'constants'
 
 const getCurrentApplicant = match => {
-    if (match.params && match.params[0] === SecondApplicantRoute) {
+    if (match.params && match.params[0] === SECOND_APPLICANT_ROUTE) {
         return Applicant.SecondApplicant
     }
 
