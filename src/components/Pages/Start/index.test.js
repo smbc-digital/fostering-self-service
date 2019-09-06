@@ -15,6 +15,9 @@ describe('Start', () => {
             enableAdditionalInformationSection: {
                 value: true
             },
+            isApplicationCompleted: {
+                value: false
+            },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 2,
@@ -47,6 +50,9 @@ describe('Start', () => {
             enableAdditionalInformationSection: {
                 value: true
             },
+            isApplicationCompleted: {
+                value: false
+            }
         })
 
         // Act
@@ -67,6 +73,9 @@ describe('Start', () => {
             enableAdditionalInformationSection: {
                 value: false
             },
+            isApplicationCompleted: {
+                value: false
+            },
             statuses: {}
         })
 
@@ -85,6 +94,9 @@ describe('Start', () => {
                 value: moment().subtract(10, 'minutes').format('DD/MM/YYYY HH:mm')
             },
             enableAdditionalInformationSection: {
+                value: false
+            },
+            isApplicationCompleted: {
                 value: false
             },
             statuses: {
@@ -109,6 +121,9 @@ describe('Start', () => {
             enableAdditionalInformationSection: {
                 value: true
             },
+            isApplicationCompleted: {
+                value: false
+            },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -132,6 +147,9 @@ describe('Start', () => {
             },
             enableAdditionalInformationSection: {
                 value: true
+            },
+            isApplicationCompleted: {
+                value: false
             },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
@@ -160,6 +178,9 @@ describe('Start', () => {
             enableAdditionalInformationSection: {
                 value: true
             },
+            isApplicationCompleted: {
+                value: false
+            },
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
@@ -185,6 +206,9 @@ describe('Start', () => {
                 },
                 enableAdditionalInformationSection: {
                     value: true
+                },
+                isApplicationCompleted: {
+                    value: false
                 },
                 statuses: {
                     tellUsAboutYourselfStatus: 1,
@@ -212,6 +236,9 @@ describe('Start', () => {
                 },
                 enableAdditionalInformationSection: {
                     value: true
+                },
+                isApplicationCompleted: {
+                    value: false
                 },
                 statuses: {
                     tellUsAboutYourselfStatus: 1,

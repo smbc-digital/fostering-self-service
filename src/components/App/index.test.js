@@ -25,7 +25,12 @@ describe('App', () => {
 			homeVisitDateTime: {
 				value: moment().format('DD/MM/YYYY HH:mm')
 			},
-			enableAdditionalInformationSection: true,
+			enableAdditionalInformationSection: {
+				value: false
+			},
+			isApplicationCompleted:{
+				value: false
+			},		
 			statuses: {}
 		})
 
@@ -76,6 +81,9 @@ describe('App', () => {
 		// Arrange	
 		useContextMock.mockReturnValue({			
 			enableAdditionalInformationSection: true,
+			isApplicationCompleted: {
+				value: false
+			},
 			homeVisitDateTime: {
 				value: moment().add(1, 'd').format('DD/MM/YYYY HH:mm')
 			},

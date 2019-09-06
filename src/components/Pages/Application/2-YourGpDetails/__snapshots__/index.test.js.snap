@@ -28,7 +28,7 @@ Array [
     onSubmit={[Function]}
   >
     <label
-      className={undefined}
+      className=""
       htmlFor="nameOfGp"
     >
       Name of GP
@@ -49,7 +49,7 @@ Array [
       value="test"
     />
     <label
-      className={undefined}
+      className=""
       htmlFor="nameOfGpPractice"
     >
       Name of GP practice
@@ -70,7 +70,7 @@ Array [
       value="test"
     />
     <label
-      className={undefined}
+      className=""
       htmlFor="gpPhoneNumber"
     >
       Phone number
@@ -91,7 +91,7 @@ Array [
       value="01234567890"
     />
     <label
-      className={undefined}
+      className=""
       htmlFor="addressLine1"
     >
       Address line 1
@@ -118,7 +118,6 @@ Array [
       Address line 2
     </h3>
     <p
-      aria-hidden={true}
       className="optional"
     >
       (optional)
@@ -145,7 +144,7 @@ Array [
       value="line 2"
     />
     <label
-      className={undefined}
+      className=""
       htmlFor="town"
     >
       Town
@@ -166,7 +165,7 @@ Array [
       value="town"
     />
     <label
-      className={undefined}
+      className=""
       htmlFor="postcode"
     >
       Postcode
