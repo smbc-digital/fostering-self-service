@@ -268,7 +268,7 @@ Array [
       Tell us your previous address
     </h3>
     <label
-      className=""
+      className={undefined}
       htmlFor="addressLine1"
     >
       Address line 1
@@ -295,6 +295,7 @@ Array [
       Address line 2
     </h3>
     <p
+      aria-hidden={true}
       className="optional"
     >
       (optional)
@@ -321,7 +322,7 @@ Array [
       value=""
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="town"
     >
       City or town
@@ -348,6 +349,7 @@ Array [
       County or province
     </h3>
     <p
+      aria-hidden={true}
       className="optional"
     >
       (optional)
@@ -381,10 +383,13 @@ Array [
         Country
       </label>
       <span
+        aria-controls="country"
+        aria-expanded={false}
+        aria-labelledby="country"
         className="sr-only"
         role="combobox"
       >
-        
+        country
       </span>
       <select
         aria-live="off"
