@@ -31,7 +31,7 @@ Array [
     onSubmit={[Function]}
   >
     <label
-      className=""
+      className={undefined}
       htmlFor="firstName"
     >
       First name
@@ -52,7 +52,7 @@ Array [
       value="refname"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="lastName"
     >
       Last name
@@ -73,7 +73,7 @@ Array [
       value="reflastname"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="relationshipToYou"
     >
       Relationship to you
@@ -94,7 +94,7 @@ Array [
       value="relationship"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="emailAddress"
     >
       Email address
@@ -115,7 +115,7 @@ Array [
       value="email"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="phoneNumber"
     >
       Phone number
@@ -136,7 +136,7 @@ Array [
       value="phone"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="postcode"
     >
       Enter the postcode
@@ -224,7 +224,7 @@ Array [
     onSubmit={[Function]}
   >
     <label
-      className=""
+      className={undefined}
       htmlFor="firstName"
     >
       First name
@@ -245,7 +245,7 @@ Array [
       value="refname"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="lastName"
     >
       Last name
@@ -266,7 +266,7 @@ Array [
       value="reflastname"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="relationshipToYou"
     >
       Relationship to you
@@ -287,7 +287,7 @@ Array [
       value="relationship"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="emailAddress"
     >
       Email address
@@ -308,7 +308,7 @@ Array [
       value="email"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="phoneNumber"
     >
       Phone number
@@ -329,7 +329,7 @@ Array [
       value="phone"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="postcode"
     >
       Enter the postcode

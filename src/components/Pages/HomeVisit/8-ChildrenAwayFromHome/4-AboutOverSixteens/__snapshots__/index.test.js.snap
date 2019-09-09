@@ -157,7 +157,7 @@ Array [
       </div>
     </fieldset>
     <label
-      className=""
+      className={undefined}
       htmlFor="addressLine1"
     >
       Address line 1
@@ -199,7 +199,7 @@ Array [
       value="Line 2"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="town"
     >
       Town
@@ -220,7 +220,7 @@ Array [
       value="Stockport"
     />
     <label
-      className=""
+      className={undefined}
       htmlFor="postcode"
     >
       Postcode
