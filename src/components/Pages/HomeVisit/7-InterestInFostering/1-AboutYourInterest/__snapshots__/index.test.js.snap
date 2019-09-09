@@ -12,7 +12,7 @@ Array [
     onSubmit={[Function]}
   >
     <label
-      className={undefined}
+      className=""
       htmlFor="reasonsForFostering"
     >
       Tell us why you're interested in fostering

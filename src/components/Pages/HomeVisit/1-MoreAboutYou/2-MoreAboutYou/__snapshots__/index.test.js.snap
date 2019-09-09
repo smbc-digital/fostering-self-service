@@ -26,13 +26,10 @@ Array [
         Country of birth
       </label>
       <span
-        aria-controls="placeOfBirth"
-        aria-expanded={false}
-        aria-labelledby="placeOfBirth"
         className="sr-only"
         role="combobox"
       >
-        placeOfBirth
+        
       </span>
       <select
         aria-live="off"
@@ -57,13 +54,10 @@ Array [
         Nationality
       </label>
       <span
-        aria-controls="nationality"
-        aria-expanded={false}
-        aria-labelledby="nationality"
         className="sr-only"
         role="combobox"
       >
-        nationality
+        
       </span>
       <select
         aria-live="off"
@@ -88,13 +82,10 @@ Array [
         Ethnicity
       </label>
       <span
-        aria-controls="ethnicity"
-        aria-expanded={false}
-        aria-labelledby="ethnicity"
         className="sr-only"
         role="combobox"
       >
-        ethnicity
+        
       </span>
       <select
         aria-live="off"
