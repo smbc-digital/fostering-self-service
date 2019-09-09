@@ -7,6 +7,8 @@ import { START_PAGE, KNOWN_BY_ANOTHER_NAME } from 'routes'
 
 describe('App', () => {
 	beforeEach(() => {
+		window.HTMLElement.prototype.scrollIntoView = jest.fn()
+
 		useContextMock.mockReturnValue({
 			homeVisitDateTime: {
 				value: moment().add(10, 'd').format('DD/MM/YYYY HH:mm')
@@ -25,7 +27,12 @@ describe('App', () => {
 			homeVisitDateTime: {
 				value: moment().format('DD/MM/YYYY HH:mm')
 			},
-			enableAdditionalInformationSection: true,
+			enableAdditionalInformationSection: {
+				value: true
+			},
+			isApplicationCompleted: {
+				value: false
+			},
 			statuses: {}
 		})
 
@@ -75,7 +82,12 @@ describe('App', () => {
 	it('should render a Switch', () => {
 		// Arrange	
 		useContextMock.mockReturnValue({			
-			enableAdditionalInformationSection: true,
+			enableAdditionalInformationSection: {
+				value: true
+			},
+			isApplicationCompleted:{
+				value: false
+			},
 			homeVisitDateTime: {
 				value: moment().add(1, 'd').format('DD/MM/YYYY HH:mm')
 			},

@@ -67,6 +67,9 @@ describe('Start', () => {
             enableAdditionalInformationSection: {
                 value: false
             },
+            isApplicationCompleted: {
+				value: false
+			},
             statuses: {}
         })
 
@@ -87,6 +90,9 @@ describe('Start', () => {
             enableAdditionalInformationSection: {
                 value: false
             },
+            isApplicationCompleted: {
+				value: false
+			},
             statuses: {
                 tellUsAboutYourselfStatus: 1,
                 yourEmploymentDetailsStatus: 1,
