@@ -1,4 +1,5 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
+import { act } from 'react-dom/test-utils'
 import AboutUnderSixteens from './index'
 import { Applicant } from 'constants'
 import * as helpers from 'helpers'
@@ -151,8 +152,10 @@ describe('AboutUnderSixteens', () => {
         const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async() => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(history.push).toHaveBeenCalledWith(CHILDREN_OVER_SIXTEEN_LIVING_AWAY)
@@ -257,8 +260,10 @@ describe('AboutUnderSixteens', () => {
         const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(history.push).toHaveBeenCalledWith(CHILDREN_UNDER_SIXTEEN_LIVING_AWAY + '/second-applicant')
@@ -363,8 +368,10 @@ describe('AboutUnderSixteens', () => {
         const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve() 
+        })
 
         // Assert
         expect(history.push).toHaveBeenCalledWith(CHILDREN_OVER_SIXTEEN_LIVING_AWAY)
@@ -384,8 +391,10 @@ describe('AboutUnderSixteens', () => {
         const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
@@ -405,8 +414,10 @@ describe('AboutUnderSixteens', () => {
         const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve() 
+        })
 
         // Assert
         expect(onChangeStatusMock).toHaveBeenCalledWith('childrenLivingAwayFromYourHomeStatus', 0)
@@ -426,8 +437,10 @@ describe('AboutUnderSixteens', () => {
         const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('button').at(1).simulate('click')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('button').at(1).simulate('click')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
@@ -447,8 +460,10 @@ describe('AboutUnderSixteens', () => {
         const wrapper = mount(<AboutUnderSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('button').at(1).simulate('click')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('button').at(1).simulate('click')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(history.push).toHaveBeenCalledWith(START_PAGE)

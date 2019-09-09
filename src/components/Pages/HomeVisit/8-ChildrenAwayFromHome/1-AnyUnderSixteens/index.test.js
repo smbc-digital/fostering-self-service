@@ -1,4 +1,5 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
+import { act } from 'react-dom/test-utils'
 import AnyChildrenUnderSixteen from './index'
 import { Applicant } from 'constants'
 import * as helpers from 'helpers'
@@ -136,9 +137,11 @@ describe('AnyChildrenUnderSixteen', () => {
 
         const wrapper = mount(<AnyChildrenUnderSixteen history={history} match={match}/>)
 
-		// Act
-        await wrapper.find('Button').at(0).simulate('submit')
-        await Promise.resolve()
+        // Act
+        await act(async () => {
+            await wrapper.find('Button').at(0).simulate('submit')
+            await Promise.resolve()
+        })
 
 		// Assert
         expect(history.push).toHaveBeenCalledWith(CHILDREN_UNDER_SIXTEEN_LIVING_AWAY + '/second-applicant')
@@ -201,8 +204,10 @@ describe('AnyChildrenUnderSixteen', () => {
 
         const wrapper = mount(<AnyChildrenUnderSixteen history={history} match={match}/>)
 
-        await wrapper.find('Button').at(1).simulate('click')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(1).simulate('click')
+            await Promise.resolve()
+        })
 
         expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
@@ -244,7 +249,7 @@ describe('AnyChildrenUnderSixteen', () => {
 
         // Act
         mount(<AnyChildrenUnderSixteen history={history} match={match}/>)
-        await mockPromise
+        await act(async() => await mockPromise)
 
         // Assert
         expect(onChangeStatusMock).toHaveBeenCalled()

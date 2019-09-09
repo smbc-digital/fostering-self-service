@@ -1,4 +1,5 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
+import { act } from 'react-dom/test-utils'
 import DoYouKnowCouncillors from './index'
 import * as helpers from 'helpers'
 import { 
@@ -53,8 +54,11 @@ describe('DoYouKnowCouncillors', () => {
 
         // Act
         const wrapper = mount(<DoYouKnowCouncillors history={history} match={match}/>)
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(helpers.updateApplicationForm).toHaveBeenCalled()
@@ -146,15 +150,17 @@ describe('DoYouKnowCouncillors', () => {
 
             // Act
             const wrapper = mount(<DoYouKnowCouncillors history={history} match={match} />)
-            await wrapper.find('form').simulate('submit')
-            await Promise.resolve()
+            await act(async () => {
+                await wrapper.find('form').simulate('submit')
+                await Promise.resolve()
+            })
 
             // Assert
             expect(history.push).toHaveBeenCalledWith(expectedRoute)
         })
     })
 
-    it('should set isLoading', () => {
+    it('should set isLoading', async () => {
         // Arrange
         const history = {
             push: jest.fn()
@@ -163,10 +169,16 @@ describe('DoYouKnowCouncillors', () => {
             params: []
         }
 
+        // Make the update throw an error since isLoading is set back to false on success
+        helpers.updateApplicationForm = jest.fn().mockImplementation(() => { throw new Error() })
+
         // Act
         const wrapper = mount(<DoYouKnowCouncillors history={history} match={match} />)
-        wrapper.find('form').simulate('submit')
-
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            wrapper.update()
+        })
+        
         // Assert
         expect(wrapper.find('Button').first().props().isLoading).toEqual(true)
     })
@@ -183,8 +195,10 @@ describe('DoYouKnowCouncillors', () => {
 
         // Act
         const wrapper = mount(<DoYouKnowCouncillors history={history} match={match}/>)
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(onChangeStatusMock).toHaveBeenCalledWith('councillorsOrEmployeesStatus', 0)
@@ -233,8 +247,10 @@ describe('DoYouKnowCouncillors', () => {
 
         // Act
         const wrapper = mount(<DoYouKnowCouncillors history={history} match={match}/>)
-        await wrapper.find('button').at(1).simulate('click')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('button').at(1).simulate('click')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(history.push).toHaveBeenCalledWith(START_PAGE)

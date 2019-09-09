@@ -1,4 +1,5 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
+import { act } from 'react-dom/test-utils'
 import AboutOverSixteens from './index'
 import { Applicant } from 'constants'
 import * as helpers from 'helpers'
@@ -112,8 +113,10 @@ describe('AboutOverSixteens', () => {
         const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async() => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(history.push).toHaveBeenCalledWith(START_PAGE)
@@ -134,8 +137,10 @@ describe('AboutOverSixteens', () => {
         const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(history.push).toHaveBeenCalledWith(`${CHILDREN_OVER_SIXTEEN_LIVING_AWAY}/second-applicant`)
@@ -155,8 +160,10 @@ describe('AboutOverSixteens', () => {
         const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
@@ -176,8 +183,10 @@ describe('AboutOverSixteens', () => {
         const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('form').simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('form').simulate('submit')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(onChangeStatusMock).toHaveBeenCalledWith('childrenLivingAwayFromYourHomeStatus', 0)
@@ -197,8 +206,10 @@ describe('AboutOverSixteens', () => {
         const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('button').at(1).simulate('click')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('button').at(1).simulate('click')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(helpers.updateHomeVisitForm).toHaveBeenCalled()
@@ -218,8 +229,10 @@ describe('AboutOverSixteens', () => {
         const wrapper = mount(<AboutOverSixteens history={history} match={match}/>)
 
         // Act
-        await wrapper.find('button').at(1).simulate('click')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('button').at(1).simulate('click')
+            await Promise.resolve()
+        })
 
         // Assert
         expect(history.push).toHaveBeenCalledWith(START_PAGE)

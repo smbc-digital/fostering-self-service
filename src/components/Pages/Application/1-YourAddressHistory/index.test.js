@@ -1,4 +1,5 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
+import { act } from 'react-dom/test-utils'
 import YourAddressHistory from './index'
 import { Applicant } from 'constants'
 import * as helpers from 'helpers'
@@ -173,8 +174,10 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={history} match={match}/>)
 
 		// Act
-		await wrapper.find('form').simulate('submit')
-		await Promise.resolve()
+		await act(async () => {
+			await wrapper.find('form').simulate('submit')
+			await Promise.resolve()
+		})
 
 		// Assert
 		expect(history.push).toHaveBeenCalledWith(ABOUT_YOUR_GP)
@@ -195,8 +198,10 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={history} match={match}/>)
 
 		// Act
-		await wrapper.find('form').simulate('submit')
-		await Promise.resolve()
+		await act(async () => {
+			await wrapper.find('form').simulate('submit')
+			await Promise.resolve()
+		})
 
 		// Assert
 		expect(history.push).toHaveBeenCalledWith(ADDRESS_HISTORY + '/second-applicant')
@@ -217,8 +222,10 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={history} match={match}/>)
 
 		// Act
-		await wrapper.find('form').simulate('submit')
-		await Promise.resolve()
+		await act(async () => {
+			await wrapper.find('form').simulate('submit')
+			await Promise.resolve()
+		})
 
 		// Assert
 		expect(history.push).toHaveBeenCalledWith(ABOUT_YOUR_GP)
@@ -239,8 +246,10 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={history} match={match}/>)
 
 		// Act
-		await wrapper.find('form').simulate('submit')
-		await Promise.resolve()
+		await act(async () => {
+			await wrapper.find('form').simulate('submit')
+			await Promise.resolve()
+		})
 
 		// Assert
 		expect(helpers.updateApplicationForm).toHaveBeenCalled()
@@ -261,8 +270,10 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={history} match={match}/>)
 
 		// Act
-		await wrapper.find('form').simulate('submit')
-		await Promise.resolve()
+		await act(async () => {
+			await wrapper.find('form').simulate('submit')
+			await Promise.resolve()
+		})
 
 		// Assert
 		expect(onChangeStatusMock).toHaveBeenCalledWith('addressHistoryStatus', 0)
@@ -283,8 +294,10 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={history} match={match}/>)
 
 		// Act
-		await wrapper.find('button').at(1).simulate('click')
-		await Promise.resolve()
+		await act(async () => {
+			await wrapper.find('button').at(1).simulate('click')
+			await Promise.resolve()
+		})
 
 		// Assert
 		expect(helpers.updateApplicationForm).toHaveBeenCalled()
@@ -305,8 +318,10 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={history} match={match}/>)
 
 		// Act
-		await wrapper.find('button').at(1).simulate('click')
-		await Promise.resolve()
+		await act(async () => {
+			await wrapper.find('button').at(1).simulate('click')
+			await Promise.resolve()
+		})
 
 		// Assert
 		expect(history.push).toHaveBeenCalledWith(START_PAGE)
@@ -327,7 +342,7 @@ describe('YourAddressHistory', () => {
 		const wrapper = mount(<YourAddressHistory history={history} match={match}/>)
 
 		// Act
-		await wrapper.find('form').simulate('submit')
+		await act(async () => await wrapper.find('form').simulate('submit'))
 
 		// Assert
 		expect(history.push).toHaveBeenCalledWith('/error')

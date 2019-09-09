@@ -1,4 +1,5 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
+import { act } from 'react-dom/test-utils'
 import AreYouEmployed from './index'
 import { Applicant } from 'constants'
 import * as helpers from 'helpers'
@@ -170,8 +171,10 @@ describe('AreYouEmployed', () => {
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        await wrapper.find('Button').at(0).simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(0).simulate('submit')
+            await Promise.resolve()
+        })
 
         expect(history.push).toHaveBeenCalledWith(ARE_YOU_EMPLOYED + '/second-applicant')
     })
@@ -239,8 +242,10 @@ describe('AreYouEmployed', () => {
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        await wrapper.find('Button').at(0).simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(0).simulate('submit')
+            await Promise.resolve()
+        })
 
         expect(history.push).toHaveBeenCalledWith(LANGUAGES_SPOKEN_IN_YOUR_HOME)
     })
@@ -313,8 +318,10 @@ describe('AreYouEmployed', () => {
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        await wrapper.find('Button').at(0).simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(0).simulate('submit')
+            await Promise.resolve()
+        })
 
         expect(history.push).toHaveBeenCalledWith(LANGUAGES_SPOKEN_IN_YOUR_HOME)
     })
@@ -365,8 +372,10 @@ describe('AreYouEmployed', () => {
 
         const wrapper = mount(<AreYouEmployed history={history} match={match}/>)
 
-        await wrapper.find('Button').at(1).simulate('click')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(1).simulate('click')
+            await Promise.resolve()
+        })
 
         expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })

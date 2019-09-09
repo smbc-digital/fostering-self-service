@@ -1,4 +1,5 @@
 import { React, mount, useContextMock, renderer } from 'helpers/SetupTest'
+import { act } from 'react-dom/test-utils'
 import AnyOverSixteens from './index'
 import { Applicant } from 'constants'
 import * as helpers from 'helpers'
@@ -139,8 +140,10 @@ describe('AnyOverSixteens', () => {
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
         //Act
-        await wrapper.find('Button').at(0).simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(0).simulate('submit')
+            await Promise.resolve()
+        })
 
         //Assert
         expect(history.push).toHaveBeenCalledWith(CHILDREN_OVER_SIXTEEN_LIVING_AWAY + '/second-applicant')
@@ -201,8 +204,10 @@ describe('AnyOverSixteens', () => {
 
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
-        await wrapper.find('Button').at(0).simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(0).simulate('submit')
+            await Promise.resolve()
+        })
 
         expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
@@ -259,8 +264,10 @@ describe('AnyOverSixteens', () => {
 
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
-        await wrapper.find('Button').at(0).simulate('submit')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(0).simulate('submit')
+            await Promise.resolve()
+        })
 
         expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
@@ -303,8 +310,10 @@ describe('AnyOverSixteens', () => {
 
         const wrapper = mount(<AnyOverSixteens history={history} match={match}/>)
 
-        await wrapper.find('Button').at(1).simulate('click')
-        await Promise.resolve()
+        await act(async () => {
+            await wrapper.find('Button').at(1).simulate('click')
+            await Promise.resolve()
+        })
 
         expect(history.push).toHaveBeenCalledWith(START_PAGE)
     })
@@ -346,7 +355,7 @@ describe('AnyOverSixteens', () => {
 
         // Act
         mount(<AnyOverSixteens history={history} match={match}/>)
-        await mockPromise
+        await act(async () => await mockPromise)
 
         // Assert
         expect(onChangeStatusMock).toHaveBeenCalled()
