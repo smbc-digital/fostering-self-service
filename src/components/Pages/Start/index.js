@@ -157,7 +157,7 @@ const AdditionalInformationFormLinks = ({ disabled }) => {
 }
 
 const Start = () => {
-	const { homeVisitDateTime, enableAdditionalInformationSection, isApplicationCompleted } = useContext(Context)
+	const { homeVisitDateTime, enableAdditionalInformationSection } = useContext(Context)
 	const isPastHomeVisitDateTime = moment().subtract(AfterHomeVisitTimePeriod.value, AfterHomeVisitTimePeriod.unit).isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm'))
 	const disabled = moment().isSameOrAfter(moment(homeVisitDateTime.value, 'DD/MM/YYYY HH:mm').subtract(30, 'm')) || enableAdditionalInformationSection.value
 	const resultsRef = React.createRef()
@@ -204,8 +204,8 @@ const Start = () => {
 		{
 			title: 'Additional information',
 			body: () => <AdditionalInformationFormLinks disabled={!enableAdditionalInformationSection.value}/>,
-			status: enableAdditionalInformationSection.value || isApplicationCompleted.value ? TaskStatus.None : TaskStatus.CantStart,
-			disabled: !enableAdditionalInformationSection.value  || isApplicationCompleted.value,
+			status: enableAdditionalInformationSection.value ? TaskStatus.None : TaskStatus.CantStart,
+			disabled: !enableAdditionalInformationSection.value,
 			displayHr: false
 		},
 		{
