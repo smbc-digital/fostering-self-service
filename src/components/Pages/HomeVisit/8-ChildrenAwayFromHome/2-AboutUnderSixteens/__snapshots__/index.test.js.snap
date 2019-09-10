@@ -28,8 +28,8 @@ Array [
       First name
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="firstName"
       inputMode={undefined}
@@ -54,8 +54,8 @@ Array [
       Last name
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="lastName"
       inputMode={undefined}
@@ -80,8 +80,8 @@ Array [
       Gender
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="gender"
       inputMode={undefined}
@@ -184,8 +184,8 @@ Array [
       Address line 2
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="addressLine2"
       inputMode={undefined}

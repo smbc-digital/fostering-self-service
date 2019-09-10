@@ -18,8 +18,8 @@ Array [
       Primary language
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="primaryLanguage"
       inputMode={undefined}

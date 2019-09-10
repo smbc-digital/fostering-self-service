@@ -24,9 +24,13 @@ Array [
       Have you previously applied to foster, childmind or adopt?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Have you previously applied to foster, childmind or adopt?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={true}
@@ -45,7 +49,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}

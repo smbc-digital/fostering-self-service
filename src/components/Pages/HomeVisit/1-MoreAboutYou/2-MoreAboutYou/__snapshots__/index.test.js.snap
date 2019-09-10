@@ -118,8 +118,8 @@ Array [
       Gender
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="gender"
       inputMode={undefined}
@@ -139,8 +139,8 @@ Array [
       Religion or faith group
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="religion"
       inputMode={undefined}

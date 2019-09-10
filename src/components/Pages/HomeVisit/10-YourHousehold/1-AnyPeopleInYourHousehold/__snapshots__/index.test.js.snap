@@ -17,9 +17,13 @@ Array [
       Are there other people living in your home?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Are there other people living in your home?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}
@@ -38,7 +42,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}

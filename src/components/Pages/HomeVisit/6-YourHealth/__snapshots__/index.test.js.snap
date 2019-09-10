@@ -24,9 +24,13 @@ Array [
       Are you registered as disabled?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Are you registered as disabled?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={true}
@@ -45,7 +49,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}
@@ -69,9 +72,13 @@ Array [
       Do you have any medical conditions?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Do you have any medical conditions?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={true}
@@ -90,7 +97,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}

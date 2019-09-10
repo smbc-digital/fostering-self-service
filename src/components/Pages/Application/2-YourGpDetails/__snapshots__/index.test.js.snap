@@ -112,7 +112,7 @@ Array [
       value="line 1"
     />
     <h3
-      aria-hidden="true"
+      aria-hidden={true}
       className="optional"
     >
       Address line 2
@@ -130,8 +130,8 @@ Array [
       Address line 2 optional
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="addressLine2"
       inputMode={undefined}

@@ -17,9 +17,13 @@ Array [
       Are you married or in a civil partnership?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Are you married or in a civil partnership?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}
@@ -38,7 +42,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}

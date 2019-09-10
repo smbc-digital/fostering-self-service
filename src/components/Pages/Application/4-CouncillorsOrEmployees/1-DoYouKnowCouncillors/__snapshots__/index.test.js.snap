@@ -17,9 +17,13 @@ Array [
       Do you have a personal relationship with a local councillor or council employee?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Do you have a personal relationship with a local councillor or council employee?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}
@@ -38,7 +42,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}

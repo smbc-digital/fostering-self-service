@@ -24,9 +24,13 @@ Array [
       Have you ever been known by another name?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Have you ever been known by another name?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={true}
@@ -53,8 +57,8 @@ Array [
           Previous name
         </label>
         <input
-          aria-label=""
-          aria-live=""
+          aria-label={undefined}
+          aria-live={undefined}
           className=""
           id="anotherName"
           inputMode={undefined}
@@ -70,7 +74,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}

@@ -24,9 +24,13 @@ Array [
       Are you employed?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Are you employed?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={true}
@@ -45,7 +49,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}

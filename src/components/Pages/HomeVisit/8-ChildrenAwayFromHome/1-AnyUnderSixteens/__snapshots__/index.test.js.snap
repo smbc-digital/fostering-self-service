@@ -24,9 +24,13 @@ Array [
       Do you have any children under 16 living away from your home?
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Do you have any children under 16 living away from your home?
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={true}
@@ -45,7 +49,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}

@@ -19,7 +19,6 @@ Array [
       </p>
       <div
         className="input-checkbox-container"
-        role="group"
       >
         <input
           checked={false}
@@ -38,7 +37,6 @@ Array [
       </div>
       <div
         className="input-checkbox-container"
-        role="group"
       >
         <input
           checked={false}
@@ -57,7 +55,6 @@ Array [
       </div>
       <div
         className="input-checkbox-container"
-        role="group"
       >
         <input
           checked={false}
@@ -76,7 +73,6 @@ Array [
       </div>
       <div
         className="input-checkbox-container"
-        role="group"
       >
         <input
           checked={false}
@@ -95,7 +91,6 @@ Array [
       </div>
       <div
         className="input-checkbox-container"
-        role="group"
       >
         <input
           checked={false}
@@ -114,7 +109,6 @@ Array [
       </div>
       <div
         className="input-checkbox-container"
-        role="group"
       >
         <input
           checked={false}

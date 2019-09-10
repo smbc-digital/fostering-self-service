@@ -25,8 +25,8 @@ Array [
       Current employer
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="currentEmployer"
       inputMode={undefined}
@@ -46,8 +46,8 @@ Array [
       Job title
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="jobTitle"
       inputMode={undefined}
@@ -66,9 +66,13 @@ Array [
       Current hours of work
     </h3>
     <fieldset>
+      <legend
+        className="sr-only"
+      >
+        Current hours of work
+      </legend>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={false}
@@ -87,7 +91,6 @@ Array [
       </div>
       <div
         className="input-radio-container"
-        role="radiogroup"
       >
         <input
           checked={true}

@@ -21,8 +21,8 @@ Array [
       First name
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="firstName"
       inputMode={undefined}
@@ -42,8 +42,8 @@ Array [
       Last name
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="lastName"
       inputMode={undefined}
@@ -63,8 +63,8 @@ Array [
       Gender
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="gender"
       inputMode={undefined}
@@ -84,8 +84,8 @@ Array [
       Relationship to you
     </label>
     <input
-      aria-label=""
-      aria-live=""
+      aria-label={undefined}
+      aria-live={undefined}
       className=""
       id="relationshipToYou"
       inputMode={undefined}
