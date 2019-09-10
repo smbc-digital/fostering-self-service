@@ -61,6 +61,9 @@
 			"json-summary",
 			"html"
 		],
+		"transformIgnorePatterns": [
+			"/node_modules/(?!smbc-react-components).+\\.js$"
+		],
 		"testURL": "http://localhost",
 		"coverageThreshold": {
 			"global": {
