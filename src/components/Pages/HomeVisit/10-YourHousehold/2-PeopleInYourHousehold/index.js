@@ -116,7 +116,6 @@ const PeopleInYourHousehold = ({ history }) => {
             <form onSubmit={onSubmit}>
                 <ComponentsList
                     onChange={onPersonChange}
-                    componentName='PersonDetails'
                     addItemMessage='Add another person'
                     removeItemMessage='Remove person'
                     showAddMoreButton={otherPeopleInYourHousehold.value.length < 8}

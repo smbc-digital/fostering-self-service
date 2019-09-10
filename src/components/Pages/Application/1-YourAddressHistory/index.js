@@ -260,7 +260,6 @@ const YourAddressHistory = ({history, match}) => {
 				<ComponentsList
 					key={currentApplicant} 
 					onChange={onAddressChange}
-					componentName='addressHistoryDetails'
 					addItemMessage='Add another address'
 					removeItemMessage='Remove this address'
 					showAddMoreButton={!displayAddAnotherOnFirstAddress()}

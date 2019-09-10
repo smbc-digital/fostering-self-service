@@ -159,7 +159,6 @@ const AboutOverSixteens = ({history, match}) => {
             <form onSubmit={onSubmit}>
                 <ComponentsList
                     onChange={onPersonChange}
-                    componentName='PersonDetails'
                     addItemMessage='Add another person'
                     removeItemMessage='Remove person'
                     showAddMoreButton={childrenOverSixteenLivingAwayFromHome.value.length < 4}
