@@ -99,7 +99,7 @@ Array [
       <p
         dangerouslySetInnerHTML={
           Object {
-            "__html": "You must tell us where you’ve lived since May 2011, starting with the most recent address and working backwards.",
+            "__html": "You must tell us where you’ve lived since June 2011, starting with the most recent address and working backwards.",
           }
         }
       />
@@ -207,7 +207,7 @@ Array [
       <p
         dangerouslySetInnerHTML={
           Object {
-            "__html": "You must tell us where you’ve lived since May 2011, starting with the most recent address and working backwards.",
+            "__html": "You must tell us where you’ve lived since June 2011, starting with the most recent address and working backwards.",
           }
         }
       />
